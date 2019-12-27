@@ -1,14 +1,13 @@
-package web.center_page.volunteer.service.impl;
+package page.service.center.volunteer;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import web.center_page.volunteer.dao.face.VolunteerDao;
-import web.center_page.volunteer.dto.Volunteer;
-import web.center_page.volunteer.service.face.VolunteerService;
-import web.util.Paging;
+import page.dao.center.volunteer.VolunteerDao;
+import page.dto.Volunteer;
+import page.util.Paging;
 
 @Service
 public class VolunteerServiceImpl implements VolunteerService {

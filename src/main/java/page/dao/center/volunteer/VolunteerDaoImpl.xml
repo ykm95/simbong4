@@ -4,13 +4,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="web.center_page.volunteer.dao.face.VolunteerDao">
+<mapper namespace="page.dao.center.volunteer.VolunteerDao">
 
 	<select id="selectCntAll" resultType="int">
 		SELECT count(*) FROM volunteer
 	</select>
 
-	<select id="selectAllVolunteer" parameterType="web.util.Paging" resultType="web.center_page.volunteer.dto.Volunteer">
+	<select id="selectAllVolunteer" parameterType="page.util.Paging" resultType="page.dto.Volunteer">
 		SELECT * FROM (
 		    SELECT rownum rnum, B.* FROM (		
 				SELECT * FROM volunteer
@@ -21,12 +21,12 @@
 		 WHERE rnum BETWEEN #{startNo} AND #{endNo}				
 	</select>
 	
-	<select id="selectVolunteerByVolunteerno" parameterType="web.center_page.volunteer.dto.Volunteer" resultType="web.center_page.volunteer.dto.Volunteer">
+	<select id="selectVolunteerByVolunteerno" parameterType="page.dto.Volunteer" resultType="page.dto.Volunteer">
 		SELECT * FROM volunteer
 		WHERE volunteerno = #{volunteerno }
 	</select>
 	
-	<insert id="insertVolunteer" parameterType="web.center_page.volunteer.dto.Volunteer">
+	<insert id="insertVolunteer" parameterType="page.dto.Volunteer">
 		INSERT INTO volunteer 
 			(volunteerno, centerno, vol_sterm, vol_eterm, stime, etime,
 			department, vol_area, vol_place, receiver, qualification, npeople,
@@ -37,7 +37,7 @@
 			#{vol_title}, #{vol_content})
 	</insert>
 	
-	<update id="updateVolunteer" parameterType="web.center_page.volunteer.dto.Volunteer">
+	<update id="updateVolunteer" parameterType="page.dto.Volunteer">
 		UPDATE volunteer
 		SET vol_title = #{vol_title}, vol_content = #{vol_content}, vol_sterm = #{vol_sterm}, vol_eterm = #{vol_eterm}, stime = #{stime}, etime = #{etime},
 			department = #{department}, vol_area = #{vol_area}, vol_place = #{vol_place},
@@ -45,7 +45,7 @@
 		WHERE volunteerno = #{volunteerno}
 	</update>
 	
-	<delete id="deleteVolunteer" parameterType="web.center_page.volunteer.dto.Volunteer">
+	<delete id="deleteVolunteer" parameterType="page.dto.Volunteer">
 		DELETE volunteer
 		WHERE volunteerno = #{volunteerno}
 	</delete>

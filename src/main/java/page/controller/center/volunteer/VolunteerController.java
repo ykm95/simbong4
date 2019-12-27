@@ -1,4 +1,4 @@
-package web.center_page.volunteer.controller;
+package page.controller.center.volunteer;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import web.center_page.volunteer.dto.Volunteer;
-import web.center_page.volunteer.service.face.VolunteerService;
-import web.util.Paging;
+import page.dto.Volunteer;
+import page.service.center.volunteer.VolunteerService;
+import page.util.Paging;
 
 @Controller
 public class VolunteerController {

@@ -1,9 +1,9 @@
-package web.center_page.volunteer.dao.face;
+package page.dao.center.volunteer;
 
 import java.util.List;
 
-import web.center_page.volunteer.dto.Volunteer;
-import web.util.Paging;
+import page.dto.Volunteer;
+import page.util.Paging;
 
 public interface VolunteerDao {
 	

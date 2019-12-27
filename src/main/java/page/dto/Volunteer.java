@@ -1,4 +1,4 @@
-package web.center_page.volunteer.dto;
+package page.dto;
 
 import java.util.Date;
 

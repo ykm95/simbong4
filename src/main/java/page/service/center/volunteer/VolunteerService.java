@@ -1,9 +1,9 @@
-package web.center_page.volunteer.service.face;
+package page.service.center.volunteer;
 
 import java.util.List;
 
-import web.center_page.volunteer.dto.Volunteer;
-import web.util.Paging;
+import page.dto.Volunteer;
+import page.util.Paging;
 
 public interface VolunteerService {
 	

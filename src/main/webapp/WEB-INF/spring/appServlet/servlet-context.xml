@@ -41,7 +41,7 @@
 		<beans:property name="maxUploadSizePerFile" value="5242880" />
 	</beans:bean>	
 	
-	<context:component-scan base-package="com.simbong4.www, web.center_page.volunteer" />
+	<context:component-scan base-package="com.simbong4.www, page.controller, page.service" />
 	
 	
 	

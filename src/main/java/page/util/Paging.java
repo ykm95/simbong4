@@ -1,4 +1,4 @@
-package web.util;
+package page.util;
 
 public class Paging {
 
