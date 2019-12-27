@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="web.center_page.volunteer.dao.face.VolunteerDao">
+
+	<select id="selectCntAll" resultType="int">
+		SELECT count(*) FROM volunteer
+	</select>
+
+	<select id="selectAllVolunteer" parameterType="web.util.Paging" resultType="web.center_page.volunteer.dto.Volunteer">
+		SELECT * FROM (
+		    SELECT rownum rnum, B.* FROM (		
+				SELECT * FROM volunteer
+				ORDER BY volunteerno DESC
+		    ) B
+		    ORDER BY rnum
+		 ) BOARD
+		 WHERE rnum BETWEEN #{startNo} AND #{endNo}				
+	</select>
+	
+	<select id="selectVolunteerByVolunteerno" parameterType="web.center_page.volunteer.dto.Volunteer" resultType="web.center_page.volunteer.dto.Volunteer">
+		SELECT * FROM volunteer
+		WHERE volunteerno = #{volunteerno }
+	</select>
+	
+	<insert id="insertVolunteer" parameterType="web.center_page.volunteer.dto.Volunteer">
+		INSERT INTO volunteer 
+			(volunteerno, centerno, vol_sterm, vol_eterm, stime, etime,
+			department, vol_area, vol_place, receiver, qualification, npeople,
+			vol_title, vol_content)
+		VALUES 
+			(volunteer_seq.nextVal, #{centerno}, #{vol_sterm}, #{vol_eterm}, #{stime}, #{etime},
+			#{department}, #{vol_area}, #{vol_place}, #{receiver}, #{qualification}, #{npeople},
+			#{vol_title}, #{vol_content})
+	</insert>
+	
+	<update id="updateVolunteer" parameterType="web.center_page.volunteer.dto.Volunteer">
+		UPDATE volunteer
+		SET vol_title = #{vol_title}, vol_content = #{vol_content}, vol_sterm = #{vol_sterm}, vol_eterm = #{vol_eterm}, stime = #{stime}, etime = #{etime},
+			department = #{department}, vol_area = #{vol_area}, vol_place = #{vol_place},
+			receiver = #{receiver}, qualification = #{qualification}, npeople = #{npeople}
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<delete id="deleteVolunteer" parameterType="web.center_page.volunteer.dto.Volunteer">
+		DELETE volunteer
+		WHERE volunteerno = #{volunteerno}
+	</delete>
+
+</mapper>
