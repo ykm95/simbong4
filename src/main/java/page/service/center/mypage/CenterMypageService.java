@@ -10,19 +10,10 @@ public interface CenterMypageService {
 
 	public boolean checkPw(Center center);
 
-	/**
-	 * 센터 회원 정보 수정
-	 * 
-	 * 
-	 */
 	public void centerInformationUpdate(Center center);
 
-//	/**
-//	 * 센터 회원탈퇴
-//	 * 
-//	 */
-//	public void centerInformationDelete(Center center);
-//
+	public void centerInformationDelete(Center center);
+
 //	/**
 //	 * 센터 1:1 문의글 작성
 //	 * 

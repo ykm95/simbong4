@@ -40,12 +40,12 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		
 	}
 
-//	@Override
-//	public void centerInformationDelete(Center center) {
-//		centerMypageDao.delete(center);
-//		
-//	}
-//
+	@Override
+	public void centerInformationDelete(Center center) {
+		centerMypageDao.delete(center);
+		
+	}
+
 //	@Override
 //	public void writeQST(Question question) {
 //		centerMypageDao.write(question);

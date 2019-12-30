@@ -30,5 +30,10 @@
 	  		memail = #{memail }
 	  	WHERE businessno = #{businessno }
 	  </update>
+	  
+	  <delete id="delete" parameterType="page.dto.Center">
+	  	DELETE centertb
+	  	WHERE businessno = #{businessno }
+	  </delete>
 	 
 </mapper>
