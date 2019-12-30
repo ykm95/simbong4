@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="page.dao.user.notice.NoticeDao">
+    
+    <resultMap type="page.dto.Notice" id="Notice">
+      <result column="noticeno" property="noticeNo"/>
+      <result column="notice_title" property="noticeTitle"/>
+      <result column="notice_content" property="noticeContent"/>
+      <result column="write_date" property="writeDate"/>
+   </resultMap>
+    
+    <select id="selectNoticeAll" resultMap="Notice" parameterType="page.util.Paging">
+		SELECT * FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT
+		noticeno, notice_title, notice_content, hit, write_date
+		FROM notice
+		WHERE 1=1
+		ORDER BY noticeno DESC
+		 ) B
+		    ORDER BY rnum
+		 ) notice
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+    </select>
+    
+    <select id="selectSearchAll" resultMap="Notice" parameterType="page.util.Paging">
+    	SELECT * FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT
+		noticeno, notice_title, notice_content, hit, write_date
+		FROM notice
+		
+		WHERE 1=1
+		<if test='searchcategory == "title" and keyword != null and keyword != ""'>
+			AND notice_title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="searchcategory=='content' and keyword!= null and keyword!=''">
+			AND notice_content LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		ORDER BY noticeno DESC
+		 ) B
+		    ORDER BY rnum
+		 ) notice
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+    
+    </select>
+    
+    <select id="selectCntAll" resultType="int">
+    	SELECT COUNT(*) FROM notice
+    </select>
+    
+    <select id="selectNoticeBynoticeno" resultMap="Notice" parameterType="int">
+    	SELECT * FROM notice
+    	WHERE noticeno=#{noticeNo }
+    </select>
+    
+    <update id="hit" parameterType="int">
+    
+    	UPDATE notice
+    	SET hit = hit + 1
+    	WHERE noticeno=#{noticeNo }
+    
+    </update>
+    
+  </mapper>

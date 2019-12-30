@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="page.dao.user.best.BestVolunteerDao">
+  
+  <resultMap type="page.dto.BestVolunteer" id="Best">
+  	<result column="write_date" property="writedate"/>
+  	<result column="best_title" property="bestTitle"/>
+  	<result column="best_content" property="bestContent"/>
+  </resultMap>
+  
+  <select id="selectBestAll" resultMap="Best" parameterType="page.util.Paging">
+  	SELECT * FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT
+		bestno, userno, write_date, hit, best_title,
+		best_content, pic
+		FROM bestvolunteer
+		WHERE 1=1
+		ORDER BY bestno DESC
+		 ) B
+		    ORDER BY rnum
+		 ) bestvolunteer
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+  </select>
+  
+      <select id="selectSearchAll" resultMap="Best" parameterType="page.util.Paging">
+    	SELECT * FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT
+		bestno, userno, write_date, hit, best_title,
+		best_content, pic
+		FROM bestvolunteer
+		
+		WHERE 1=1
+		<if test='searchcategory == "title" and keyword != null and keyword != ""'>
+			AND best_title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="searchcategory=='content' and keyword!= null and keyword!=''">
+			AND best_content LIKE '%'||#{keyword}||'%'
+		</if>
+		
+		ORDER BY bestno DESC
+		 ) B
+		    ORDER BY rnum
+		 ) bestvolunteer
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+    
+    </select>
+  
+  <select id="selectCntAll" resultType="int">
+  	SELECT COUNT(*) FROM bestvolunteer
+  </select>
+  
+  <select id="selectBestVolunteerBybestno" resultMap="Best" parameterType="int">
+ 	SELECT * FROM bestvolunteer
+ 	WHERE bestno=#{bestno }
+  </select>
+  </mapper>
