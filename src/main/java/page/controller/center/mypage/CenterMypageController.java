@@ -101,6 +101,7 @@ public class CenterMypageController {
 		center.setBusinessno((int) session.getAttribute("loginId"));
 		
 		logger.info(center.toString());
+		
 
 		centerMypageService.centerInformationUpdate(center);
 

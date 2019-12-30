@@ -5,22 +5,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="web.center_page.mypage.dao.face.CenterMypageDao">
+<mapper namespace="page.dao.center.mypage.CenterMypageDao">
 
-	<select id="selectCnt" parameterType="web.center_page.mypage.dto.Center"
+	<select id="selectCnt" parameterType="page.dto.Center"
 	 resultType="int">
 	 	SELECT count(*) FROM centertb
 	 	WHERE businessno = #{businessno }
 	 	AND cpassword = #{cpassword }
 	 </select>
 	 
-	 <select id="selectInformationByBusinessno" parameterType="web.center_page.mypage.dto.Center"
-	  resultType="web.center_page.mypage.dto.Center">
+	 <select id="selectInformationByBusinessno" parameterType="page.dto.Center"
+	  resultType="page.dto.Center">
 	  	SELECT * FROM centertb
 	  	WHERE businessno = #{businessno }
 	  </select>
 	  
-	  <update id="update" parameterType="web.center_page.mypage.dto.Center">
+	  <update id="update" parameterType="page.dto.Center">
 	  	UPDATE centertb
 	  	SET address1 = #{address1 },
 	  		address2 = #{address2 },
