@@ -15,8 +15,14 @@
 $(document).ready(function() {
 	//수정버튼 동작
 	$("#btnUpdate").click(function() {
-		$(location).attr("href", "/center/mypage/passwordcheck");
+		$(location).attr("href", "/center/mypage/updatepwchk");
 	});
+	
+	//삭제버튼 동작
+	$("#btnDelete").click(function() {
+		$(location).attr("href", "/center/mypage/deletepwchk");
+	});
+	
 });
 </script>
 </head>
@@ -24,6 +30,7 @@ $(document).ready(function() {
 <h1>센터마이페이지 - 메인</h1>
 <hr>
 
-<button id="btnUpdate" class="btn btn-info">수정</button>
+<button id="btnUpdate">회원정보수정</button>
+<button id="btnDelete">회원탈퇴</button>
 </body>
 </html>

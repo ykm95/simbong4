@@ -56,13 +56,13 @@ public class CenterMypageController {
 	@RequestMapping(value="/center/mypage/mypagemain")
 	public void centerMypageMain() { }
 	
-	@RequestMapping(value="/center/mypage/passwordcheck", method=RequestMethod.GET)
-	public void passwordCheck() { 
+	@RequestMapping(value="/center/mypage/updatepwchk", method=RequestMethod.GET)
+	public void updatePwCheck() { 
 		logger.info("회원정보수정-비밀번호입력요구창 접속성공");		
 	}
 	
-	@RequestMapping(value="/center/mypage/passwordcheck", method=RequestMethod.POST)
-	public String passwordCheckProc(HttpSession session, Model model, Center center) {		
+	@RequestMapping(value="/center/mypage/updatepwchk", method=RequestMethod.POST)
+	public String updatePwCheckProc(HttpSession session, Center center) {		
 
 		logger.info(center.toString());
 
@@ -74,7 +74,7 @@ public class CenterMypageController {
 		}
 		
 		// 틀릴때
-		return "redirect:/center/mypage/passwordcheck";
+		return "redirect:/center/mypage/updatepwchk";
 	}
 	
 	@RequestMapping(value="/center/mypage/update", method=RequestMethod.GET)
@@ -107,15 +107,54 @@ public class CenterMypageController {
 		return "redirect:/center/mypage/mypagemain";
 	}
 	
-//	public void centerDelete() {
-//	}
-//
-//	public String centerDeleteProc(Center center) {
-//
-//		centerMypageService.centerInformationDelete(center);
-//		return null;
-//	}
-//	
+	@RequestMapping(value="/center/mypage/deletepwchk", method=RequestMethod.GET)
+	public void deletePwCheck() {
+		logger.info("회원탈퇴-비밀번호입력요구창 접속성공");
+	}
+	
+	@RequestMapping(value="/center/mypage/deletepwchk", method=RequestMethod.POST)
+	public String deletePwCheckProc(HttpSession session, Center center) {
+		logger.info(center.toString());
+
+		center.setBusinessno((int) session.getAttribute("loginId"));
+		
+		boolean res = centerMypageService.checkPw(center);
+		
+		if( res ) { // 맞을때
+			return "redirect:/center/mypage/delete?businessno=" + center.getBusinessno();
+		}
+		
+		// 틀릴때
+		return "redirect:/center/mypage/deletepwchk";
+	}
+	
+	@RequestMapping(value="/center/mypage/delete", method=RequestMethod.GET)
+	public String centerDelete(Model model,Center center) {
+		logger.info("회원탈퇴폼 접속완료");
+		
+		logger.info(center.toString());
+		
+		center = centerMypageService.getInformation(center);		
+		
+		model.addAttribute("center", center);
+		
+		
+		return "/center/mypage/deleteForm";
+	}
+
+	@RequestMapping(value="center/mypage/delete", method=RequestMethod.POST)
+	public String centerDeleteProc(Center center, HttpSession session) {
+		logger.info("[POST]-/center/mypage/delete");
+		
+		logger.info(center.toString());
+		
+		centerMypageService.centerInformationDelete(center);
+		
+		session.invalidate();
+		
+		return "/center/main";
+	}
+	
 //	public void writeQuestion(Question question) {
 //
 //		centerMypageService.writeQST(question);

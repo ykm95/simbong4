@@ -8,19 +8,10 @@ public interface CenterMypageDao {
 
 	public Center selectInformationByBusinessno(Center center);
 	
-	/**
-	 *  센터회원정보수정
-	 *
-	 */
 	public void update(Center center);
 
-//	/**
-//	 * 센터회원탈퇴
-//	 * 
-//	 * 
-//	 */
-//	public void delete(Center center);
-//
+	public void delete(Center center);
+
 //	/**
 //	 * 센터 1:1문의작성
 //	 * 
