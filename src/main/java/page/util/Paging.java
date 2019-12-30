@@ -11,6 +11,8 @@ public class Paging {
 	private int endPage;
 	private int startNo;
 	private int endNo;
+	private String searchcategory;
+	private String keyword;
 
 	private String search;
 	
@@ -22,7 +24,7 @@ public class Paging {
 		this.makePaging();
 	}
 
-	// ÃÑ °Ô½Ã±Û ¼ö¿Í ÇöÀç ÆäÀÌÁö¸¦ ÀÔ·ÂÇÏ´Â »ı¼ºÀÚ
+	// ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Paging(int totalCount, int curPage) {
 		this.setTotalCount(totalCount);
 		this.setCurPage(curPage);
@@ -30,7 +32,7 @@ public class Paging {
 		this.makePaging();
 	}
 
-	// ÃÑ °Ô½Ã±Û ¼ö¿Í ÇöÀç ÆäÀÌÁö, º¸¿©Áú °Ô½Ã±Û ¼ö¸¦  ÀÔ·ÂÇÏ´Â »ı¼ºÀÚ
+	// ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½Ô·ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Paging(int totalCount, int curPage, int listCount) {
 		this.setTotalCount(totalCount);
 		this.setCurPage(curPage);
@@ -38,7 +40,7 @@ public class Paging {
 		this.makePaging();
 	}
 
-	// ÃÑ °Ô½Ã±Û ¼ö¿Í ÇöÀç ÆäÀÌÁö, º¸¿©Áú °Ô½Ã±Û ¼ö, º¸¿©Áú ÆäÀÌÁö ¼ö¸¦  ÀÔ·ÂÇÏ´Â »ı¼ºÀÚ
+	// ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½Ô·ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Paging(int totalCount, int curPage, int listCount, int pageCount) {
 		this.setTotalCount(totalCount);
 		this.setCurPage(curPage);
@@ -51,31 +53,31 @@ public class Paging {
 	}
 
 
-	// ÆäÀÌÂ¡ Á¤º¸ »ı¼º
+	// ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private void makePaging() {
-		if(totalCount==0) return;	//°Ô½Ã±ÛÀÌ ¾ø´Â °æ¿ì
+		if(totalCount==0) return;	//ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
-		//±âº»°ª ¼¼ÆÃ
-		if(curPage==0) setCurPage(1); //Ã¹ ÆäÀÌÁö ±âº»°ª ¼¼ÆÃ
-		if(pageCount==0) setPageCount(5); // È­¸é¿¡ º¸¿©Áú ÆäÀÌÁö¼ö ±âº»°ª ¼¼ÆÃ
-		if(listCount==0) setListCount(10); // È­¸é¿¡ º¸¿©Áú °Ô½Ã±Û¼ö ±âº»°ª ¼¼ÆÃ
+		//ï¿½âº»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		if(curPage==0) setCurPage(1); //Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		if(pageCount==0) setPageCount(5); // È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		if(listCount==0) setListCount(10); // È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±Û¼ï¿½ ï¿½âº»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-		// ÃÑ ÆäÀÌÁö¼ö °è»ê
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		totalPage = totalCount / listCount;
 		if(totalCount % listCount > 0 ) totalPage++;
 
 		
-		// ÇöÀçÆäÀÌÁö º¸Á¤, ÃÑ ÆäÀÌÁö¹øÈ£º¸´Ù ÇöÀç ÆäÀÌÁö¹øÈ£°¡ ³ôÀ» ¶§ ÃÑ ÆäÀÌÁö ¹øÈ£·Î °íÁ¤
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if(totalPage<curPage) curPage = totalPage;
 
-		// È­¸é¿¡ º¸¿©Áú ÆäÀÌÂ¡ ½ÃÀÛ¹øÈ£¿Í ³¡ ¹øÈ£
+		// È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½Û¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£
 		startPage = ( (curPage-1)/pageCount) * pageCount+1;
 		endPage = startPage + pageCount -1;
 
-		// °è»êµÈ ³¡ÆäÀÌÁö¹øÈ£°¡ ÃÑ ÆäÀÌÁö¼öº¸´Ù Å¬ ¶§ º¸Á¤
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if(endPage>totalPage) endPage = totalPage;
 		
-		// È­¸é¿¡ º¸¿©Áú °Ô½Ã±ÛÀÇ ½ÃÀÛ¹øÈ£¿Í ³¡ ¹øÈ£
+		// È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£
 		startNo = (curPage-1) * listCount+1;
 		endNo =curPage * listCount;
 
@@ -169,4 +171,21 @@ public class Paging {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+	
+	public String getSearchcategory() {
+		return searchcategory;
+	}
+
+	public void setSearchcategory(String searchcategory) {
+		this.searchcategory = searchcategory;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 }
