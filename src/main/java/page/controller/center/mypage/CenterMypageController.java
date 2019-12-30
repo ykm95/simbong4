@@ -40,7 +40,6 @@ public class CenterMypageController {
 		if( isLogin ) {
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginId", center.getBusinessno());
-//			session.setAttribute("loginPw", center.getCpassword());
 		}
 		
 		return "redirect:/center/main";
@@ -54,15 +53,15 @@ public class CenterMypageController {
 		return "redirect:/center/main";
 	}
 	
-	@RequestMapping(value="/centermypage/mypagemain")
+	@RequestMapping(value="/center/mypage/mypagemain")
 	public void centerMypageMain() { }
 	
-	@RequestMapping(value="/centermypage/passwordcheck", method=RequestMethod.GET)
+	@RequestMapping(value="/center/mypage/passwordcheck", method=RequestMethod.GET)
 	public void passwordCheck() { 
 		logger.info("회원정보수정-비밀번호입력요구창 접속성공");		
 	}
 	
-	@RequestMapping(value="/centermypage/passwordcheck", method=RequestMethod.POST)
+	@RequestMapping(value="/center/mypage/passwordcheck", method=RequestMethod.POST)
 	public String passwordCheckProc(HttpSession session, Model model, Center center) {		
 
 		logger.info(center.toString());
@@ -71,16 +70,16 @@ public class CenterMypageController {
 		boolean res = centerMypageService.checkPw(center);
 		
 		if( res ) { // 맞을때
-			return "redirect:/centermypage/update?businessno=" + center.getBusinessno();
+			return "redirect:/center/mypage/update?businessno=" + center.getBusinessno();
 		}
 		
 		// 틀릴때
-		return "redirect:/centermypage/passwordcheck";
+		return "redirect:/center/mypage/passwordcheck";
 	}
 	
-	@RequestMapping(value="/centermypage/update", method=RequestMethod.GET)
+	@RequestMapping(value="/center/mypage/update", method=RequestMethod.GET)
 	public String centerInformationUpdate(Model model, Center center) {
-		logger.info("[GET]-/centermypage/update - " + center.toString());
+		logger.info("[GET]-/center/mypage/update - " + center.toString());
 		
 		center = centerMypageService.getInformation(center);
 		
@@ -88,13 +87,13 @@ public class CenterMypageController {
 		
 		model.addAttribute("center", center);
 		
-		return "/centermypage/updateForm";
+		return "/center/mypage/updateForm";
 	}
 
-	@RequestMapping(value="/centermypage/update", method=RequestMethod.POST)
+	@RequestMapping(value="/center/mypage/update", method=RequestMethod.POST)
 	public String centerInfomationUpdateProc(Center center,HttpSession session) {
 		
-		logger.info("[POST]-/centermypage/update");
+		logger.info("[POST]-/center/mypage/update");
 		
 		logger.info(center.toString());
 		
@@ -105,7 +104,7 @@ public class CenterMypageController {
 
 		centerMypageService.centerInformationUpdate(center);
 
-		return "redirect:/centermypage/mypagemain";
+		return "redirect:/center/mypage/mypagemain";
 	}
 	
 //	public void centerDelete() {

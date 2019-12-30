@@ -22,7 +22,7 @@ $(document).ready(function() {
 	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/centermypage/mypagemain");
+		$(location).attr("href", "/center/mypage/mypagemain");
 	});
 });
 </script>
@@ -33,7 +33,7 @@ $(document).ready(function() {
 <hr>
 
 
-<form action="/centermypage/update" method="post">
+<form action="/center/mypage/update" method="post">
 
 <table>
 

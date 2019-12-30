@@ -20,7 +20,7 @@
 
 <c:if test="${login }"> <%-- 로그인 성공 --%>
 <a href="/center/logout"><button>로그아웃</button></a>
-<a href="/centermypage/mypagemain"><button>마이페이지</button></a>
+<a href="/center/mypage/mypagemain"><button>마이페이지</button></a>
 </c:if>
 
 </body>
