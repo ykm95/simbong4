@@ -15,6 +15,32 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+
+	<!-- google Class Bean설정 추가 -->
+	<!-- 클라이언트ID와 보안비밀 세팅 -->
+
+	<beans:bean
+		class="org.springframework.social.google.connect.GoogleConnectionFactory"
+		id="googleConnectionFactory">
+
+		<beans:constructor-arg
+			value="661200041177-uu3hcr6ei708qsiaskndvlqfob8n0f3c.apps.googleusercontent.com" />
+
+		<beans:constructor-arg
+			value="Sx85L6SqDJhLqIJJwgyOghQg" />
+
+	</beans:bean>
+
+<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+<beans:bean class="org.springframework.social.oauth2.OAuth2Parameters" id="googleOAuth2Parameters">
+
+<beans:property value="email" name="scope"/>
+
+<!-- https://www.googleapis.com/auth/plus.login -->
+<beans:property value="http://localhost:8088/googleLogin/googleSignInCallback" name="redirectUri"/>
+
+</beans:bean>
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

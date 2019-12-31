@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성을 이용하여 연결(매핑)될 DAO 인터페이스 설정 -->
+
+<mapper namespace="page.dao.user.login.UserLoginDao">
+
+<!-- 회원가입 -->
+
+
+<insert parameterType="page.dto.User" id="userInsert">
+INSERT INTO usertb
+VALUES(usertb_seq.nextval,#{uname},#{uemail},#{upassword},#{uphone},#{gender},#{uaddress1},#{uaddress2},#{uaddress3},0) 
+</insert>
+
+<!--로그인 확인 -->
+
+
+<select parameterType="page.dto.User" id="userSelectCnt" resultType="int">
+SELECT count(*) FROM usertb WHERE uemail=#{uemail} and upassword=#{upassword} </select>
+
+<select parameterType="page.dto.User" id="selectSocialCnt" resultType="int">
+SELECT COUNT(*) FROM usertbWHERE 1=1AND ulogin = 1 </select>
+
+<insert parameterType="page.dto.User" id="userGoogleInsert">
+INSERT INTO usertb(userno,uname,uemail,uphone,uaddress1,uaddress2,uaddress3)
+VALUES(usertb_seq.nextval,#{uname},#{uemail},#{uphone},#{uaddress1},#{uaddress2},#{uaddress3},1) </insert>
+
+<!-- 아이디 중복 검사 -->
+
+
+<select parameterType="String" id="checkOverId" resultType="int">
+SELECT count(*) FROM usertb WHERE uemail=#{uemail} </select>
+
+</mapper>
