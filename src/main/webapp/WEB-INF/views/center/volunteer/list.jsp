@@ -37,6 +37,9 @@
 
 <br>
 <a href="/center/volunteer/write"><button>글 쓰기</button></a>
+<br><br>
+
+<a href="/center/main"><button>메인으로</button></a>
 
 </body>
 </html>
