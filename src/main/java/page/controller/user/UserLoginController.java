@@ -117,7 +117,7 @@ public class UserLoginController {
 
 		@RequestMapping(value = "/googleLogin/googleSignInCallback", method = { RequestMethod.GET, RequestMethod.POST })
 
-		public String googleCallback(String code, HttpSession session) {
+		public String googleCallback(String code, HttpSession session, Model model) {
 
 			logger.info("여기는여기는 googleCallback");
 
