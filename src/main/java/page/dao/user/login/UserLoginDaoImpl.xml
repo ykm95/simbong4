@@ -21,7 +21,7 @@ VALUES(usertb_seq.nextval,#{uname},#{uemail},#{upassword},#{uphone},#{gender},#{
 
 
 <select parameterType="page.dto.User" id="userSelectCnt" resultType="int">
-SELECT count(*) FROM usertb WHERE uemail=#{uemail} andupassword=#{upassword} </select>
+SELECT count(*) FROM usertb WHERE uemail=#{uemail} and upassword=#{upassword} </select>
 
 <select parameterType="page.dto.User" id="selectSocialCnt" resultType="int">
 SELECT COUNT(*) FROM usertbWHERE 1=1AND ulogin = 1 </select>
