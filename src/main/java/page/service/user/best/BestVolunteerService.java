@@ -31,4 +31,5 @@ public interface BestVolunteerService {
 	 * @return
 	 */
 	public BestVolunteer bestView(int bestno);
+	
 }
