@@ -1,4 +1,4 @@
-package page.controller.user;
+package page.controller.user.notice;
 
 import java.util.List;
 

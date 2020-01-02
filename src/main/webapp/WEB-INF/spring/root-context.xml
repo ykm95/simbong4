@@ -59,7 +59,13 @@
 				<value>classpath:/page/dao/user/notice/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/best/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/login/**/*DaoImpl.xml</value>
+
 				<value>classpath:/page/dao/user/mypage/**/*DaoImpl.xml</value>
+
+				<value>classpath:/page/dao/user/talent/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/uservolunteer/**/*DaoImpl.xml</value>
+
+
 			</array>
 		</property>
 		
@@ -73,7 +79,10 @@
 											page.dao.user.notice,
 											page.dao.user.best,
 											page.dao.user.login,
-											page.dao.user.mypage" />
+											page.dao.user.mypage,
+											page.dao.user.talent,
+											page.dao.user.uservolunteer" />
+
 
 	</bean>
 		

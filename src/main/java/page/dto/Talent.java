@@ -1,29 +1,85 @@
 package page.dto;
 
+import java.util.Date;
+
 public class Talent {
 	
 	private int talentno;
 	private int userno;
+	private int talent_process;
+	private int phone;
+	private int gender;
+	private int talent_type;	
+	private int talent_area;
+	private int department;
 	private String uname;
 	private String uemail;
-	private String talent_period;
-	private int talent_area;
 	private String aname;
 	private String talent_cycle;
 	private String write_date;
-	private int department;
 	private String talent_title;
 	private String talent_content;
-	private int talent_process;
+	private String talent_start;
+	private String talent_end;
 	
-	
+	public int getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+
+	public int getGender() {
+		return gender;
+	}
+
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+
+	public int getTalent_type() {
+		return talent_type;
+	}
+
+
+	public void setTalent_type(int talent_type) {
+		this.talent_type = talent_type;
+	}
+
+
+	public String getTalent_start() {
+		return talent_start;
+	}
+
+
+	public void setTalent_start(String talent_start) {
+		this.talent_start = talent_start;
+	}
+
+
+	public String getTalent_end() {
+		return talent_end;
+	}
+
+
+	public void setTalent_end(String talent_end) {
+		this.talent_end = talent_end;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Talent [talentno=" + talentno + ", userno=" + userno + ", uname=" + uname + ", uemail=" + uemail
-				+ ", talent_period=" + talent_period + ", talent_area=" + talent_area + ", aname=" + aname
-				+ ", talent_cycle=" + talent_cycle + ", write_date=" + write_date + ", department=" + department
-				+ ", talent_title=" + talent_title + ", talent_content=" + talent_content + ", talent_process="
-				+ talent_process + "]";
+		return "Talent [talentno=" + talentno + ", userno=" + userno + ", talent_process=" + talent_process + ", phone="
+				+ phone + ", gender=" + gender + ", talent_type=" + talent_type + ", talent_area=" + talent_area
+				+ ", department=" + department + ", uname=" + uname + ", uemail=" + uemail + ", aname=" + aname
+				+ ", talent_cycle=" + talent_cycle + ", write_date=" + write_date + ", talent_title=" + talent_title
+				+ ", talent_content=" + talent_content + ", talent_start=" + talent_start + ", talent_end=" + talent_end
+				+ "]";
 	}
 	
 	
@@ -51,12 +107,7 @@ public class Talent {
 	public void setUemail(String uemail) {
 		this.uemail = uemail;
 	}
-	public String getTalent_period() {
-		return talent_period;
-	}
-	public void setTalent_period(String talent_period) {
-		this.talent_period = talent_period;
-	}
+	
 	public int getTalent_area() {
 		return talent_area;
 	}
