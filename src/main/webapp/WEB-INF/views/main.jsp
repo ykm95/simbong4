@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>main</h1>
-<a href="/user/login/join">회원가입</a>
+<a href="/user/login/email">회원가입</a>
 <a href="/user/login/login">로그인</a>
 <a href="/userLogout">로그아웃</a>
 

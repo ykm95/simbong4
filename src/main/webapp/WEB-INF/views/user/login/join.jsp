@@ -282,7 +282,11 @@ $(document).ready(function() {
 	//전화번호 유효성 검사
 
 	$('#uphone').blur(function() {
-	var regExp = /(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+// 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+
+	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+	
 
 // 	var regExp=(/(\d{3})(\d{4})(\d{4})/, '$1-****-$3');
 
@@ -323,7 +327,7 @@ $(document).ready(function() {
 <br><br>
 <div class="form-group">
 <label for ="uemail">이메일</label>
-<input type="text" class="form-control" name="uemail" id="uemail"
+<input type="text" class="form-control" name="uemail" id="uemail" value="${uemail}"
  placeholder="abc@123.com" />
 <div class="check_front" id="id_check"> 
 </div>
