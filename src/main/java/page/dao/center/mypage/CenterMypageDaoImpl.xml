@@ -35,5 +35,16 @@
 	  	DELETE centertb
 	  	WHERE businessno = #{businessno }
 	  </delete>
+	  
+	  <select id="selectCenternoByBusinessno" parameterType="page.dto.Center"
+	   resultType="int">
+	   	SELECT centerno FROM centertb
+	   	WHERE businessno = #{businessno }
+	   </select>
+	   
+	   <insert id="insertQuestion" parameterType="page.dto.CenterQuestion">
+	   	INSERT INTO centerquestion (questionno, centerno, cquestion_title, cquestion_content)
+	   	VALUES (centerquestion_seq.nextval, #{centerno }, #{cquestion_title }, #{cquestion_content })
+	   </insert>
 	 
 </mapper>

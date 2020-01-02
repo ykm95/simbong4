@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="page.dao.user.mypage.UserMypageDao">
+
+	<select id="selectCnt" parameterType="page.dto.User"
+	 resultType="int">
+	 	SELECT count(*) FROM usertb
+	 	WHERE uemail = #{uemail }
+	 	AND upassword = #{upassword }
+	 </select>
+	 
+	 <select id="selectInformationByUemail" parameterType="page.dto.User"
+	  resultType="page.dto.User">
+	  	SELECT * FROM usertb
+	  	WHERE uemail = #{uemail }
+	  </select>
+	 
+	 <update id="update" parameterType="page.dto.User">
+	 	UPDATE usertb
+	 	SET upassword = #{upassword },
+	 		uphone = #{uphone },
+	 		uaddress1 = #{uaddress1 },
+	 		uaddress2 = #{uaddress2 },
+	 		uaddress3 = #{uaddress3 }
+	 	WHERE uemail = #{uemail }
+	 </update>
+</mapper>
