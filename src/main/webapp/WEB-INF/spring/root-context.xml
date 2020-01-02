@@ -59,6 +59,8 @@
 				<value>classpath:/page/dao/user/notice/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/best/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/login/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/talent/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/volunteer/**/*DaoImpl.xml</value>
 
 			</array>
 		</property>
@@ -72,7 +74,9 @@
 											page.dao.center.mypage,
 											page.dao.user.notice,
 											page.dao.user.best,
-											page.dao.user.login" />
+											page.dao.user.login,
+											page.dao.user.talent,
+											page.dao.user.volunteer" />
 
 	</bean>
 		
