@@ -1,4 +1,4 @@
-package page.service.user.volunteer;
+package page.service.user.uservolunteer;
 
 import java.util.List;
 
@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import page.dao.user.volunteer.VolunteerDao;
+import page.dao.user.uservolunteer.UserVolunteerDao;
 import page.dto.Participant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;
 
 @Service
-public class VolunteerServiceImpl implements VolunteerService{
+public class UserVolunteerServiceImpl implements UserVolunteerService{
 
-	@Autowired private VolunteerDao volunteerDao;
+	@Autowired private UserVolunteerDao userVolunteerDao;
 
 	@Override
 	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer, HttpServletRequest req) {
@@ -23,7 +23,7 @@ public class VolunteerServiceImpl implements VolunteerService{
 		int curPage = pagingVolunteer.getCurPage();
 		
 		//Board TB와 curPage 값을 이용한 Paging 객체를 생성하고 반환
-		int totalCount = volunteerDao.selectCntVolunteer(pagingVolunteer);
+		int totalCount = userVolunteerDao.selectCntVolunteer(pagingVolunteer);
 		
 		//Paging 객체 생성
 		pagingVolunteer = new PagingVolunteer(totalCount, curPage);
@@ -78,25 +78,25 @@ public class VolunteerServiceImpl implements VolunteerService{
 	@Override
 	public List<Volunteer> getVolunteerList(PagingVolunteer pagingVolunteer) {
 		
-		return volunteerDao.selectVolunteerAll(pagingVolunteer);
+		return userVolunteerDao.selectVolunteerAll(pagingVolunteer);
 	}
 
 	@Override
 	public Volunteer getVolunteer(int volunteerno) {
 		
-		return volunteerDao.selectVolunteerByNo(volunteerno);
+		return userVolunteerDao.selectVolunteerByNo(volunteerno);
 	}
 
 	@Override
 	public int getCntVolunteerAll(PagingVolunteer pagingVolunteer) {
 		
-		return volunteerDao.selectCntVolunteer(pagingVolunteer);
+		return userVolunteerDao.selectCntVolunteer(pagingVolunteer);
 	}
 
 	@Override
 	public List<Participant> getPrtByNo(int volunteerno) {
 		
-		return volunteerDao.selectPrtByNo(volunteerno);
+		return userVolunteerDao.selectPrtByNo(volunteerno);
 	}
 
 

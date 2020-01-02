@@ -13,24 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import page.dto.Participant;
 import page.dto.Volunteer;
-import page.service.user.volunteer.VolunteerService;
+import page.service.user.uservolunteer.UserVolunteerService;
 import page.util.PagingVolunteer;
 
 @Controller
-public class VolunteerController {
+public class UserVolunteerController {
 	
-	  @Autowired private VolunteerService volunteerService;
+	  @Autowired private UserVolunteerService userVolunteerService;
 	
-	  private static final Logger logger= LoggerFactory.getLogger(VolunteerController.class);
+	  private static final Logger logger= LoggerFactory.getLogger(UserVolunteerController.class);
 	  
 	  @RequestMapping(value="/user/volunteer/list")
 	  public void volunteerList(Model model, PagingVolunteer paging, HttpServletRequest req) {
 		  
-		  paging = volunteerService.getPaging(paging, req);
+		  paging = userVolunteerService.getPaging(paging, req);
   		  
-		  List<Volunteer> volunteerlist = volunteerService.getVolunteerList(paging);
+		  List<Volunteer> volunteerlist = userVolunteerService.getVolunteerList(paging);
 		  
-		  int count = volunteerService.getCntVolunteerAll(paging);
+		  int count = userVolunteerService.getCntVolunteerAll(paging);
 		  
 		  model.addAttribute("list", volunteerlist);
 		  model.addAttribute("paging", paging);
@@ -39,9 +39,9 @@ public class VolunteerController {
 	 
 	  @RequestMapping(value="/user/volunteer/view")
 	  public void volunteerView(int volunteerno, Model model) {
-		  Volunteer volunteer = volunteerService.getVolunteer(volunteerno);
+		  Volunteer volunteer = userVolunteerService.getVolunteer(volunteerno);
 		  
-		  List<Participant> prtlist = volunteerService.getPrtByNo(volunteerno);
+		  List<Participant> prtlist = userVolunteerService.getPrtByNo(volunteerno);
 		  
 		  model.addAttribute("volunteer", volunteer);
 		  model.addAttribute("prtlist", prtlist);

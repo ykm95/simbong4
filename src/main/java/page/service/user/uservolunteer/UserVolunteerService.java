@@ -1,4 +1,4 @@
-package page.service.user.volunteer;
+package page.service.user.uservolunteer;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import page.dto.Participant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;
 
-public interface VolunteerService {
+public interface UserVolunteerService {
 
 	public List<Volunteer> getVolunteerList(PagingVolunteer pagingVolunteer);
 
