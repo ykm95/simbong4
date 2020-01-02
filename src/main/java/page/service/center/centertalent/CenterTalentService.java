@@ -1,4 +1,4 @@
-package page.service.center.talent;
+package page.service.center.centertalent;
 
 import java.util.List;
 

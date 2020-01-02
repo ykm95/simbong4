@@ -1,4 +1,4 @@
-package page.controller.center.talent;
+package page.controller.center.centertalent;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import page.dto.Talent;
-import page.service.center.talent.CenterTalentService;
+import page.service.center.centertalent.CenterTalentService;
 import page.util.Paging;
 
 
