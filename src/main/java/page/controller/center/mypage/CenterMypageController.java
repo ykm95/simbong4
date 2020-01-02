@@ -20,12 +20,6 @@ public class CenterMypageController {
 
 	@Autowired
 	CenterMypageService centerMypageService;
-
-//	@Autowired
-//	CenterMypageDao centerMypageDao;
-	
-	@RequestMapping(value="/center/main")
-	public void centerMain() { }
 	
 	@RequestMapping(value="/center/login", method=RequestMethod.GET)
 	public void centerLogin() {
@@ -38,8 +32,12 @@ public class CenterMypageController {
 		boolean isLogin = centerMypageService.login(center);
 		
 		if( isLogin ) {
+			
+			session.setMaxInactiveInterval(0);
+			
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginId", center.getBusinessno());
+			session.setAttribute("centerno", 1);
 		}
 		
 		return "redirect:/center/main";
