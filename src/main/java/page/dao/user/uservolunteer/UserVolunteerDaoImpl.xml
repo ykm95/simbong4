@@ -5,7 +5,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="web.user_page.talent.dao.face.UserVolunteerDao">
+<mapper namespace="page.dao.user.uservolunteer.UserVolunteerDao">
 
 	<select id="selectvolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.dto.Volunteer">
 		SELECT * FROM (

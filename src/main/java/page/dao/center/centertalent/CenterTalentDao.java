@@ -1,4 +1,4 @@
-package page.dao.center.talent;
+package page.dao.center.centertalent;
 
 import java.util.List;
 

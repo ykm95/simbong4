@@ -5,11 +5,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="web.user_page.talent.dao.face.TalentDao">
+<mapper namespace="page.dao.user.talent.TalentDao">
 
 	<select id="selectTalentAll"
-		parameterType="web.user_page.talent.util.Paging"
-		resultType="web.user_page.talent.dto.Talent">
+		parameterType="page.util.PagingTalent"
+		resultType="page.dto.Talent">
 		SELECT * FROM (
 		SELECT rownum rnum, T.* FROM (
 		SELECT talent.*
@@ -52,7 +52,7 @@
 	</select>
 
 	<select id="selectCntTalent"
-		parameterType="web.user_page.talent.util.Paging" resultType="int">
+		parameterType="page.util.PagingTalent" resultType="int">
 		SELECT COUNT(*) FROM talent
 				
 		WHERE 1=1
@@ -87,12 +87,12 @@
 	</select>
 
 	<select id="selectTalentByNo" parameterType="int"
-		resultType="web.user_page.talent.dto.Talent">
+		resultType="page.dto.Talent">
 		SELECT * FROM talent WHERE talentno = #{talentno}
 	</select>
 
 	<insert id="insertTalent"
-		parameterType="web.user_page.talent.dto.Talent">
+		parameterType="page.dto.Talent">
 		INSERT INTO talent ( talentno, userno, talent_start,
 		talent_end, talent_cycle,
 		department, talent_title, talent_content, talent_process, talent_area,
@@ -104,7 +104,7 @@
 	</insert>
 
 	<update id="updateTalent"
-		parameterType="web.user_page.talent.dto.Talent">
+		parameterType="page.dto.Talent">
 		UPDATE talent SET talent_start = #{talent_start},
 		talent_end = #{talent_end}, talent_area = #{talent_area}, talent_cycle
 		= #{talent_cycle}, department = #{department},
