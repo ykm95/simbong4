@@ -2,8 +2,8 @@ package page.dto;
 
 public class Admin {
 	
-	private int adminno;
-	private String admin_id;
+	private int adminno;		
+	private String admin_id;		
 	private String admin_pw;
 	
 	@Override
