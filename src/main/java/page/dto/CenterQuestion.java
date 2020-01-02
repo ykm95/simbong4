@@ -1,10 +1,9 @@
 package page.dto;
 
-public class Question { // 센터회원문의
+public class CenterQuestion { // 센터회원문의
 
-	private int centerno; // 센터번호
-	private String cname; // 센터이름
 	private int questionno; // 문의번호
+	private int centerno; // 센터번호
 	private String cquestion_title; // 문의제목
 	private String cquestion_content; // 문의내용
 	private String pic; // 문의사진
@@ -12,25 +11,9 @@ public class Question { // 센터회원문의
 
 	@Override
 	public String toString() {
-		return "Question [centerno=" + centerno + ", cname=" + cname + ", questionno=" + questionno
-				+ ", cquestion_title=" + cquestion_title + ", cquestion_content=" + cquestion_content + ", pic=" + pic
-				+ ", answer=" + answer + "]";
-	}
-
-	public int getCenterno() {
-		return centerno;
-	}
-
-	public void setCenterno(int centerno) {
-		this.centerno = centerno;
-	}
-
-	public String getCname() {
-		return cname;
-	}
-
-	public void setCname(String cname) {
-		this.cname = cname;
+		return "CenterQuestion [questionno=" + questionno + ", centerno=" + centerno + ", cquestion_title="
+				+ cquestion_title + ", cquestion_content=" + cquestion_content + ", pic=" + pic + ", answer=" + answer
+				+ "]";
 	}
 
 	public int getQuestionno() {
@@ -39,6 +22,14 @@ public class Question { // 센터회원문의
 
 	public void setQuestionno(int questionno) {
 		this.questionno = questionno;
+	}
+
+	public int getCenterno() {
+		return centerno;
+	}
+
+	public void setCenterno(int centerno) {
+		this.centerno = centerno;
 	}
 
 	public String getCquestion_title() {

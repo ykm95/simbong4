@@ -1,6 +1,7 @@
 package page.dao.center.mypage;
 
 import page.dto.Center;
+import page.dto.CenterQuestion;
 
 public interface CenterMypageDao {
 
@@ -12,12 +13,10 @@ public interface CenterMypageDao {
 
 	public void delete(Center center);
 
-//	/**
-//	 * 센터 1:1문의작성
-//	 * 
-//	 */
-//	public void write(Question question);
-//
+	public int selectCenternoByBusinessno(Center center);
+
+	public void insertQuestion(CenterQuestion centerquestion);
+
 //	/**
 //	 * 센터 1:1 문의삭제
 //	 * 

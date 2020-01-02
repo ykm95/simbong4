@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import page.dao.center.mypage.CenterMypageDao;
 import page.dto.Center;
+import page.dto.CenterQuestion;
 
 @Service
 public class CenterMypageServiceImpl implements CenterMypageService {
@@ -46,12 +47,18 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		
 	}
 
-//	@Override
-//	public void writeQST(Question question) {
-//		centerMypageDao.write(question);
-//		
-//	}
-//
+	@Override
+	public int getCenterno(Center center) {
+		return centerMypageDao.selectCenternoByBusinessno(center);
+	}
+	
+
+	@Override
+	public void writeQST(CenterQuestion centerquestion) {
+		centerMypageDao.insertQuestion(centerquestion);
+		
+	}
+
 //	@Override
 //	public void deleteQST(Question question) {
 //		centerMypageDao.delete(question);
