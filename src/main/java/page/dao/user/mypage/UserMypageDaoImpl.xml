@@ -29,4 +29,9 @@
 	 		uaddress3 = #{uaddress3 }
 	 	WHERE uemail = #{uemail }
 	 </update>
+	 
+	 <delete id="delete" parameterType="page.dto.User">
+	 	DELETE usertb
+	 	WHERE uemail = #{uemail }
+	 </delete>
 </mapper>
