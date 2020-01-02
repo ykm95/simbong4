@@ -292,7 +292,7 @@ $(document).ready(function() {
 
 	if (!regExp.test($('#uphone').val())) {
 			if($('#uphone').val()!=""){
-			//alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+// 			alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.1");
 			$('#phone_check').text("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
 			$('#phone_check').css('color', 'red');
 
@@ -302,16 +302,16 @@ $(document).ready(function() {
 		}
 	if (regExp.test($('#uphone').val())) {
 		if($('#uphone').val()!=""){
-		//alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
-		return false
+		alert($("#uphone").val());
+		return true
 		}
 
 	}
-	return true;
-	})
+	return false;
+	});
 
 });
 </script>
@@ -344,7 +344,7 @@ $(document).ready(function() {
 </div>
 <br>
 <label for ="uphone">전화번호</label>
-<input type="tel" name="uphone" id="uphone" />
+<input type="text" name="uphone" id="uphone" />
 <br>
 <div class="check_front" id="phone_check"> 
 </div><br>

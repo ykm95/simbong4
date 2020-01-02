@@ -8,5 +8,9 @@
 </head>
 <body>
 
+<h1>아이디찾기</h1>
+<hr>
+
+회원님의 아이디는 ${uemail} 입니다.
 </body>
 </html>

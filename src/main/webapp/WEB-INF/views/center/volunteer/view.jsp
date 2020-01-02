@@ -4,25 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
-<title>Insert title here</title>
 
 <style>
     .title {font-weight:bold;display:block;}
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 </style>
 
-</head>
-<body>
+	<div>
 
-	<h1>봉사활동</h1>
-	<hr>
-
-	<table>
+	<table class="table">
 		<tr>
 			<th>${vol.vol_title }</th>
 		</tr>
@@ -72,25 +64,29 @@
 			<th>필요/신청인원</th>
 			<td>${vol.npeople }/${vol.apeople }</td>
 		</tr>
-		<tr>
-			<th>담당자</th>
-			<td>${vol.mgr }</td>
-			<th>이메일</th>
-			<td>${vol.memail }</td>
-			<th>연락처</th>
-			<td>${vol.mphone }</td>
-		</tr>
 	</table>
+	
+	<div style="text-align:center; width:800px;height:50px; background: #CCC" class="row">
+		<div class="col">
+			담당자 : ${vol.mgr }
+		</div>
+		<div class="col">
+			이메일 : ${vol.memail }
+		</div>
+		<div class="col">
+			연락처 : ${vol.mphone }
+		</div>
+	</div>
 	
 	<div id="map" style="width:500px;height:400px;"></div>
 	<div id="clickLatlng"></div>
-	
-	
 	
 	<br>
 	<a href="/center/volunteer/list"><button>목록</button></a> 
 	<a href="/center/volunteer/update?volunteerno=${vol.volunteerno }"><button>수정</button></a> 
 	<a href="/center/volunteer/delete?volunteerno=${vol.volunteerno }"><button>삭제</button></a>
+	
+	</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82300581f28915a67d685b53b5de8fe6&libraries=services,clusterer,drawing"></script>
 
@@ -151,5 +147,4 @@
 
 </script>
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
