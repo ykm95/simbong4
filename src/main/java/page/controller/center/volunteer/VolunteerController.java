@@ -40,8 +40,6 @@ public class VolunteerController {
 		
 		vol = volunteerService.getVolunteer(vol);
 		
-		logger.info(""+vol);
-		
 		model.addAttribute("vol", vol);
 	}
 	
@@ -55,7 +53,7 @@ public class VolunteerController {
 		
 		volunteerService.write(vol);
 		
-		return "redirect:/center/volunteer/view?volunteerno="+vol.getVolunteerno();
+		return "redirect:/center/volunteer/list";
 	}
 	
 	@RequestMapping(value = "/center/volunteer/update", method = RequestMethod.GET)
@@ -85,6 +83,9 @@ public class VolunteerController {
 		
 		return "redirect:/center/volunteer/list";
 	}
+	
+	@RequestMapping(value = "/center/volunteer/test", method = RequestMethod.GET)
+	public void test() { }
 	
 	
 }

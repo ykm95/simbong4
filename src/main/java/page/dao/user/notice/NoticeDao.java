@@ -29,11 +29,7 @@ public interface NoticeDao {
 	 * @return
 	 */
 	public Notice selectNoticeBynoticeno(int noticeno);
-	/**
-	 * 게시물 조회수 +1
-	 * @param viewBest
-	 */
-	public void updateView(Notice viewNotice);
+
 	/**
 	 * 상세보기 게시글 조회
 	 *
@@ -42,7 +38,7 @@ public interface NoticeDao {
 	 */
 	public Notice selectNoticeByNoticeno(Notice viewNotice);
 	/**
-	 * 조회수
+	 * 조회수+1
 	 * @param noticeno
 	 */
 	public void hit(int noticeno);

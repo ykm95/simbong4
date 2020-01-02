@@ -13,6 +13,16 @@
 <h1>메인화면</h1>
 <hr>
 
+<<<<<<< HEAD
+<a href="/center/volunteer/list"><button>봉사 활동</button></a>
+<br><br>
+
+<a href="/center/talent/list"><button>재능 기부</button></a>
+<br><br>
+
+<button>봉사 확인</button>
+<br><br>
+=======
 <c:if test="${empty login }"> <%-- 로그인 실패 --%>
 <a href="/center/login"><button>로그인</button></a>
 <a href="/center/join"><button>회원가입</button></a>
@@ -22,6 +32,7 @@
 <a href="/center/logout"><button>로그아웃</button></a>
 <a href="/center/mypage/mypagemain"><button>마이페이지</button></a>
 </c:if>
+>>>>>>> refs/remotes/origin/develop
 
 </body>
 </html>

@@ -3,6 +3,7 @@ package page.controller.user;
 import java.util.List;
 
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import page.dao.user.notice.NoticeDao;
 import page.dto.Notice;
 import page.service.user.notice.NoticeService;
 import page.util.Paging;
@@ -22,7 +22,6 @@ import page.util.Paging;
 public class NoticeController {
 
 	@Autowired NoticeService noticeService;
-	@Autowired NoticeDao noticeDao;
 	
 	private static final Logger logger =LoggerFactory.getLogger(NoticeController.class); 
 
@@ -58,7 +57,6 @@ public class NoticeController {
 		Notice view = new Notice();
 		view = noticeService.noticeView(noticeno);
 		
-		noticeDao.hit(noticeno);
 		
 		model.addAttribute("view", view);
 	}

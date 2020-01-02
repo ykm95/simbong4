@@ -19,12 +19,16 @@ public class Volunteer {
 	private String etime;
 	private int department;
 	private String vol_area;
+	private String aname;
 	private String vol_place;
 	private String receiver;
 	private String qualification;
 	private Date write_date;
 	private int npeople;
 	private int apeople;
+	private float vol_lat;
+	private float vol_lng;
+	private String vol_address;
 	
 	
 	@Override
@@ -33,8 +37,9 @@ public class Volunteer {
 				+ ", memail=" + memail + ", mphone=" + mphone + ", vol_process=" + vol_process + ", vol_title="
 				+ vol_title + ", vol_content=" + vol_content + ", vol_sterm=" + vol_sterm + ", vol_eterm=" + vol_eterm
 				+ ", stime=" + stime + ", etime=" + etime + ", department=" + department + ", vol_area=" + vol_area
-				+ ", vol_place=" + vol_place + ", receiver=" + receiver + ", qualification=" + qualification
-				+ ", write_date=" + write_date + ", npeople=" + npeople + ", apeople=" + apeople + "]";
+				+ ", aname=" + aname + ", vol_place=" + vol_place + ", receiver=" + receiver + ", qualification="
+				+ qualification + ", write_date=" + write_date + ", npeople=" + npeople + ", apeople=" + apeople
+				+ ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address=" + vol_address + "]";
 	}
 	
 	
@@ -128,6 +133,12 @@ public class Volunteer {
 	public void setVol_area(String vol_area) {
 		this.vol_area = vol_area;
 	}
+	public String getAname() {
+		return aname;
+	}
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
 	public String getVol_place() {
 		return vol_place;
 	}
@@ -164,4 +175,23 @@ public class Volunteer {
 	public void setApeople(int apeople) {
 		this.apeople = apeople;
 	}
+	public float getVol_lat() {
+		return vol_lat;
+	}
+	public void setVol_lat(float vol_lat) {
+		this.vol_lat = vol_lat;
+	}
+	public float getVol_lng() {
+		return vol_lng;
+	}
+	public void setVol_lng(float vol_lng) {
+		this.vol_lng = vol_lng;
+	}
+	public String getVol_address() {
+		return vol_address;
+	}
+	public void setVol_address(String vol_address) {
+		this.vol_address = vol_address;
+	}
+	
 }

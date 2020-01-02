@@ -35,6 +35,8 @@ public class NoticeServiceImpl implements NoticeService{
 	} 
 	@Override
 	public Notice noticeView(int noticeno) {
+		noticeDao.hit(noticeno);
+		
 		return noticeDao.selectNoticeBynoticeno(noticeno);
 	}
 

@@ -20,6 +20,7 @@ import page.util.Paging;
 public class BestVolunteerController {
 	
 	@Autowired BestVolunteerService bestVolunteerService;
+	@Autowired 
 
 	private static final Logger logger =LoggerFactory.getLogger(BestVolunteerController.class); 
 
@@ -51,7 +52,10 @@ public class BestVolunteerController {
 		BestVolunteer view = new BestVolunteer();
 		view = bestVolunteerService.bestView(bestno);
 		
+		
 		model.addAttribute("view", view);
+		
+		
 	}
 
 }
