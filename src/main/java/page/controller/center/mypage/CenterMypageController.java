@@ -1,5 +1,6 @@
 package page.controller.center.mypage;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import page.dto.Center;
+import page.dto.CenterQuestion;
 import page.service.center.mypage.CenterMypageService;
 
 @Controller
@@ -21,8 +25,8 @@ public class CenterMypageController {
 	@Autowired
 	CenterMypageService centerMypageService;
 
-//	@Autowired
-//	CenterMypageDao centerMypageDao;
+	@Autowired
+	ServletContext context;
 	
 	@RequestMapping(value="/center/main")
 	public void centerMain() { }
@@ -155,11 +159,48 @@ public class CenterMypageController {
 		return "/center/main";
 	}
 	
-//	public void writeQuestion(Question question) {
+	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
+	public String writeQuestion(Center center, HttpSession session) {
+
+		logger.info("접속성공");
+		
+		return "/center/mypage/questionForm";
+	}
+	
+//	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.POST)
+//	public String writeQuestionProc(CenterQuestion centerquestion,
+//								  Center center,
+//								  HttpSession session,
+//								  @RequestParam(value="cquestion_title") String title,
+//								  @RequestParam(value="pic") MultipartFile fileupload) {
 //
-//		centerMypageService.writeQST(question);
+//		//센터번호 불러오는 코드
+//		center.setBusinessno((int) session.getAttribute("loginId"));//		
+//		int centerno;		
+//		centerno = centerMypageService.getCenterno(center);		
+////		logger.info("centerno : " + centerno);
+//		
+//		centerquestion.setCenterno(centerno);
+//
+////		logger.info(centerquestion.toString());
+//		
+//		logger.info("파일업로드 처리");
+//		
+//		logger.info("title : " + title);
+//		logger.info("file : " + fileupload);
+//		logger.info("file : " + fileupload.getOriginalFilename());
+//		
+//		logger.info(context.getRealPath("upload"));
+//
+////		centerMypageService.writeQST(centerquestion);
+//		
+//		return "/center/mypage/mypagemain";
+//		
+//		
+//		
+//
 //	}
-//
+
 //	public void deleteQuestion(Question question) {
 //
 //		centerMypageService.deleteQST(question);
@@ -170,4 +211,5 @@ public class CenterMypageController {
 //		centerMypageService.viewQST(question);
 //		return null;
 //	}
+
 }
