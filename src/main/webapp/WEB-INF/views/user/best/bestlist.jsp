@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 
 <!DOCTYPE html>
@@ -8,6 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+
+</style>
 </head>
 <body>
 	<div class="container">
@@ -15,7 +20,7 @@
 			<h1>우수봉사자</h1>
 			
 			<form action="/user/best/bestlist" method="GET">
-				<div id="search" class="form-inline">
+				<div id="search" class="form-inline" style="float:right">
 					<select id="searchcategory" name="searchcategory">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
@@ -30,6 +35,7 @@
 			<table class="table table-hover table-condensed">
 				<c:forEach items="${blist }" var="l">
 					<tr>
+						<td>${l.bestno }</td>
 						<td>${l.pic }</td>
 						<td><a href="/user/best/bestview?bestno=${l.bestno}">${l.bestTitle}</a></td>
 						<td>조회수${l.hit }</td>

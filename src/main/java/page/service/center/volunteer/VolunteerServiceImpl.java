@@ -55,4 +55,5 @@ public class VolunteerServiceImpl implements VolunteerService {
 
 		volunteerDao.deleteVolunteer(vol);
 	}
+
 }

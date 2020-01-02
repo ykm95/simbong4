@@ -5,6 +5,22 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- Gmail -->
+  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" />
+    <property name="username" value="heojiyeon2@gmail.com" />
+    <property name="password" value="qlffk3022!!" />
+    <property name="javaMailProperties">
+    <props>
+      <prop key="mail.smtp.auth">true</prop>
+      <prop key="mail.smtp.starttls.enable">true</prop>
+    </props>
+    </property>
+  </bean>
+	
+	
+	
 	<bean id="dataSourceSpied"
 	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -38,11 +54,16 @@
 		<property name="mapperLocations">
 			<array>
 				<value>classpath:/page/dao/center/volunteer/**/*DaoImpl.xml</value>
-
+				<value>classpath:/page/dao/center/centertalent/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/mypage/**/*DaoImpl.xml</value>
-
+				<value>classpath:/page/dao/center/main/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/notice/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/best/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/login/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/mypage/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/talent/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/user/uservolunteer/**/*DaoImpl.xml</value>
+
 
 			</array>
 		</property>
@@ -51,13 +72,18 @@
 	
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-
 		<property name="basePackage" value="page.dao.center.volunteer,
+											page.dao.center.centertalent,
 											page.dao.center.mypage,
+											page.dao.center.main,
 											page.dao.user.notice,
-											page.dao.user.best" />
+											page.dao.user.best,
+											page.dao.user.login,
+											page.dao.user.mypage,
+											page.dao.user.talent,
+											page.dao.user.uservolunteer" />
 
-		
+
 	</bean>
 		
 </beans>

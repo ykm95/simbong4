@@ -59,4 +59,13 @@
  	SELECT * FROM bestvolunteer
  	WHERE bestno=#{bestno }
   </select>
+  
+  
+  <update id="hit" parameterType="int">
+  	UPDATE bestvolunteer
+  	SET hit = hit +1 
+  	WHERE bestno=#{bestno }
+  </update>
+
+  
   </mapper>

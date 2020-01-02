@@ -3,18 +3,9 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
-<h1>봉사활동 목록</h1>
-<hr>
-
-<table>
+<table class="table">
 
 <c:forEach items="${list }" var="i">
 
@@ -35,8 +26,4 @@
 
 <jsp:include page="/WEB-INF/views/center/volunteer/paging.jsp"></jsp:include>
 
-<br>
-<a href="/center/volunteer/write"><button>글 쓰기</button></a>
-
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

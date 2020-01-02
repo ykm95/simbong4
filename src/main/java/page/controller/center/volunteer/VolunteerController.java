@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +41,6 @@ public class VolunteerController {
 		
 		vol = volunteerService.getVolunteer(vol);
 		
-		logger.info(""+vol);
-		
 		model.addAttribute("vol", vol);
 	}
 	
@@ -51,11 +50,11 @@ public class VolunteerController {
 	@RequestMapping(value = "/center/volunteer/write", method = RequestMethod.POST)
 	public String write(Volunteer vol, HttpSession session) { 
 		
-//		vol.setCenterno((int) session.getAttribute("centerno"));
+		vol.setCenterno((int) session.getAttribute("centerno"));
 		
 		volunteerService.write(vol);
 		
-		return "redirect:/center/volunteer/view?volunteerno="+vol.getVolunteerno();
+		return "redirect:/center/volunteer/list";
 	}
 	
 	@RequestMapping(value = "/center/volunteer/update", method = RequestMethod.GET)
@@ -85,6 +84,9 @@ public class VolunteerController {
 		
 		return "redirect:/center/volunteer/list";
 	}
+	
+	@RequestMapping(value = "/center/volunteer/test", method = RequestMethod.GET)
+	public void test() { }
 	
 	
 }

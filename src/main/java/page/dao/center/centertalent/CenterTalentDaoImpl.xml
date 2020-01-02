@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="page.dao.center.centertalent.CenterTalentDao">
+
+	<select id="selectCntAll" resultType="int">
+		SELECT count(*)	FROM talent
+	</select>
+	
+	<select id="selectAllTalent" parameterType="page.util.Paging" resultType="page.dto.Talent">
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+				SELECT * FROM talent t, area a
+				WHERE t.talent_area = a.areano
+				ORDER BY talentno DESC
+			) B
+			ORDER BY rnum
+		) BOARD
+		WHERE rnum BETWEEN #{startNo} AND #{endNo}
+	</select>
+	
+	<select id="selectTalentByTalentno" parameterType="page.dto.Talent" resultType="page.dto.Talent">
+		SELECT * FROM talent t, area a, usertb u
+		WHERE t.talent_area = a.areano
+		AND t.userno = u.userno
+		AND t.talentno = #{talentno}
+	</select>
+
+</mapper>

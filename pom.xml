@@ -23,12 +23,76 @@
 	
 	<dependencies>
 
-		<!-- Jackson -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.10.1</version>
-		</dependency>
+
+<!-- 메일 전송 -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>${org.springframework-version}</version>
+</dependency>
+    
+    
+    <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version>
+</dependency>
+    
+    
+    <dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4</version>
+</dependency>
+
+
+
+	<!-- google -->
+	<dependency>
+
+		<groupId>org.springframework.social</groupId>
+
+		<artifactId>spring-social-google</artifactId>
+
+		<version>1.0.0.RELEASE</version>
+
+	</dependency>
+
+	<!-- Jackson -->
+
+	<dependency>
+
+		<groupId>com.fasterxml.jackson.core</groupId>
+
+		<artifactId>jackson-databind</artifactId>
+
+		<version>2.10.1</version>
+
+	</dependency>
+
+
+	<dependency>
+
+		<groupId>com.fasterxml.jackson.core</groupId>
+
+		<artifactId>jackson-annotations</artifactId>
+
+		<version>2.10.1</version>
+
+	</dependency>
+
+
+	<dependency>
+
+		<groupId>com.fasterxml.jackson.core</groupId>
+
+<artifactId>jackson-core</artifactId>
+
+<version>2.10.1</version>
+
+</dependency>
 	
 	
 		<!-- commons fileupload -->

@@ -13,8 +13,41 @@
 	<select id="selectAllVolunteer" parameterType="page.util.Paging" resultType="page.dto.Volunteer">
 		SELECT * FROM (
 		    SELECT rownum rnum, B.* FROM (		
-				SELECT * FROM volunteer
-				ORDER BY volunteerno DESC
+				SELECT 
+				v.VOLUNTEERNO VOLUNTEERNO,
+				v.CENTERNO CENTERNO,
+				v.VOL_PROCESS VOL_PROCESS,
+				v.VOL_STERM VOL_STERM,
+				v.STIME STIME,
+				v.ETIME ETIME,
+				v.DEPARTMENT DEPARTMENT,
+				v.VOL_AREA VOL_AREA,
+				v.VOL_PLACE VOL_PLACE,
+				v.RECEIVER RECEIVER,
+				v.QUALIFICATION QUALIFICATION,
+				v.WRITE_DATE WRITE_DATE,
+				v.NPEOPLE NPEOPLE,
+				v.APEOPLE APEOPLE,
+				v.VOL_TITLE VOL_TITLE,
+				v.VOL_CONTENT VOL_CONTENT,
+				v.VOL_ETERM VOL_ETERM,
+				v.VOL_LAT VOL_LAT,
+				v.VOL_LNG VOL_LNG,
+				v.VOL_ADDRESS VOL_ADDRESS,
+				c.CENTERNO CENTERNO_0,
+				c.CNAME CNAME,
+				c.BUSINESSNO BUSINESSNO,
+				c.CPASSWORD CPASSWORD,
+				c.MGR MGR,
+				c.MEMAIL MEMAIL,
+				c.MPHONE MPHONE,
+				c.FOUNDED FOUNDED,
+				c.CHK CHK,
+				c.ADDRESS1 ADDRESS1,
+				c.ADDRESS2 ADDRESS2,
+				c.ADDRESS3 ADDRESS3 FROM volunteer v, centertb c
+				WHERE v.centerno = c.centerno
+				ORDER BY v.volunteerno DESC
 		    ) B
 		    ORDER BY rnum
 		 ) BOARD
@@ -22,19 +55,21 @@
 	</select>
 	
 	<select id="selectVolunteerByVolunteerno" parameterType="page.dto.Volunteer" resultType="page.dto.Volunteer">
-		SELECT * FROM volunteer
-		WHERE volunteerno = #{volunteerno }
+		SELECT * FROM volunteer v, area a, centertb c
+		WHERE v.vol_area = a.areano
+		AND v.centerno = c.centerno
+		AND volunteerno = #{volunteerno }
 	</select>
 	
 	<insert id="insertVolunteer" parameterType="page.dto.Volunteer">
 		INSERT INTO volunteer 
 			(volunteerno, centerno, vol_sterm, vol_eterm, stime, etime,
 			department, vol_area, vol_place, receiver, qualification, npeople,
-			vol_title, vol_content)
+			vol_title, vol_content, vol_lat, vol_lng, vol_address)
 		VALUES 
 			(volunteer_seq.nextVal, #{centerno}, #{vol_sterm}, #{vol_eterm}, #{stime}, #{etime},
 			#{department}, #{vol_area}, #{vol_place}, #{receiver}, #{qualification}, #{npeople},
-			#{vol_title}, #{vol_content})
+			#{vol_title}, #{vol_content}, #{vol_lat}, #{vol_lng}, #{vol_address} )
 	</insert>
 	
 	<update id="updateVolunteer" parameterType="page.dto.Volunteer">

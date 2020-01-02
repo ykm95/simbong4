@@ -38,9 +38,11 @@ public class BestVolunteerServiceImpl implements BestVolunteerService{
 	}
 	@Override
 	public BestVolunteer bestView(int bestno) {
+		bestVolunteerDao.hit(bestno);
+		
 		return bestVolunteerDao.selectBestVolunteerBybestno(bestno);
 	}
 
-
+	
 
 }
