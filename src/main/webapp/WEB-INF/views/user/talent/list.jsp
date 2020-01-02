@@ -169,6 +169,20 @@
 
 					});
 </script>
+<script type="text/javascript">
+      $(document).ready(function() {
+         $("[name=t_type][value=${paging.t_type}]").prop("checked", true);
+         $("[name=t_cycle][value=${paging.t_cycle}]").prop("checked", true);
+         $("[name=t_process][value=${paging.t_process}]").prop("checked", true);
+		 
+//          $("#t_department").children("[value=${paging.t_department}]").attr("selected", "selected");
+      	 
+
+				var sale = "${paging.t_department}";
+				$("#t_department").val(sale);0
+
+			});
+</script>
 </head>
 
 <body>

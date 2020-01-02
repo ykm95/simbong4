@@ -129,6 +129,13 @@
 
 					});
 </script>
+<script type="text/javascript">
+      $(document).ready(function() {
+         $("[name=v_process][value=${paging.v_process}]").prop("checked", true);
+		 
+//          $("#t_department").children("[value=${paging.t_department}]").attr("selected", "selected");
+			});
+</script>
 </head>
 
 <body>
