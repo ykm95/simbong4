@@ -163,8 +163,6 @@
 
 						</select></td>
 
-					</tr>
-					<tr>
 						<th scope="row">활동지역</th>
 						<td><select title="시도" name="srcArea" id="srcArea"
 							style="width: 180px; height: 28px;">
@@ -207,6 +205,7 @@
 					</tr>
 
 					<tr>
+						<th scope="row">검색</th>
 						<td><select name="searchno">
 								<option value="1" selected="selected">제목</option>
 								<option value="2">작성기관</option>
@@ -236,7 +235,7 @@
 	<br>
 	<hr>
 	<br>
-	<div>${count }건의 검색결과가 있습니다.</div>
+	<div>${vcount }건의 검색결과가 있습니다.</div>
 	<br>
 
 	<table>
@@ -247,7 +246,7 @@
 					<fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd" />
 					${list.vol_area } <br>
 					<div>활동지역: ${list.vol_area } 활동기간: ${list.vol_sterm } ~
-						${list.vol_end } 활동영역: ${list.department }</div>
+						${list.vol_eterm } 활동영역: ${list.department }</div>
 				</td>
 			</tr>
 		</c:forEach>
