@@ -1,4 +1,4 @@
-package page.controller.user;
+package page.controller.user.talent;
 
 import java.util.List;
 

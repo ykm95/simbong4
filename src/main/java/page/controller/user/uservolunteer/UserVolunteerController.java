@@ -1,4 +1,4 @@
-package page.controller.user;
+package page.controller.user.uservolunteer;
 
 import java.util.List;
 

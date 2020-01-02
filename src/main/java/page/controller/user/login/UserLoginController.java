@@ -1,4 +1,4 @@
-package page.controller.user;
+package page.controller.user.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;

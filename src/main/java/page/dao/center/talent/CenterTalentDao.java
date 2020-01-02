@@ -5,7 +5,7 @@ import java.util.List;
 import page.dto.Talent;
 import page.util.Paging;
 
-public interface TalentDao {
+public interface CenterTalentDao {
 
 	public int selectCntAll();
 
