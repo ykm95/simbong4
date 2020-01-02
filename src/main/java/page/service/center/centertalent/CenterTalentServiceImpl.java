@@ -1,11 +1,11 @@
-package page.service.center.talent;
+package page.service.center.centertalent;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import page.dao.center.talent.CenterTalentDao;
+import page.dao.center.centertalent.CenterTalentDao;
 import page.dto.Talent;
 import page.util.Paging;
 

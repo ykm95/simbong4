@@ -54,7 +54,7 @@
 		<property name="mapperLocations">
 			<array>
 				<value>classpath:/page/dao/center/volunteer/**/*DaoImpl.xml</value>
-				<value>classpath:/page/dao/center/talent/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/center/centertalent/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/mypage/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/notice/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/best/**/*DaoImpl.xml</value>
@@ -70,7 +70,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="page.dao.center.volunteer,
-											page.dao.center.talent,
+											page.dao.center.centertalent,
 											page.dao.center.mypage,
 											page.dao.user.notice,
 											page.dao.user.best,
