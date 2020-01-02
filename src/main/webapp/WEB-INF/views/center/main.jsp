@@ -30,6 +30,5 @@
 		</div>
 	</c:if>
 
-</div>
-
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
+

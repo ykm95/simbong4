@@ -11,7 +11,7 @@ public class User {
 	private String uaddress1;
 	private String uaddress2;
 	private String uaddress3;
-	private int uphone;
+	private String uphone;
 	private int gender;
 	
 	
@@ -59,10 +59,10 @@ public class User {
 	public void setUaddress3(String uaddress3) {
 		this.uaddress3 = uaddress3;
 	}
-	public int getUphone() {
+	public String getUphone() {
 		return uphone;
 	}
-	public void setUphone(int uphone) {
+	public void setUphone(String uphone) {
 		this.uphone = uphone;
 	}
 	public int getGender() {

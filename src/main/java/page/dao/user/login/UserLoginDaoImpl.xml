@@ -36,4 +36,12 @@ VALUES(usertb_seq.nextval,#{uname},#{uemail},#{uphone},#{uaddress1},#{uaddress2}
 <select parameterType="String" id="checkOverId" resultType="int">
 SELECT count(*) FROM usertb WHERE uemail=#{uemail} </select>
 
+
+<update id = "pass_change" parameterType="map">
+    update usertb set upassword= #{user_pass} where uemail like '%' || #{uemail} || '%'
+</update>
+
+<select id="find_id" parameterType="page.dto.User" resultType="String">
+	SELECT uemail from usertb WHERE uname=#{uname} and uphone=#{uphone}
+</select>
 </mapper>

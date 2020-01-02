@@ -1,11 +1,11 @@
-package page.dao.center.talent;
+package page.dao.center.centertalent;
 
 import java.util.List;
 
 import page.dto.Talent;
 import page.util.Paging;
 
-public interface TalentDao {
+public interface CenterTalentDao {
 
 	public int selectCntAll();
 

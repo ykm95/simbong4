@@ -1,4 +1,4 @@
-package page.controller.center.talent;
+package page.controller.center.centertalent;
 
 import java.util.List;
 
@@ -11,25 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import page.dto.Talent;
-import page.service.center.talent.TalentService;
+import page.service.center.centertalent.CenterTalentService;
 import page.util.Paging;
 
 
 @Controller
-public class TalentController {
+public class CenterTalentController {
 
-	private static final Logger logger = LoggerFactory.getLogger(TalentController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CenterTalentController.class);
 	
-	@Autowired TalentService talentService;
+	@Autowired CenterTalentService centerTalentService;
 	
 	@RequestMapping(value = "/center/talent/list", method = RequestMethod.GET)
 	public void list(Paging paging, Model model) {
 		
-		paging = talentService.getPaging(paging);
+		paging = centerTalentService.getPaging(paging);
 		
 		model.addAttribute("paging", paging);
 		
-		List list = talentService.getTalentList(paging);
+		List list = centerTalentService.getTalentList(paging);
 		
 		model.addAttribute("list", list);
 	}
@@ -37,7 +37,7 @@ public class TalentController {
 	@RequestMapping(value = "/center/talent/view", method = RequestMethod.GET)
 	public void view(Talent talent, Model model) {
 		
-		talent = talentService.getTalent(talent);
+		talent = centerTalentService.getTalent(talent);
 		
 		model.addAttribute("tal", talent);
 	}

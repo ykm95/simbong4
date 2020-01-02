@@ -1,25 +1,25 @@
-package page.service.center.talent;
+package page.service.center.centertalent;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import page.dao.center.talent.TalentDao;
+import page.dao.center.centertalent.CenterTalentDao;
 import page.dto.Talent;
 import page.util.Paging;
 
 @Service
-public class TalentServiceImpl implements TalentService {
+public class CenterTalentServiceImpl implements CenterTalentService {
 	
-	@Autowired TalentDao talentDao;
+	@Autowired CenterTalentDao centerTalentDao;
 
 	@Override
 	public Paging getPaging(Paging paging) {
 
 		int curPage = paging.getCurPage();
 		
-		int totalPage = talentDao.selectCntAll();
+		int totalPage = centerTalentDao.selectCntAll();
 		
 		Paging pagingList = new Paging(totalPage, curPage);
 		
@@ -29,13 +29,13 @@ public class TalentServiceImpl implements TalentService {
 	@Override
 	public List getTalentList(Paging paging) {
 		
-		return talentDao.selectAllTalent(paging);
+		return centerTalentDao.selectAllTalent(paging);
 	}
 
 	@Override
 	public Talent getTalent(Talent talent) {
 
-		return talentDao.selectTalentByTalentno(talent);
+		return centerTalentDao.selectTalentByTalentno(talent);
 	}
 
 }

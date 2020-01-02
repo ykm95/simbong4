@@ -29,4 +29,10 @@ public interface BestVolunteerDao {
 	 * @return
 	 */
 	public BestVolunteer selectBestVolunteerBybestno(int bestno);
+	/**
+	 * 조회수 +1
+	 * @param bestno
+	 */
+	public void hit(int bestno);
+	
 }
