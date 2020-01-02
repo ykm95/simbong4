@@ -1,4 +1,4 @@
-package page.controller.user;
+package page.controller.user.mypage;
 
 import javax.servlet.http.HttpSession;
 
