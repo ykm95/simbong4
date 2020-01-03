@@ -61,4 +61,8 @@ public class NoticeController {
 		model.addAttribute("view", view);
 	}
 
+	@RequestMapping(value ="/user/notice/pdf", method = RequestMethod.GET)
+	public void pdf(Notice notice) {
+		
+	}
 }
