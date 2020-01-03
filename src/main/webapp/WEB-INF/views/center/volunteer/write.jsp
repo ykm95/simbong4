@@ -67,7 +67,7 @@ $(document).ready(function(){
 			
 		} else if( $(this).val() == 13) {
 			
-			$('#area').html('<option disabled="disabled">전주시</option><option value="1301">전주시 완산구</option><option value="1302">전주시 덕진구</option><option value="1303">군산시</option><option value="1304">익산시</option><option value="1305">정읍시</option><option value="1306">남원시</option><option value="1307">김제시</option><option value="1308">완주군</option><option value="1309">진안군</option><option value="1310">무주군</option><option value="1311">장수군</option><option value="1312">임실군</option><option value="1313">순양군</option><option value="1314">고창군</option><option value="1315">부안군</option>');
+			$('#area').html('<option disabled="disabled">전주시</option><option value="1301">전주시 완산구</option><option value="1302">전주시 덕진구</option><option value="1303">군산시</option><option value="1304">익산시</option><option value="1305">정읍시</option><option value="1306">남원시</option><option value="1307">김제시</option><option value="1308">완주군</option><option value="1309">진안군</option><option value="1310">무주군</option><option value="1311">장수군</option><option value="1312">임실군</option><option value="1313">순창군</option><option value="1314">고창군</option><option value="1315">부안군</option>');
 			
 		} else if( $(this).val() == 14) {
 			
@@ -261,7 +261,7 @@ $(document).ready(function(){
 			</div>
 		</div><br>	
 			
-		<div id="map" style="width:500px;height:400px;margin:50px auto;"></div><br>
+		<div id="map" style="width:600px;height:500px;margin:50px auto;"></div><br>
 				
 		<div>
 			<label for="place">봉사장소</label>
@@ -305,7 +305,7 @@ $(document).ready(function(){
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 		center: new kakao.maps.LatLng(37.5530016684289, 126.97263557634193), //지도의 중심좌표.
-		level: 3 //지도의 레벨(확대, 축소 정도)
+		level: 6 //지도의 레벨(확대, 축소 정도)
 	};
 	
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -323,6 +323,9 @@ $(document).ready(function(){
 	// 지도에 마커를 표시합니다
 	marker.setMap(map);
 	
+	// 마커가 드래그 가능하도록 설정합니다 
+	marker.setDraggable(true); 
+	
 	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 	var mapTypeControl = new kakao.maps.MapTypeControl();
 
@@ -333,6 +336,43 @@ $(document).ready(function(){
 	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 	var zoomControl = new kakao.maps.ZoomControl();
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+	
+	// 처음 접속했을때 위도, 경도 기본값 주기
+	searchDetailAddrFromCoords(map.getCenter(), function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+            
+            var content = '<div class="bAddr">' +
+                            '<span class="title">선택한 주소정보</span>' + 
+                            detailAddr + 
+                        '</div>';
+                        
+           	if(result[0].road_address != null){
+           		
+	            $('#address').val(result[0].road_address.address_name);
+          
+           	} else {
+           			           		
+				$('#address').val(result[0].address.address_name);
+           	}
+
+
+			
+            // 마커를 클릭한 위치에 표시합니다 
+            marker.setPosition(map.getCenter());
+            marker.setMap(map);
+
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+        }   
+        
+    });
+	
+	
+///////////////////////////////////////////////////////////////
+
 
 	// 지도에 클릭 이벤트를 등록합니다
 	// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
@@ -367,6 +407,7 @@ $(document).ready(function(){
 	            infowindow.setContent(content);
 	            infowindow.open(map, marker);
 	        }   
+	        
 	    });
 	    
 	// 클릭한 위도, 경도 정보를 가져옵니다 
@@ -384,13 +425,116 @@ $(document).ready(function(){
 	}
 
 	
-// 	//지역 변경시 지도이동
-// 	$('#area').change(function(){
+//////////////////////////////////////////////////////////////////////
+	
+	
+	//지역 변경시 지도이동
+	$('#area').change(function(){
 		
-// 		if( $(this).val() == 0101) {
-			
-// 		}
-// 	});
+		var area = $('#area').val();
+		
+		$.ajax({
+			type: "get"
+			, url: "/center/area"
+			, data: {"areano": area}
+			, datatype: "json"
+			, success: function(res){
+		
+// 				console.log(res.area.lat)
+// 				console.log(res.area.lng)
+				
+				function panTo() {
+				    // 이동할 위도 경도 위치를 생성합니다 
+				    var moveLatLon = new kakao.maps.LatLng(res.area.lat, res.area.lng);
+				    
+				    // 지도 중심을 부드럽게 이동시킵니다
+				    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+				    map.panTo(moveLatLon);            
+				}
+			    
+			    $('#lat').val(res.area.lat);
+				$('#lng').val(res.area.lng);
+				
+				panTo();
+				
+				searchDetailAddrFromCoords(map.getCenter(), function(result, status) {
+			        if (status === kakao.maps.services.Status.OK) {
+			            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+			            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+			            
+			            var content = '<div class="bAddr">' +
+			                            '<span class="title">선택한 주소정보</span>' + 
+			                            detailAddr + 
+			                        '</div>';
+			                        
+			           	if(result[0].road_address != null){
+			           		
+				            $('#address').val(result[0].road_address.address_name);
+			          
+			           	} else {
+			           			           		
+							$('#address').val(result[0].address.address_name);
+			           	}
+
+
+						
+			            // 마커를 클릭한 위치에 표시합니다 
+			            marker.setPosition(map.getCenter());
+			            marker.setMap(map);
+
+			            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+			            infowindow.setContent(content);
+			            infowindow.open(map, marker);
+			        }
+			     
+				});
+				
+			}
+				
+		})
+		
+		
+	});
+	
+	
+////////////////////////////////////////////////////////////////
+
+	
+	kakao.maps.event.addListener(marker, 'dragend', function() {
+		
+		searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+	            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+	            
+	            var content = '<div class="bAddr">' +
+	                            '<span class="title">선택한 주소정보</span>' + 
+	                            detailAddr + 
+	                        '</div>';
+	                        
+	           	if(result[0].road_address != null){
+	           		
+		            $('#address').val(result[0].road_address.address_name);
+	          
+	           	} else {
+	           			           		
+					$('#address').val(result[0].address.address_name);
+	           	}
+
+
+	            // 마커를 클릭한 위치에 표시합니다 
+	            marker.setPosition(marker.getPosition());
+	            marker.setMap(map);
+
+	            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+	            infowindow.setContent(content);
+	            infowindow.open(map, marker);
+	        }
+	     
+		});
+		
+	});
+	
 	
 	</script>
 	

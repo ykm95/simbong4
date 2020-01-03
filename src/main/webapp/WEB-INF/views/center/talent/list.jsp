@@ -22,7 +22,7 @@
 	${i.talent_title }
 	</a>
 	</td>
-	<td>봉사기간 : ${i.talent_period}</td>
+	<td>봉사기간 : ${i.talent_cycle}</td>
 </tr>
 
 </c:forEach>

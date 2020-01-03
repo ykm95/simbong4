@@ -1,5 +1,7 @@
 package page.controller.user.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import page.dto.Center;
 import page.dto.User;
 import page.service.user.mypage.UserMypageService;
 
@@ -125,4 +126,14 @@ public class UserMypageController {
 		
 		return "/main";
 	}
+	
+//	public void performanceList(Model model) {
+//
+////		List<VolunteerRecord> list = userMypageService.getperformanceList();
+//	}
+//
+//	public void perfomanceList(Model model, String term) {
+//
+////		List<VolunteerRecord> list = userMypageService.getperformanceList(term);
+//	}
 }

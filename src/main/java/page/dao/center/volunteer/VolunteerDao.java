@@ -2,6 +2,7 @@ package page.dao.center.volunteer;
 
 import java.util.List;
 
+import page.dto.Area;
 import page.dto.Volunteer;
 import page.util.Paging;
 
@@ -18,5 +19,7 @@ public interface VolunteerDao {
 	public void updateVolunteer(Volunteer vol);
 
 	public void deleteVolunteer(Volunteer vol);
+
+	public Area selectAreaByAreano(Area area);
 
 }
