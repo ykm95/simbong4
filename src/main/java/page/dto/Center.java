@@ -10,7 +10,7 @@ public class Center { // 센터회원정보
 	private String cpassword; // 센터비밀번호
 	private String mgr; // 담당자이름
 	private String memail; // 담당자이메일
-	private int mphone; // 담당자번호
+	private String mphone; // 담당자번호
 	private Date founded; // 설립일
 	private int chk; // 인증여부
 	private String address1; // 센터우편번호
@@ -72,11 +72,11 @@ public class Center { // 센터회원정보
 		this.memail = memail;
 	}
 
-	public int getMphone() {
+	public String getMphone() {
 		return mphone;
 	}
 
-	public void setMphone(int mphone) {
+	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
 

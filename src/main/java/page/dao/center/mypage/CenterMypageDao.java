@@ -17,6 +17,8 @@ public interface CenterMypageDao {
 
 	public void insertQuestion(CenterQuestion centerquestion);
 
+	public int selectQuestionnoByDual();
+
 //	/**
 //	 * 센터 1:1 문의삭제
 //	 * 
