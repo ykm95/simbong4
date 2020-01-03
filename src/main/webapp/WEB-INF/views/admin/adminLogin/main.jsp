@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<c:if test= "${login }"><%--로그인 성공 --%>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
+
+
 <li>
 <a href="/adminLogin/logout"><button>로그아웃</button></a><%--이것만 작게 --%>
 
@@ -17,6 +15,6 @@
 <a href="/adminUser/member"><button>봉사자 승인</button></a>
 <a href="/adminBoard/best"><button>우수봉사자</button></a>
 </li>
-<li>${admin_id }님 환영합니다.</li><!-- admin01, admin02나와야 정상. -->
+<li>${adminId }님 환영합니다.</li><!-- admin01, admin02나와야 정상. -->
 </body>
 </html>
