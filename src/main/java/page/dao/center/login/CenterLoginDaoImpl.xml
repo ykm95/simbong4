@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 태그의 namespace 속성을 이용하여 연결(매핑)될 DAO 인터페이스 설정 -->
+
+<mapper namespace="page.dao.center.login.CenterLoginDao">
+
+<!-- 회원가입 -->
+
+
+<insert parameterType="page.dto.Center" id="centerInsert">
+INSERT INTO centertb
+VALUES(centertb_seq.nextval,#{cname},#{businessno},#{cpassword},#{mgr},#{memail},#{mphone},#{founded},1,#{address1},#{address2},#{address3}) 
+</insert>
+
+<!--로그인 확인 -->
+
+<select parameterType="page.dto.Center" id="centerSelectCnt" resultType="int">
+SELECT count(*) FROM centertb WHERE memail=#{memail} and cpassword=#{cpassword} </select>
+
+<!-- 아이디 중복 검사 -->
+
+<select parameterType="String" id="checkOverId" resultType="int">
+SELECT count(*) FROM centertb WHERE memail=#{memail} </select>
+
+
+<update id = "pass_change" parameterType="map">
+    update centertb set cpassword= #{center_pass} where memail like '%' || #{memail} || '%'
+</update>
+
+<select id="find_id" parameterType="page.dto.Center" resultType="String">
+	SELECT memail from centertb WHERE cname=#{cname} and mphone=#{mphone}
+</select>
+
+<select id="getNameByEmail" parameterType="page.dto.Center" resultType="String">
+	SELECT cname FROM centertb WHERE memail=#{memail}
+</select>
+</mapper>
