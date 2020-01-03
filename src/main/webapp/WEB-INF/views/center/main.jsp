@@ -2,37 +2,33 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
-<h1>메인화면</h1>
-<hr>
+<div class="row" style="text-align: center; padding: 50px 0;">
 
-<<<<<<< HEAD
-<a href="/center/volunteer/list"><button>봉사 활동</button></a>
-<br><br>
+	<c:if test="${empty login }">
+		<div class="col">
+			<h1>로그인 후 이용해주세요</h1>
+		</div>
+	</c:if>
+	
+	<c:if test="${login }">
+		<div class="col-12">
+			<h1>${center.cname }님, 환영합니다.</h1>
+		</div>
+	
+		<div class="col">
+			<a href="/center/volunteer/list"><button class="btn btn-lg btn-secondary">봉사 활동</button></a>
+		</div>
+	
+		<div class="col">
+			<a href="/center/talent/list"><button class="btn btn-lg btn-secondary">재능 기부</button></a>
+		</div>
+		
+		<div class="col">
+			<button class="btn btn-lg btn-secondary">봉사 확인</button>
+		</div>
+	</c:if>
 
-<a href="/center/talent/list"><button>재능 기부</button></a>
-<br><br>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
-<button>봉사 확인</button>
-<br><br>
-=======
-<c:if test="${empty login }"> <%-- 로그인 실패 --%>
-<a href="/center/login"><button>로그인</button></a>
-<a href="/center/join"><button>회원가입</button></a>
-</c:if>
-
-<c:if test="${login }"> <%-- 로그인 성공 --%>
-<a href="/center/logout"><button>로그아웃</button></a>
-<a href="/center/mypage/mypagemain"><button>마이페이지</button></a>
-</c:if>
->>>>>>> refs/remotes/origin/develop
-
-</body>
-</html>

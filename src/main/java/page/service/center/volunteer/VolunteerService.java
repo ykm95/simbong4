@@ -2,6 +2,7 @@ package page.service.center.volunteer;
 
 import java.util.List;
 
+import page.dto.Area;
 import page.dto.Volunteer;
 import page.util.Paging;
 
@@ -18,5 +19,7 @@ public interface VolunteerService {
 	public void update(Volunteer vol);
 
 	public void delete(Volunteer vol);
+
+	public Area getArea(Area area);
 
 }

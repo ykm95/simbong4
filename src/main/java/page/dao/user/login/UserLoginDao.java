@@ -1,5 +1,9 @@
 package page.dao.user.login;
 
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
 import page.dto.User;
 
 public interface UserLoginDao {
@@ -38,5 +42,20 @@ public interface UserLoginDao {
 	 * @return- 1 중복 0 중복아님
 	 */
 	public int checkOverId(String uemail);
+
+	/**
+	 * 비밀번호 변경
+	 * @param map
+	 * @param dto
+	 */
+	void pass_change(Map<String, Object> map);
+
+	/**
+	 * 아이디 찾기
+	 * @param user-이름,전화번호가 있는 user객체
+	 * @return- 이메일
+	 */
+	String find_id(User user);
+	
 
 }

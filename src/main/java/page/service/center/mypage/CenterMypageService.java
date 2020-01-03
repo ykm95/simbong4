@@ -1,6 +1,9 @@
 package page.service.center.mypage;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import page.dto.Center;
+import page.dto.CenterQuestion;
 
 public interface CenterMypageService {
 
@@ -14,13 +17,12 @@ public interface CenterMypageService {
 
 	public void centerInformationDelete(Center center);
 
-//	/**
-//	 * 센터 1:1 문의글 작성
-//	 * 
-//	 * @param question
-//	 */
-//	public void writeQST(Question question);
-//
+	public int getCenterno(Center center);
+
+	public void writeQST(CenterQuestion centerquestion, MultipartFile file);
+
+	public int getQuestionno();
+
 //	/**
 //	 * 센터 1:1 문의글 삭제
 //	 * 

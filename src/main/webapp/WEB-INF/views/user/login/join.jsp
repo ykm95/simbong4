@@ -282,13 +282,17 @@ $(document).ready(function() {
 	//전화번호 유효성 검사
 
 	$('#uphone').blur(function() {
-	var regExp = /(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+// 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+
+	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+	
 
 // 	var regExp=(/(\d{3})(\d{4})(\d{4})/, '$1-****-$3');
 
 	if (!regExp.test($('#uphone').val())) {
 			if($('#uphone').val()!=""){
-			//alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
+// 			alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.1");
 			$('#phone_check').text("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
 			$('#phone_check').css('color', 'red');
 
@@ -298,16 +302,16 @@ $(document).ready(function() {
 		}
 	if (regExp.test($('#uphone').val())) {
 		if($('#uphone').val()!=""){
-		//alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
-		return false
+		alert($("#uphone").val());
+		return true
 		}
 
 	}
-	return true;
-	})
+	return false;
+	});
 
 });
 </script>
@@ -323,7 +327,7 @@ $(document).ready(function() {
 <br><br>
 <div class="form-group">
 <label for ="uemail">이메일</label>
-<input type="text" class="form-control" name="uemail" id="uemail"
+<input type="text" class="form-control" name="uemail" id="uemail" value="${uemail}"
  placeholder="abc@123.com" />
 <div class="check_front" id="id_check"> 
 </div>
@@ -340,7 +344,7 @@ $(document).ready(function() {
 </div>
 <br>
 <label for ="uphone">전화번호</label>
-<input type="tel" name="uphone" id="uphone" />
+<input type="text" name="uphone" id="uphone" />
 <br>
 <div class="check_front" id="phone_check"> 
 </div><br>

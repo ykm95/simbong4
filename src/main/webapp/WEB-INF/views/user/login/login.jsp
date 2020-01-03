@@ -87,7 +87,10 @@
 <button id="loginbtn">로그인</button>
 <button type="reset">취소</button>
 </form>
-<a href="/user/join">회원가입</a>
+<a href="/user/login/email">회원가입</a>
+<a href="/user/login/find_id">아이디찾기</a>
+<a href="/user/login/find_pass">비밀번호찾기</a>
+
 <br>
 <a href="${google_url }"><button id="btnJoinGoogle" class="btn btn-primary btn-round"
 stype="width: 100%"><i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a>

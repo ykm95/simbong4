@@ -23,6 +23,11 @@ $(document).ready(function() {
 		$(location).attr("href", "/center/mypage/deletepwchk");
 	});
 	
+	//문의하기버튼 동작
+	$("#btnQuestion").click(function() {
+		$(location).attr("href", "/center/mypage/writequestion");
+	});
+	
 });
 </script>
 </head>
@@ -32,5 +37,6 @@ $(document).ready(function() {
 
 <button id="btnUpdate">회원정보수정</button>
 <button id="btnDelete">회원탈퇴</button>
+<button id="btnQuestion">1:1문의</button>
 </body>
 </html>
