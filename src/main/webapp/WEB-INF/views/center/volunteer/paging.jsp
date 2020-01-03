@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="paging">
+<div class="paging container">
 
 	<a href="/center/volunteer/write"><button class="btn btn-secondary">글 쓰기</button></a>
 	

@@ -84,5 +84,10 @@
 		DELETE volunteer
 		WHERE volunteerno = #{volunteerno}
 	</delete>
+	
+	<select id="selectAreaByAreano" parameterType="page.dto.Area" resultType="page.dto.Area">
+		SELECT * FROM area
+		WHERE areano = #{areano}
+	</select>
 
 </mapper>
