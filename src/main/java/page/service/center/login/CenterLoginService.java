@@ -42,4 +42,12 @@ public interface CenterLoginService {
 	 * @return 이메일
 	 */
 	String findId(Center center);
+
+
+	/**
+	 * 로그인성공시 이름가져오기
+	 * @param center-로그인할 객체
+	 * @return-기관이름
+	 */
+	String getnameByemail(Center center);
 }

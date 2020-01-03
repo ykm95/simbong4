@@ -42,6 +42,13 @@ public interface CenterLoginDao {
 	 * @return- 이메일
 	 */
 	String find_id(Center center);
+
+	/**
+	 * 로그인시 기관명 가져오기
+	 * @param center-로그인한 기관
+	 * @return-기관 이름
+	 */
+	String getNameByEmail(Center center);
 	
 
 }

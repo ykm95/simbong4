@@ -79,7 +79,6 @@ public class CenterLoginController {
 	@RequestMapping(value = "/center/login/login", method = RequestMethod.POST)
 	public String loginProc(Center center, HttpSession session, Model model) {
 		
-		logger.info("center" +center);
 		
 			
 		//아이디, 패스워드 DB 조회
@@ -91,10 +90,16 @@ public class CenterLoginController {
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginid", center.getMemail());
 			session.setAttribute("centerno", center.getCenterno());
+			
+			String cname= centerloginservice.getnameByemail(center);
+			logger.info("center" +center);
+			center.setCname(cname);
+			model.addAttribute("center",center);
+			return "/center/main";
 		}else {
 			return "/center/login/login";
 		}
-		return "/center/main";
+		
 	}
 	@RequestMapping(value = "/centerLogout")
 	public String logout(HttpSession session) {

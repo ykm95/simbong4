@@ -52,4 +52,9 @@ public class CenterLoginServiceImpl implements CenterLoginService {
 		return centerLoginDao.find_id(center);
 	}
 
+	@Override
+	public String getnameByemail(Center center) {
+		return centerLoginDao.getNameByEmail(center);
+	}
+
 }
