@@ -20,23 +20,24 @@ VALUES(centertb_seq.nextval,#{cname},#{businessno},#{cpassword},#{mgr},#{memail}
 <!--로그인 확인 -->
 
 <select parameterType="page.dto.Center" id="centerSelectCnt" resultType="int">
-SELECT count(*) FROM centertb WHERE memail=#{memail} and cpassword=#{cpassword} </select>
+SELECT count(*) FROM centertb WHERE businessno=#{businessno} and cpassword=#{cpassword} </select>
 
 <!-- 아이디 중복 검사 -->
 
 <select parameterType="String" id="checkOverId" resultType="int">
-SELECT count(*) FROM centertb WHERE memail=#{memail} </select>
+SELECT count(*) FROM centertb WHERE businessno=#{businessno} </select>
 
 
 <update id = "pass_change" parameterType="map">
     update centertb set cpassword= #{center_pass} where memail like '%' || #{memail} || '%'
 </update>
 
+<!--아이디 찾기  -->
 <select id="find_id" parameterType="page.dto.Center" resultType="String">
-	SELECT memail from centertb WHERE cname=#{cname} and mphone=#{mphone}
+	SELECT businessno from centertb WHERE cname=#{cname} and mphone=#{mphone}
 </select>
 
 <select id="getNameByEmail" parameterType="page.dto.Center" resultType="String">
-	SELECT cname FROM centertb WHERE memail=#{memail}
+	SELECT cname FROM centertb WHERE businessno=#{businessno} AND cpassword=#{cpassword}
 </select>
 </mapper>

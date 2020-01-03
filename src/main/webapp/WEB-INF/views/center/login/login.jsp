@@ -76,8 +76,8 @@
 <h1>기관 로그인</h1>
 <hr>
 <form action="/center/login/login" method="post">
-<label for ="memail">이메일</label>
-<input type="text" name="memail" id="memail" placeholder="email" required="required"/>
+<label for ="businessno">사업자 번호</label>
+<input type="number" name="businessno" id="businessno" placeholder="사업자 번호" required="required"/>
 <br><br>
 <label for ="cpassword">비밀번호</label>
 <input type="password" name="cpassword" id="cpassword"/>

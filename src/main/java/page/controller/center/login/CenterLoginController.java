@@ -44,25 +44,28 @@ public class CenterLoginController {
 	public void centerJoinForm() {}
 	
 	@RequestMapping(value = "/center/login/join",method = RequestMethod.POST)
-	public String centerJoinProc(String[] foundedArr, Center center) {
+	public String centerJoinProc(String[] foundedArr,String[] mphone, Center center) {
 		
-		center.setMphone(center.getMphone());
-
+		String mp="";
 		String founded = "";
 		for (String temp : foundedArr) {
 			founded += temp;
+		}
+		for (String temp2 : mphone) {
+			mp +=temp2;
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); 
 		try {
 			Date date = sdf.parse(founded);
 			center.setFounded(date);
+			center.setMphone(mp);
 			centerloginservice.centerjoin(center);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
 		
-		return "/center/main";
+		return "/center/login/login";
 	}
 	
 //	@RequestMapping(value = "/center/main")
@@ -78,8 +81,6 @@ public class CenterLoginController {
 
 	@RequestMapping(value = "/center/login/login", method = RequestMethod.POST)
 	public String loginProc(Center center, HttpSession session, Model model) {
-		
-		
 			
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=centerloginservice.centerlogin(center);//true면 인증 성공
@@ -92,8 +93,8 @@ public class CenterLoginController {
 			session.setAttribute("centerno", center.getCenterno());
 			
 			String cname= centerloginservice.getnameByemail(center);
-			logger.info("center" +center);
 			center.setCname(cname);
+			logger.info("center" +center);
 			model.addAttribute("center",center);
 			return "/center/main";
 		}else {
@@ -255,7 +256,7 @@ public class CenterLoginController {
     @RequestMapping(value = "/center/pass_change{memail}", method = RequestMethod.POST)
     public ModelAndView pass_change(@PathVariable String memail, HttpServletRequest request, Center dto, HttpServletResponse pass) throws Exception{
                 
-    String member_pass = request.getParameter("user_pass");
+    String member_pass = request.getParameter("center_pass");
                logger.info(member_pass);
     String e_mail1 = memail;
                 
@@ -267,7 +268,7 @@ public class CenterLoginController {
     Map<String, Object> map = new HashMap<>();
     
     map.put("memail", dto.getMemail());
-    map.put("user_pass", dto.getCpassword());
+    map.put("center_pass", dto.getCpassword());
     logger.info(map.toString());
     centerloginservice.pass_change(map);
     
