@@ -6,7 +6,7 @@
 	  
 <mapper namespace="page.dao.admin.login.LoginDao">
 	
-	<select id="Login" parameterType= "page.dto.Admin" resultType="page.dto.Admin">	
+	<select id="selectadminnoByadmin" parameterType= "page.dto.Admin" resultType="page.dto.Admin">	
 	 	SELECT * FROM admin
 	 	WHERE adminno = #{adminno }
 	</select>
