@@ -16,7 +16,7 @@ public class Talent {
 	private String uemail;
 	private String aname;
 	private String talent_cycle;
-	private String write_date;
+	private Date write_date;
 	private String talent_title;
 	private String talent_content;
 	private String talent_start;
@@ -126,12 +126,16 @@ public class Talent {
 	public void setTalent_cycle(String talent_cycle) {
 		this.talent_cycle = talent_cycle;
 	}
-	public String getWrite_date() {
+
+	public Date getWrite_date() {
 		return write_date;
 	}
-	public void setWrite_date(String write_date) {
+
+
+	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
 	}
+
 	public int getDepartment() {
 		return department;
 	}

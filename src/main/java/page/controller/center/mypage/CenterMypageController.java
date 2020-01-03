@@ -10,11 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import page.dto.Center;
-import page.dto.CenterQuestion;
 import page.service.center.mypage.CenterMypageService;
 
 @Controller
@@ -28,9 +25,6 @@ public class CenterMypageController {
 	@Autowired
 	ServletContext context;
 	
-	@RequestMapping(value="/center/main")
-	public void centerMain() { }
-	
 	@RequestMapping(value="/center/login", method=RequestMethod.GET)
 	public void centerLogin() {
 		logger.info("센터회원 로그인폼 접속성공");
@@ -42,8 +36,12 @@ public class CenterMypageController {
 		boolean isLogin = centerMypageService.login(center);
 		
 		if( isLogin ) {
+			
+			session.setMaxInactiveInterval(0);
+			
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginId", center.getBusinessno());
+			session.setAttribute("centerno", 1);
 		}
 		
 		return "redirect:/center/main";
@@ -159,14 +157,14 @@ public class CenterMypageController {
 		return "/center/main";
 	}
 	
-	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
-	public String writeQuestion(Center center, HttpSession session) {
-
-		logger.info("접속성공");
-		
-		return "/center/mypage/questionForm";
-	}
-	
+//	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
+//	public String writeQuestion(Center center, HttpSession session) {
+//
+//		logger.info("접속성공");
+//		
+//		return "/center/mypage/questionForm";
+//	}
+//	
 //	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.POST)
 //	public String writeQuestionProc(CenterQuestion centerquestion,
 //								  Center center,

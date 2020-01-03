@@ -10,4 +10,6 @@ public interface UserMypageDao {
 
 	public void update(User user);
 
+	public void delete(User user);
+
 }

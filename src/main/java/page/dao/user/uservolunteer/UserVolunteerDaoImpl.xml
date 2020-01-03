@@ -7,7 +7,7 @@
 
 <mapper namespace="page.dao.user.uservolunteer.UserVolunteerDao">
 
-	<select id="selectvolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.dto.Volunteer">
+	<select id="selectVolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.dto.Volunteer">
 		SELECT * FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT volunteer.*

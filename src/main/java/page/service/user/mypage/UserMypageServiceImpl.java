@@ -30,5 +30,10 @@ public class UserMypageServiceImpl implements UserMypageService {
 		userMypageDao.update(user);
 	}
 
+	@Override
+	public void userInformationDelete(User user) {
+		userMypageDao.delete(user);
+	}
+
 
 }

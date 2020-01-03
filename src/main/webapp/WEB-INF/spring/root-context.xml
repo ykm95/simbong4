@@ -53,10 +53,15 @@
 			
 		<property name="mapperLocations">
 			<array>
+				<value>classpath:/page/dao/admin/board/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/admin/login/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/admin/qna/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/admin/user/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/volunteer/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/centertalent/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/mypage/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/login/**/*DaoImpl.xml</value>
+				<value>classpath:/page/dao/center/main/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/notice/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/best/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/login/**/*DaoImpl.xml</value>
