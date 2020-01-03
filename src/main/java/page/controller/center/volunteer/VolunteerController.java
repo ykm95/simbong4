@@ -7,12 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import page.dto.Area;
 import page.dto.Volunteer;
 import page.service.center.volunteer.VolunteerService;
 import page.util.Paging;
@@ -44,8 +45,20 @@ public class VolunteerController {
 		model.addAttribute("vol", vol);
 	}
 	
+	@RequestMapping(value = "/center/area", method = RequestMethod.GET)
+	public ModelAndView getArea(Area area, ModelAndView mav) {
+		
+		area = volunteerService.getArea(area);
+		
+		mav.addObject("area", area);
+		
+		mav.setViewName("jsonView");
+		
+		return mav;
+	}
+	
 	@RequestMapping(value = "/center/volunteer/write", method = RequestMethod.GET)
-	public void writeForm() { }
+	public void writeForm(Area area) { }
 	
 	@RequestMapping(value = "/center/volunteer/write", method = RequestMethod.POST)
 	public String write(Volunteer vol, HttpSession session) { 
@@ -67,10 +80,6 @@ public class VolunteerController {
 	
 	@RequestMapping(value = "/center/volunteer/update", method = RequestMethod.POST)
 	public String update(Volunteer vol, HttpSession session) { 
-		
-//		vol.setCenterno(vol.getCenterno());
-		
-		logger.info(""+vol);
 		
 		volunteerService.update(vol);
 		

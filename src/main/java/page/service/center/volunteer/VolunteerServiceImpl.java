@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import page.dao.center.volunteer.VolunteerDao;
+import page.dto.Area;
 import page.dto.Volunteer;
 import page.util.Paging;
 
@@ -54,6 +55,12 @@ public class VolunteerServiceImpl implements VolunteerService {
 	public void delete(Volunteer vol) {
 
 		volunteerDao.deleteVolunteer(vol);
+	}
+
+	@Override
+	public Area getArea(Area area) {
+
+		return volunteerDao.selectAreaByAreano(area);
 	}
 
 }

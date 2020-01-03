@@ -53,12 +53,12 @@ ul{
 	</div>
 	<div class="col-2">
 		<c:if test="${empty login }"> <%-- 로그인 실패 --%>
-		<a href="/center/login"><button class="btn btn-sm btn-secondary">로그인</button></a>
-		<a href="/center/join"><button class="btn btn-sm btn-secondary">회원가입</button></a>
+		<a href="/center/login/login"><button class="btn btn-sm btn-secondary">로그인</button></a>
+		<a href="/center/login/join"><button class="btn btn-sm btn-secondary">회원가입</button></a>
 		</c:if>
 		
 		<c:if test="${login }"> <%-- 로그인 성공 --%>
-		<a href="/center/logout"><button class="btn btn-sm btn-secondary">로그아웃</button></a>
+		<a href="/centerLogout"><button class="btn btn-sm btn-secondary">로그아웃</button></a>
 		<a href="/center/mypage/mypagemain"><button class="btn btn-sm btn-secondary">마이페이지</button></a>
 	</c:if>
 	</div>

@@ -2,6 +2,8 @@ package page.dto;
 
 import java.util.Date;
 
+import page.encrypt.PwToHash;
+
 public class Center { // 센터회원정보
 
 	private int centerno; // 센터번호
@@ -16,6 +18,7 @@ public class Center { // 센터회원정보
 	private String address1; // 센터우편번호
 	private String address2; // 센터도로명주소
 	private String address3; // 센터상세주소
+	private PwToHash pth=new PwToHash();
 
 	@Override
 	public String toString() {
@@ -53,7 +56,7 @@ public class Center { // 센터회원정보
 	}
 
 	public void setCpassword(String cpassword) {
-		this.cpassword = cpassword;
+		this.cpassword = pth.toHash(cpassword);
 	}
 
 	public String getMgr() {
