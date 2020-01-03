@@ -157,14 +157,14 @@ public class CenterMypageController {
 		return "/center/main";
 	}
 	
-	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
-	public String writeQuestion(Center center, HttpSession session) {
-
-		logger.info("접속성공");
-		
-		return "/center/mypage/questionForm";
-	}
-	
+//	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
+//	public String writeQuestion(Center center, HttpSession session) {
+//
+//		logger.info("접속성공");
+//		
+//		return "/center/mypage/questionForm";
+//	}
+//	
 //	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.POST)
 //	public String writeQuestionProc(CenterQuestion centerquestion,
 //								  Center center,

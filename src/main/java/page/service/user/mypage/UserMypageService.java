@@ -11,4 +11,6 @@ public interface UserMypageService {
 
 	public void userInformationUpdate(User user);
 
+	public void userInformationDelete(User user);
+
 }
