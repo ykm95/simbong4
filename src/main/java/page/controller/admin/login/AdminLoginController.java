@@ -19,7 +19,7 @@ public class AdminLoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdminLoginController.class);
 	
-	@RequestMapping(value="admin/adminLogin/login", method= RequestMethod.GET)
+	@RequestMapping(value="/admin/adminLogin/login", method= RequestMethod.GET)
 	public void login() {}
 	
 	@RequestMapping(value="/admin/adminLogin/login", method=RequestMethod.POST)
@@ -36,7 +36,7 @@ public class AdminLoginController {
 		session.setAttribute("loginid", admin.getAdminId());
 			}
 			
-			return "redirect:/admin/adminLogin/main";
+			return "/admin/adminLogin/main";
 			
 		}
 		
