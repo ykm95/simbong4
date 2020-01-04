@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="/WEB-INF/views/layout/header.jsp" />
+<jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
 
 <li>
-<a href="/adminLogin/logout"><button>로그아웃</button></a><%--이것만 작게 --%>
+<a href="/admin/adminLogin/logout"><button>로그아웃</button></a><%--이것만 작게 --%>
 
 <a href="/adminQna/main"><button>QnA관리</button></a><%--사이드 메뉴바, 따라다니는 퀵메뉴바  --%>
 <a href="/adminUser/center"><button>센터 승인</button></a>
