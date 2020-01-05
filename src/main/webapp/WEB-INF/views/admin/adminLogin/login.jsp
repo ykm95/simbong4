@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>s
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
@@ -11,7 +11,7 @@
 		<form id="login__form">
 		<!-- 이미지 추가 <img src="../../img/위치 지정.jpg"><br>-->
 			Id: <input type="text" name="adminId" placeholder="아이디를 입력하세요"/><br> 
-			Pw: <input type="text" name="adminPw" placeholder="비밀번호를 입력하세요"/><br> 
+			Pw: <input type="password" name="adminPw" placeholder="비밀번호를 입력하세요"/><br> 
 		</form>
 		<button id="login__btn">확인</button>
 	</div>

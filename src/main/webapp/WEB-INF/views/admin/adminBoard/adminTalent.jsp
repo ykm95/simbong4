@@ -7,6 +7,7 @@
 <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
 <!-- 게시판>재능기부 개인회원 봉사신청 게시판 -->
+trdrrg
 
 </body>
 </html>

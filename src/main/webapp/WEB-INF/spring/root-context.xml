@@ -81,6 +81,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="
 											page.dao.admin.login,
+											page.dao.admin.board,
 											page.dao.center.volunteer,
 											page.dao.center.centertalent,
 											page.dao.center.mypage,

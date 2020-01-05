@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import page.dao.admin.login.LoginDao;
 import page.dto.Admin;
@@ -18,7 +19,7 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired LoginDao loginDao;
 
 	@Override
-	public Map<String, Object> loginProcess(Admin admin, HttpSession session) {
+	public Map<String, Object> loginProcess(Admin admin, Model model, HttpSession session) {
 		Map<String, Object> returnData = new HashMap<>();
 		
 		String hashedPassword = loginDao.getHashedPassword(admin.getAdminId());
@@ -31,6 +32,7 @@ public class LoginServiceImpl implements LoginService{
 			
 			if(BCrypt.checkpw(admin.getAdminPw(), hashedPassword)) {//비밀번호 일치
 				session.setAttribute("loginId", admin.getAdminId());
+				session.setAttribute("isAdmin", true);
 				returnData.put("status", "1");
 				
 			}else {//비밀번호 불일치
@@ -43,7 +45,6 @@ public class LoginServiceImpl implements LoginService{
 
 	@Override
 	public void logout(HttpSession session) {
-		session.setAttribute("loginId", null);
 		session.invalidate();
 	}
 	

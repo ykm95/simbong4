@@ -20,6 +20,26 @@
 		noticeNo, notice_title, notice_content, hit, write_date
 		FROM notice
 	</select>
+	
+	<insert id="adminWrite">
+		INSERT INTO NOTICE
+		(
+			NOTICE_NO,
+			NOTICE_TITLE,
+			NOTICE_CONTENT,
+			HIT,
+			WRITE_DATE
+		)
+		VALUES
+		(
+			notice_seq.NEXTVAL,
+			#{noticeTitle},
+			#{noticeContent},
+			0,
+			SYSDATE
+		)
+		
+	</insert>
 
 <!-- <select id="read" parameterType="int" resultType= "">
 
