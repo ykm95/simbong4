@@ -91,11 +91,11 @@
 		#{startNo} AND #{endNo}
 	</select>
 	
-<!-- 	<select id="selectVolunteerByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Volunteer"> -->
-<!-- 		SELECT * FROM volunteer WHERE volunteerno = #{volunteerno} -->
-<!-- 	</select> -->
+	<select id="selectVolunteerByNo" parameterType="int" resultType="page.dto.Volunteer">
+		SELECT * FROM volunteer WHERE volunteerno = #{volunteerno}
+	</select>
 	
-<!-- 	<select id="selectPrtByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Participant"> -->
+<!-- 	<select id="selectAplByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Participant"> -->
 <!-- 		SELECT participant.applicantno, participant.name, participant.email, participant.date  -->
 <!-- 		FROM volunteer WHERE volunteerno = #{volunteerno} -->
 <!-- 	</select> -->

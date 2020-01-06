@@ -42,16 +42,17 @@ public class UserVolunteerController {
 	  public void volunteerView(int volunteerno, Model model) {
 		  Volunteer volunteer = userVolunteerService.getVolunteer(volunteerno);
 		  
-		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
+//		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
 		  
 		  model.addAttribute("vol", volunteer);
-		  model.addAttribute("prtlist", applicantlist);
+//		  model.addAttribute("prtlist", applicantlist);
 		  
 	  }
 	  
 	  @RequestMapping(value="/user/volunteer/view_ok")
 	  public ModelAndView volunteerView(ModelAndView mav, HttpSession session, int volunteerno) {
 
+		  System.out.println(volunteerno);
 		// 추천테이블이 만약에 추천번호(기본키), 유저번호(외래키), 게시판번호(외래키)
 		// 유저번호로 select를 판단할거다 -> 있으면 추천취소 뜨게 할거고, 없으면 추천 뜨게할거다.
 		
@@ -59,7 +60,6 @@ public class UserVolunteerController {
 		  if(session.getAttribute("uemail") != null) {
 			  //1. 로그인했을때 세션에 저장된 이메일을 통해 유전번호를 가져와여
 			  int userno = userVolunteerService.getUserno((String)session.getAttribute("uemail"));
-			  
 			  //2. 유저번호랑, 봉사번호를 DTO에 담아준다.
 			  Applicant applicant = new Applicant();
 			  

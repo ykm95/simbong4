@@ -16,7 +16,7 @@ public interface UserVolunteerService {
 
 	public int getCntVolunteerAll(PagingVolunteer pagingVolunteer);
 
-	public List<Applicant> getAplByNo(int volunteerno);
+//	public List<Applicant> getAplByNo(int volunteerno);
 
 	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer);
 
