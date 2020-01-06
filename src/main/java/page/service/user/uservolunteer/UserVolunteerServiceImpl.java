@@ -59,11 +59,11 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 		return userVolunteerDao.selectCntVolunteer(pagingVolunteer);
 	}
 
-	@Override
-	public List<Applicant> getAplByNo(int volunteerno) {
-		
-		return userVolunteerDao.selectAplByNo(volunteerno);
-	}
+//	@Override
+//	public List<Applicant> getAplByNo(int volunteerno) {
+//		
+//		return userVolunteerDao.selectAplByNo(volunteerno);
+//	}
 
 	@Override
 	public int getUserno(String attribute) {

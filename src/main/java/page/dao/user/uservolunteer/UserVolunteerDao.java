@@ -14,7 +14,7 @@ public interface UserVolunteerDao {
 
 	public int selectCntVolunteer(PagingVolunteer pagingVolunteer);
 	
-	public List<Applicant> selectAplByNo(int volunteerno);
+//	public List<Applicant> selectAplByNo(int volunteerno);
 
 	public int selectUserNo(String attribute);
 
