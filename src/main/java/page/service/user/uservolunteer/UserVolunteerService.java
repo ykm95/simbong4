@@ -2,8 +2,6 @@ package page.service.user.uservolunteer;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import page.dto.Participant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;
@@ -18,7 +16,7 @@ public interface UserVolunteerService {
 
 	public List<Participant> getPrtByNo(int volunteerno);
 
-	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer, HttpServletRequest req);
+	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer);
 
 
 

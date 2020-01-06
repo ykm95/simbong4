@@ -1,5 +1,7 @@
 package page.util;
 
+import java.util.Arrays;
+
 public class PagingTalent {
 
 	private int t_process;
@@ -8,9 +10,24 @@ public class PagingTalent {
 	private int t_area;
 	private String t_start;
 	private String t_end;
-	private String t_cycle;
-	private String t_title;
+	private String[] t_cycle;
+	private String t_content;
 	
+	
+	public String getT_content() {
+		return t_content;
+	}
+	public void setT_content(String t_content) {
+		this.t_content = t_content;
+	}
+	public String[] getT_cycle() {
+	return t_cycle;
+}
+public void setT_cycle(String[] t_cycle) {
+	this.t_cycle = t_cycle;
+}
+	private String t_title;
+
 	private int curPage; // 현재 페이지 번호 (브라우저에서 선택한 페이지 번호)
 	
 	private int totalCount; // 총 게시글 수 (DB에서 조회된 전체 결과의 행 수)
@@ -62,11 +79,12 @@ public class PagingTalent {
 	
 	@Override
 	public String toString() {
-		return "Paging [t_process=" + t_process + ", t_type=" + t_type + ", t_department=" + t_department + ", t_area="
-				+ t_area + ", t_start=" + t_start + ", t_end=" + t_end + ", t_cycle=" + t_cycle + ", t_title=" + t_title
-				+ ", curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
-				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
-				+ ", startNo=" + startNo + ", endNo=" + endNo + "]";
+		return "PagingTalent [t_process=" + t_process + ", t_type=" + t_type + ", t_department=" + t_department
+				+ ", t_area=" + t_area + ", t_start=" + t_start + ", t_end=" + t_end + ", t_cycle="
+				+ Arrays.toString(t_cycle) + ", t_content=" + t_content + ", t_title=" + t_title + ", curPage="
+				+ curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage=" + totalPage
+				+ ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage + ", startNo="
+				+ startNo + ", endNo=" + endNo + "]";
 	}
 
 	//페이징 정보 생성
@@ -100,9 +118,6 @@ public class PagingTalent {
 	}
 
 
-	public void setT_cycle(String t_cycle) {
-		this.t_cycle = t_cycle;
-	}
 	public int getT_process() {
 		return t_process;
 	}
@@ -138,9 +153,6 @@ public class PagingTalent {
 	}
 	public void setT_end(String t_end) {
 		this.t_end = t_end;
-	}
-	public String getT_cycle() {
-		return t_cycle;
 	}
 	public String getT_title() {
 		return t_title;

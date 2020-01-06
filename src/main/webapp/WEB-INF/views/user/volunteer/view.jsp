@@ -67,46 +67,45 @@ $(document).ready(function(){
 			<td colspan="3">${talent.talentno }</td>
 		</tr>
 
-		<tr>
-			<td class="info">제목</td>
-			<td colspan="3">${talent.talent_title }</td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<td class="info">제목</td> -->
+<%-- 			<td colspan="3">${talent.talent_title }</td> --%>
+<!-- 		</tr> -->
 
-		<tr>
-			<td class="info">아이디</td>
-			<td colspan="3">${talent. }</td>
-		</tr>
+<!-- <!-- 		<tr> --> -->
+<!-- <!-- 			<td class="info">아이디</td> --> -->
+<%-- <%-- 			<td colspan="3">${talent. }</td> --%> --%>
+<!-- <!-- 		</tr> --> -->
 		
-		<tr>
-			<td class="info">닉네임</td>
-			<td colspan="3">${member.nick }</td>
-		</tr>
+<!-- <!-- 		<tr> --> -->
+<!-- <!-- 			<td class="info">닉네임</td> --> -->
+<%-- <%-- 			<td colspan="3">${member.nick }</td> --%> --%>
+<!-- <!-- 		</tr> --> -->
 
 
-		<tr>
-			<td class="info">작성일</td>
-			<td colspan="3">${talent.write_date }</td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<td class="info">작성일</td> -->
+<%-- 			<td colspan="3">${talent.write_date }</td> --%>
+<!-- 		</tr> -->
 
-		<tr>
-			<td class="info" colspan="4">본문</td>
-		</tr>
-		<tr>
-			<td colspan="4">${talent.content }</td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<td class="info" colspan="4">본문</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<%-- 			<td colspan="4">${talent.content }</td> --%>
+<!-- 		</tr> -->
 
-	</table>
+<!-- 	</table> -->
 
 
-	<div class="text-right">
-		<button id="btnList" class="btn btn-primary">목록</button>
+<!-- 	<div class="text-right"> -->
+<!-- 		<button id="btnList" class="btn btn-primary">목록</button> -->
 		
-		<c:if test="${talent.writer_id eq loginid }">
-		<button id="btnUpdate" class="btn btn-info">수정</button>
-		<button id="btnDelete" class="btn btn-danger">삭제</button>
-		</c:if>
-	</div>
+<%-- 		<c:if test="${talent.writer_id eq loginid }"> --%>
+<!-- 		<button id="btnUpdate" class="btn btn-info">수정</button> -->
+<!-- 		<button id="btnDelete" class="btn btn-danger">삭제</button> -->
+<%-- 		</c:if> --%>
+<!-- 	</div> -->
 
 
-</div>  <!-- container -->
-
+<!-- </div>  container -->
