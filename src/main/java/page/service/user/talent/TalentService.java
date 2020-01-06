@@ -13,7 +13,7 @@ public interface TalentService {
 
 	public Talent getTalent(int talentno);
 
-	public void write(Talent talent);
+	public void write(PagingTalent paging);
 
 	public int getCntTalent(PagingTalent paging);
 
@@ -21,6 +21,6 @@ public interface TalentService {
 	
 	public void delete(int talentno);
 	
-	public PagingTalent getPaging(PagingTalent paging, HttpServletRequest req);
+	public PagingTalent getPaging(PagingTalent paging);
 
 }

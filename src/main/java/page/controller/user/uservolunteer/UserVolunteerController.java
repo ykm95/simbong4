@@ -24,9 +24,9 @@ public class UserVolunteerController {
 	  private static final Logger logger= LoggerFactory.getLogger(UserVolunteerController.class);
 	  
 	  @RequestMapping(value="/user/volunteer/list")
-	  public void volunteerList(Model model, PagingVolunteer paging, HttpServletRequest req) {
+	  public void volunteerList(Model model, PagingVolunteer paging) {
 		  
-		  paging = userVolunteerService.getPaging(paging, req);
+		  paging = userVolunteerService.getPaging(paging);
   		  
 		  List<Volunteer> volunteerlist = userVolunteerService.getVolunteerList(paging);
 		  

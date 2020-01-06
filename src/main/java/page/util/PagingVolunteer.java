@@ -9,9 +9,21 @@ public class PagingVolunteer {
 	private String v_sterm;
 	private String v_eterm;
 	private int v_process;
-	private String stime;
-	private String etime;
+	private String v_stime;
+	private String v_etime;
 	
+	public String getV_stime() {
+		return v_stime;
+	}
+	public void setV_stime(String v_stime) {
+		this.v_stime = v_stime;
+	}
+	public String getV_etime() {
+		return v_etime;
+	}
+	public void setV_etime(String v_etime) {
+		this.v_etime = v_etime;
+	}
 	public int getV_department() {
 		return v_department;
 	}
@@ -41,18 +53,6 @@ public class PagingVolunteer {
 	}
 	public void setV_process(int v_process) {
 		this.v_process = v_process;
-	}
-	public String getStime() {
-		return stime;
-	}
-	public void setStime(String stime) {
-		this.stime = stime;
-	}
-	public String getEtime() {
-		return etime;
-	}
-	public void setEtime(String etime) {
-		this.etime = etime;
 	}
 
 	private int curPage; // 현재 페이지 번호 (브라우저에서 선택한 페이지 번호)
@@ -105,11 +105,12 @@ public class PagingVolunteer {
 	
 	@Override
 	public String toString() {
-		return "Paging [search=" + search + ", searchno=" + searchno + ", v_department=" + v_department + ", v_area="
-				+ v_area + ", v_sterm=" + v_sterm + ", v_eterm=" + v_eterm + ", v_process=" + v_process + ", stime="
-				+ stime + ", etime=" + etime + ", curPage=" + curPage + ", totalCount=" + totalCount + ", listCount="
-				+ listCount + ", totalPage=" + totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage
-				+ ", endPage=" + endPage + ", startNo=" + startNo + ", endNo=" + endNo + "]";
+		return "PagingVolunteer [search=" + search + ", searchno=" + searchno + ", v_department=" + v_department
+				+ ", v_area=" + v_area + ", v_sterm=" + v_sterm + ", v_eterm=" + v_eterm + ", v_process=" + v_process
+				+ ", v_stime=" + v_stime + ", v_etime=" + v_etime + ", curPage=" + curPage + ", totalCount="
+				+ totalCount + ", listCount=" + listCount + ", totalPage=" + totalPage + ", pageCount=" + pageCount
+				+ ", startPage=" + startPage + ", endPage=" + endPage + ", startNo=" + startNo + ", endNo=" + endNo
+				+ "]";
 	}
 
 	//페이징 정보 생성

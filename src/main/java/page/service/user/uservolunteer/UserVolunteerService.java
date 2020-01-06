@@ -18,7 +18,7 @@ public interface UserVolunteerService {
 
 	public List<Participant> getPrtByNo(int volunteerno);
 
-	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer, HttpServletRequest req);
+	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer);
 
 
 
