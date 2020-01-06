@@ -4,11 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
 <script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
@@ -18,6 +14,7 @@
 
 $(document).ready(function(){
 	
+ 	//지역 대분류 변경시에 소분류 변경
 	$("select[name='area']").change(function() {
 		
 		if( $(this).val() == 1) {
@@ -70,7 +67,7 @@ $(document).ready(function(){
 			
 		} else if( $(this).val() == 13) {
 			
-			$('#area').html('<option disabled="disabled">전주시</option><option value="1301">전주시 완산구</option><option value="1302">전주시 덕진구</option><option value="1303">군산시</option><option value="1304">익산시</option><option value="1305">정읍시</option><option value="1306">남원시</option><option value="1307">김제시</option><option value="1308">완주군</option><option value="1309">진안군</option><option value="1310">무주군</option><option value="1311">장수군</option><option value="1312">임실군</option><option value="1313">순양군</option><option value="1314">고창군</option><option value="1315">부안군</option>');
+			$('#area').html('<option disabled="disabled">전주시</option><option value="1301">전주시 완산구</option><option value="1302">전주시 덕진구</option><option value="1303">군산시</option><option value="1304">익산시</option><option value="1305">정읍시</option><option value="1306">남원시</option><option value="1307">김제시</option><option value="1308">완주군</option><option value="1309">진안군</option><option value="1310">무주군</option><option value="1311">장수군</option><option value="1312">임실군</option><option value="1313">순창군</option><option value="1314">고창군</option><option value="1315">부안군</option>');
 			
 		} else if( $(this).val() == 14) {
 			
@@ -90,11 +87,71 @@ $(document).ready(function(){
 			
 		}
 		
-	})
+	});
 	
 	
+	//CKEDITOR 설치
 	CKEDITOR.replace( 'editor1' );
-	
+
+ 	
+ 	//종료시점 변경시 시작시점과 비교
+ 	var s = $('#sterm');
+ 	var e = $('#eterm');
+ 	
+ 	e.change(function(){
+ 		
+ 		if( s.val() == "" || s.val() == null ){
+ 			
+ 			alert('시작 시점을 먼저 선택해주세요.')
+ 			e.val("");
+ 			
+ 		} else {
+ 			
+ 			if( e.val() < s.val() ){
+ 				
+ 	 			alert('종료 시점은 시작 시점보다 빠를 수 없습니다.')
+ 	 			e.val("");
+ 			}
+ 		}
+ 	});
+ 	
+ 	
+ 	//종료시간 변경시 시작시간과 비교
+ 	var st = $('#stime');
+ 	var et = $('#etime');
+ 	
+ 	et.change(function(){
+ 		
+ 		console.log(st.val())
+ 		console.log(et.val())
+ 		
+ 		if( st.val() == "" || st.val() == null ){
+ 			
+ 			alert('시작 시간을 먼저 선택해주세요.')
+ 			et.val("");
+ 			
+ 		} else {
+ 			
+ 			if( et.val() < st.val() ){
+ 				
+ 	 			alert('종료 시간은 시작 시간보다 빠를 수 없습니다.')
+ 	 			et.val("");
+ 			}
+ 		}
+ 	});
+ 	
+ 	//폼 전송버튼, 취소 버튼
+ 	$('#post').click(function(){
+ 		
+ 		$('#form').submit()
+ 	});
+ 	
+ 	$('#cancle').click(function(){
+ 		
+ 		$(location).attr('href', '/center/volunteer/list');
+ 	});
+ 	
+ 	
 });
 
 </script>
@@ -104,129 +161,142 @@ $(document).ready(function(){
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 </style>
 
-</head>
-<body>
+<div class="container">
 
-<h1>봉사활동 작성</h1>
-<hr>
-
-<form action="/center/volunteer/write" method="post">
-	<table>
-		<tr>
-			<th>제목</th>
-			<td><input type="text" name="vol_title"></td>
-		</tr>
-		<tr>
-			<th>활동기간</th>
-			<td><input type="date" name="vol_sterm"> ~ </td>
-			<td><input type="date" name="vol_eterm"></td>
-		</tr>
-		<tr>
-			<th>활동시간</th>
-			<td><input type="time" name="stime"> ~ </td>
-			<td><input type="time" name="etime"></td>
-		</tr>
-		<tr>
-			<th>활동분야</th>
-			<td>
-				<select name="department">
-					<option value="1">시설봉사</option>
-					<option value="2">재가봉사</option>
-					<option value="3">전문봉사</option>
-					<option value="4">지역사회봉사</option>
-					<option value="5">금,물품봉사</option>
-					<option value="6">해외봉사</option>
-					<option value="7">헌혈</option>
-					<option value="8">기타봉사</option>
+	<form action="/center/volunteer/write" method="post" id="form" style="padding: 30px 50px;">
+		<div class="form-group">
+			<label for="title">제목</label>
+			<input type="text" id="title" class="form-control" name="vol_title" required="required">
+		</div><br>
+		
+		활동기간
+		<div class="row">
+			<div class="col">
+				<input type="date" class="form-control" name="vol_sterm" id="sterm" required="required"> 
+			</div>
+			~
+			<div class="col">
+				<input type="date" class="form-control" name="vol_eterm" id="eterm" required="required">
+			</div>
+		</div><br>
+		
+		활동시간
+		<div class="row">
+			<div class="col">
+				<input type="time" class="form-control" name="stime" id="stime" required="required"> 
+			</div>
+			~
+			<div class="col">
+				<input type="time" class="form-control" name="etime" id="etime" required="required">
+			</div>
+		</div><br>	
+			
+		활동분야
+		<div>
+			<select name="department" class="form-control">
+				<option value="1">시설봉사</option>
+				<option value="2">재가봉사</option>
+				<option value="3">전문봉사</option>
+				<option value="4">지역사회봉사</option>
+				<option value="5">금,물품봉사</option>
+				<option value="6">해외봉사</option>
+				<option value="7">헌혈</option>
+				<option value="8">기타봉사</option>
+			</select>
+		</div><br>	
+				
+			
+		봉사지역
+		<div class="row">
+			<div class="col">
+				<select name='area' class="form-control">
+					<option value='1'>서울</option>
+					<option value='2'>부산</option>
+					<option value='3'>대구</option>
+					<option value='4'>인천</option>
+					<option value='5'>광주</option>
+					<option value='6'>대전</option>
+					<option value='7'>울산</option>
+					<option value='8'>세종</option>
+					<option value='9'>경기</option>
+					<option value='10'>강원</option>
+					<option value='11'>충북</option>
+					<option value='12'>충남</option>
+					<option value='13'>전북</option>
+					<option value='14'>전남</option>
+					<option value='15'>경북</option>
+					<option value='16'>경남</option>
+					<option value='17'>제주</option>
 				</select>
-			</td>
-		</tr>
-		<tr>
-			<th>봉사지역</th>
-			<td>
-			<select name='area'>
-				<option value='1'>서울</option>
-				<option value='2'>부산</option>
-				<option value='3'>대구</option>
-				<option value='4'>인천</option>
-				<option value='5'>광주</option>
-				<option value='6'>대전</option>
-				<option value='7'>울산</option>
-				<option value='8'>세종</option>
-				<option value='9'>경기</option>
-				<option value='10'>강원</option>
-				<option value='11'>충북</option>
-				<option value='12'>충남</option>
-				<option value='13'>전북</option>
-				<option value='14'>전남</option>
-				<option value='15'>경북</option>
-				<option value='16'>경남</option>
-				<option value='17'>제주</option>
-			</select>
+			</div>
 			
-			<select id="area" name="vol_area">
-				<option value="0101">종로구</option>
-				<option value="0102">중구</option>
-				<option value="0103">용산구</option>
-				<option value="0104">성동구</option>
-				<option value="0105">광진구</option>
-				<option value="0106">동대문구</option>
-				<option value="0107">중랑구</option>
-				<option value="0108">성북구</option>
-				<option value="0109">강북구</option>
-				<option value="0110">도봉구</option>
-				<option value="0111">노원구</option>
-				<option value="0112">은평구</option>
-				<option value="0113">서대문구</option>
-				<option value="0114">마포구</option>
-				<option value="0115">양천구</option>
-				<option value="0116">강서구</option>
-				<option value="0117">구로구</option>
-				<option value="0118">금천구</option>
-				<option value="0119">영등포구</option>
-				<option value="0120">동작구</option>
-				<option value="0121">관악구</option>
-				<option value="0122">서초구</option>
-				<option value="0123">강남구</option>
-				<option value="0124">송파구</option>
-				<option value="0125">강동구</option>
-			</select>
+			<div class="col">	
+				<select id="area" name="vol_area" class="form-control">
+					<option value="0101">종로구</option>
+					<option value="0102">중구</option>
+					<option value="0103">용산구</option>
+					<option value="0104">성동구</option>
+					<option value="0105">광진구</option>
+					<option value="0106">동대문구</option>
+					<option value="0107">중랑구</option>
+					<option value="0108">성북구</option>
+					<option value="0109">강북구</option>
+					<option value="0110">도봉구</option>
+					<option value="0111">노원구</option>
+					<option value="0112">은평구</option>
+					<option value="0113">서대문구</option>
+					<option value="0114">마포구</option>
+					<option value="0115">양천구</option>
+					<option value="0116">강서구</option>
+					<option value="0117">구로구</option>
+					<option value="0118">금천구</option>
+					<option value="0119">영등포구</option>
+					<option value="0120">동작구</option>
+					<option value="0121">관악구</option>
+					<option value="0122">서초구</option>
+					<option value="0123">강남구</option>
+					<option value="0124">송파구</option>
+					<option value="0125">강동구</option>
+				</select>
+			</div>
+		</div><br>	
 			
-			</td>
-		</tr>
-		<tr>
-			<th>봉사장소</th>
-			<td><input type="text" name="vol_place"></td>
-		</tr>
-		<tr>
-			<th>봉사대상</th>
-			<td><input type="text" name="receiver"></td>
-		</tr>
-		<tr>
-			<th>지원자격</th>
-			<td><input type="text" name="qualification"></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><textarea rows="500px" cols="400px" name="vol_content" id="editor1"></textarea></td>
-		</tr>
-		<tr>
-			<th>필요인원</th>
-			<td><input type="number" name="npeople" min="1" max="100" ></td>
-		</tr>
-	</table>
+		<div id="map" style="width:600px;height:500px;margin:50px auto;"></div><br>
+				
+		<div>
+			<label for="place">봉사장소</label>
+			<input type="text" id="place" name="vol_place" required="required" class="form-control">
+		</div><br>		
+		
+		<div>
+			<label for="receiver">봉사대상</label>
+			<input type="text" id="receiver" name="receiver" required="required" class="form-control">
+		</div><br>	
+		
+		<div>
+			<label for="qualification">지원자격</label>
+			<input type="text" id="qualification" name="qualification" required="required" class="form-control">
+		</div><br>
+		
+		<div>
+			<textarea rows="500px" cols="00px" name="vol_content" id="editor1" required="required"></textarea>
+		</div><br>
+		
+		<div>
+			<label for="npeople">필요인원</label>
+			<input type="number" id="npeople" name="npeople" min="1" max="100" required="required" class="form-control">
+		</div><br>
+		
+		<input id='lat' type='hidden' name='vol_lat' required="required">
+		<input id='lng' type='hidden' name='vol_lng' required="required">
+		<input id='address' type='hidden' name='vol_address' required="required">
+		
+	</form>
 	
-	<div id="editor" style="width:500px;height:400px;" ></div>
-	
-	<div id="map" style="width:500px;height:400px;"></div>
-	
-	<input id='lat' type='hidden' name='vol_lat'>
-	<input id='lng' type='hidden' name='vol_lng'>
-	<input id='address' type='hidden' name='vol_address'>
-	
-	
-	<button>작성</button>
-</form>
+	<button class="btn btn-secondary" id="post">작성</button>
+	<button class="btn btn-danger" id="cancle">취소</button>
+
+</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82300581f28915a67d685b53b5de8fe6&libraries=services,clusterer,drawing"></script>
 	
@@ -235,7 +305,7 @@ $(document).ready(function(){
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 		center: new kakao.maps.LatLng(37.5530016684289, 126.97263557634193), //지도의 중심좌표.
-		level: 3 //지도의 레벨(확대, 축소 정도)
+		level: 6 //지도의 레벨(확대, 축소 정도)
 	};
 	
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -253,6 +323,9 @@ $(document).ready(function(){
 	// 지도에 마커를 표시합니다
 	marker.setMap(map);
 	
+	// 마커가 드래그 가능하도록 설정합니다 
+	marker.setDraggable(true); 
+	
 	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 	var mapTypeControl = new kakao.maps.MapTypeControl();
 
@@ -263,6 +336,43 @@ $(document).ready(function(){
 	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 	var zoomControl = new kakao.maps.ZoomControl();
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+	
+	// 처음 접속했을때 위도, 경도 기본값 주기
+	searchDetailAddrFromCoords(map.getCenter(), function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+            
+            var content = '<div class="bAddr">' +
+                            '<span class="title">선택한 주소정보</span>' + 
+                            detailAddr + 
+                        '</div>';
+                        
+           	if(result[0].road_address != null){
+           		
+	            $('#address').val(result[0].road_address.address_name);
+          
+           	} else {
+           			           		
+				$('#address').val(result[0].address.address_name);
+           	}
+
+
+			
+            // 마커를 클릭한 위치에 표시합니다 
+            marker.setPosition(map.getCenter());
+            marker.setMap(map);
+
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+        }   
+        
+    });
+	
+	
+///////////////////////////////////////////////////////////////
+
 
 	// 지도에 클릭 이벤트를 등록합니다
 	// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
@@ -297,14 +407,11 @@ $(document).ready(function(){
 	            infowindow.setContent(content);
 	            infowindow.open(map, marker);
 	        }   
+	        
 	    });
 	    
 	// 클릭한 위도, 경도 정보를 가져옵니다 
-	var latlng = mouseEvent.latLng; 
-	    
-// 	// 마커 위치를 클릭한 위치로 옮깁니다
-// 	marker.setPosition(latlng);
-
+	var latlng = mouseEvent.latLng;
 	
 	$('#lat').val(latlng.getLat());
 	$('#lng').val(latlng.getLng());
@@ -312,11 +419,123 @@ $(document).ready(function(){
 	});
 	
 	function searchDetailAddrFromCoords(coords, callback) {
-	    // 좌표로 법정동 상세 주소 정보를 요청합니다
+		
+		// 좌표로 법정동 상세 주소 정보를 요청합니다
 	    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
 	}
 
+	
+//////////////////////////////////////////////////////////////////////
+	
+	
+	//지역 변경시 지도이동
+	$('#area').change(function(){
+		
+		var area = $('#area').val();
+		
+		$.ajax({
+			type: "get"
+			, url: "/center/area"
+			, data: {"areano": area}
+			, datatype: "json"
+			, success: function(res){
+		
+// 				console.log(res.area.lat)
+// 				console.log(res.area.lng)
+				
+				function panTo() {
+				    // 이동할 위도 경도 위치를 생성합니다 
+				    var moveLatLon = new kakao.maps.LatLng(res.area.lat, res.area.lng);
+				    
+				    // 지도 중심을 부드럽게 이동시킵니다
+				    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+				    map.panTo(moveLatLon);            
+				}
+			    
+			    $('#lat').val(res.area.lat);
+				$('#lng').val(res.area.lng);
+				
+				panTo();
+				
+				searchDetailAddrFromCoords(map.getCenter(), function(result, status) {
+			        if (status === kakao.maps.services.Status.OK) {
+			            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+			            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+			            
+			            var content = '<div class="bAddr">' +
+			                            '<span class="title">선택한 주소정보</span>' + 
+			                            detailAddr + 
+			                        '</div>';
+			                        
+			           	if(result[0].road_address != null){
+			           		
+				            $('#address').val(result[0].road_address.address_name);
+			          
+			           	} else {
+			           			           		
+							$('#address').val(result[0].address.address_name);
+			           	}
+
+
+						
+			            // 마커를 클릭한 위치에 표시합니다 
+			            marker.setPosition(map.getCenter());
+			            marker.setMap(map);
+
+			            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+			            infowindow.setContent(content);
+			            infowindow.open(map, marker);
+			        }
+			     
+				});
+				
+			}
+				
+		})
+		
+		
+	});
+	
+	
+////////////////////////////////////////////////////////////////
+
+	
+	kakao.maps.event.addListener(marker, 'dragend', function() {
+		
+		searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+	            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+	            
+	            var content = '<div class="bAddr">' +
+	                            '<span class="title">선택한 주소정보</span>' + 
+	                            detailAddr + 
+	                        '</div>';
+	                        
+	           	if(result[0].road_address != null){
+	           		
+		            $('#address').val(result[0].road_address.address_name);
+	          
+	           	} else {
+	           			           		
+					$('#address').val(result[0].address.address_name);
+	           	}
+
+
+	            // 마커를 클릭한 위치에 표시합니다 
+	            marker.setPosition(marker.getPosition());
+	            marker.setMap(map);
+
+	            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+	            infowindow.setContent(content);
+	            infowindow.open(map, marker);
+	        }
+	     
+		});
+		
+	});
+	
+	
 	</script>
 	
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

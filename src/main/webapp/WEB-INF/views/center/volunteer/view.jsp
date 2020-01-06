@@ -4,39 +4,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
-<title>Insert title here</title>
 
 <style>
     .title {font-weight:bold;display:block;}
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 </style>
 
-</head>
-<body>
+	<div class="container" style="margin: 30px auto">
 
-	<h1>봉사활동</h1>
-	<hr>
+		<div style="padding: 30px 160px;">
+			<h2>${vol.vol_title }</h2>
+		</div>
 
-	<table>
-		<tr>
-			<th>${vol.vol_title }</th>
-		</tr>
-		<tr>
-			<th>활동기간</th>
-			<td>${vol.vol_sterm }~ ${vol.vol_eterm }</td>
-		</tr>
-		<tr>
-			<th>활동시간</th>
-			<td>${vol.stime } ~ ${vol.etime }</td>
-		</tr>
-		<tr>
-			<th>활동분야</th>
-			<td><c:choose>
+		<table class="table" style="width: 70%; margin: 0 auto;">
+		
+			<tr>
+				<td colspan="1" style="background: #CCC">활동기간</td>
+				<td colspan="3" style="text-align: center;">${vol.vol_sterm }~ ${vol.vol_eterm }</td>
+			</tr>
+		
+		
+			<tr>
+				<td style="background: #CCC">활동시간</td>
+				<td style="text-align: center;">${vol.stime } ~ ${vol.etime }</td>
+				<td style="background: #CCC">활동분야</td>
+				<td style="text-align: center;"><c:choose>
 					<c:when test="${vol.department eq 1 }">시설봉사</c:when>
 					<c:when test="${vol.department eq 2 }">재가봉사</c:when>
 					<c:when test="${vol.department eq 3 }">전문봉사</c:when>
@@ -46,59 +40,92 @@
 					<c:when test="${vol.department eq 7 }">헌혈</c:when>
 					<c:when test="${vol.department eq 8 }">기타봉사</c:when>
 				</c:choose></td>
-		</tr>
-		<tr>
-			<th>봉사지역</th>
-			<td>${vol.aname }</td>
+			</tr>
+		
+		</table>
+		
+		<br><br><br>
+		
+		<table class="table" style="width: 70%; margin: 0 auto;">
+			<tr>
+				<td colspan="1" style="background: #CCC">봉사지역</td>
+				<td colspan="3" style="text-align: center">${vol.aname }</td>
+			</tr>
+		</table>
+		
+		
+		<div id="map" style="width:600px;height:500px;margin:30px auto;"></div>
+		
+		<table class="table" style="width: 70%; margin: 0 auto;">
+		
+			<tr>
+				<td colspan="1" style="background: #CCC">봉사장소</td>
+				<td colspan="3" style="text-align: center">${vol.vol_place }</td>
+			</tr>
 			
-		</tr>
-		<tr>
-			<th>봉사장소</th>
-			<td>${vol.vol_place }</td>
-		</tr>
-		<tr>
-			<th>봉사대상</th>
-			<td>${vol.receiver }</td>
-		</tr>
-		<tr>
-			<th>지원자격</th>
-			<td>${vol.qualification }</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>${vol.vol_content }</td>
-		</tr>
-		<tr>
-			<th>필요/신청인원</th>
-			<td>${vol.npeople }/${vol.apeople }</td>
-		</tr>
-		<tr>
-			<th>담당자</th>
-			<td>${vol.mgr }</td>
-			<th>이메일</th>
-			<td>${vol.memail }</td>
-			<th>연락처</th>
-			<td>${vol.mphone }</td>
-		</tr>
-	</table>
+		
+			<tr>
+				<td colspan="1" style="background: #CCC">봉사대상</td>
+				<td colspan="3" style="text-align: center">${vol.receiver }</td>
+			</tr>
+		</table>
 	
-	<div id="map" style="width:500px;height:400px;"></div>
-	<div id="clickLatlng"></div>
+		<br><br><br>
 	
+		<table class="table" style="width: 70%; margin: 0 auto;">
+		
+			<tr>
+				<td colspan="1" style="background: #CCC">지원자격</td>
+				<td colspan="3" style="text-align: center">${vol.qualification }</td>
+			</tr>
+		
+		
+			<tr>
+				<td colspan="1" style="background: #CCC">내용</td>
+				<td colspan="3" style="text-align: center">${vol.vol_content }</td>
+			</tr>
+		
+		
+			<tr>
+				<td colspan="1" style="background: #CCC">필요/신청인원</td>
+				<td colspan="3" style="text-align: center">${vol.npeople }/${vol.apeople }</td>
+			</tr>
 	
-	
-	<br>
-	<a href="/center/volunteer/list"><button>목록</button></a> 
-	<a href="/center/volunteer/update?volunteerno=${vol.volunteerno }"><button>수정</button></a> 
-	<a href="/center/volunteer/delete?volunteerno=${vol.volunteerno }"><button>삭제</button></a>
+		</table>
+		
+		<br><br><br>
+		
+		<div style="text-align:center; width:800px;height:50px; background: #CCC; margin:10px auto">
+			<div class="row" style="padding: 15px;">
+				<div class="col">
+					담당자 : ${vol.mgr }
+				</div>
+				<div class="col">
+					이메일 : ${vol.memail }
+				</div>
+				<div class="col">
+					연락처 : ${vol.mphone }
+				</div>
+			</div>		
+		</div>
+		
+		
+		<br>
+		<div style="margin: 0 150px;">
+			<a href="/center/volunteer/list"><button class="btn btn-secondary" >목록</button></a> 
+			<a href="/center/volunteer/update?volunteerno=${vol.volunteerno }"><button class="btn btn-secondary">수정</button></a> 
+			<a href="/center/volunteer/delete?volunteerno=${vol.volunteerno }"><button class="btn btn-danger">삭제</button></a>
+		</div>
+		
+	</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82300581f28915a67d685b53b5de8fe6&libraries=services,clusterer,drawing"></script>
 
 <script>
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new kakao.maps.LatLng(${vol.vol_lat}, ${vol.vol_lng}), //지도의 중심좌표.
-		level: 3 //지도의 레벨(확대, 축소 정도)
+		center: new kakao.maps.LatLng( ${vol.vol_lat}, ${vol.vol_lng} ), //지도의 중심좌표.
+		level: 6 //지도의 레벨(확대, 축소 정도)
 	};
 	
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -151,5 +178,4 @@
 
 </script>
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

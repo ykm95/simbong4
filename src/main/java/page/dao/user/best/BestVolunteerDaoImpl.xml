@@ -56,8 +56,21 @@
   </select>
   
   <select id="selectBestVolunteerBybestno" resultMap="Best" parameterType="int">
- 	SELECT * FROM bestvolunteer
- 	WHERE bestno=#{bestno }
+	  SELECT 
+     	B.userno
+        , B.bestno
+		, B.write_date
+		, B.hit
+		, B.best_title
+		, B.best_content
+		, B.pic
+		, U.uname
+		, V.vol_time
+     FROM bestvolunteer B
+     left join usertb U on(B.userno=U.userno)
+     left join applicant A on(U.userno = A.userno)
+     left join volrecord V on (A.applicantno=V.applicantno)
+     WHERE B.bestno=${bestno }
   </select>
   
   

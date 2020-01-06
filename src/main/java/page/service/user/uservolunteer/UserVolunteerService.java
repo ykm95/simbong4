@@ -2,8 +2,6 @@ package page.service.user.uservolunteer;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import page.dto.Participant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;

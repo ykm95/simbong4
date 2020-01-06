@@ -11,11 +11,14 @@ public class BestVolunteer {
 	private String bestTitle;
 	private String bestContent;
 	private String pic;
+	private String uname;
+	private int vol_time;
 	
 	@Override
 	public String toString() {
 		return "BestVolunteer [bestno=" + bestno + ", userno=" + userno + ", writedate=" + writedate + ", hit=" + hit
-				+ ", bestTitle=" + bestTitle + ", bestContent=" + bestContent + ", pic=" + pic + "]";
+				+ ", bestTitle=" + bestTitle + ", bestContent=" + bestContent + ", pic=" + pic + ", uname=" + uname
+				+ ", vol_time=" + vol_time + "]";
 	}
 
 	public int getBestno() {
@@ -73,7 +76,23 @@ public class BestVolunteer {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	
-	
 
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+	public int getVol_time() {
+		return vol_time;
+	}
+
+	public void setVol_time(int vol_time) {
+		this.vol_time = vol_time;
+	}
+	
+	
+	
 }

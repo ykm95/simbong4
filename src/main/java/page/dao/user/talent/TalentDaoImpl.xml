@@ -129,4 +129,3 @@
 		talentno = #{talentno}
 	</delete>
 </mapper>
-

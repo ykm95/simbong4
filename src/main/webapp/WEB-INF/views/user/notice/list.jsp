@@ -38,13 +38,13 @@
 	<h1>공지사항</h1>
 	<form action="/user/notice/list" method="GET">
 		<div id="search" class="form-inline" style="float:right">
-			<select id="searchcategory" name="searchcategory">
+			<select id="searchcategory" name="searchcategory"  class="form-control">
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 			</select> <input type="text" id="keyword" class="form-control" name="keyword"
 				placeholder="검색어를 입력하세요">
 
-			<button id="btnsearch">검색</button>
+			<button class="btn btn-secondary" id="btnsearch">검색</button>
 
 		</div>
 	</form>

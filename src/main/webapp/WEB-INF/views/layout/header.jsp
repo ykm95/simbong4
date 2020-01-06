@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" --%>
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
@@ -30,6 +30,8 @@
 	margin: 0;
 	padding: 30px 0;
 	display: inline-block;
+    
+
 }
 #footer .mark1 ul li img {
 	text-align:center;
@@ -38,6 +40,11 @@
 
 ul{
 	list-style-type:none;
+}
+
+#wrapper{
+
+	min-height: 800px;
 }
 
 

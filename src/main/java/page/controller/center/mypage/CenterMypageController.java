@@ -28,9 +28,6 @@ public class CenterMypageController {
 	@Autowired
 	ServletContext context;
 	
-	@RequestMapping(value="/center/main")
-	public void centerMain() { }
-	
 	@RequestMapping(value="/center/login", method=RequestMethod.GET)
 	public void centerLogin() {
 		logger.info("센터회원 로그인폼 접속성공");
@@ -42,8 +39,12 @@ public class CenterMypageController {
 		boolean isLogin = centerMypageService.login(center);
 		
 		if( isLogin ) {
+			
+			session.setMaxInactiveInterval(0);
+			
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginId", center.getBusinessno());
+			session.setAttribute("centerno", 1);
 		}
 		
 		return "redirect:/center/main";
@@ -160,46 +161,47 @@ public class CenterMypageController {
 	}
 	
 	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
-	public String writeQuestion(Center center, HttpSession session) {
+	public String writeQuestion() {
 
 		logger.info("접속성공");
 		
 		return "/center/mypage/questionForm";
 	}
 	
-//	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.POST)
-//	public String writeQuestionProc(CenterQuestion centerquestion,
-//								  Center center,
-//								  HttpSession session,
-//								  @RequestParam(value="cquestion_title") String title,
-//								  @RequestParam(value="pic") MultipartFile fileupload) {
-//
-//		//센터번호 불러오는 코드
-//		center.setBusinessno((int) session.getAttribute("loginId"));//		
-//		int centerno;		
-//		centerno = centerMypageService.getCenterno(center);		
-////		logger.info("centerno : " + centerno);
-//		
-//		centerquestion.setCenterno(centerno);
-//
-////		logger.info(centerquestion.toString());
-//		
+	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.POST)
+	public String writeQuestionProc(CenterQuestion centerquestion,
+								  Center center,
+								  HttpSession session,
+								  @RequestParam(value="file") MultipartFile file) {
+
+		//문의번호 불러오는 코드
+		int questionno;
+		questionno = centerMypageService.getQuestionno();		
+//		logger.info("questionno : " + questionno);
+		centerquestion.setQuestionno(questionno);		
+		
+		//센터번호 불러오는 코드
+		center.setBusinessno((int) session.getAttribute("loginId"));//		
+		int centerno;		
+		centerno = centerMypageService.getCenterno(center);		
+//		logger.info("centerno : " + centerno);
+		
+		centerquestion.setCenterno(centerno);
+
+//		logger.info(centerquestion.toString());
+		
 //		logger.info("파일업로드 처리");
 //		
-//		logger.info("title : " + title);
-//		logger.info("file : " + fileupload);
-//		logger.info("file : " + fileupload.getOriginalFilename());
+//		logger.info("file : " + file);
+//		logger.info("file : " + file.getOriginalFilename());
 //		
 //		logger.info(context.getRealPath("upload"));
-//
-////		centerMypageService.writeQST(centerquestion);
-//		
-//		return "/center/mypage/mypagemain";
-//		
-//		
-//		
-//
-//	}
+
+		centerMypageService.writeQST(centerquestion,file);
+		
+		return "/center/mypage/mypagemain";		
+
+	}
 
 //	public void deleteQuestion(Question question) {
 //

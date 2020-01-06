@@ -2,8 +2,6 @@ package page.service.user.talent;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import page.dto.Talent;
 import page.util.PagingTalent;
 
