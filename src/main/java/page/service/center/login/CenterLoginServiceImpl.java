@@ -57,4 +57,9 @@ public class CenterLoginServiceImpl implements CenterLoginService {
 		return centerLoginDao.getNameByEmail(center);
 	}
 
+	@Override
+	public int getcnoByBno(Center center) {
+		return centerLoginDao.getCnoByBno(center);
+	}
+
 }

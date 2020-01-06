@@ -305,7 +305,7 @@ $(document).ready(function() {
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
-		alert($("#uphone").val());
+// 		alert($("#uphone").val());
 		return true
 		}
 

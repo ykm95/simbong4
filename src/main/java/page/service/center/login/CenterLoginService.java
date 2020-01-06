@@ -50,4 +50,11 @@ public interface CenterLoginService {
 	 * @return-기관이름
 	 */
 	String getnameByemail(Center center);
+
+	/**
+	 * 센터번호 가져오기
+	 * @param center-가져올 센터번호의 객체
+	 * @return-센터번호
+	 */
+	int getcnoByBno(Center center);
 }
