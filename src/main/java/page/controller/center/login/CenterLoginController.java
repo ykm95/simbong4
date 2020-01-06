@@ -80,9 +80,10 @@ public class CenterLoginController {
 	public String loginProc(Center center, HttpSession session, Model model) {
 		
 		
-			
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=centerloginservice.centerlogin(center);//true면 인증 성공
+		
+		System.out.println(isLogin);
 		
 		//결과에 따른 세션처리
 		if(isLogin) {
