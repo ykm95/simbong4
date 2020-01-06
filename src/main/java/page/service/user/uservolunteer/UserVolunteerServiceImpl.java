@@ -2,13 +2,13 @@ package page.service.user.uservolunteer;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import page.dao.user.uservolunteer.UserVolunteerDao;
-import page.dto.Participant;
+import page.dto.Applicant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;
 
@@ -60,9 +60,27 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 	}
 
 	@Override
-	public List<Participant> getPrtByNo(int volunteerno) {
+	public List<Applicant> getAplByNo(int volunteerno) {
 		
-		return userVolunteerDao.selectPrtByNo(volunteerno);
+		return userVolunteerDao.selectAplByNo(volunteerno);
+	}
+
+	@Override
+	public int getUserno(String attribute) {
+		return userVolunteerDao.selectUserNo(attribute);
+	}
+
+	@Override
+	public boolean isApplicant(Applicant applicant) {
+
+		int cnt = userVolunteerDao.selectCntApl(applicant);
+		
+		  if(cnt == 1) {
+			  return true;
+		  }
+		  else {
+			  return false;
+		  }
 	}
 
 

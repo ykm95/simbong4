@@ -2,7 +2,7 @@ package page.dao.user.uservolunteer;
 
 import java.util.List;
 
-import page.dto.Participant;
+import page.dto.Applicant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;
 
@@ -14,6 +14,10 @@ public interface UserVolunteerDao {
 
 	public int selectCntVolunteer(PagingVolunteer pagingVolunteer);
 	
-	public List<Participant> selectPrtByNo(int volunteerno);
+	public List<Applicant> selectAplByNo(int volunteerno);
+
+	public int selectUserNo(String attribute);
+
+	public int selectCntApl(Applicant applicant);
 
 }

@@ -99,8 +99,17 @@
 <!-- 		SELECT participant.applicantno, participant.name, participant.email, participant.date  -->
 <!-- 		FROM volunteer WHERE volunteerno = #{volunteerno} -->
 <!-- 	</select> -->
-	
 
+	<select id="selectUserNo" parameterType="String" resultType="int">
+		SELECT userno FROM usertb 
+		WHERE uemail=#{uemail}
+	</select>
+	
+	<select id="selectCntApl" parameterType="page.dto.Applicant" resultType="int">
+		SELECT count(*) from applicant
+		WHERE userno = #{userno}
+		AND volunteerno = #{volunteerno}
+	</select>
 	
 	
 </mapper>
