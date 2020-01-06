@@ -27,7 +27,7 @@ $(document).ready(function() {
 	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
-		history.go(-1);
+		$(location).attr("href", "/center/mypage/mypagemain");
 	});
 });
 </script>
@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 <!-- CK Editor 적용영역 -->
 
-<tr><td class="info">첨부파일</td><td><input type="file" id="pic" name="pic" /></td></tr>
+<tr><td class="info">첨부파일</td><td><input type="file" name="file" /></td></tr>
 </table>
 
 

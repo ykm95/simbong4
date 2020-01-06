@@ -246,24 +246,59 @@ $(document).ready(function() {
 	
 	//전화번호 유효성 검사
 
-	$('#mphone').blur(function() {
+	$('#mph1').blur(function() {
 // 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
 
-	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+// 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+	var regExp=/d{3,4};
 
 	
-	if (!regExp.test($('#mphone').val())) {
-			if($('#mphone').val()!=""){
+	if (!regExp.test($('#mph1').val())) {
+			if($('#mph1').val()!=""){
 // 			alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.1");
-			$('#phone_check').text("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
-			$('#phone_check').css('color', 'red');
+			$('#phone_check').text("잘못된 휴대폰 번호입니다.");
+			$('#phone_check').css('color', 'red');f
 
 			return false
 			}
 
 		}
-	if (regExp.test($('#mphone').val())) {
-		if($('#mphone').val()!=""){
+	if (regExp.test($('#mph1').val())) {
+		if($('#mph1').val()!=""){
+		$('#phone_check').text("올바른 전화번호 입니다.");
+		$('#phone_check').css('color', 'blue');
+
+// 		alert($("#mphone").val());
+		return true
+		}
+
+	}
+	return false;
+	});
+	
+	//전화번호 유효성 검사
+
+	$('#mph2').blur(function() {
+// 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+
+// 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+	var regExp2=/d{4};
+
+	
+	if (!regExp2.test($('#mph2').val())) {
+			if($('#mph2').val()!=""){
+// 			alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.1");
+			$('#phone_check').text("잘못된 휴대폰 번호입니다.");
+			$('#phone_check').css('color', 'red');f
+
+			return false
+			}
+
+		}
+	if (regExp2.test($('#mph2').val())) {
+		if($('#mph2').val()!=""){
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
@@ -311,14 +346,26 @@ $(document).ready(function() {
 </div>
 </div>
 <br>
-<label for ="mphone">담당자 전화번호</label>
-<input type="text" name="mphone" id="mphone" />
-<br>
+담당자 전화번호 : <select name="mphone">
+       <option value="010">010</option>
+       <option value="011">011</option>
+       <option value="016">016</option>
+       <option value="017">017</option>
+       <option value="019">019</option>
+     </select>
+     - <input type="text"  id= "mph1" name="mphone" size="5" maxlength="4"> - <input type="text" id="mph2" name="mphone" size="5" maxlength="4">
+     <br>
+
 <div class="check_front" id="phone_check"> 
 </div>
-<br><br>
-
    생년월일 : <select name="foundedArr">
+   	   <option value="2013">2020</option>
+       <option value="2012">2019</option>
+       <option value="2011">2018</option>
+       <option value="2010">2017</option>
+       <option value="2009">2016</option>
+       <option value="2008">2015</option>
+       <option value="2007">2014</option>
        <option value="2013">2013</option>
        <option value="2012">2012</option>
        <option value="2011">2011</option>
@@ -333,6 +380,27 @@ $(document).ready(function() {
        <option value="2002">2002</option>
        <option value="2001">2001</option>
        <option value="2000">2000</option>
+       <option value="2013">1999</option>
+       <option value="2012">1998</option>
+       <option value="2011">1997</option>
+       <option value="2010">1996</option>
+       <option value="2009">1995</option>
+       <option value="2008">1994</option>
+       <option value="2007">1993</option>
+       <option value="2013">1992</option>
+       <option value="2012">1991</option>
+       <option value="2011">1990</option>
+       <option value="2010">1989</option>
+       <option value="2009">1988</option>
+       <option value="2008">1987</option>
+       <option value="2007">1986</option>
+       <option value="2006">1985</option>
+       <option value="2005">1984</option>
+       <option value="2004">1983</option>
+       <option value="2003">1982</option>
+       <option value="2002">1981</option>
+       <option value="2001">1980</option>
+       <option value="2000">1979</option>
      </select>년&nbsp;
      <select name="foundedArr">
        <option value="01">1</option>

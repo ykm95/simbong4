@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3!! -->
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 공지사항 작성 ..스마트 에디터 쓰기-->	  
+<mapper namespace="page.dao.admin.board.BoardDao">
+
+	<resultMap type="page.dto.Notice" id="Notice">
+		<result column="noticeno" property="noticeNo"/>
+		<result column="notice_title" property="noticeTitle"/>
+		<result column="notice_content" property="noticeContent"/>
+		<result column="write_date" property="writeDate"/>
+	</resultMap>
+	
+	<select id="selectByNoticeList" resultMap="Notice">
+		SELECT 
+		noticeNo, notice_title, notice_content, hit, write_date
+		FROM notice
+	</select>
+	
+	<insert id="adminWrite">
+		INSERT INTO NOTICE
+		(
+			NOTICE_NO,
+			NOTICE_TITLE,
+			NOTICE_CONTENT,
+			HIT,
+			WRITE_DATE
+		)
+		VALUES
+		(
+			notice_seq.NEXTVAL,
+			#{noticeTitle},
+			#{noticeContent},
+			0,
+			SYSDATE
+		)
+		
+	</insert>
+
+<!-- <select id="read" parameterType="int" resultType= "">
+
+</select> -->
+</mapper>

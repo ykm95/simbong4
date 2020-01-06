@@ -30,6 +30,8 @@
 	margin: 0;
 	padding: 30px 0;
 	display: inline-block;
+    
+
 }
 #footer .mark1 ul li img {
 	text-align:center;
@@ -38,6 +40,11 @@
 
 ul{
 	list-style-type:none;
+}
+
+#wrapper{
+
+	min-height: 800px;
 }
 
 
