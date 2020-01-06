@@ -23,6 +23,12 @@
 	
 	<dependencies>
 
+<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+<dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>0.4</version>
+</dependency>
 
 <!-- 메일 전송 -->
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
