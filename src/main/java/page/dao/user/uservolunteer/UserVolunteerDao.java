@@ -20,4 +20,8 @@ public interface UserVolunteerDao {
 
 	public int selectCntApl(Applicant applicant);
 
+	public void deleteApl(Applicant applicant);
+
+	public void insertApl(Applicant applicant);
+
 }

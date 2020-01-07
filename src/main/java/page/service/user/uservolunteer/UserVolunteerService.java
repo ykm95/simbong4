@@ -24,6 +24,8 @@ public interface UserVolunteerService {
 
 	public boolean isApplicant(Applicant applicant);
 
+	public boolean isApplicant2(Applicant applicant);
+
 
 
 
