@@ -56,6 +56,13 @@ public interface CenterLoginDao {
 	 * @return-센터번호
 	 */
 	int getCnoByBno(Center center);
+
+	/**
+	 * 사업자 번호 중복 체크
+	 * @param businessno-중복체크할 사업자 번호
+	 * @return- 1 중복 0 중복아님
+	 */
+	int checkOverBno(long businessno);
 	
 
 }

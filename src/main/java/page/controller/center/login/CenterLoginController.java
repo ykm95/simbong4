@@ -127,7 +127,16 @@ public class CenterLoginController {
 
 		return centerloginservice.centerIdCheck(memail);
 	}
-	
+
+	// business 중복 체크 컨트롤러
+	@RequestMapping(value = "/center/bnoCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int bnoCheck(@RequestParam("businessno") long businessno) {
+		int a = centerloginservice.userBnoCheck(businessno);
+		System.out.println(a);
+		return a;
+	}
+			
 	
     //비밀번호 찾기 이메일 인증 페이지 맵핑 메소드
     @RequestMapping(value = "/center/login/find_pass")
