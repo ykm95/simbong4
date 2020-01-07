@@ -79,6 +79,8 @@
 <!-- 아이디 중복 체크 -->
 <script>
 $(document).ready(function() {
+	
+	document.getElementById("uemail").focus();
 	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
 	$("#uemail").blur(function() {
 		var uemail = $('#uemail').val();
@@ -208,9 +210,12 @@ $(document).ready(function() {
 <div class="form-group">
 <label for ="uemail">이메일</label>
 <input type="text" class="form-control" name="uemail" id="uemail"
- placeholder="abc@123.com" />
+ value="${user.uemail }"/>
 <div class="check_front" id="id_check"> 
 </div>
+<label for ="uname">이름</label>
+<input type="text" class="form-control" name="uname" id="uname"
+ value="${user.uname }"/>
 </div>
 <br>
 <label for ="uphone">전화번호</label>

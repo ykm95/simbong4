@@ -253,9 +253,9 @@ $(document).ready(function() {
 	$('#mph1').blur(function() {
 // 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
 
-	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+// 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-// 	var regExp=/d{3,4};
+	var regExp=/^{3,4};
 
 	
 	if (!regExp.test($('#mph1').val())) {
