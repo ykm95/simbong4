@@ -146,11 +146,6 @@ public class GoogleServiceImpl implements GoogleService {
 					
 					session.setAttribute("socialDouble", true);
 					session.setAttribute("login", true); 		// 로그인 상태 true
-//
-//					int userno = userDao.selectSocialuserNo(result.get("Email"));
-//
-//					String usernick = userDao.selectUserNick(userno);
-//
 					session.setAttribute("loginid", user.getUemail());
 					
 					return null;
