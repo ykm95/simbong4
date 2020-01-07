@@ -39,27 +39,41 @@ public class UserVolunteerController {
 	  }
 	 
 	  @RequestMapping(value="/user/volunteer/view")
-	  public void volunteerView(int volunteerno, Model model) {
+	  public void volunteerView(int volunteerno, Model model, HttpSession session) {
+		 
 		  Volunteer volunteer = userVolunteerService.getVolunteer(volunteerno);
 		  
 //		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
 		  
 		  model.addAttribute("vol", volunteer);
 //		  model.addAttribute("prtlist", applicantlist);
+		 
+		  session.setAttribute("loginid", "shtmdwo94@naver.com");
+		  int userno = userVolunteerService.getUserno((String)session.getAttribute("loginid"));
+		  //2. 유저번호랑, 봉사번호를 DTO에 담아준다.
+		  Applicant applicant = new Applicant();
+		  
+		  applicant.setUserno(userno);
+		  applicant.setVolunteerno(volunteerno);
+		 			  
+		  
+		  //2. DB에 추천 여부 검사
+		  boolean b = userVolunteerService.isApplicant2(applicant);
+		  
+		  model.addAttribute("isApplicant", b);
 		  
 	  }
 	  
 	  @RequestMapping(value="/user/volunteer/view_ok")
 	  public ModelAndView volunteerView(ModelAndView mav, HttpSession session, int volunteerno) {
 
-		  System.out.println(volunteerno);
 		// 추천테이블이 만약에 추천번호(기본키), 유저번호(외래키), 게시판번호(외래키)
 		// 유저번호로 select를 판단할거다 -> 있으면 추천취소 뜨게 할거고, 없으면 추천 뜨게할거다.
-		
+		session.setAttribute("loginid", "shtmdwo94@naver.com");
 		//로그인 상태만 처리
-		  if(session.getAttribute("uemail") != null) {
+		  if(session.getAttribute("loginid") != null) {
 			  //1. 로그인했을때 세션에 저장된 이메일을 통해 유전번호를 가져와여
-			  int userno = userVolunteerService.getUserno((String)session.getAttribute("uemail"));
+			  int userno = userVolunteerService.getUserno((String)session.getAttribute("loginid"));
 			  //2. 유저번호랑, 봉사번호를 DTO에 담아준다.
 			  Applicant applicant = new Applicant();
 			  
@@ -73,17 +87,12 @@ public class UserVolunteerController {
 			  
 			 // 모델값으로 지정
 			 mav.addObject("select", b);
-			 
 			 // viewName 지정하기
 			 mav.setViewName("jsonView");
 			  
 			  
 		  }
-		  else {
-		  }
-	
 		
-			
 		return mav;
 	  }
 	  

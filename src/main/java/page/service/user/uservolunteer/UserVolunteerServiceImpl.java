@@ -27,6 +27,7 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 		
 		//Paging 객체 생성
 		PagingVolunteer pagingRes = new PagingVolunteer(totalCount, curPage);
+		
 		pagingRes.setSearch(paging.getSearch());
 		pagingRes.setSearchno(paging.getSearchno());
 		pagingRes.setV_area(paging.getV_area());
@@ -72,6 +73,21 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 
 	@Override
 	public boolean isApplicant(Applicant applicant) {
+
+		int cnt = userVolunteerDao.selectCntApl(applicant);
+		
+		  if(cnt == 1) {
+			  userVolunteerDao.deleteApl(applicant);
+			  return true;
+		  }
+		  else {
+			  userVolunteerDao.insertApl(applicant);
+			  return false;
+		  }
+	}
+
+	@Override
+	public boolean isApplicant2(Applicant applicant) {
 
 		int cnt = userVolunteerDao.selectCntApl(applicant);
 		
