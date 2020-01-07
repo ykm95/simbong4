@@ -50,10 +50,8 @@
 	</select>
 	
 	<select id="selectCntVolunteer" parameterType="page.util.PagingVolunteer" resultType="int">
-		SELECT COUNT(*) FROM (
-		SELECT rownum rnum, B.* FROM (
-		SELECT volunteer.*
-		FROM volunteer
+		SELECT COUNT(*) FROM volunteer
+
 		WHERE 1=1
 		<if test="v_process !=null and v_process !='' and v_process != 0 ">
 			AND vol_process = #{v_process}
@@ -83,12 +81,6 @@
 		<if test="search !=null and search !='' and searchno== 1">
 			AND vol_title LIKE '%' || #{search} || '%'
 		</if>
-		ORDER BY volunteerno DESC
-		) B
-		ORDER BY rnum
-		) VOLUNTEER
-		WHERE rnum BETWEEN
-		#{startNo} AND #{endNo}
 	</select>
 	
 	<select id="selectVolunteerByNo" parameterType="int" resultType="page.dto.Volunteer">
@@ -111,5 +103,12 @@
 		AND volunteerno = #{volunteerno}
 	</select>
 	
+	<insert id="insertApl" parameterType="page.dto.Applicant">
+		INSERT INTO applicant (applicantno, volunteerno, userno) VALUES(applicant_seq.nextval, #{volunteerno}, #{userno} )
+	</insert>
+	
+	<delete id="deleteApl" parameterType="page.dto.Applicant">
+		DELETE FROM applicant WHERE volunteerno = #{volunteerno} AND userno= #{userno}
+	</delete>
 	
 </mapper>
