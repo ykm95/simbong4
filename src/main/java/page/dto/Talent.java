@@ -4,34 +4,62 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class Talent {
-	
+
 	private int talentno;
 	private int userno;
 	private int talent_process;
 	private int phone;
 	private int gender;
 	private int talent_type;	
-	private int talent_area;
-	private int department;
+	private int departmentno;
+	private String departname;
+	public String getDepartname() {
+		return departname;
+	}
+
+
+	public void setDepartname(String departname) {
+		this.departname = departname;
+	}
+
+
+	public int getDepartmentno() {
+		return departmentno;
+	}
+
+
+	public void setDepartmentno(int departmentno) {
+		this.departmentno = departmentno;
+	}
 	private String uname;
 	private String uemail;
 	private String aname;
+	private int areano;
 	private String[] talent_cycle;
-	
-	public String[] getTalent_cycle() {
-	return talent_cycle;
-}
-
-
-public void setTalent_cycle(String[] talent_cycle) {
-	this.talent_cycle = talent_cycle;
-}
 	private Date write_date;
 	private String talent_title;
 	private String talent_content;
 	private String talent_start;
 	private String talent_end;
-	
+
+	public int getAreano() {
+		return areano;
+	}
+
+
+	public void setAreano(int areano) {
+		this.areano = areano;
+	}
+
+	public String[] getTalent_cycle() {
+		return talent_cycle;
+	}
+
+
+	public void setTalent_cycle(String[] talent_cycle) {
+		this.talent_cycle = talent_cycle;
+	}
+
 	public int getPhone() {
 		return phone;
 	}
@@ -85,14 +113,12 @@ public void setTalent_cycle(String[] talent_cycle) {
 	@Override
 	public String toString() {
 		return "Talent [talentno=" + talentno + ", userno=" + userno + ", talent_process=" + talent_process + ", phone="
-				+ phone + ", gender=" + gender + ", talent_type=" + talent_type + ", talent_area=" + talent_area
-				+ ", department=" + department + ", uname=" + uname + ", uemail=" + uemail + ", aname=" + aname
-				+ ", talent_cycle=" + Arrays.toString(talent_cycle) + ", write_date=" + write_date + ", talent_title="
-				+ talent_title + ", talent_content=" + talent_content + ", talent_start=" + talent_start
-				+ ", talent_end=" + talent_end + "]";
+				+ phone + ", gender=" + gender + ", talent_type=" + talent_type + ", departmentno=" + departmentno
+				+ ", departname=" + departname + ", uname=" + uname + ", uemail=" + uemail + ", aname=" + aname
+				+ ", areano=" + areano + ", talent_cycle=" + Arrays.toString(talent_cycle) + ", write_date="
+				+ write_date + ", talent_title=" + talent_title + ", talent_content=" + talent_content
+				+ ", talent_start=" + talent_start + ", talent_end=" + talent_end + "]";
 	}
-	
-	
 	public int getTalentno() {
 		return talentno;
 	}
@@ -117,35 +143,17 @@ public void setTalent_cycle(String[] talent_cycle) {
 	public void setUemail(String uemail) {
 		this.uemail = uemail;
 	}
-	
-	public int getTalent_area() {
-		return talent_area;
-	}
-	public void setTalent_area(int talent_area) {
-		this.talent_area = talent_area;
-	}
 	public String getAname() {
 		return aname;
 	}
 	public void setAname(String aname) {
 		this.aname = aname;
 	}
-
-
 	public Date getWrite_date() {
 		return write_date;
 	}
-
-
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
-	}
-
-	public int getDepartment() {
-		return department;
-	}
-	public void setDepartment(int department) {
-		this.department = department;
 	}
 	public String getTalent_title() {
 		return talent_title;
@@ -165,5 +173,5 @@ public void setTalent_cycle(String[] talent_cycle) {
 	public void setTalent_process(int talent_process) {
 		this.talent_process = talent_process;
 	}
-	
+
 }

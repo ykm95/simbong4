@@ -48,6 +48,8 @@ public class TalentController {
 		  
 		  Talent talent = talentService.getTalent(talentno);
 		  
+		  
+		  
 		  model.addAttribute("talent", talent);
 		  
 		  
