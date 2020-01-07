@@ -1,5 +1,6 @@
 package page.dto;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Talent {
@@ -15,7 +16,16 @@ public class Talent {
 	private String uname;
 	private String uemail;
 	private String aname;
-	private String talent_cycle;
+	private String[] talent_cycle;
+	
+	public String[] getTalent_cycle() {
+	return talent_cycle;
+}
+
+
+public void setTalent_cycle(String[] talent_cycle) {
+	this.talent_cycle = talent_cycle;
+}
 	private Date write_date;
 	private String talent_title;
 	private String talent_content;
@@ -77,9 +87,9 @@ public class Talent {
 		return "Talent [talentno=" + talentno + ", userno=" + userno + ", talent_process=" + talent_process + ", phone="
 				+ phone + ", gender=" + gender + ", talent_type=" + talent_type + ", talent_area=" + talent_area
 				+ ", department=" + department + ", uname=" + uname + ", uemail=" + uemail + ", aname=" + aname
-				+ ", talent_cycle=" + talent_cycle + ", write_date=" + write_date + ", talent_title=" + talent_title
-				+ ", talent_content=" + talent_content + ", talent_start=" + talent_start + ", talent_end=" + talent_end
-				+ "]";
+				+ ", talent_cycle=" + Arrays.toString(talent_cycle) + ", write_date=" + write_date + ", talent_title="
+				+ talent_title + ", talent_content=" + talent_content + ", talent_start=" + talent_start
+				+ ", talent_end=" + talent_end + "]";
 	}
 	
 	
@@ -120,12 +130,7 @@ public class Talent {
 	public void setAname(String aname) {
 		this.aname = aname;
 	}
-	public String getTalent_cycle() {
-		return talent_cycle;
-	}
-	public void setTalent_cycle(String talent_cycle) {
-		this.talent_cycle = talent_cycle;
-	}
+
 
 	public Date getWrite_date() {
 		return write_date;

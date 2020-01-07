@@ -32,10 +32,10 @@
 		</if>
 		<if test="v_sterm !=null and v_sterm!='' ">
 			<![CDATA[
-			AND (stime <= #{stime} AND stime <= #{etime} and
-			etime>= #{stime} and etime>= #{etime}
-			OR stime BETWEEN #{stime} AND #{etime}
-			OR etime BETWEEN #{stime} AND #{etime})
+			AND (stime <= #{v_stime} AND stime <= #{v_etime} and
+			etime>= #{v_stime} and etime>= #{v_etime}
+			OR stime BETWEEN #{v_stime} AND #{v_etime}
+			OR etime BETWEEN #{v_stime} AND #{v_etime})
 			]]>
 		</if>
 		<if test="search !=null and search !='' and searchno== 1">
@@ -50,7 +50,10 @@
 	</select>
 	
 	<select id="selectCntVolunteer" parameterType="page.util.PagingVolunteer" resultType="int">
-		SELECT COUNT(*) FROM volunteer
+		SELECT COUNT(*) FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT volunteer.*
+		FROM volunteer
 		WHERE 1=1
 		<if test="v_process !=null and v_process !='' and v_process != 0 ">
 			AND vol_process = #{v_process}
@@ -71,28 +74,42 @@
 		</if>
 		<if test="v_sterm !=null and v_sterm!='' ">
 			<![CDATA[
-			AND (stime <= #{stime} AND stime <= #{etime} and
-			etime>= #{stime} and etime>= #{etime}
-			OR stime BETWEEN #{stime} AND #{etime}
-			OR etime BETWEEN #{stime} AND #{etime})
+			AND (stime <= #{v_stime} AND stime <= #{v_etime} and
+			etime>= #{v_stime} and etime>= #{v_etime}
+			OR stime BETWEEN #{v_stime} AND #{v_etime}
+			OR etime BETWEEN #{v_stime} AND #{v_etime})
 			]]>
 		</if>
 		<if test="search !=null and search !='' and searchno== 1">
 			AND vol_title LIKE '%' || #{search} || '%'
 		</if>
+		ORDER BY volunteerno DESC
+		) B
+		ORDER BY rnum
+		) VOLUNTEER
+		WHERE rnum BETWEEN
+		#{startNo} AND #{endNo}
 	</select>
 	
-<!-- 	<select id="selectVolunteerByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Volunteer"> -->
-<!-- 		SELECT * FROM volunteer WHERE volunteerno = #{volunteerno} -->
-<!-- 	</select> -->
+	<select id="selectVolunteerByNo" parameterType="int" resultType="page.dto.Volunteer">
+		SELECT * FROM volunteer WHERE volunteerno = #{volunteerno}
+	</select>
 	
-<!-- 	<select id="selectPrtByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Participant"> -->
+<!-- 	<select id="selectAplByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Participant"> -->
 <!-- 		SELECT participant.applicantno, participant.name, participant.email, participant.date  -->
 <!-- 		FROM volunteer WHERE volunteerno = #{volunteerno} -->
 <!-- 	</select> -->
-	
 
+	<select id="selectUserNo" parameterType="String" resultType="int">
+		SELECT userno FROM usertb 
+		WHERE uemail=#{uemail}
+	</select>
+	
+	<select id="selectCntApl" parameterType="page.dto.Applicant" resultType="int">
+		SELECT count(*) from applicant
+		WHERE userno = #{userno}
+		AND volunteerno = #{volunteerno}
+	</select>
 	
 	
 </mapper>
-
