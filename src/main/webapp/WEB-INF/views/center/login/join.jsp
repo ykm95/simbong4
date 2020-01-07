@@ -360,9 +360,9 @@ $(document).ready(function() {
 	$('#mphone').blur(function() {
 // 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
 
-	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+// 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-// 	var regExp2=/d{4};
+	var regExp2=/d{4}/;
 
 	
 	if (!regExp.test($('#mphone').val())) {
@@ -432,7 +432,7 @@ $(document).ready(function() {
        <option value="017">017</option>
        <option value="019">019</option>
      </select>
-     - <input type="text"  id= "mphone" name="mphone" size="5"  min="3" maxlength="4"> - <input type="text" id="mphone2" name="mphone" size="5" maxlength="4">
+     - <input type="text"  id= "mphone" name="mphone" size="5"  min="3" maxlength="4"> - <input type="text" id="mphone" name="mphone" size="5" maxlength="4">
      <br>
 
 <div class="check_front" id="phone_check"> 
