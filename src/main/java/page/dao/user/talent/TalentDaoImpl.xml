@@ -27,7 +27,7 @@
 			AND department = #{t_department}
 		</if>
 		<if test="t_area!=null and t_area!='' ">
-			AND talent_area = #{t_area}
+			AND areano = #{t_area}
 		</if>
 		<if test="t_start !=null and t_start!='' ">
 			<![CDATA[
@@ -71,7 +71,7 @@
 			AND department = #{t_department}
 		</if>
 		<if test="t_area!=null and t_area!='' ">
-			AND talent_area = #{t_area}
+			AND areano = #{t_area}
 		</if>
 		<if test="t_start !=null and t_start!='' ">
 			<![CDATA[
@@ -95,7 +95,10 @@
 
 	<select id="selectTalentByNo" parameterType="int"
 		resultType="page.dto.Talent">
-		SELECT * FROM talent WHERE talentno = #{talentno}
+		SELECT * FROM talent T, area A, t_department D
+		WHERE T.areano = A.areano
+		AND T.departmentno = D.departmentno
+		AND T.talentno = #{talentno}
 	</select>
 
 	<insert id="insertTalent"
@@ -103,7 +106,7 @@
 		INSERT INTO talent ( talentno, userno, talent_start, talent_end, talent_cycle,
 			department, talent_title,
 			talent_content, 
-			talent_process, talent_area,
+			talent_process, areano,
 			talent_type)
 		VALUES( talent_seq.nextval, usertb_seq.nextval, #{paging.t_start}, #{paging.t_end}, 
 		<foreach collection="paging.t_cycle" item="tc" separator="||','||">
@@ -118,7 +121,7 @@
 	<update id="updateTalent"
 		parameterType="page.dto.Talent">
 		UPDATE talent SET talent_start = #{talent_start},
-		talent_end = #{talent_end}, talent_area = #{talent_area},
+		talent_end = #{talent_end}, areano = #{areano},
 		 department = #{department},
 		talent_title = #{talent_title}, talent_content = #{talent_content} WHERE talentno
 		= #{talentno}
