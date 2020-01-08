@@ -1,4 +1,3 @@
-<%-- <%@page import="web.dto.talent"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -7,8 +6,8 @@
 
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript" src="/js/httpRequest.js"></script>
-
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -55,7 +54,6 @@ $(document).ready(function(){
 });
 </script>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <style>
     .title {font-weight:bold;display:block;}
@@ -74,6 +72,19 @@ $(document).ready(function(){
   				<td colspan="1" style="background: #CCC">활동기간</td>  
   				<td colspan="3" style="text-align: center;">${talent.talent_start}~ ${talent.talent_end}</td>  
   			</tr>  
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">process</td>  
+  				<td colspan="3" style="text-align: center;">${talent.talent_process}</td>  
+  			</tr>  
+  			  			<tr>  
+  				<td colspan="1" style="background: #CCC">type</td>  
+  				<td colspan="3" style="text-align: center;">${talent.talent_type}</td>  
+  			</tr> 
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사주기</td>  
+  				<td colspan="3" style="text-align: center;">${talent.test}</td>
+  				</tr>  
+
 
   		</table>  
 		

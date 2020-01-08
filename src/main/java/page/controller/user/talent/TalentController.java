@@ -31,7 +31,7 @@ public class TalentController {
 		  paging = talentService.getPaging(paging);
 		  logger.info(paging.toString());
 		  
-		  List<Talent> talentlist = talentService.getTalentList(paging);
+		  List<PagingTalent> talentlist = talentService.getTalentList(paging);
 		  
 		  int count = talentService.getCntTalent(paging);
 		  
@@ -48,7 +48,10 @@ public class TalentController {
 		  
 		  Talent talent = talentService.getTalent(talentno);
 		  
+		  logger.info(talent.toString());
+		  logger.info("텔런트 : " + talent.getTalent_cycle());
 		  
+		  talent.setTest(talent.getTalent_cycle());
 		  
 		  model.addAttribute("talent", talent);
 		  

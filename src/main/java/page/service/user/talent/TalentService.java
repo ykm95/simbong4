@@ -7,7 +7,7 @@ import page.util.PagingTalent;
 
 public interface TalentService {
 
-	public List<Talent> getTalentList(PagingTalent paging);
+	public List<PagingTalent> getTalentList(PagingTalent paging);
 
 	public Talent getTalent(int talentno);
 
