@@ -85,14 +85,21 @@ public class CenterLoginController {
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=centerloginservice.centerlogin(center);//true면 인증 성공
 		
+
 		System.out.println(isLogin);
 		
 		//결과에 따른 세션처리
 		if(isLogin) {
+			
+			int cno=centerloginservice.getcnoByBno(center);
+			center.setCenterno(cno);
+			
+			logger.info(center.toString());
+			
 			//세션에 정보 저장하기
 			session.setAttribute("login", isLogin);
-			session.setAttribute("loginid", center.getMemail());
-			session.setAttribute("centerno", center.getCenterno());
+			session.setAttribute("loginid", center.getBusinessno());
+			session.setAttribute("centerno", center.getCenterno());//세션값주기
 			
 			String cname= centerloginservice.getnameByemail(center);
 			center.setCname(cname);

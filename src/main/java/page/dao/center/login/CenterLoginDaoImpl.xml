@@ -25,7 +25,7 @@ SELECT count(*) FROM centertb WHERE businessno=#{businessno} and cpassword=#{cpa
 <!-- 아이디 중복 검사 -->
 
 <select parameterType="String" id="checkOverId" resultType="int">
-SELECT count(*) FROM centertb WHERE businessno=#{businessno} </select>
+SELECT count(*) FROM centertb WHERE memail=#{memail} </select>
 
 
 <update id = "pass_change" parameterType="map">
@@ -39,5 +39,9 @@ SELECT count(*) FROM centertb WHERE businessno=#{businessno} </select>
 
 <select id="getNameByEmail" parameterType="page.dto.Center" resultType="String">
 	SELECT cname FROM centertb WHERE businessno=#{businessno} AND cpassword=#{cpassword}
+</select>
+
+<select id="getCnoByBno" parameterType="page.dto.Center" resultType="int">
+	SELECT centerno from centertb WHERE businessno=#{businessno}
 </select>
 </mapper>

@@ -445,20 +445,30 @@ $(document).ready(function(){
 		
 // 				console.log(res.area.lat)
 // 				console.log(res.area.lng)
-				
-				function panTo() {
+
+				function setCenter() {            
 				    // 이동할 위도 경도 위치를 생성합니다 
 				    var moveLatLon = new kakao.maps.LatLng(res.area.lat, res.area.lng);
 				    
-				    // 지도 중심을 부드럽게 이동시킵니다
-				    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-				    map.panTo(moveLatLon);            
+				    // 지도 중심을 이동 시킵니다
+				    map.setCenter(moveLatLon);
 				}
+				
+				setCenter()
+				
+// 				function panTo() {
+// 				    // 이동할 위도 경도 위치를 생성합니다 
+// 				    var moveLatLon = new kakao.maps.LatLng(res.area.lat, res.area.lng);
+				    
+// 				    // 지도 중심을 부드럽게 이동시킵니다
+// 				    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+// 				    map.panTo(moveLatLon);            
+// 				}
 			    
 			    $('#lat').val(res.area.lat);
 				$('#lng').val(res.area.lng);
 				
-				panTo();
+// 				panTo();
 				
 				searchDetailAddrFromCoords(map.getCenter(), function(result, status) {
 			        if (status === kakao.maps.services.Status.OK) {

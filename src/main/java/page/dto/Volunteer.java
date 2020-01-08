@@ -9,7 +9,7 @@ public class Volunteer {
 	private String cname;
 	private String mgr;
 	private String memail;
-	private int mphone;
+	private String mphone;
 	private int vol_process;
 	private String vol_title;
 	private String vol_content;
@@ -30,7 +30,6 @@ public class Volunteer {
 	private float vol_lng;
 	private String vol_address;
 	
-	
 	@Override
 	public String toString() {
 		return "Volunteer [volunteerno=" + volunteerno + ", centerno=" + centerno + ", cname=" + cname + ", mgr=" + mgr
@@ -41,7 +40,6 @@ public class Volunteer {
 				+ qualification + ", write_date=" + write_date + ", npeople=" + npeople + ", apeople=" + apeople
 				+ ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address=" + vol_address + "]";
 	}
-	
 	
 	public int getVolunteerno() {
 		return volunteerno;
@@ -73,10 +71,10 @@ public class Volunteer {
 	public void setMemail(String memail) {
 		this.memail = memail;
 	}
-	public int getMphone() {
+	public String getMphone() {
 		return mphone;
 	}
-	public void setMphone(int mphone) {
+	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
 	public int getVol_process() {
