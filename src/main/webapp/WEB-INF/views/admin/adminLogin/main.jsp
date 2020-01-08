@@ -8,14 +8,13 @@
 
 
 <li>
-<a href="/admin/adminLogin/logout"><button>로그아웃</button></a><%--이것만 작게 --%>
-
-<a href="/adminQna/main"><button>QnA관리</button></a><%--사이드 메뉴바, 따라다니는 퀵메뉴바  --%>
+<a href="/admin/adminLogin/logout"><button>로그아웃</button></a>
+<a href="/admin/admminUser/userPage"><button>회원관리</button></a>
+<a href="/adminQna/main"><button>QnA관리</button></a>
 <a href="/adminUser/center"><button>센터 승인</button></a>
 <a href="/admin/adminBoard/adminTalent"><button>봉사자 승인</button></a>
 <a href="/adminBoard/best"><button>우수봉사자</button></a>
 <a href="/admin/adminBoard/adminNotice"><button>공지사항</button></a>
 </li>
 <li>${adminId }님 환영합니다.</li><!-- admin01, admin02나와야 정상. -->
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp" />

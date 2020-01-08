@@ -4,7 +4,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="/WEB-INF/views/layout/header.jsp" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>This is Test Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- slim 쓰면 Ajax안돼요 admin만 바꿨어요 -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<!-- ----------------------------------------------------------------------------------------- -->
+<div id ="header" class="row">
+	<div class="col-2">
+		<a href="/admin/adminLogin/main"><img width="100px" src="/resources/img/simlogo.png"></a>	
+	</div>
+	<div class="col-8">
+	</div>
+	
+</div>
+
+<div style="height: 1px; background: black; "></div>
+
+<div id="wrapper">
+
 <div class="container">
 	<div class="card-deck mt-3">
 		<!--카드 이미지여러개 넣을수있음-->
