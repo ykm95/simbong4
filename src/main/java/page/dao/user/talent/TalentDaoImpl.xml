@@ -9,32 +9,32 @@
 
 	<select id="selectTalentAll"
 		parameterType="page.util.PagingTalent"
-		resultType="page.dto.Talent">
+		resultType="page.util.PagingTalent">
 		SELECT * FROM (
 		SELECT rownum rnum, T.* FROM (
-		SELECT talent.*
-		FROM
-		talent
-		WHERE 1=1
+		SELECT B.*, A.aname, D.departname
+		FROM talent B, area A, t_department D
+		WHERE B.areano = A.areano
+		AND B.departmentno = D.departmentno
 
-		<if test="t_process !=null and t_process !='' and t_process != 0 ">
-			AND talent_process = #{t_process}
+		<if test="talent_process !=null and talent_process !='' and talent_process != 0 ">
+			AND talent_process = #{talent_process}
 		</if>
-		<if test="t_type !=null and t_type !='' and t_type != 0">
-			AND talent_type = #{t_type}
+		<if test="talent_type !=null and talent_type !='' and talent_type != 0">
+			AND talent_type = #{talent_type}
 		</if>
-		<if test="t_department!=null and t_department!='' ">
-			AND department = #{t_department}
+		<if test="departmentno !=null and departmentno !='' ">
+			AND departmentno = #{departmentno}
 		</if>
-		<if test="t_area!=null and t_area!='' ">
-			AND talent_area = #{t_area}
+		<if test="areano !=null and areano !='' ">
+			AND areano = #{areano}
 		</if>
-		<if test="t_start !=null and t_start!='' ">
+		<if test="talent_start !=null and talent_start !='' ">
 			<![CDATA[
-			AND (talent_start <= #{t_start} AND talent_start <= #{t_end} and
-			talent_end>= #{t_start} and talent_end>= #{t_end}
-			OR talent_start BETWEEN #{t_start} AND #{t_end}
-			OR talent_end BETWEEN #{t_start} AND #{t_end})
+			AND (talent_start <= #{talent_start} AND talent_start <= #{talent_end} and
+			talent_end>= #{talent_start} and talent_end>= #{talent_end}
+			OR talent_start BETWEEN #{talent_start} AND #{talent_end}
+			OR talent_end BETWEEN #{talent_start} AND #{talent_end})
 			]]>
 		</if>
 
@@ -44,8 +44,8 @@
 			talent_cycle LIKE '%'||#{cycle}||'%'
 			</foreach>
 		</if>
-		<if test="t_title!=null and t_title!='' ">
-			AND talent_title LIKE '%' || #{t_title} || '%'
+		<if test="talent_title !=null and talent_title !='' ">
+			AND talent_title LIKE '%' || #{talent_title} || '%'
 		</if>
 		ORDER BY talentno DESC
 		) T
@@ -61,24 +61,24 @@
 				
 		WHERE 1=1
 
-		<if test="t_process !=null and t_process !='' and t_process != 0 ">
-			AND talent_process = #{t_process}
+		<if test="talent_process !=null and talent_process !='' and talent_process != 0 ">
+			AND talent_process = #{talent_process}
 		</if>
-		<if test="t_type !=null and t_type !='' and t_type != 0">
-			AND talent_type = #{t_type}
+		<if test="talent_type !=null and talent_type !='' and talent_type != 0">
+			AND talent_type = #{talent_type}
 		</if>
-		<if test="t_department!=null and t_department!='' ">
-			AND department = #{t_department}
+		<if test="departmentno !=null and departmentno !='' ">
+			AND departmentno = #{departmentno}
 		</if>
-		<if test="t_area!=null and t_area!='' ">
-			AND talent_area = #{t_area}
+		<if test="areano !=null and areano !='' ">
+			AND areano = #{areano}
 		</if>
-		<if test="t_start !=null and t_start!='' ">
+		<if test="talent_start !=null and talent_start !='' ">
 			<![CDATA[
-			AND (talent_start <= #{t_start} AND talent_start <= #{t_end} and
-			talent_end>= #{t_start} and talent_end>= #{t_end}
-			OR talent_start BETWEEN #{t_start} AND #{t_end}
-			OR talent_end BETWEEN #{t_start} AND #{t_end})
+			AND (talent_start <= #{talent_start} AND talent_start <= #{talent_end} and
+			talent_end>= #{talent_start} and talent_end>= #{talent_end}
+			OR talent_start BETWEEN #{talent_start} AND #{talent_end}
+			OR talent_end BETWEEN #{talent_start} AND #{talent_end})
 			]]>
 		</if>
 		<if test="t_cycle !=null">
@@ -87,39 +87,42 @@
 			talent_cycle LIKE '%'||#{cycle}||'%'
 			</foreach>
 		</if>
-		<if test="t_title!=null and t_title!='' ">
-			AND talent_title LIKE '%' || #{t_title} || '%'
+		<if test="talent_title !=null and talent_title !='' ">
+			AND talent_title LIKE '%' || #{talent_title} || '%'
 		</if>
 
 	</select>
 
 	<select id="selectTalentByNo" parameterType="int"
 		resultType="page.dto.Talent">
-		SELECT * FROM talent WHERE talentno = #{talentno}
+		SELECT * FROM talent T, area A, t_department D
+		WHERE T.areano = A.areano
+		AND T.departmentno = D.departmentno
+		AND T.talentno = #{talentno}
 	</select>
 
 	<insert id="insertTalent"
 		parameterType="hashmap">
 		INSERT INTO talent ( talentno, userno, talent_start, talent_end, talent_cycle,
-			department, talent_title,
+			departmentno, talent_title,
 			talent_content, 
-			talent_process, talent_area,
+			talent_process, areano,
 			talent_type)
-		VALUES( talent_seq.nextval, usertb_seq.nextval, #{paging.t_start}, #{paging.t_end}, 
+		VALUES( talent_seq.nextval, usertb_seq.nextval, #{paging.talent_start}, #{paging.talent_end}, 
 		<foreach collection="paging.t_cycle" item="tc" separator="||','||">
 			#{tc}
 		</foreach>
-		,#{paging.t_department}, #{paging.t_title},
-		 #{paging.t_content},
-		#{paging.t_process},
-		#{paging.t_area}, #{paging.t_type})
+		,#{paging.departmentno}, #{paging.talent_title},
+		 #{paging.talent_content},
+		 #{paging.talent_process},
+		 #{paging.areano}, #{paging.talent_type})
 	</insert>
 
 	<update id="updateTalent"
 		parameterType="page.dto.Talent">
 		UPDATE talent SET talent_start = #{talent_start},
-		talent_end = #{talent_end}, talent_area = #{talent_area},
-		 department = #{department},
+		talent_end = #{talent_end}, areano = #{areano},
+		 departmentno = #{departmentno},
 		talent_title = #{talent_title}, talent_content = #{talent_content} WHERE talentno
 		= #{talentno}
 	</update>

@@ -8,7 +8,7 @@ import page.util.PagingTalent;
 
 public interface TalentDao {
 
-	public List<Talent> selectTalentAll(PagingTalent paging);
+	public List<PagingTalent> selectTalentAll(PagingTalent paging);
 	
 	public Talent selectTalentByNo(int talentno);
 
