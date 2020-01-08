@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -94,5 +89,5 @@
 <br>
 <a href="${google_url }"><button id="btnJoinGoogle" class="btn btn-primary btn-round"
 stype="width: 100%"><i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a>
-</body>
-</html>
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

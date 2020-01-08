@@ -63,4 +63,9 @@ public class CenterLoginServiceImpl implements CenterLoginService {
 		return centerLoginDao.getCnoByBno(center);
 	}
 
+	@Override
+	public int userBnoCheck(long businessno) {
+		return centerLoginDao.checkOverBno(businessno);
+	}
+
 }

@@ -31,15 +31,15 @@
 
 	</beans:bean>
 
-<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
-<beans:bean class="org.springframework.social.oauth2.OAuth2Parameters" id="googleOAuth2Parameters">
-
-<beans:property value="email" name="scope"/>
-
-<!-- https://www.googleapis.com/auth/plus.login -->
-<beans:property value="http://localhost:8088/googleLogin/googleSignInCallback" name="redirectUri"/>
-
-</beans:bean>
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<beans:bean class="org.springframework.social.oauth2.OAuth2Parameters" id="googleOAuth2Parameters">
+	
+		<beans:property name="scope" value="email profile"></beans:property>
+		
+		<!-- https://www.googleapis.com/auth/plus.login -->
+		<beans:property value="http://localhost:8088/googleLogin/googleSignInCallback" name="redirectUri"/>
+	
+	</beans:bean>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

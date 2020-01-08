@@ -28,7 +28,8 @@ public class TalentController {
 		  
 		  logger.info(paging.toString());
 		  
-		  paging = talentService.getPaging(paging, req);
+		  paging = talentService.getPaging(paging);
+		  logger.info(paging.toString());
 		  
 		  List<Talent> talentlist = talentService.getTalentList(paging);
 		  
@@ -47,6 +48,8 @@ public class TalentController {
 		  
 		  Talent talent = talentService.getTalent(talentno);
 		  
+		  
+		  
 		  model.addAttribute("talent", talent);
 		  
 		  
@@ -58,9 +61,9 @@ public class TalentController {
 	  }
 	  
 	  @RequestMapping(value="/user/talent/write", method=RequestMethod.POST)
-	  public String talentWriteProc(Talent talent) {
+	  public String talentWriteProc(PagingTalent paging) {
 		  
-		  talentService.write(talent);
+		  talentService.write(paging);
 		  
 		  return "redirect:/user/talent/list";
 	  }

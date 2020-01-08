@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%-- <jsp:include page="/WEB-INF/views/layout/header.jsp" /> --%>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
 <script type="text/javascript" src="/js/httpRequest.js"></script>
 
@@ -55,6 +55,49 @@ $(document).ready(function(){
 });
 </script>
 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<style>
+    .title {font-weight:bold;display:block;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+</style>
+
+  	<div class="container" style="margin: 30px auto">  
+
+  		<div style="padding: 30px 160px;">  
+  			<h2>${talent.talent_title }</h2>  
+  		</div>  
+
+  		<table class="table" style="width: 70%; margin: 0 auto;">  
+		
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">활동기간</td>  
+  				<td colspan="3" style="text-align: center;">${talent.talent_start}~ ${talent.talent_end}</td>  
+  			</tr>  
+
+  		</table>  
+		
+  		<br><br><br>  
+		
+  		<table class="table" style="width: 70%; margin: 0 auto;">  
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사지역</td>  
+  				<td colspan="3" style="text-align: center">${talent.aname }</td>  
+  			</tr>  
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사분야</td>  
+  				<td colspan="3" style="text-align: center">${talent.departname }</td>  
+  			</tr>  
+  		</table>  
+
+  		<br>  
+  		<div style="margin: 0 150px;">  
+  			<a href="/user/talent/list"><button class="btn btn-secondary" >목록</button></a>   
+  		</div>  
+		
+  	</div>  
+
+
 
 <div class="container" style="width: 76%; margin-left: 16em;">
 
@@ -73,39 +116,28 @@ $(document).ready(function(){
 		</tr>
 
 		<tr>
-			<td class="info">아이디</td>
-			<td colspan="3">${talent. }</td>
-		</tr>
-		
-		<tr>
-			<td class="info">닉네임</td>
-			<td colspan="3">${member.nick }</td>
-		</tr>
-
-
-		<tr>
 			<td class="info">작성일</td>
-			<td colspan="3">${talent.write_date }</td>
+			<td colspan="3"><fmt:formatDate value="${talent.write_date }" pattern="yyyy.MM.dd"/></td>
 		</tr>
 
 		<tr>
 			<td class="info" colspan="4">본문</td>
 		</tr>
 		<tr>
-			<td colspan="4">${talent.content }</td>
+			<td colspan="4">${talent.talent_content }</td>
 		</tr>
 
 	</table>
 
 
-	<div class="text-right">
-		<button id="btnList" class="btn btn-primary">목록</button>
+<!-- 	<div class="text-right"> -->
+<!-- 		<button id="btnList" class="btn btn-primary">목록</button> -->
 		
-		<c:if test="${talent.writer_id eq loginid }">
-		<button id="btnUpdate" class="btn btn-info">수정</button>
-		<button id="btnDelete" class="btn btn-danger">삭제</button>
-		</c:if>
-	</div>
+<%-- 		<c:if test="${talent.writer_id eq loginid }"> --%>
+<!-- 		<button id="btnUpdate" class="btn btn-info">수정</button> -->
+<!-- 		<button id="btnDelete" class="btn btn-danger">삭제</button> -->
+<%-- 		</c:if> --%>
+<!-- 	</div> -->
 
 
 </div>  <!-- container -->

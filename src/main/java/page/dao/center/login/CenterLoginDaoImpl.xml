@@ -44,4 +44,9 @@ SELECT count(*) FROM centertb WHERE memail=#{memail} </select>
 <select id="getCnoByBno" parameterType="page.dto.Center" resultType="int">
 	SELECT centerno from centertb WHERE businessno=#{businessno}
 </select>
+
+<!-- 사업자 번호 중복 검사 -->
+
+<select parameterType="long" id="checkOverBno" resultType="int">
+SELECT count(*) FROM centertb WHERE businessno=#{businessno} </select>
 </mapper>
