@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -305,7 +299,7 @@ $(document).ready(function() {
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
-		alert($("#uphone").val());
+// 		alert($("#uphone").val());
 		return true
 		}
 
@@ -365,5 +359,5 @@ $(document).ready(function() {
 <button type="reset" id="cancelbtn">취소</button>
 
 </form>
-</body>
-</html>
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

@@ -50,4 +50,19 @@ public interface CenterLoginService {
 	 * @return-기관이름
 	 */
 	String getnameByemail(Center center);
+
+	/**
+	 * 센터번호 가져오기
+	 * @param center-가져올 센터번호의 객체
+	 * @return-센터번호
+	 */
+	int getcnoByBno(Center center);
+
+
+	/**
+	 * 사업자 번호 중복 조회
+	 * @param businessno-조회할 사업자 번호
+	 * @return-1=중복 , 0 은 중복아님
+	 */
+	int userBnoCheck(long businessno);
 }

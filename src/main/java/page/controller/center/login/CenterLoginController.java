@@ -86,12 +86,20 @@ public class CenterLoginController {
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=centerloginservice.centerlogin(center);//true면 인증 성공
 		
+		
+		
 		//결과에 따른 세션처리
 		if(isLogin) {
+			
+			int cno=centerloginservice.getcnoByBno(center);
+			center.setCenterno(cno);
+			
+			logger.info(center.toString());
+			
 			//세션에 정보 저장하기
 			session.setAttribute("login", isLogin);
-			session.setAttribute("loginid", center.getMemail());
-			session.setAttribute("centerno", center.getCenterno());
+			session.setAttribute("loginid", center.getBusinessno());
+			session.setAttribute("centerno", center.getCenterno());//세션값주기
 			
 			String cname= centerloginservice.getnameByemail(center);
 			center.setCname(cname);
@@ -119,7 +127,16 @@ public class CenterLoginController {
 
 		return centerloginservice.centerIdCheck(memail);
 	}
-	
+
+	// business 중복 체크 컨트롤러
+	@RequestMapping(value = "/center/bnoCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int bnoCheck(@RequestParam("businessno") long businessno) {
+		int a = centerloginservice.userBnoCheck(businessno);
+		System.out.println(a);
+		return a;
+	}
+			
 	
     //비밀번호 찾기 이메일 인증 페이지 맵핑 메소드
     @RequestMapping(value = "/center/login/find_pass")
