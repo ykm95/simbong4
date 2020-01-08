@@ -88,16 +88,7 @@ $(document).ready(function() {
   				<td style="background: #CCC">활동시간</td>  
   				<td style="text-align: center;">${vol.stime } ~ ${vol.etime }</td>  
   				<td style="background: #CCC">활동분야</td>  
-  				<td style="text-align: center;"><c:choose>  
-  					<c:when test="${vol.department eq 1 }">시설봉사</c:when>  
-  					<c:when test="${vol.department eq 2 }">재가봉사</c:when>  
-  					<c:when test="${vol.department eq 3 }">전문봉사</c:when>  
-  					<c:when test="${vol.department eq 4 }">지역사회봉사</c:when>  
-  					<c:when test="${vol.department eq 5 }">금,물품봉사</c:when>  
-  					<c:when test="${vol.department eq 6 }">해외봉사</c:when>  
-  					<c:when test="${vol.department eq 7 }">헌혈</c:when>  
-  					<c:when test="${vol.department eq 8 }">기타봉사</c:when>  
-  				</c:choose></td>  
+  				<td style="text-align: center;">${vol.departname }</td>  
   			</tr>  
 		
   		</table>  
@@ -118,7 +109,7 @@ $(document).ready(function() {
 		
   			<tr>  
   				<td colspan="1" style="background: #CCC">봉사장소</td>  
-  				<td colspan="3" style="text-align: center">${vol.vol_place }</td>  
+  				<td colspan="3" style="text-align: center">${vol.aname }</td>  
   			</tr>  
 			
 		

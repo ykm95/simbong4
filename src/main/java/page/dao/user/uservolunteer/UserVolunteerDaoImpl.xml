@@ -84,7 +84,10 @@
 	</select>
 	
 	<select id="selectVolunteerByNo" parameterType="int" resultType="page.dto.Volunteer">
-		SELECT * FROM volunteer WHERE volunteerno = #{volunteerno}
+		SELECT * FROM volunteer V, area A, v_department D
+		WHERE V.vol_area = A.areano
+		AND V.department = D.departmentno
+		AND V.volunteerno = #{volunteerno}
 	</select>
 	
 <!-- 	<select id="selectAplByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Participant"> -->
