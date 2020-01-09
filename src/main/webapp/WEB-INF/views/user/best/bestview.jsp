@@ -13,20 +13,7 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-dt {
-	float: left;
-	width: 7%;
-}
 
-dd {
-	float: left;
-	width: 43%;
-}
-dl {
-/* 	border-top: 1px solid #cacaca; */
-	border-bottom: 1px solid #cacaca;
-	padding:30px;
-}
 
 #content {
 	padding: 300px;
@@ -47,7 +34,7 @@ dl {
 
 
 			<div class="data">
-				<div class="row" style="border-top: 1px solid #CCC;">
+				<div class="row" style="border-top: 1px solid #CCC; padding:4px;">
 					<div class="col-6">
 					작성일 : <fmt:formatDate value="${view.writedate }" pattern="yyyy.MM.dd" />
 					</div>
@@ -56,7 +43,7 @@ dl {
 					<span>${view.hit }</span>
 					</div>
 				</div>
-				<div class="row" style="border-top: 1px solid #CCC; border-bottom: 1px solid #CCC;">
+				<div class="row" style="border-top: 1px solid #CCC; border-bottom: 1px solid #CCC; padding:4px;s">
 					<div class="col-6">
 					<span>봉사자</span>
 					<span>${view.uname }</span>
@@ -75,8 +62,10 @@ dl {
 				</div>
 			</div>
 			<br>
+			<div align="center">
 			<button class="btn btn-secondary"
 				onclick="location.href='/user/best/bestlist'">목록</button>
+			</div>
 			<div>
 				<a href="/user/best/bestview?bestno=${view.bestno - 1 }">이전글</a><br>
 				<a href="/user/best/bestview?bestno=${view.bestno + 1 }">다음글</a>

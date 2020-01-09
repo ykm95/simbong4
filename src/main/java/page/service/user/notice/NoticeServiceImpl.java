@@ -39,7 +39,10 @@ public class NoticeServiceImpl implements NoticeService{
 		
 		return noticeDao.selectNoticeBynoticeno(noticeno);
 	}
-
+	@Override
+	public List<Notice> mainNotice() {
+		return noticeDao.selectMainNotice();
+	}
 
 
 }

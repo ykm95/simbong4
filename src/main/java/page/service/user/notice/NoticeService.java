@@ -34,5 +34,11 @@ public interface NoticeService {
 	 * @return
 	 */
 	public Notice noticeView(int noticeno);
+	/**
+	 * 메인페이지 공지사항 5개목록
+	 * @param notice
+	 * @return
+	 */
+	public List<Notice> mainNotice();
 
 }

@@ -40,6 +40,9 @@ ul{
 	list-style-type:none;
 }
 
+#wrapper{
+	min-height: 800px;
+}
 
 </style>
 </head>

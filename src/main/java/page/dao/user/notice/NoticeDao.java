@@ -42,4 +42,6 @@ public interface NoticeDao {
 	 * @param noticeno
 	 */
 	public void hit(int noticeno);
+	
+	public List<Notice> selectMainNotice();
 }

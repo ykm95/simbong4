@@ -29,6 +29,6 @@
 			<button class="btn btn-lg btn-secondary">봉사 확인</button>
 		</div>
 	</c:if>
-
+</div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
