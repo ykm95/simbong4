@@ -6,7 +6,11 @@
 
 <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
-<H1>list</H1>
-Test Test
+<!-- 게시판>공지사항 게시판 -->
+공지사항
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+<a href="/admin/adminBoard/adminWrite"><button>글쓰기</button></a>
+
+
+</body>
+</html>

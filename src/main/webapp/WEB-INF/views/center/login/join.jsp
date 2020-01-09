@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -76,14 +70,65 @@
 
 
 
-<!-- 아이디 중복 체크 -->
+<!-- 이메일 중복 체크 -->
 <script>
 $(document).ready(function() {
-	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-	$("#memail").blur(function() {
-		var memail = $('#memail').val();
+// 	// 이메일 유효성 검사(1 = 중복 / 0 != 중복)
+// 	$("#memail").blur(function() {
+// 		var memail = $('#memail').val();
+// 		$.ajax({
+// 			url : '${pageContext.request.contextPath}/center/idCheck?memail='+memail,
+// 			type : 'get',
+// 			success : function(data) {
+// 				console.log("1 = 중복o / 0 = 중복x : "+ data);			
+				
+				
+// 				if (data==1) {
+// 					// 1 : 아이디가 중복되는 문구
+// 					$("#id_check").text("사용중인 이메일입니다 :p");
+// 					$("#id_check").css("color", "red");
+// 					$("#reg_submit").attr("disabled", true);
+				
+// 				} else{
+				
+// 					var regExp =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+// 					if(regExp.test(memail)){
+// 						// 0 : 아이디 길이 / 문자열 검사
+// 						$("#id_check").text("");
+// // 						$("#reg_submit").attr("disabled", false);
+						
+// 						$("#id_check").text("사용가능한 이메일 입니다 .");
+// 						$("#id_check").css("color", "blue");
+						
+			
+// 					} else if(memail == ""){
+
+// 						$('#id_check').text('이메일을 입력해주세요.');
+// 						$('#id_check').css('color', 'red');
+// 						$("#reg_submit").attr("disabled", true);				
+						
+// 					} else {
+						
+// 						$('#id_check').text("이메일 형식으로 입력해주세요.");
+// 						$('#id_check').css('color', 'red');
+// 						$("#reg_submit").attr("disabled", true);
+// 					}
+					
+				
+// 				}
+// 			}, error : function() {
+// 					console.log("실패");
+// 			}
+// 		});
+// 	});
+	
+	
+	// 이메일 유효성 검사(1 = 중복 / 0 != 중복)
+	$("#businessno").blur(function() {
+		console.log("zz");
+		var businessno = $('#businessno').val();
 		$.ajax({
-			url : '${pageContext.request.contextPath}/user/idCheck?memail='+ memail,
+			url : '${pageContext.request.contextPath}/center/bnoCheck?businessno='+businessno,
 			type : 'get',
 			success : function(data) {
 				console.log("1 = 중복o / 0 = 중복x : "+ data);			
@@ -91,32 +136,41 @@ $(document).ready(function() {
 				
 				if (data==1) {
 					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("사용중인 아이디입니다 :p");
-					$("#id_check").css("color", "red");
+					$("#bno_check").text("사용중인 사업자번호입니다 :p");
+					$("#bno_check").css("color", "red");
 					$("#reg_submit").attr("disabled", true);
 				
 				} else{
 				
-					var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-					if(regExp.test(memail)){
+					console.log("a");
+					var regExp =/([0-9]{3})([0-9{2}])([0-9]{5})/;
+					if(regExp.test(businessno)){
+						
+						
+					console.log("b");
 						// 0 : 아이디 길이 / 문자열 검사
-						$("#id_check").text("");
+						$("#bno_check").text("");
 // 						$("#reg_submit").attr("disabled", false);
-						
-						$("#id_check").text("사용가능한 이메일입니다 .");
-						$("#id_check").css("color", "blue");
-						
+					console.log(checkBisNo(businessno));
+						if(checkBisNo(businessno)) {
+						$("#bno_check").text("사용가능한 사업자 번호 입니다 .");
+						$("#bno_check").css("color", "blue");
+						}else {
+							$('#bno_check').text('사업자 번호를  확인해주세요.');
+							$('#bno_check').css('color', 'red');
+							$("#reg_submit").attr("disabled", true);
+						}
 			
-					} else if(memail == ""){
+					} else if(businessno == ""){
 
-						$('#id_check').text('이메일을 입력해주세요.');
-						$('#id_check').css('color', 'red');
+						$('#bno_check').text('사업자 번호를 입력해주세요.');
+						$('#bno_check').css('color', 'red');
 						$("#reg_submit").attr("disabled", true);				
 						
 					} else {
 						
-						$('#id_check').text("이메일형식으로 입력해주세요.");
-						$('#id_check').css('color', 'red');
+						$('#bno_check').text("사업자번호 형식으로 입력해주세요.");
+						$('#bno_check').css('color', 'red');
 						$("#reg_submit").attr("disabled", true);
 					}
 					
@@ -127,6 +181,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	
 });
 
@@ -143,6 +198,10 @@ function checkAll(){
 	     }
 	  else if($("#memail").val() == ""){
 	       $("#memail").focus();
+	       return false;
+	     }
+	  else if($("#business").val() == ""){
+	       $("#business").focus();
 	       return false;
 	     }
 	  else if($("#cpassword").val() == ""){
@@ -211,9 +270,28 @@ function checkPassword(cpassword){
     return true;
 }
 
+
+
+//사업자번호 체크
+function checkBisNo(businessno)
+{
+	// 넘어온 값의 정수만 추츨하여 문자열의 배열로 만들고 10자리 숫자인지 확인합니다.
+	if ((businessno = (businessno+'').match(/\d{1}/g)).length != 10) { return false; }
+	
+	// 합 / 체크키
+	var sum = 0, key = [1, 3, 7, 1, 3, 7, 1, 3, 5];
+	
+	// 0 ~ 8 까지 9개의 숫자를 체크키와 곱하여 합에더합니다.
+	for (var i = 0 ; i < 9 ; i++) { sum += (key[i] * Number(businessno[i])); }
+	
+	// 각 8번배열의 값을 곱한 후 10으로 나누고 내림하여 기존 합에 더합니다.
+	// 다시 10의 나머지를 구한후 그 값을 10에서 빼면 이것이 검증번호 이며 기존 검증번호와 비교하면됩니다.
+	return (10 - ((sum + Math.floor(key[8] * Number(businessno[8]) / 10)) % 10)) == Number(businessno[9]);
+}
+
 $(document).ready(function() {
-
-
+	
+	
 	$("#cpassword").blur(function(){
 	    checkPassword($('#cpassword').val());
 	    $('#cpasswordchk').val("");
@@ -251,7 +329,7 @@ $(document).ready(function() {
 
 // 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-	var regExp=/d{3,4};
+	var regExp=/^{3,4}/;
 
 	
 	if (!regExp.test($('#mph1').val())) {
@@ -279,16 +357,16 @@ $(document).ready(function() {
 	
 	//전화번호 유효성 검사
 
-	$('#mph2').blur(function() {
+	$('#mphone').blur(function() {
 // 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
 
 // 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-	var regExp2=/d{4};
+	var regExp2=/d{4}/;
 
 	
-	if (!regExp2.test($('#mph2').val())) {
-			if($('#mph2').val()!=""){
+	if (!regExp.test($('#mphone').val())) {
+			if($('#mphone').val()!=""){
 // 			alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.1");
 			$('#phone_check').text("잘못된 휴대폰 번호입니다.");
 			$('#phone_check').css('color', 'red');f
@@ -297,12 +375,11 @@ $(document).ready(function() {
 			}
 
 		}
-	if (regExp2.test($('#mph2').val())) {
-		if($('#mph2').val()!=""){
+	if (regExp.test($('#mphone').val())) {
+		if($('#mphone').val()!=""){
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
-// 		alert($("#mphone").val());
 		return true
 		}
 
@@ -323,8 +400,10 @@ $(document).ready(function() {
 <input type="text" name="cname" id="cname"  />
 <br><br>
 <label for ="businessno">사업자번호</label>
-<input type="text" name="businessno" id="businessno"  />
+<input type="text" name="businessno" id="businessno" placeholder="-없이 숫자만  입력해주세요." />
 <br><br>
+<div class="check_front" id="bno_check"> 
+</div>
 <label for ="cpassword">비밀번호</label>
 <input type="password" name="cpassword" id="cpassword" />
 <br>
@@ -353,7 +432,7 @@ $(document).ready(function() {
        <option value="017">017</option>
        <option value="019">019</option>
      </select>
-     - <input type="text"  id= "mph1" name="mphone" size="5" maxlength="4"> - <input type="text" id="mph2" name="mphone" size="5" maxlength="4">
+     - <input type="text"  id= "mphone" name="mphone" size="5"  min="3" maxlength="4"> - <input type="text" id="mphone" name="mphone" size="5" maxlength="4">
      <br>
 
 <div class="check_front" id="phone_check"> 
@@ -462,5 +541,4 @@ $(document).ready(function() {
 <button type="reset" id="cancelbtn">취소</button>
 
 </form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

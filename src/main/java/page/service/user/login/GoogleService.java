@@ -35,12 +35,9 @@ public interface GoogleService {
 	 * @param session - 세션 설정위한 객체
 	 * @param googleOAuth2Parameters - 구글 api 사용 위한 Auth2 객체
 	 */
-	public void setGoogleLogin(String code, HttpSession session, OAuth2Parameters googleOAuth2Parameters) throws IOException;
+	public User setGoogleLogin(String code, HttpSession session, OAuth2Parameters googleOAuth2Parameters) throws IOException;
 
 
-	/**
-	 * 구글로그인으로 회원가입
-	 * @param user
-	 */
-	public void usergooglejoin(User user);
+
+
 }

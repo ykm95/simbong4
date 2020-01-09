@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 <!-- 주소검색 -->
@@ -157,10 +154,6 @@ function checkAll(){
 	       $("#uphone").focus();
 	       return false;
 	     }
-	  else if($("#gender").val() == ""){
-	       $("#gender").focus();
-	       return false;
-	     }
 	  else if($("#uaddress1").val() == ""){
 	       $("#uaddress1").focus();
 	       return false;
@@ -305,7 +298,7 @@ $(document).ready(function() {
 		$('#phone_check').text("올바른 전화번호 입니다.");
 		$('#phone_check').css('color', 'blue');
 
-		alert($("#uphone").val());
+// 		alert($("#uphone").val());
 		return true
 		}
 
@@ -316,54 +309,114 @@ $(document).ready(function() {
 });
 </script>
 
+
+<style type="text/css">
+#selCnt {
+	width: 180px;
+}
+.form-group :not (:first-child ) * {
+	font-weight: normal;
+	
+}
+
+.form-control {
+	width: 50%;
+	display: inline;
+}
+
+label {
+    display: flex;
+    margin-bottom: .5rem;
+    
+    float: right;
+}
+
+#postcodeBtn {
+	margin-left: 10px;
+	width: 120px;
+}
+
+</style>
 </head>
 <body>
-<h1>회원가입</h1>
-<hr>
-<form action="/user/login/join" method="post" onsubmit="return checkAll()">
+	<div class="container">
+		<div class="col-xs-12 text-center">
 
-<label for ="uname">이름</label>
-<input type="text" name="uname" id="uname"  />
-<br><br>
-<div class="form-group">
-<label for ="uemail">이메일</label>
-<input type="text" class="form-control" name="uemail" id="uemail" value="${uemail}"
- placeholder="abc@123.com" />
-<div class="check_front" id="id_check"> 
-</div>
-</div>
-<br>
-<label for ="upassword">비밀번호</label>
-<input type="password" name="upassword" id="upassword" />
-<br>
-<div class="check_front" id="pw_form"> 
-</div><br>
-<label for ="upasswordchk">비밀번호 확인</label>
-<input type="password" name="upasswordchk" id="upasswordchk" />
-<div class="check_front" id="pw_check"> 
-</div>
-<br>
-<label for ="uphone">전화번호</label>
-<input type="text" name="uphone" id="uphone" />
-<br>
-<div class="check_front" id="phone_check"> 
-</div><br>
-<label for ="gender">성별</label>
-남<input type="radio" name="gender" id="gender" value="0" />
-여<input type="radio" name="gender" id="gender" value="1" />
-<br><br>
-<label>주소</label>
-<br>
-<input type="text" id="uaddress1" name="uaddress1" placeholder="우편번호"/>
+			<div class="col-xs-8" style="margin: 0 auto; float: none;">
+				<h2>심봉사 회원가입</h2>
 
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"/>
-<br>
-<input type="text" id="uaddress2" name="uaddress2" placeholder="주소" />
-<input type="text" id="uaddress3" name="uaddress3" placeholder="상세주소"/>
-<br><br>
-<button id="reg_submit">회원가입</button>
-<button type="reset" id="cancelbtn">취소</button>
+				<form action="/user/login/join" method="post"
+					class="form-horizontal" onsubmit="return checkAll()">
 
-</form>
-</body>
-</html>
+					<div class="form-group row">
+						<div class="col-3 col-form-label">
+							<label for="uname" class="float-right">이름</label>
+						</div>
+						<input class="form-control" type="text" name="uname" id="uname" />
+					</div>
+
+					<div class="form-group row">
+						<div class="col-3 col-form-label">
+							<label for="uemail">이메일</label>
+						</div>
+						<input type="text" class="form-control" name="uemail" id="uemail"
+							value="${uemail}" placeholder="abc@123.com" />
+					</div>
+					<div class="check_front" id="id_check"></div>
+					
+					<div class="form-group row">
+						<div class="col-3 col-form-label">
+							<label for="upassword">비밀번호</label>
+						</div>
+						<input class="form-control" type="password" name="upassword"
+							id="upassword" />
+					</div>
+					<div class="check_front" id="pw_form"></div>
+		
+					<div class="form-group row">
+						<div class="col-3 col-form-label">
+							<label for="upasswordchk">비밀번호 확인</label>
+						</div>
+						<input class="form-control" type="password" name="upasswordchk"
+							id="upasswordchk" />
+					</div>
+					<div class="check_front" id="pw_check"></div>
+		
+					<div class="form-group row">
+						<div class="col-3 col-form-label">
+							<label for="uphone">전화번호</label>
+						</div>
+						<input type="text" class="form-control" name="uphone" id="uphone" />
+					</div>
+					<div class="check_front" id="phone_check"></div>
+					
+					<div class="form-group row">
+						<div class="col-3 col-form-label text-right">성별</div>
+						<div class="form-check form-check-inline">
+							<label for="gender" class="form-check-label">남&nbsp;</label>
+							<input type="radio" class="form-check-input" name="gender" id="gender0" value="0" checked />
+							<div class="col-1"></div>
+							<label for="gender" class="form-check-label">여&nbsp;</label>
+							<input type="radio" class="form-check-input" name="gender" id="gender1" value="1" />
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-3 col-form-label">
+							<label>주소</label> <br>
+						</div>
+						<input type="text" class="form-control col-2" id="uaddress1" name="uaddress1" placeholder="우편번호" style="width: 20%"/>
+						<button id="postcodeBtn" onclick="sample6_execDaumPostcode()" class="form-control btn btn-secondary">우편번호 찾기</button>
+					</div>
+						
+					<div class="form-group row">
+						<input class="form-control offset-3 col-3" type="text" id="uaddress2" name="uaddress2" placeholder="주소" /> <br><br> 
+						<input class="form-control col-3" type="text" id="uaddress3" name="uaddress3" placeholder="상세주소" />
+					</div>
+					<br>
+					
+					<button id="reg_submit" class="btn btn-success">회원가입</button>
+					<button type="reset" id="cancelbtn" class="btn btn-warning">취소</button>
+				</form>
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

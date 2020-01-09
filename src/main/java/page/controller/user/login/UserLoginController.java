@@ -122,7 +122,7 @@ public class UserLoginController {
 	@RequestMapping(value = "/user/login/googlejoin",method = RequestMethod.POST)
 	public String usergoogleJoinProc(User user) {
 		
-		googleService.usergooglejoin(user);
+		googleService.insertGoogleInfo(user);
 		
 		return "/main";
 	}
@@ -140,16 +140,22 @@ public class UserLoginController {
 
 				//구글 로그인 데이터 파싱 및 설정 위한 서비스 호출
 
-				googleService.setGoogleLogin(code, session, googleOAuth2Parameters);
+				User user= new User();
+				user=googleService.setGoogleLogin(code, session, googleOAuth2Parameters);
 
+				model.addAttribute("user",user);
 			} catch (IOException e) {
 
 
 				e.printStackTrace();
 			}
 
-			
-			return "user/login/googlejoin";
+			if(session.getAttribute("socialDouble").equals(false)) {
+				return "user/login/googlejoin";
+			}else {
+				
+				return "/main";
+			}
 
 		}
 		

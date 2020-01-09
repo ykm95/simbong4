@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import page.dao.center.login.CenterLoginDao;
 import page.dto.Center;
@@ -55,6 +56,16 @@ public class CenterLoginServiceImpl implements CenterLoginService {
 	@Override
 	public String getnameByemail(Center center) {
 		return centerLoginDao.getNameByEmail(center);
+	}
+
+	@Override
+	public int getcnoByBno(Center center) {
+		return centerLoginDao.getCnoByBno(center);
+	}
+
+	@Override
+	public int userBnoCheck(long businessno) {
+		return centerLoginDao.checkOverBno(businessno);
 	}
 
 }

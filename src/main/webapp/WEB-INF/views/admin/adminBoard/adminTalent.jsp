@@ -6,7 +6,8 @@
 
 <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
-<H1>list</H1>
-Test Test
+<!-- 게시판>재능기부 개인회원 봉사신청 게시판 -->
+trdrrg
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+</body>
+</html>

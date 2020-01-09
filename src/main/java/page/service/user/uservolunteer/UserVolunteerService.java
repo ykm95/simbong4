@@ -2,9 +2,9 @@ package page.service.user.uservolunteer;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import page.dto.Participant;
+import page.dto.Applicant;
 import page.dto.Volunteer;
 import page.util.PagingVolunteer;
 
@@ -16,9 +16,17 @@ public interface UserVolunteerService {
 
 	public int getCntVolunteerAll(PagingVolunteer pagingVolunteer);
 
-	public List<Participant> getPrtByNo(int volunteerno);
+//	public List<Applicant> getAplByNo(int volunteerno);
 
-	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer, HttpServletRequest req);
+	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer);
+
+	public int getUserno(String attribute);
+
+	public boolean isApplicant(Applicant applicant);
+
+	public boolean isApplicant2(Applicant applicant);
+
+
 
 
 

@@ -24,10 +24,11 @@ VALUES(usertb_seq.nextval,#{uname},#{uemail},#{upassword},#{uphone},#{gender},#{
 SELECT count(*) FROM usertb WHERE uemail=#{uemail} and upassword=#{upassword} </select>
 
 <select parameterType="page.dto.User" id="selectSocialCnt" resultType="int">
-SELECT COUNT(*) FROM usertbWHERE 1=1AND ulogin = 1 </select>
+SELECT COUNT(*) FROM usertb WHERE 1=1 AND ulogin = 1 AND uemail=#{uemail}</select>
 
+<!-- 최초 구글 로그인시 회원가입 -->
 <insert parameterType="page.dto.User" id="userGoogleInsert">
-INSERT INTO usertb(userno,uname,uemail,uphone,uaddress1,uaddress2,uaddress3)
+INSERT INTO usertb(userno,uname,uemail,uphone,uaddress1,uaddress2,uaddress3,ulogin)
 VALUES(usertb_seq.nextval,#{uname},#{uemail},#{uphone},#{uaddress1},#{uaddress2},#{uaddress3},1) </insert>
 
 <!-- 아이디 중복 검사 -->

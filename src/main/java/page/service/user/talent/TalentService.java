@@ -2,18 +2,16 @@ package page.service.user.talent;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import page.dto.Talent;
 import page.util.PagingTalent;
 
 public interface TalentService {
 
-	public List<Talent> getTalentList(PagingTalent paging);
+	public List<PagingTalent> getTalentList(PagingTalent paging);
 
 	public Talent getTalent(int talentno);
 
-	public void write(Talent talent);
+	public void write(PagingTalent paging);
 
 	public int getCntTalent(PagingTalent paging);
 
@@ -21,6 +19,6 @@ public interface TalentService {
 	
 	public void delete(int talentno);
 	
-	public PagingTalent getPaging(PagingTalent paging, HttpServletRequest req);
+	public PagingTalent getPaging(PagingTalent paging);
 
 }
