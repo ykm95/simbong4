@@ -16,9 +16,10 @@
 $(document).ready(function() {
 	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
 	$("#memail").blur(function() {
-		var uemail = $('#memail').val();
+		var memail = $('#memail').val();
+	
 		$.ajax({
-			url : '${pageContext.request.contextPath}/center/idCheck?mEmail='+ memail,
+			url : '${pageContext.request.contextPath}/center/idCheck?memail='+ memail,
 			type : 'get',
 			success : function(data) {
 				console.log("1 = 중복o / 0 = 중복x : "+ data);			
@@ -26,14 +27,14 @@ $(document).ready(function() {
 				
 				if (data==1) {
 					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("비밀번호 찾기 가능한 아이디입니다.");
+					$("#id_check").text("비밀번호 찾기 가능한 이메일입니다.");
 					$("#id_check").css("color", "green");
 					$("#submit").attr("disabled", false);
 				
 				} else{
 				
 					var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-					if(regExp.test(uemail)){
+					if(regExp.test(memail)){
 						// 0 : 아이디 길이 / 문자열 검사
 						$("#id_check").text("");
 						
@@ -42,7 +43,7 @@ $(document).ready(function() {
 						$("#submit").attr("disabled", true);
 						
 			
-					} else if(uemail == ""){
+					} else if(memail == ""){
 
 						$('#id_check').text('이메일을 입력해주세요.');
 						$('#id_check').css('color', 'red');
@@ -71,9 +72,9 @@ $(document).ready(function() {
 <script>
 function checkEmail(){
 	
-	  if($("#uemail").val() == ""){
+	  if($("#memail").val() == ""){
 		  
-	       $("#uemail").focus();
+	       $("#memail").focus();
 	       $("#submit").attr("disabled", false);
 	       return false;
 	     }
@@ -147,7 +148,7 @@ function checkEmail(){
 <div class="form-group">
 	<div class="input-group"> 
  		<span class="input-group-addon"><i class="fa fa-user"></i></span>
-			<input class ="form-control" type="email" id="uemail" name="uemail" placeholder="  이메일주소를 입력하세요. ">
+			<input class ="form-control" type="email" id="memail" name="memail" placeholder="  이메일주소를 입력하세요. "/>
 	</div>
 </div>
 <div class="check_front" id="id_check"></div><br> <br>
