@@ -8,7 +8,7 @@ import page.util.PagingVolunteer;
 
 public interface UserVolunteerService {
 
-	public List<Volunteer> getVolunteerList(PagingVolunteer pagingVolunteer);
+	public List<PagingVolunteer> getVolunteerList(PagingVolunteer pagingVolunteer);
 
 	public Volunteer getVolunteer(int volunteerno);
 
