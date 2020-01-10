@@ -4,9 +4,12 @@ package page.service.user.talent;
 import java.util.HashMap;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import page.controller.user.talent.TalentController;
 import page.dao.user.talent.TalentDao;
 import page.dto.Talent;
 import page.util.PagingTalent;
@@ -15,6 +18,8 @@ import page.util.PagingTalent;
 public class TalentServiceImpl implements TalentService{
 
 	@Autowired private TalentDao talentDao;
+	  private static final Logger logger= LoggerFactory.getLogger(TalentServiceImpl.class);
+
 
 	@Override
 	public PagingTalent getPaging(PagingTalent paging) {
@@ -26,28 +31,26 @@ public class TalentServiceImpl implements TalentService{
 		
 		//Paging 객체 생성
 		PagingTalent pagingRes = new PagingTalent(totalCount, curPage);
-		pagingRes.setT_process( paging.getT_process() );
-		pagingRes.setT_type( paging.getT_type() );
-		pagingRes.setT_department( paging.getT_department() );
-		pagingRes.setT_area( paging.getT_area() );
-		pagingRes.setT_start( paging.getT_start() );
-		pagingRes.setT_end( paging.getT_end() );
+		pagingRes.setTalent_process( paging.getTalent_process() );
+		pagingRes.setTalent_type( paging.getTalent_type() );
+		pagingRes.setDepartmentno( paging.getDepartmentno() );
+		pagingRes.setAreano( paging.getAreano() );
+		pagingRes.setTalent_start( paging.getTalent_start() );
+		pagingRes.setTalent_end( paging.getTalent_end() );
 		pagingRes.setT_cycle( paging.getT_cycle() );
 
-		
-		
-		
 		return pagingRes;
 	}
 
 	
 	@Override
-	public List<Talent> getTalentList(PagingTalent paging) {
+	public List<PagingTalent> getTalentList(PagingTalent paging) {
 		return talentDao.selectTalentAll(paging);
 	}
 
 	@Override
 	public Talent getTalent(int talentno) {
+
 		return talentDao.selectTalentByNo(talentno);
 	}
 

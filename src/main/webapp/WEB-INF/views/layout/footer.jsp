@@ -4,30 +4,34 @@
 </div>
 
 
-<div style="height: 1px; background: black;"></div>
+<div style="height: 1px; background: #ccc;"></div>
 
-<div id="footer" style='text-align: center; min-width: 1200px;'>
-		<div class="info" style=' float: left; width: 1000px'>
+<div id="footer" class="row">
+		<div class="col-2"></div>
+		<div class="col-3" style=' float: left; width: 1000px'>
 			<ul>
 				<li>대표전화 02 - 0000 - 0000</li>
 				<li>e-mail simbong4@naver.com</li>
 				<li>made by 양기문 정광주 배하림 노승재 허지연 박윤솔</li>
 			</ul>
 		</div>
-
-
-		<div class="mark1" style=' float: left; width: 200px'>
-			<ul class="clear">
-				<li class="ssn"><a
-					href="http://kncsw.bokji.net/kncc/m00/m00.jsp" target="_blank"
-					rel="noopener noreferrer" title="새창열림"><img
-						src="/resources/img/SSN_ci_png.png" alt="SSN한국사회복지협의"></a></li>
-				<li class="mohw"><a href="http://www.mohw.go.kr"
-					target="_blank" rel="noopener noreferrer" title="새창열림"><img
-						src="/resources/img/보건복지부_국_좌우.jpg" alt="보건복지부"></a></li>
-
-			</ul>
+		
+		<div class="col-1"></div>
+		
+		<div id="mark1" class="col-5 row"
+		style="text-align:center;">
+				<div class="col-6">
+				<a href="http://kncsw.bokji.net/kncc/m00/m00.jsp" target="_blank"
+					rel="noopener noreferrer" title="새창열림">
+					<img width="200px;"src="/resources/img/SSN_ci_png.png" alt="SSN한국사회복지협의"></a>
+				</div>
+				<div class="col-6">
+				<a href="http://www.mohw.go.kr"
+					target="_blank" rel="noopener noreferrer" title="새창열림">
+					<img width="170px;" src="/resources/img/보건복지부.png" alt="보건복지부"></a>
+				</div>	
 		</div>
+		<div class="col-1"></div>
 </div>
 </body>
 </html>

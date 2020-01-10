@@ -143,7 +143,30 @@ $(document).ready(function(){
  	//폼 전송버튼, 취소 버튼
  	$('#post').click(function(){
  		
- 		$('#form').submit()
+ 		var title = $('#title').val();
+ 		var sterm = $('#sterm').val();
+ 		var eterm = $('#eterm').val();
+ 		var stime = $('#stime').val();
+ 		var etime = $('#etime').val();
+ 		var department = $('#department').val();
+ 		var area = $('#area').val();
+ 		var place = $('#place').val();
+ 		var receiver = $('#receiver').val();
+ 		var qualification = $('#qualification').val();
+ 		var npeople = $('#npeople').val();
+ 		
+ 		if(title == "" || sterm == "" || eterm == "" || stime == ""
+ 				|| etime == "" || department == "" || area == ""
+ 				|| place == "" || receiver == "" || qualification == ""
+ 				|| npeople == ""){
+ 			
+ 			alert('모든 항목을 작성한 후 등록해 주세요.');
+ 			
+ 		} else {
+ 			
+	 		$('#form').submit();
+ 		}
+ 		
  	});
  	
  	$('#cancle').click(function(){
@@ -280,7 +303,7 @@ $(document).ready(function(){
 		</div><br>
 		
 		<div>
-			<textarea rows="500px" cols="00px" name="vol_content" id="editor1" required="required"></textarea>
+			<textarea rows="500px" cols="400px" name="vol_content" id="editor1" required="required"></textarea>
 		</div><br>
 		
 		<div>

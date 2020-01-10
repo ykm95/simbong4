@@ -31,7 +31,7 @@ public class TalentController {
 		  paging = talentService.getPaging(paging);
 		  logger.info(paging.toString());
 		  
-		  List<Talent> talentlist = talentService.getTalentList(paging);
+		  List<PagingTalent> talentlist = talentService.getTalentList(paging);
 		  
 		  int count = talentService.getCntTalent(paging);
 		  
@@ -48,7 +48,7 @@ public class TalentController {
 		  
 		  Talent talent = talentService.getTalent(talentno);
 		  
-		  
+		  talent.setTest(talent.getTalent_cycle());
 		  
 		  model.addAttribute("talent", talent);
 		  
@@ -69,8 +69,17 @@ public class TalentController {
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.GET)
-	  public void talentUpdate() {
+	  public void talentUpdate(int talentno, Model model) {
 		  
+		  logger.info("서비스 전 : " + talentno);
+		  
+		  Talent talent = talentService.getTalent(talentno);
+		  
+		  logger.info("서비스 후 : " + talent);
+		  
+		  talent.setTest(talent.getTalent_cycle());
+		  
+		  model.addAttribute("talent", talent);
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.POST)

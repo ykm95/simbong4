@@ -9,33 +9,37 @@
 <title>심봉사 :: HOME</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <!-- CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <!-- JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
 
 <style type="text/css">
 
 #header {
 	margin : 0;
 	padding: 30px 0;
+/*  	background-color:#F7F8E0; */
 }
 
 #footer {
 	margin: 0;
 	padding: 30px 0;
-	display: inline-block;
-    
+/* 	display: inline-block; */
+/* 	background-color:#F7F8E0; */
+	text-align: center;
+	min-width: 1200px;
+	
 
-}
-#footer .mark1 ul li img {
-	text-align:center;
-	max-width:100%
 }
 
 ul{
@@ -43,19 +47,68 @@ ul{
 }
 
 #wrapper{
-
-	min-height: 800px;
+	min-height: 600px;
+/* 	background-color: #F7F8E0; */
 }
 
+/* #menu{ */
+/*  	width:100%;  */
+/* } */
+
+#menu div{
+  	width:240px;  
+ 	height:55px; 
+	border: 1px solid #ccc;
+	cursor:pointer;
+	font-size:18px;
+	text-align: center;
+	line-height: 55px;
+}
+
+#menu div:hover{
+	background-color: #ccc;
+}
 
 </style>
 </head>
-<body>
+<body>					
 
-<div id ="header">
-			<img width="100px" src="/resources/img/simlogo.png">
-			
+<div id ="header" class="row" style="text-align: center;">
+	<div class="col-3">
+	</div>
+		
+	<div class="col-6">
+	<a href="/main"><img width="80px" src="/resources/img/logo.png"></a>
+	
+	</div>
+		
+	<div class="col-3">
+		<c:if test="${not login }">
+			<a href="/user/login/email">회원가입</a>
+			<a href="/user/login/login">로그인</a>
+		</c:if>
+
+		<c:if test="${login }">
+			<a href="/userLogout">로그아웃</a>
+			<a href="/user/mypage/mypagemain">마이페이지</a>
+		</c:if>
+	</div>
 </div>
-<div style="height: 1px; background: black; "></div>
+<div class="row">
+	<div class="col-3" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;"></div>
+	<div class="col-6">
+		<div id="menu" class="row">
+		
+			<div onclick="location.href='/user/notice/list'">공지사항</div>
+			<div onclick="location.href='/user/best/bestlist'">우수봉사자</div>
+			<div>통계</div>
+			<div>메뉴4</div>
+		</div>
+	</div>
+	<div class="col-3" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;"></div>		
+</div>
+		
+<!-- <div style="height: 3px; background: #ccc;"></div> -->
+
 
 <div id="wrapper">

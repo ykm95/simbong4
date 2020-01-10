@@ -41,7 +41,4 @@
 		
 	</insert>
 
-<!-- <select id="read" parameterType="int" resultType= "">
-
-</select> -->
 </mapper>

@@ -30,6 +30,7 @@ public class Volunteer {
 	private float vol_lat;
 	private float vol_lng;
 	private String vol_address;
+	private String departname;
 	
 	
 	@Override
@@ -41,9 +42,16 @@ public class Volunteer {
 				+ ", vol_area=" + vol_area + ", aname=" + aname + ", vol_place=" + vol_place + ", receiver=" + receiver
 				+ ", qualification=" + qualification + ", write_date=" + write_date + ", npeople=" + npeople
 				+ ", apeople=" + apeople + ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address="
-				+ vol_address + "]";
+				+ vol_address + ", departname=" + departname + "]";
 	}
 	
+	
+	public String getDepartname() {
+		return departname;
+	}
+	public void setDepartname(String departname) {
+		this.departname = departname;
+	}
 	
 	public int getVolunteerno() {
 		return volunteerno;

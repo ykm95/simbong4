@@ -22,10 +22,12 @@ public class BoardServiceImpl implements BoardService{
 		
 		Object obj = session.getAttribute("isAdmin");
 		
-		if(obj==null) {//admin이 아니면
+		//admin이 아니면 0, 빠꾸
+		if(obj==null) {
 			returnData.put("status", "0");
 			returnData.put("message", "access denied");
-		}else {//admin이면
+		//admin이면 1, DB저장
+		}else {
 			boardDao.adminWrite(notice);//DB저장
 			returnData.put("status", "1");
 		}
