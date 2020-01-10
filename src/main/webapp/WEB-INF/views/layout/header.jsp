@@ -28,14 +28,15 @@
 
 <script type="text/javascript">
 	
-// function signOut(){
+function signOut(){
 		
-// 		var auth2 =gapi.auth2.getAuthInatance();
-// 		auth2.signOut().then(function(){
-// 			console.log('User signed out.');
-// 		});
-// 		auth2.disconnect();
-// }
+	   var child = window.open('https://accounts.google.com/logout','popup', 'z-lock=yes');
+	      
+	      setTimeout(function() {
+	         child.close();
+	         location.href="/userLogout";
+	         }, 1000); // 1000ms(3초)가 경과하면 이 함수가 실행됩니다.
+}
 
 
 </script>
@@ -106,9 +107,18 @@ ul{
 		</c:if>
 
 		<c:if test="${login }">
-			<a  href="/userLogout" onclick="signOut();">로그아웃</a>
+		
+		<c:choose>
+		<c:when test="${google }">
+			<a  style ="cursor:pointer;" onclick="signOut()">로그아웃</a>	
+		</c:when>
+		<c:otherwise>
+			<a href="/userLogout" >로그아웃</a>		
+		</c:otherwise>
+		</c:choose>
 			<a href="/user/mypage/mypagemain">마이페이지</a>
 		</c:if>
+		
 	</div>
 </div>
 <div class="row">
