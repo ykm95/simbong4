@@ -1,9 +1,20 @@
 package page.controller.admin.qna;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AdminQnaController {
+	
+
+		@RequestMapping(value = "/admin/adminQna/qnaMain", method = RequestMethod.GET)
+		public void qnaMain() {
+		}
+		
+		@RequestMapping(value = "/admin/adminQna/qnaDetail", method = RequestMethod.GET)
+		public void qnaDetail() {
+		}
 	
 	//1:1 문의 답변 작성 
 	
