@@ -85,11 +85,10 @@ public class CenterLoginController {
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=centerloginservice.centerlogin(center);//true면 인증 성공
 		
-
-		System.out.println(isLogin);
-		
 		//결과에 따른 세션처리
 		if(isLogin) {
+			
+			session.setMaxInactiveInterval(0);
 			
 			int cno=centerloginservice.getcnoByBno(center);
 			center.setCenterno(cno);

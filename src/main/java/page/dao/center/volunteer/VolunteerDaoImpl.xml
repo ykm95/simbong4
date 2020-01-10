@@ -21,6 +21,7 @@
 				v.STIME STIME,
 				v.ETIME ETIME,
 				v.DEPARTMENT DEPARTMENT,
+				v.AREA AREA,
 				v.VOL_AREA VOL_AREA,
 				v.VOL_PLACE VOL_PLACE,
 				v.RECEIVER RECEIVER,
@@ -65,18 +66,18 @@
 		INSERT INTO volunteer 
 			(volunteerno, centerno, vol_sterm, vol_eterm, stime, etime,
 			department, vol_area, vol_place, receiver, qualification, npeople,
-			vol_title, vol_content, vol_lat, vol_lng, vol_address)
+			vol_title, vol_content, vol_lat, vol_lng, vol_address, area)
 		VALUES 
 			(volunteer_seq.nextVal, #{centerno}, #{vol_sterm}, #{vol_eterm}, #{stime}, #{etime},
 			#{department}, #{vol_area}, #{vol_place}, #{receiver}, #{qualification}, #{npeople},
-			#{vol_title}, #{vol_content}, #{vol_lat}, #{vol_lng}, #{vol_address} )
+			#{vol_title}, #{vol_content}, #{vol_lat}, #{vol_lng}, #{vol_address}, #{area} )
 	</insert>
 	
 	<update id="updateVolunteer" parameterType="page.dto.Volunteer">
 		UPDATE volunteer
 		SET vol_title = #{vol_title}, vol_content = #{vol_content}, vol_sterm = #{vol_sterm}, vol_eterm = #{vol_eterm}, stime = #{stime}, etime = #{etime},
 			department = #{department}, vol_area = #{vol_area}, vol_place = #{vol_place},
-			receiver = #{receiver}, qualification = #{qualification}, npeople = #{npeople}
+			receiver = #{receiver}, qualification = #{qualification}, npeople = #{npeople}, area = #{area}
 		WHERE volunteerno = #{volunteerno}
 	</update>
 	

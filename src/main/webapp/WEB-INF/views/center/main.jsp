@@ -14,7 +14,7 @@
 	
 	<c:if test="${login }">
 		<div class="col-12">
-			<h1>${center.cname }님, 환영합니다.</h1>
+			<h1>${center.cname }, 환영합니다.</h1>
 		</div>
 	
 		<div class="col">

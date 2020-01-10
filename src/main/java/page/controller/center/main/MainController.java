@@ -23,8 +23,6 @@ public class MainController {
 	@RequestMapping(value = "/center/main")
 	public void main(Center center, Model model, HttpSession session) { 
 		
-		System.out.println(session.getAttribute("centerno"));
-		
 		if(session.getAttribute("centerno") != null) {
 			
 			center.setCenterno((int) session.getAttribute("centerno"));
