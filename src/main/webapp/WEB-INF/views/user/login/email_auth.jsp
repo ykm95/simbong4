@@ -2,18 +2,6 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 
-<script>
-function checkEmail(){
-	
-	  if($("#uemail").val() == ""){
-		  
-	       $("#uemail").focus();
-	       $("#submit").attr("disabled", false);
-	       return false;
-	     }
-}
-</script>
-
 <style type="text/css">
 	.login-form {
 		width: 340px;
@@ -82,7 +70,7 @@ function checkEmail(){
 <input class ="form-control" type="number" name="email_injeung" placeholder="인증번호를 입력하세요.">
 </div></div>											
 <input hidden="hidden" type="email" name="uemail" value="${uemail}"/>
-<button type="submit" id="submit"name="submit"  class="btn btn-success btn-block login-btn col-6" disabled>인증번호 전송</button><br><br>
+<button type="submit" id="submit"name="submit"  class="btn btn-success btn-block login-btn col-6">인증번호 전송</button><br><br>
 <button type="reset" id="cancel" name="cancel" class="btn btn-danger btn-block login-btn col-3 text-aline: center">취소</button>
 </form>
 </div>
