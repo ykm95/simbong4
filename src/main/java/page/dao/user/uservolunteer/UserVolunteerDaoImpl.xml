@@ -7,41 +7,43 @@
 
 <mapper namespace="page.dao.user.uservolunteer.UserVolunteerDao">
 
-	<select id="selectVolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.dto.Volunteer">
+	<select id="selectVolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.util.PagingVolunteer">
 		SELECT * FROM (
 		SELECT rownum rnum, B.* FROM (
-		SELECT volunteer.*
-		FROM volunteer
-		WHERE 1=1
+		SELECT V.*, A.aname, D.departname
+		FROM volunteer V, area A, v_department D
+		WHERE V.vol_area = A.areano
+		AND V.department = D.departmentno
+
 		<if test="v_process !=null and v_process !='' and v_process != 0 ">
-			AND vol_process = #{v_process}
+			AND V.vol_process = #{v_process}
 		</if>
-		<if test="v_department!=null and v_department!='' ">
-			AND department = #{v_department}
+		<if test="department!=null and department!='' ">
+			AND V.department = #{department}
 		</if>
 		<if test="v_area!=null and v_area!='' ">
-			AND vol_area = #{v_area}
+			AND V.vol_area = #{v_area}
 		</if>
 		<if test="v_sterm !=null and v_sterm!='' ">
 			<![CDATA[
-			AND (vol_sterm <= #{v_sterm} AND vol_sterm <= #{v_eterm} and
-			vol_eterm>= #{v_sterm} and vol_eterm>= #{v_eterm}
-			OR vol_sterm BETWEEN #{v_sterm} AND #{v_eterm}
-			OR vol_eterm BETWEEN #{v_sterm} AND #{v_eterm})
+			AND (V.vol_sterm <= #{v_sterm} AND V.vol_sterm <= #{v_eterm} and
+			V.vol_eterm>= #{v_sterm} and V.vol_eterm>= #{v_eterm}
+			OR V.vol_sterm BETWEEN #{v_sterm} AND #{v_eterm}
+			OR V.vol_eterm BETWEEN #{v_sterm} AND #{v_eterm})
 			]]>
 		</if>
 		<if test="v_sterm !=null and v_sterm!='' ">
 			<![CDATA[
-			AND (stime <= #{v_stime} AND stime <= #{v_etime} and
-			etime>= #{v_stime} and etime>= #{v_etime}
-			OR stime BETWEEN #{v_stime} AND #{v_etime}
-			OR etime BETWEEN #{v_stime} AND #{v_etime})
+			AND (V.stime <= #{v_stime} AND V.stime <= #{v_etime} and
+			V.etime>= #{v_stime} and V.etime>= #{v_etime}
+			OR V.stime BETWEEN #{v_stime} AND #{v_etime}
+			OR V.etime BETWEEN #{v_stime} AND #{v_etime})
 			]]>
 		</if>
-		<if test="search !=null and search !='' and searchno== 1">
-			AND vol_title LIKE '%' || #{search} || '%'
+		<if test="search !=null and search !='' ">
+			AND V.vol_title LIKE '%' || #{search} || '%'
 		</if>
-		ORDER BY volunteerno DESC
+		ORDER BY V.volunteerno DESC
 		) B
 		ORDER BY rnum
 		) VOLUNTEER
@@ -50,37 +52,46 @@
 	</select>
 	
 	<select id="selectCntVolunteer" parameterType="page.util.PagingVolunteer" resultType="int">
-		SELECT COUNT(*) FROM volunteer
+		SELECT COUNT(*) FROM (
+		SELECT rownum rnum, B.* FROM (
+		SELECT V.*, A.aname, D.departname
+		FROM volunteer V, area A, v_department D
+		WHERE V.vol_area = A.areano
+		AND V.department = D.departmentno
 
-		WHERE 1=1
 		<if test="v_process !=null and v_process !='' and v_process != 0 ">
-			AND vol_process = #{v_process}
+			AND V.vol_process = #{v_process}
 		</if>
-		<if test="v_department!=null and v_department!='' ">
-			AND department = #{v_department}
+		<if test="department!=null and department!='' ">
+			AND V.department = #{department}
 		</if>
 		<if test="v_area!=null and v_area!='' ">
-			AND vol_area = #{v_area}
+			AND V.vol_area = #{v_area}
 		</if>
 		<if test="v_sterm !=null and v_sterm!='' ">
 			<![CDATA[
-			AND (vol_sterm <= #{v_sterm} AND vol_sterm <= #{v_eterm} and
-			vol_eterm>= #{v_sterm} and vol_eterm>= #{v_eterm}
-			OR vol_sterm BETWEEN #{v_sterm} AND #{v_eterm}
-			OR vol_eterm BETWEEN #{v_sterm} AND #{v_eterm})
+			AND (V.vol_sterm <= #{v_sterm} AND V.vol_sterm <= #{v_eterm} and
+			V.vol_eterm>= #{v_sterm} and V.vol_eterm>= #{v_eterm}
+			OR V.vol_sterm BETWEEN #{v_sterm} AND #{v_eterm}
+			OR V.vol_eterm BETWEEN #{v_sterm} AND #{v_eterm})
 			]]>
 		</if>
 		<if test="v_sterm !=null and v_sterm!='' ">
 			<![CDATA[
-			AND (stime <= #{v_stime} AND stime <= #{v_etime} and
-			etime>= #{v_stime} and etime>= #{v_etime}
-			OR stime BETWEEN #{v_stime} AND #{v_etime}
-			OR etime BETWEEN #{v_stime} AND #{v_etime})
+			AND (V.stime <= #{v_stime} AND V.stime <= #{v_etime} and
+			V.etime>= #{v_stime} and V.etime>= #{v_etime}
+			OR V.stime BETWEEN #{v_stime} AND #{v_etime}
+			OR V.etime BETWEEN #{v_stime} AND #{v_etime})
 			]]>
 		</if>
-		<if test="search !=null and search !='' and searchno== 1">
-			AND vol_title LIKE '%' || #{search} || '%'
+		<if test="search !=null and search !='' ">
+			AND V.vol_title LIKE '%' || #{search} || '%'
 		</if>
+		ORDER BY V.volunteerno DESC
+		) B
+		ORDER BY rnum
+		) VOLUNTEER
+
 	</select>
 	
 	<select id="selectVolunteerByNo" parameterType="int" resultType="page.dto.Volunteer">

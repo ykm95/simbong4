@@ -91,7 +91,9 @@ $(document).ready(function(){
 			
   		</table><br><br><br>
 		
+		
 		<div  style="width: 70%; margin: 0 auto;">
+		내용
 		<table class="table table-bordered" >
 			<tr>
 				<td >${talent.talent_content }</td>

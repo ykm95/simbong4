@@ -24,7 +24,7 @@ public class TalentController {
 	  private static final Logger logger= LoggerFactory.getLogger(TalentController.class);
 	
 	  @RequestMapping(value="/user/talent/list")
-	  public void talentList(Model model, PagingTalent paging, HttpServletRequest req) {
+	  public void talentList(Model model, PagingTalent paging) {
 		  
 		  logger.info(paging.toString());
 		  

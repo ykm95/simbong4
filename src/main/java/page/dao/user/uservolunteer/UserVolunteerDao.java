@@ -8,7 +8,7 @@ import page.util.PagingVolunteer;
 
 public interface UserVolunteerDao {
 	
-	public List<Volunteer> selectVolunteerAll(PagingVolunteer pagingVolunteer);
+	public List<PagingVolunteer> selectVolunteerAll(PagingVolunteer pagingVolunteer);
 
 	public Volunteer selectVolunteerByNo(int volunteerno);
 
