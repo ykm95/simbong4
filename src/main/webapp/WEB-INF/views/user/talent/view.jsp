@@ -24,32 +24,14 @@ $(document).ready(function(){
 	
 	//수정버튼 동작
 	$("#btnUpdate").click(function() {
-		$(location).attr("href", "/user/talent/update?talent_no=${talent.talentno }");
+		$(location).attr("href", "/user/talent/update?talentno=${talent.talentno }");
 	});
 
 	//삭제버튼 동작
 	$("#btnDelete").click(function() {
-		$(location).attr("href", "/user/talent/delete?talent_no=${talent.talentno }");
+		$(location).attr("href", "/user/talent/delete?talentno=${talent.talentno }");
 	});
 
-	
-	
-	$("#notloginbtn1").click(function() {
-		var result = confirm("로그인 후 이용가능합니다.");
-		
-		if(result==true){
-			$(location).attr("href", "/member/login");
-		}
-	})
-	
-		$("#notloginbtn2").click(function() {
-		var result = confirm("로그인 후 이용가능합니다.");
-		
-		if(result==true){
-			$(location).attr("href", "/member/login");
-		}
-	})
-	
 
 });
 </script>
@@ -73,12 +55,19 @@ $(document).ready(function(){
   				<td colspan="3" style="text-align: center;">${talent.talent_start}~ ${talent.talent_end}</td>  
   			</tr>  
   			<tr>  
-  				<td colspan="1" style="background: #CCC">process</td>  
-  				<td colspan="3" style="text-align: center;">${talent.talent_process}</td>  
+  				<td colspan="1" style="background: #CCC">모집현황</td>  
+  				<td colspan="3" style="text-align: center;">
+  				<c:choose>
+					<c:when test="${talent.talent_process eq 1}">모집중</c:when>
+					<c:when test="${talent.talent_process eq 2 }">모집완료</c:when>
+					</c:choose></td>  
   			</tr>  
   			  			<tr>  
-  				<td colspan="1" style="background: #CCC">type</td>  
-  				<td colspan="3" style="text-align: center;">${talent.talent_type}</td>  
+  				<td colspan="1" style="background: #CCC">봉사유형</td>  
+  				<td colspan="3" style="text-align: center;"><c:choose>
+					<c:when test="${talent.talent_type eq 1}">개인</c:when>
+					<c:when test="${talent.talent_type eq 2 }">단체</c:when>
+					</c:choose></td>  
   			</tr> 
   			<tr>  
   				<td colspan="1" style="background: #CCC">봉사주기</td>  
@@ -141,14 +130,14 @@ $(document).ready(function(){
 	</table>
 
 
-<!-- 	<div class="text-right"> -->
-<!-- 		<button id="btnList" class="btn btn-primary">목록</button> -->
+	<div class="text-right">
+		<button id="btnList" class="btn btn-primary">목록</button>
 		
-<%-- 		<c:if test="${talent.writer_id eq loginid }"> --%>
-<!-- 		<button id="btnUpdate" class="btn btn-info">수정</button> -->
-<!-- 		<button id="btnDelete" class="btn btn-danger">삭제</button> -->
-<%-- 		</c:if> --%>
-<!-- 	</div> -->
+		<c:if test="${talent.uemail eq loginid }">
+		<button id="btnUpdate" class="btn btn-info">수정</button>
+		<button id="btnDelete" class="btn btn-danger">삭제</button>
+		</c:if>
+	</div>
 
 
 </div>  <!-- container -->

@@ -48,9 +48,6 @@ public class TalentController {
 		  
 		  Talent talent = talentService.getTalent(talentno);
 		  
-		  logger.info(talent.toString());
-		  logger.info("텔런트 : " + talent.getTalent_cycle());
-		  
 		  talent.setTest(talent.getTalent_cycle());
 		  
 		  model.addAttribute("talent", talent);
@@ -72,8 +69,17 @@ public class TalentController {
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.GET)
-	  public void talentUpdate() {
+	  public void talentUpdate(int talentno, Model model) {
 		  
+		  logger.info("서비스 전 : " + talentno);
+		  
+		  Talent talent = talentService.getTalent(talentno);
+		  
+		  logger.info("서비스 후 : " + talent);
+		  
+		  talent.setTest(talent.getTalent_cycle());
+		  
+		  model.addAttribute("talent", talent);
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.POST)
