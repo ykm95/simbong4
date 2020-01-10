@@ -23,15 +23,14 @@ public class AdminLoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminLoginController.class);
 
-	/*
-	 * // 로그인페이지
-	 * 
-	 * @RequestMapping(value = "/admin/adminLogin/login", method =
-	 * RequestMethod.GET) public void login() { }
-	 */
 	// 로그인페이지
-	@RequestMapping(value = "/admin/adminLogin/loginTest", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/adminLogin/login", method = RequestMethod.GET)
 	public void login() {
+	}
+	
+	// 메인 테스트 페이지
+	@RequestMapping(value = "/admin/adminLogin/mainTest", method = RequestMethod.GET)
+	public void mainTest() {
 	}
 
 	// 로그인하기
@@ -52,6 +51,6 @@ public class AdminLoginController {
 	@RequestMapping(value = "/admin/adminLogin/logout")
 	public String logout(HttpSession session) {
 		loginService.logout(session);
-		return "/admin/adminLogin/loginTest";
+		return "/admin/adminLogin/login";
 	}
 }

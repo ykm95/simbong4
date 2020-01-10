@@ -6,7 +6,6 @@
 
 <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
-
 <li>
 <a href="/admin/adminLogin/logout"><button>로그아웃</button></a>
 <a href="/admin/admminUser/userPage"><button>회원관리</button></a>
@@ -17,4 +16,5 @@
 <a href="/admin/adminBoard/adminNotice"><button>공지사항</button></a>
 </li>
 <li>${adminId }님 환영합니다.</li><!-- admin01, admin02나와야 정상. -->
+
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
