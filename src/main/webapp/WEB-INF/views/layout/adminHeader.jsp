@@ -49,7 +49,6 @@ aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigatio
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-----
 </nav>
 <!-- -------------------------------------------------------------------------------- -->
 
@@ -68,4 +67,3 @@ aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigatio
 <div style="height: 1px; background: black; "></div>
 
 <div id="wrapper">
-

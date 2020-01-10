@@ -11,6 +11,26 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	
+	<!-- 인터셉터 설정 -->
+	<interceptors>	
+		<interceptor>
+			<mapping path="/center/volunteer/list" />
+			<beans:bean class="page.interceptor.CenterInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/center/volunteer/write" />
+			<beans:bean class="page.interceptor.CenterInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/center/volunteer/update" />
+			<beans:bean class="page.interceptor.CenterInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/center/volunteer/delete" />
+			<beans:bean class="page.interceptor.CenterInterceptor" />
+		</interceptor>
+	</interceptors>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />

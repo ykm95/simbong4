@@ -12,9 +12,7 @@
 	<c:forEach items="${list }" var="i">
 	<tr class="text-center" onclick="location.href='/center/volunteer/view?volunteerno=${i.volunteerno }';">
 		<td>
-<%-- 		<a href="/center/volunteer/view?volunteerno=${i.volunteerno }"> --%>
-		${i.vol_title }
-<!-- 		</a> -->
+			${i.vol_title }
 		</td>
 		<td>필요/신청인원 : ${i.npeople }/${i.apeople }</td>
 		<td>봉사기간 : ${i.vol_sterm } ~ ${i.vol_eterm }</td>

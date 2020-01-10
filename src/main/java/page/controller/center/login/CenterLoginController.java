@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,14 +81,14 @@ public class CenterLoginController {
 
 	@RequestMapping(value = "/center/login/login", method = RequestMethod.POST)
 	public String loginProc(Center center, HttpSession session, Model model) {
-			
+
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=centerloginservice.centerlogin(center);//true면 인증 성공
 		
-		
-		
 		//결과에 따른 세션처리
 		if(isLogin) {
+			
+			session.setMaxInactiveInterval(0);
 			
 			int cno=centerloginservice.getcnoByBno(center);
 			center.setCenterno(cno);
