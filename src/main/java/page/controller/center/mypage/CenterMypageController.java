@@ -147,6 +147,11 @@ public class CenterMypageController {
 		model.addAttribute("list", list);
 	}
 	
+//	public List<Question> viewQuestion(Question question) {
+//		centerMypageService.viewQST(question);
+//		return null;
+//	}
+	
 	
 	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
 	public String writeQuestion() {
@@ -196,12 +201,6 @@ public class CenterMypageController {
 //	public void deleteQuestion(Question question) {
 //
 //		centerMypageService.deleteQST(question);
-//	}
-//
-//	public List<Question> viewQuestion(Question question) {
-//
-//		centerMypageService.viewQST(question);
-//		return null;
 //	}
 
 }

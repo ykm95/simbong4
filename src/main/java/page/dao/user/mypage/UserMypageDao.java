@@ -12,4 +12,8 @@ public interface UserMypageDao {
 
 	public void delete(User user);
 
+	public int selectUloginByUemail(User user);
+
+	public void googleUpdate(User user);
+
 }

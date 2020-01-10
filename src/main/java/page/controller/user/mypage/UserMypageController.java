@@ -26,8 +26,22 @@ public class UserMypageController {
 	}
 
 	@RequestMapping(value = "/user/mypage/updatepwchk", method = RequestMethod.GET)
-	public void updatePwCheck() {
+	public String updatePwCheck(User user, HttpSession session) {
+		
+		user.setUemail((String) session.getAttribute("loginid"));
+		
+		int ulogin;
+		
+		ulogin = userMypageService.getUlogin(user);
+		
+		if(ulogin == 1) {
+			return "redirect:/user/mypage/googleupdate?uemail=" + user.getUemail();
+		}
+		
 		logger.info("회원정보수정-비밀번호입력요구창 접속성공");
+		
+		return "/user/mypage/updatepwchk";
+		
 	}
 
 	@RequestMapping(value = "/user/mypage/updatepwchk", method = RequestMethod.POST)
@@ -48,7 +62,7 @@ public class UserMypageController {
 	}
 
 	@RequestMapping(value = "/user/mypage/update", method = RequestMethod.GET)
-	public String centerInformationUpdate(Model model, User user) {
+	public String userInformationUpdate(Model model, User user) {
 		logger.info("[GET]-/user/mypage/update - " + user.toString());
 
 		user = userMypageService.getInformation(user);
@@ -61,7 +75,7 @@ public class UserMypageController {
 	}
 
 	@RequestMapping(value = "/user/mypage/update", method = RequestMethod.POST)
-	public String centerInfomationUpdateProc(User user, HttpSession session) {
+	public String userInfomationUpdateProc(User user, HttpSession session) {
 
 		logger.info("[POST]-/user/mypage/update");
 
@@ -75,10 +89,51 @@ public class UserMypageController {
 
 		return "redirect:/user/mypage/mypagemain";
 	}
+	
+	@RequestMapping(value="/user/mypage/googleupdate", method = RequestMethod.GET)
+	public String googleInformationUpdate(User user, Model model) {
+		logger.info("[GET]-/user/mypage/googleupdate - " + user.toString());
 
+		user = userMypageService.getInformation(user);
+
+		logger.info(user.toString());
+
+		model.addAttribute("user", user);
+
+		return "/user/mypage/googleupdateForm";
+	}
+	
+	@RequestMapping(value = "/user/mypage/googleupdate", method = RequestMethod.POST)
+	public String googleInfomationUpdateProc(User user, HttpSession session) {
+
+		logger.info("[POST]-/user/mypage/googleupdate");
+
+		logger.info(user.toString());
+
+		user.setUemail((String) session.getAttribute("loginid"));
+
+		logger.info(user.toString());
+
+		userMypageService.googleInformationUpdate(user);
+
+		return "redirect:/user/mypage/mypagemain";
+	}
+	
 	@RequestMapping(value = "/user/mypage/deletepwchk", method = RequestMethod.GET)
-	public void deletePwCheck() {
+	public String deletePwCheck(User user, HttpSession session) {
+		user.setUemail((String) session.getAttribute("loginid"));
+		
+		int ulogin;
+		
+		ulogin = userMypageService.getUlogin(user);
+		
+		if(ulogin == 1) {
+			return "redirect:/user/mypage/delete?uemail=" + user.getUemail();
+		}
+		
 		logger.info("회원탈퇴-비밀번호입력요구창 접속성공");
+		
+		return "/user/mypage/deletepwchk";
 	}
 
 	@RequestMapping(value = "/user/mypage/deletepwchk", method = RequestMethod.POST)
@@ -113,7 +168,7 @@ public class UserMypageController {
 	}
 
 	@RequestMapping(value="user/mypage/delete", method=RequestMethod.POST)
-	public String centerDeleteProc(User user, HttpSession session) {
+	public String userDeleteProc(User user, HttpSession session) {
 		logger.info("[POST]-/user/mypage/delete");
 		
 		logger.info(user.toString());
