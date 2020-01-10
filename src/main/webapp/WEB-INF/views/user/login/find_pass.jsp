@@ -25,9 +25,9 @@ $(document).ready(function() {
 				
 				if (data==1) {
 					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("사용중인 아이디입니다 :p");
-					$("#id_check").css("color", "red");
-					$("#submit").attr("disabled", true);
+					$("#id_check").text("비밀번호 찾기 가능한 아이디입니다.");
+					$("#id_check").css("color", "green");
+					$("#submit").attr("disabled", false);
 				
 				} else{
 				
@@ -36,9 +36,9 @@ $(document).ready(function() {
 						// 0 : 아이디 길이 / 문자열 검사
 						$("#id_check").text("");
 						
-						$("#id_check").text("회원가입이 가능한 이메일 입니다 .");
-						$("#id_check").css("color", "green");
-						$("#submit").attr("disabled", false);
+						$("#id_check").text("회원이 아닙니다.");
+						$("#id_check").css("color", "red");
+						$("#submit").attr("disabled", true);
 						
 			
 					} else if(uemail == ""){
