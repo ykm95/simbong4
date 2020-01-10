@@ -27,10 +27,15 @@ public class AdminLoginController {
 	@RequestMapping(value = "/admin/adminLogin/login", method = RequestMethod.GET)
 	public void login() {
 	}
+	
+	// 메인 테스트 페이지
+	@RequestMapping(value = "/admin/adminLogin/mainTest", method = RequestMethod.GET)
+	public void mainTest() {
+	}
 
 	// 로그인하기
 	@ResponseBody
-	@RequestMapping(value = "/admin/adminLogin/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/adminLogin/loginProcess", method = RequestMethod.POST)
 	public Map<String, Object> loginProcess(Admin admin, Model model, HttpSession session) {
 		return loginService.loginProcess(admin, model,session);
 	}

@@ -17,6 +17,12 @@ public class AdminUserController {
 
 	}
 	
+	//bootstrap templet
+	@RequestMapping(value="/admin/adminUser/userPage", method=RequestMethod.GET) 
+	public void userPage() {  
+
+	}
+	
 	
 	//회원정보 목록(카드)
 	
