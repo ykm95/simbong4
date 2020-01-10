@@ -1,5 +1,7 @@
 package page.dao.center.mypage;
 
+import java.util.List;
+
 import page.dto.Center;
 import page.dto.CenterQuestion;
 
@@ -18,6 +20,8 @@ public interface CenterMypageDao {
 	public void insertQuestion(CenterQuestion centerquestion);
 
 	public int selectQuestionnoByDual();
+
+	public List<CenterQuestion> selectAll();
 
 //	/**
 //	 * 센터 1:1 문의삭제

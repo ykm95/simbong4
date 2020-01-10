@@ -11,6 +11,15 @@
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	
+<script type="text/javascript">
+$(document).ready(function() {
+	//취소버튼 동작
+	$("#btnCancel").click(function() {
+		$(location).attr("href", "/user/mypage/mypagemain");
+	});
+});
+</script>
 
 
 <!-- 주소검색 -->
@@ -358,8 +367,7 @@ ${user.uemail }
 <input type="text" id="uaddress3" name="uaddress3" value="${user.uaddress3 }" />
 <br><br>
 <button id="reg_submit">수정</button>
-<button type="reset" id="cancelbtn">취소</button>
-
+<button type="button" id="btnCancel">취소</button>
 </form>
 </body>
 </html>

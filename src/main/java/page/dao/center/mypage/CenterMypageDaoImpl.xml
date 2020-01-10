@@ -50,5 +50,9 @@
 	   <select id="selectQuestionnoByDual" resultType="int">
 	   	SELECT centerquestion_seq.nextval FROM dual 
 	   </select>
+	   
+	   <select id="selectAll" resultType="page.dto.CenterQuestion">
+	   	SELECT * FROM centerquestion
+	   </select>
 	 
 </mapper>

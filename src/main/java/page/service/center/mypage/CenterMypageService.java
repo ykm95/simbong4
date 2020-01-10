@@ -1,5 +1,7 @@
 package page.service.center.mypage;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import page.dto.Center;
@@ -19,9 +21,13 @@ public interface CenterMypageService {
 
 	public int getCenterno(Center center);
 
+	public int getQuestionno();
+	
+	public List<CenterQuestion> getList();
+	
 	public void writeQST(CenterQuestion centerquestion, MultipartFile file);
 
-	public int getQuestionno();
+
 
 //	/**
 //	 * 센터 1:1 문의글 삭제
