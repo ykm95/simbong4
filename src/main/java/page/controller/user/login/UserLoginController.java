@@ -61,7 +61,7 @@ public class UserLoginController {
 
 		userloginservice.userjoin(user);
 		
-		return "main";
+		return "redirect:/main";
 	}
 
 	
@@ -97,14 +97,14 @@ public class UserLoginController {
 		}else {
 			return "/user/login/login";
 		}
-		return "/main";
+		return "redirect:/main";
 	}
 	@RequestMapping(value = "/userLogout")
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
 		
-		return "/main";
+		return "redirect:/main";
 		
 	}
 	
@@ -124,7 +124,7 @@ public class UserLoginController {
 		
 		googleService.insertGoogleInfo(user);
 		
-		return "/main";
+		return "redirect:/main";
 	}
 	
 	
@@ -154,7 +154,7 @@ public class UserLoginController {
 				return "user/login/googlejoin";
 			}else {
 				
-				return "/main";
+				return "redirect:/main";
 			}
 
 		}
@@ -257,7 +257,6 @@ public class UserLoginController {
         if (email_injeung.equals(dice)) {
             
             //인증번호가 일치할 경우 인증번호가 맞다는 창을 출력하고 회원가입창으로 이동함
-            
             
             
             mv.setViewName("/user/login/join");

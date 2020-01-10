@@ -9,6 +9,11 @@
 <title>심봉사 :: HOME</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-singin-client_id" content="661200041177-uu3hcr6ei708qsiaskndvlqfob8n0f3c.apps.googleusercontent.com">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta nem="viewport" content="width=device=width, initial-scale=1.0">
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <!-- CSS -->
@@ -21,7 +26,19 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
+<script type="text/javascript">
+	
+// function signOut(){
+		
+// 		var auth2 =gapi.auth2.getAuthInatance();
+// 		auth2.signOut().then(function(){
+// 			console.log('User signed out.');
+// 		});
+// 		auth2.disconnect();
+// }
 
+
+</script>
 
 <style type="text/css">
 
@@ -89,7 +106,7 @@ ul{
 		</c:if>
 
 		<c:if test="${login }">
-			<a href="/userLogout">로그아웃</a>
+			<a  href="/userLogout" onclick="signOut();">로그아웃</a>
 			<a href="/user/mypage/mypagemain">마이페이지</a>
 		</c:if>
 	</div>
