@@ -379,12 +379,11 @@ $(document).ready(function() {
 	<br><hr><br>
 	<div>${count } 건의 검색결과가 있습니다.</div><br>
 	
-	<table>
+	<table class="table">
 	<c:forEach items="${list }" var="list">
 	<tr>
    <td>${list.talentno } <a href="/user/talent/view?talentno=${list.talentno }" >${list.talent_title }</a>
-   <fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/>
-   ${list.areano }  <br>
+   <fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/><br>
    <div>활동지역: ${list.aname } 활동기간: ${list.talent_start } ~ ${list.talent_end } 봉사주기: ${list.talent_cycle } 활동영역: ${list.departname }</div>    
 	</td>
 	</tr>

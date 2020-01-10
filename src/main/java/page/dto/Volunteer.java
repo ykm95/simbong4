@@ -29,8 +29,18 @@ public class Volunteer {
 	private float vol_lat;
 	private float vol_lng;
 	private String vol_address;
+	private String departname;
 	
-	
+	public String getDepartname() {
+		return departname;
+	}
+
+
+	public void setDepartname(String departname) {
+		this.departname = departname;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Volunteer [volunteerno=" + volunteerno + ", centerno=" + centerno + ", cname=" + cname + ", mgr=" + mgr
@@ -39,7 +49,8 @@ public class Volunteer {
 				+ ", stime=" + stime + ", etime=" + etime + ", department=" + department + ", vol_area=" + vol_area
 				+ ", aname=" + aname + ", vol_place=" + vol_place + ", receiver=" + receiver + ", qualification="
 				+ qualification + ", write_date=" + write_date + ", npeople=" + npeople + ", apeople=" + apeople
-				+ ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address=" + vol_address + "]";
+				+ ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address=" + vol_address + ", departname="
+				+ departname + "]";
 	}
 	
 	
