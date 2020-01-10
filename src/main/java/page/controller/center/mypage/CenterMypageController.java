@@ -44,7 +44,9 @@ public class CenterMypageController {
 
 		logger.info(center.toString());
 
-		center.setBusinessno((int) session.getAttribute("loginid"));
+
+		center.setBusinessno((String) session.getAttribute("loginid"));
+
 		boolean res = centerMypageService.checkPw(center);
 		
 		if( res ) { // 맞을때
@@ -75,7 +77,8 @@ public class CenterMypageController {
 		
 		logger.info(center.toString());
 		
-		center.setBusinessno((int) session.getAttribute("loginid"));
+
+		center.setBusinessno((String) session.getAttribute("loginid"));
 		
 		logger.info(center.toString());
 		
@@ -94,7 +97,8 @@ public class CenterMypageController {
 	public String deletePwCheckProc(HttpSession session, Center center) {
 		logger.info(center.toString());
 
-		center.setBusinessno((int) session.getAttribute("loginid"));
+
+		center.setBusinessno((String) session.getAttribute("loginid"));
 		
 		boolean res = centerMypageService.checkPw(center);
 		
@@ -165,7 +169,9 @@ public class CenterMypageController {
 		centerquestion.setQuestionno(questionno);		
 		
 		//센터번호 불러오는 코드
-		center.setBusinessno((int) session.getAttribute("loginid"));//		
+
+		center.setBusinessno((String) session.getAttribute("loginid"));	
+
 		int centerno;		
 		centerno = centerMypageService.getCenterno(center);		
 //		logger.info("centerno : " + centerno);

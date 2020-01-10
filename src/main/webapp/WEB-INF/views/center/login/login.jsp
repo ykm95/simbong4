@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
 <!-- jQuery 2.2.4 -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -70,28 +70,83 @@
 		return unescape(cookieValue);
 	}
 </script>
+
+
+<style type="text/css">
+	.login-form {
+		width: 340px;
+    	margin: 30px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .login-form .hint-text {
+		color: #777;
+		padding-bottom: 15px;
+		text-align: center;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .login-btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .social-btn .btn {
+        margin: 10px 0;
+        font-size: 15px;
+        text-align: left; 
+        line-height: 24px;       
+    }
+	.social-btn .btn i {
+		float: left;
+		margin: 4px 15px  0 5px;
+        min-width: 15px;
+	}
+	.input-group-addon .fa{
+		font-size: 18px;
+	}
+
+</style>
+
 </head>
   <body>
+<div class="login-form">
  
-<h1>기관 로그인</h1>
+<h2 class="text-center">심봉사 기관 로그인</h2><br><br>
 <hr>
 <form action="/center/login/login" method="post">
-<label for ="businessno">사업자 번호</label>
-<input type="number" name="businessno" id="businessno" placeholder="사업자 번호" required="required"/>
-<br><br>
-<label for ="cpassword">비밀번호</label>
-<input type="password" name="cpassword" id="cpassword"/>
-<br><br>
+<div class="form-group">
+<div class="input-group"> 
+<span class="input-group-addon"><i class="fa fa-user"></i></span>
+<input class ="form-control" type="number" name="businessno" id="businessno" placeholder="사업자 번호" required="required"/>
+</div></div>
+
+<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+<input class="form-control" type="password" name="cpassword" id="cpassword"/>
+</div></div>
 
 <input type="checkbox" id="idSaveCheck"/>이메일 저장하기<br><br>
-<button id="loginbtn">로그인</button>
-<button type="reset">취소</button>
-</form>
-<a href="/center/login/join">회원가입</a>
-<a href="/center/login/find_id">아이디찾기</a>
-<a href="/center/login/find_pass">비밀번호찾기</a>
+<button id="loginbtn" class="btn btn-success btn-block login-btn">로그인</button>
+<button type="reset" class="btn btn-danger btn-block login-btn">취소</button>
+<a class="text-center text-success" href="/center/login/find_id">아이디찾기</a>
+<a class="text-center text-success" href="/center/login/find_pass">비밀번호찾기</a>
+<br><br>
+ <div class="hint-text small" class="text-success">계정이 없으신가요?
+<a href="/center/login/join">회원가입</a></div>
+</div>
 
 <br>
+</form>
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -76,14 +70,16 @@
 
 
 
-<!-- 아이디 중복 체크 -->
+<!-- 이메일 중복 체크 -->
 <script>
 $(document).ready(function() {
-	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-	$("#memail").blur(function() {
-		var memail = $('#memail').val();
+	
+	// 이메일 유효성 검사(1 = 중복 / 0 != 중복)
+	$("#businessno").blur(function() {
+		console.log("zz");
+		var businessno = $('#businessno').val();
 		$.ajax({
-			url : '${pageContext.request.contextPath}/center/idCheck?memail='+memail,
+			url : '${pageContext.request.contextPath}/center/bnoCheck?businessno='+businessno,
 			type : 'get',
 			success : function(data) {
 				console.log("1 = 중복o / 0 = 중복x : "+ data);			
@@ -91,32 +87,41 @@ $(document).ready(function() {
 				
 				if (data==1) {
 					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("사용중인 이메일입니다 :p");
-					$("#id_check").css("color", "red");
+					$("#bno_check").text("사용중인 사업자번호입니다 :p");
+					$("#bno_check").css("color", "red");
 					$("#reg_submit").attr("disabled", true);
 				
 				} else{
 				
-					var regExp =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-					if(regExp.test(memail)){
+					console.log("a");
+					var regExp =/([0-9]{3})([0-9{2}])([0-9]{5})/;
+					if(regExp.test(businessno)){
+						
+						
+					console.log("b");
 						// 0 : 아이디 길이 / 문자열 검사
-						$("#id_check").text("");
+						$("#bno_check").text("");
 // 						$("#reg_submit").attr("disabled", false);
-						
-						$("#id_check").text("사용가능한 이메일 입니다 .");
-						$("#id_check").css("color", "blue");
-						
+					console.log(checkBisNo(businessno));
+						if(checkBisNo(businessno)) {
+						$("#bno_check").text("사용가능한 사업자 번호 입니다 .");
+						$("#bno_check").css("color", "blue");
+						}else {
+							$('#bno_check').text('사업자 번호를  확인해주세요.');
+							$('#bno_check').css('color', 'red');
+							$("#reg_submit").attr("disabled", true);
+						}
 			
-					} else if(memail == ""){
+					} else if(businessno == ""){
 
-						$('#id_check').text('이메일을 입력해주세요.');
-						$('#id_check').css('color', 'red');
+						$('#bno_check').text('사업자 번호를 입력해주세요.');
+						$('#bno_check').css('color', 'red');
 						$("#reg_submit").attr("disabled", true);				
 						
 					} else {
 						
-						$('#id_check').text("이메일 형식으로 입력해주세요.");
-						$('#id_check').css('color', 'red');
+						$('#bno_check').text("사업자번호 형식으로 입력해주세요.");
+						$('#bno_check').css('color', 'red');
 						$("#reg_submit").attr("disabled", true);
 					}
 					
@@ -127,6 +132,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
 	
 });
 
@@ -215,9 +221,28 @@ function checkPassword(cpassword){
     return true;
 }
 
+
+
+//사업자번호 체크
+function checkBisNo(businessno)
+{
+	// 넘어온 값의 정수만 추츨하여 문자열의 배열로 만들고 10자리 숫자인지 확인합니다.
+	if ((businessno = (businessno+'').match(/\d{1}/g)).length != 10) { return false; }
+	
+	// 합 / 체크키
+	var sum = 0, key = [1, 3, 7, 1, 3, 7, 1, 3, 5];
+	
+	// 0 ~ 8 까지 9개의 숫자를 체크키와 곱하여 합에더합니다.
+	for (var i = 0 ; i < 9 ; i++) { sum += (key[i] * Number(businessno[i])); }
+	
+	// 각 8번배열의 값을 곱한 후 10으로 나누고 내림하여 기존 합에 더합니다.
+	// 다시 10의 나머지를 구한후 그 값을 10에서 빼면 이것이 검증번호 이며 기존 검증번호와 비교하면됩니다.
+	return (10 - ((sum + Math.floor(key[8] * Number(businessno[8]) / 10)) % 10)) == Number(businessno[9]);
+}
+
 $(document).ready(function() {
-
-
+	
+	
 	$("#cpassword").blur(function(){
 	    checkPassword($('#cpassword').val());
 	    $('#cpasswordchk').val("");
@@ -253,9 +278,9 @@ $(document).ready(function() {
 	$('#mph1').blur(function() {
 // 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
 
-	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+// 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-// 	var regExp=/d{3,4};
+	var regExp=/^{3,4}/;
 
 	
 	if (!regExp.test($('#mph1').val())) {
@@ -286,9 +311,9 @@ $(document).ready(function() {
 	$('#mphone').blur(function() {
 // 	var regExp = /(^01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
 
-	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+// 	var regExp=/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-// 	var regExp2=/d{4};
+	var regExp2=/d{4}/;
 
 	
 	if (!regExp.test($('#mphone').val())) {
@@ -316,52 +341,113 @@ $(document).ready(function() {
 });
 </script>
 
+
+<style type="text/css">
+#selCnt {
+	width: 180px;
+}
+.form-group :not (:first-child ) * {
+	font-weight: normal;
+	
+}
+
+.form-control {
+	width: 50%;
+	display: inline;
+}
+
+label {
+    display: flex;
+    margin-bottom: .5rem;
+    
+    float: right;
+}
+
+#postcodeBtn {
+	margin-left: 10px;
+	width: 120px;
+}
+
+</style>
+
 </head>
 <body>
-<h1>기관 회원가입</h1>
-<hr>
-<form action="/center/login/join" method="post" onsubmit="return checkAll()">
+<div class="container">
+<div class="col-xs-12 text-center">
+<div class="col-xs-8" style="margin: 0 auto; float: none;">
+<h2>기관 회원가입</h2>
 
-<label for ="cname">기관명</label>
-<input type="text" name="cname" id="cname"  />
-<br><br>
-<label for ="businessno">사업자번호</label>
-<input type="text" name="businessno" id="businessno"  />
-<br><br>
+<form class="form-horizontal" action="/center/login/join" method="post" onsubmit="return checkAll()">
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
+<label for ="cname" class="float-right">기관명</label>
+</div>
+<input class="form-control" type="text" name="cname" id="cname"  />
+</div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
+<label for ="businessno" >사업자번호</label>
+</div>
+<input class="form-control" type="text" name="businessno" id="businessno" placeholder="-없이 숫자만  입력해주세요." />
+</div>
+
+<div class="check_front" id="bno_check"></div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label for ="cpassword">비밀번호</label>
-<input type="password" name="cpassword" id="cpassword" />
-<br>
-<div class="check_front" id="pw_form"> 
-</div><br>
+</div>
+<input class="form-control" type="password" name="cpassword" id="cpassword" />
+</div>
+<div class="check_front" id="pw_form"></div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label for ="cpasswordchk">비밀번호 확인</label>
-<input type="password" name="cpasswordchk" id="cpasswordchk" />
-<div class="check_front" id="pw_check"> 
 </div>
-<br>
+<input class="form-control" type="password" name="cpasswordchk" id="cpasswordchk" />
+</div>
+<div class="check_front" id="pw_check"></div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label for ="mgr">담당자 이름</label>
-<input type="text" name="mgr" id="mgr"  />
-<br><br>
-<div class="form-group">
+</div>
+<input class="form-control" type="text" name="mgr" id="mgr"  />
+</div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label for ="memail">담당자 이메일</label>
-<input type="text" class="form-control" name="memail" id="memail" value="${memail}"
+</div>
+<input class="form-control" type="text" class="form-control" name="memail" id="memail" value="${memail}"
  placeholder="abc@123.com" />
-<div class="check_front" id="id_check"> 
+ </div>
+<div class="check_front" id="id_check"></div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
+<label for="mphone">담당자 전화번호</label>
 </div>
-</div>
-<br>
-담당자 전화번호 : <select name="mphone">
+<select name="mphone" class="form-control col-1">
        <option value="010">010</option>
        <option value="011">011</option>
        <option value="016">016</option>
        <option value="017">017</option>
        <option value="019">019</option>
-     </select>
-     - <input type="text"  id= "mphone" name="mphone" size="5"  min="3" maxlength="4"> - <input type="text" id="mphone" name="mphone" size="5" maxlength="4">
-     <br>
+     </select>- <input class="form-control col-1" type="text"  id= "mphone" name="mphone" size="5"  min="3" maxlength="4"/> - 
+     <input class="form-control col-1" type="text" id="mphone" name="mphone" size="5" maxlength="4"/>
+     </div>
 
-<div class="check_front" id="phone_check"> 
+<div class="check_front" id="phone_check"></div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
+<label for="foundedArr">설립일</label>
 </div>
-   생년월일 : <select name="foundedArr">
+ <select name="foundedArr" id="foundedArr" class="form-control col-2">
    	   <option value="2013">2020</option>
        <option value="2012">2019</option>
        <option value="2011">2018</option>
@@ -405,7 +491,7 @@ $(document).ready(function() {
        <option value="2001">1980</option>
        <option value="2000">1979</option>
      </select>년&nbsp;
-     <select name="foundedArr">
+     <select name="foundedArr" id="foundedArr" class="form-control col-1">
        <option value="01">1</option>
        <option value="02">2</option>
        <option value="03">3</option>
@@ -419,7 +505,7 @@ $(document).ready(function() {
        <option value="11">11</option>
        <option value="12">12</option>
      </select>월&nbsp;
-     <select name="foundedArr">
+     <select name="foundedArr" id="foundedArr" class="form-control col-1">
        <option value="01">1</option>
        <option value="02">2</option>
        <option value="03">3</option>
@@ -451,19 +537,25 @@ $(document).ready(function() {
        <option value="29">29</option>
        <option value="30">30</option>
        <option value="31">31</option>
-     </select>일<br><br>
+     </select>일</div>
+     
+     
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label>주소</label>
+</div>
 <br>
-<input type="text" id="address1" name="address1" placeholder="우편번호"/>
+<input type="text"class="form-control col-2"  id="address1" name="address1" placeholder="우편번호" style="width: 20%"/>
 
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"/>
+<button id="postcodeBtn" onclick="sample6_execDaumPostcode()" class="form-control btn btn-secondary">우편번호 찾기</button><br>
+</div>
+<div class="form-group row">
+<input class="form-control offset-3 col-3" type="text" id="address2" name="address2" placeholder="주소" /><br><br>
+<input class="form-control col-3" type="text" id="address3" name="address3" placeholder="상세주소"/></div>
 <br>
-<input type="text" id="address2" name="address2" placeholder="주소" />
-<input type="text" id="address3" name="address3" placeholder="상세주소"/>
-<br><br>
-<button id="reg_submit">회원가입</button>
-<button type="reset" id="cancelbtn">취소</button>
+
+<button id="reg_submit" class="btn btn-success">회원가입</button>
+<button type="reset" id="cancelbtn" class="btn btn-warning">취소</button>
 
 </form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

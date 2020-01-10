@@ -28,16 +28,17 @@ public class TalentController {
 		  
 		  logger.info(paging.toString());
 		  
-		  paging = talentService.getPaging(paging, req);
+		  paging = talentService.getPaging(paging);
+		  logger.info(paging.toString());
 		  
-		  List<Talent> talentlist = talentService.getTalentList(paging);
+		  List<PagingTalent> talentlist = talentService.getTalentList(paging);
 		  
 		  int count = talentService.getCntTalent(paging);
 		  
 		  model.addAttribute("count", count);
 		  model.addAttribute("paging", paging);
 		  model.addAttribute("list", talentlist);
-			
+		  
 		  // OK!!!! 
 	  }
 	  
@@ -46,6 +47,8 @@ public class TalentController {
 	  public void talentView(int talentno, Model model) {
 		  
 		  Talent talent = talentService.getTalent(talentno);
+		  
+		  talent.setTest(talent.getTalent_cycle());
 		  
 		  model.addAttribute("talent", talent);
 		  
@@ -58,21 +61,28 @@ public class TalentController {
 	  }
 	  
 	  @RequestMapping(value="/user/talent/write", method=RequestMethod.POST)
-	  public String talentWriteProc(Talent talent) {
+	  public String talentWriteProc(PagingTalent paging) {
 		  
-		  talentService.write(talent);
+		  talentService.write(paging);
 		  
 		  return "redirect:/user/talent/list";
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.GET)
-	  public void talentUpdate() {
+	  public void talentUpdate(int talentno, Model model) {
+		  	  
+		  logger.info("탈렌트 남바 : " + talentno);
 		  
+		  Talent talent = talentService.getTalent(talentno);
+		  
+		  talent.setTest(talent.getTalent_cycle());
+		  
+		  model.addAttribute("talent", talent);
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.POST)
 	  public String talentUpdateProc(Talent talent) {
-		  
+		  logger.info("탈렌트 : " + talent);
 		  talentService.update(talent);
 		  
 		  return "redirect:/user/talent/list";

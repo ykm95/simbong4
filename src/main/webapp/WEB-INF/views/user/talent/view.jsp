@@ -1,14 +1,13 @@
-<%-- <%@page import="web.dto.talent"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%-- <jsp:include page="/WEB-INF/views/layout/header.jsp" /> --%>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript" src="/js/httpRequest.js"></script>
-
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -18,95 +17,102 @@ $(document).ready(function(){
 	//목록버튼 동작
 	$("#btnList").click(function() {
 		
-			location.href="/talent/list"
-
-
+			location.href="/user/talent/list"
 	});
 	
 	//수정버튼 동작
 	$("#btnUpdate").click(function() {
-		$(location).attr("href", "/user/talent/update?talent_no=${talent.talentno }");
+		$(location).attr("href", "/user/talent/update?talentno=${talent.talentno }");
 	});
 
 	//삭제버튼 동작
 	$("#btnDelete").click(function() {
-		$(location).attr("href", "/user/talent/delete?talent_no=${talent.talentno }");
+		$(location).attr("href", "/user/talent/delete?talentno=${talent.talentno }");
 	});
 
-	
-	
-	$("#notloginbtn1").click(function() {
-		var result = confirm("로그인 후 이용가능합니다.");
-		
-		if(result==true){
-			$(location).attr("href", "/member/login");
-		}
-	})
-	
-		$("#notloginbtn2").click(function() {
-		var result = confirm("로그인 후 이용가능합니다.");
-		
-		if(result==true){
-			$(location).attr("href", "/member/login");
-		}
-	})
-	
 
 });
 </script>
 
 
-<div class="container" style="width: 76%; margin-left: 16em;">
+<style>
 
-	<h1 style="float: left;">게시물 조회</h1>
+</style>
 
-	<table class="table table-bordered">
+  	<div class="container" style="margin: 30px auto">  
 
-		<tr>
-			<td class="info">글번호</td>
-			<td colspan="3">${talent.talentno }</td>
-		</tr>
-
-		<tr>
-			<td class="info">제목</td>
-			<td colspan="3">${talent.talent_title }</td>
-		</tr>
-
-		<tr>
-			<td class="info">아이디</td>
-			<td colspan="3">${talent. }</td>
-		</tr>
+  		<div style="width: 70%; margin: 0 auto;">  
+  			<h1>${talent.talent_title }</h1>  
+  		</div>  
 		
-		<tr>
-			<td class="info">닉네임</td>
-			<td colspan="3">${member.nick }</td>
-		</tr>
+		<div style="width: 70%; margin: 0 auto; text-align:end;">
+			<fmt:formatDate value="${talent.write_date }"  pattern="yyyy.MM.dd"/>
+		</div><br>
+  		
+  		<table class="table table-bordered" style="width: 70%; margin: 0 auto;">  
+		
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사분야</td>  
+  				<td colspan="3" style="text-align: center">${talent.departname }</td>  
+  			</tr>  
 
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사지역</td>  
+  				<td colspan="3" style="text-align: center">${talent.aname }</td>  
+  			</tr>  
 
-		<tr>
-			<td class="info">작성일</td>
-			<td colspan="3">${talent.write_date }</td>
-		</tr>
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">활동기간</td>  
+  				<td colspan="3" style="text-align: center;">${talent.talent_start}~ ${talent.talent_end}</td>  
+  			</tr>  
 
-		<tr>
-			<td class="info" colspan="4">본문</td>
-		</tr>
-		<tr>
-			<td colspan="4">${talent.content }</td>
-		</tr>
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사주기</td>  
+  				<td colspan="3" style="text-align: center;">${talent.test}</td>
+  			</tr>  
 
-	</table>
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사유형</td>  
+  				<td colspan="3" style="text-align: center;"><c:choose>
+					<c:when test="${talent.talent_type eq 1}">개인</c:when>
+					<c:when test="${talent.talent_type eq 2 }">단체</c:when>
+					</c:choose></td>  
+  			</tr> 
 
-
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">모집현황</td>  
+  				<td colspan="3" style="text-align: center;">
+  				<c:choose>
+					<c:when test="${talent.talent_process eq 1}">모집중</c:when>
+					<c:when test="${talent.talent_process eq 2 }">모집완료</c:when>
+					</c:choose></td>  
+  			</tr>  
+			
+			
+  		</table><br><br><br>
+		
+		<div  style="width: 70%; margin: 0 auto;">
+		<table class="table table-bordered" >
+			<tr>
+				<td >${talent.talent_content }</td>
+			</tr>
+		</table>
+		</div>
+  		<br><br><br>  
+		
 	<div class="text-right">
 		<button id="btnList" class="btn btn-primary">목록</button>
-		
-		<c:if test="${talent.writer_id eq loginid }">
+		<c:if test="${talent.uemail eq loginid }">
 		<button id="btnUpdate" class="btn btn-info">수정</button>
 		<button id="btnDelete" class="btn btn-danger">삭제</button>
 		</c:if>
 	</div>
 
+  	</div>  
 
-</div>  <!-- container -->
+
+
+
+
+
 

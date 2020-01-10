@@ -23,18 +23,17 @@
 
 <style type="text/css">
 
-#container {
-	width: 100%;
-	text-align: center;
-}
-\
+
 </style>
 
 
 </head>
 <body>
-	<div class="container">
-	<div id="list"class="col-md-12" style="text-align:center;">
+	<div class="col-1"></div>
+	<div class="row">
+	<br>
+	<div class="col-2"></div>
+	<div id="list" class="col-8">
 	<h1>공지사항</h1>
 	<form action="/user/notice/list" method="GET">
 		<div id="search" class="form-inline" style="float:right">
@@ -48,7 +47,7 @@
 
 		</div>
 	</form>
-	<table class="table table-hover table-condensed">
+	<table class="table table-hover table-condensed" style="text-align:center;">
 		<c:forEach items="${nlist }" var="l">
 			<tr>
 				<td>${l.noticeNo }</td>
@@ -63,7 +62,8 @@
 	<jsp:include page="/WEB-INF/views/user/notice/noticePaging.jsp" />
 	</div>
 	</div>
+		<div class="col-2"></div>
 	</div>
-</body>
+
 </html>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

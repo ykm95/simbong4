@@ -8,7 +8,7 @@ public class Center { // 센터회원정보
 
 	private int centerno; // 센터번호
 	private String cname; // 센터이름
-	private int businessno; // 사업자번호
+	private String businessno; // 사업자번호
 	private String cpassword; // 센터비밀번호
 	private String mgr; // 담당자이름
 	private String memail; // 담당자이메일
@@ -43,11 +43,11 @@ public class Center { // 센터회원정보
 		this.cname = cname;
 	}
 
-	public int getBusinessno() {
+	public String getBusinessno() {
 		return businessno;
 	}
 
-	public void setBusinessno(int businessno) {
+	public void setBusinessno(String businessno) {
 		this.businessno = businessno;
 	}
 
