@@ -38,7 +38,7 @@ public class TalentController {
 		  model.addAttribute("count", count);
 		  model.addAttribute("paging", paging);
 		  model.addAttribute("list", talentlist);
-			
+		  
 		  // OK!!!! 
 	  }
 	  
@@ -70,12 +70,10 @@ public class TalentController {
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.GET)
 	  public void talentUpdate(int talentno, Model model) {
-		  
-		  logger.info("서비스 전 : " + talentno);
+		  	  
+		  logger.info("탈렌트 남바 : " + talentno);
 		  
 		  Talent talent = talentService.getTalent(talentno);
-		  
-		  logger.info("서비스 후 : " + talent);
 		  
 		  talent.setTest(talent.getTalent_cycle());
 		  
@@ -84,7 +82,7 @@ public class TalentController {
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.POST)
 	  public String talentUpdateProc(Talent talent) {
-		  
+		  logger.info("탈렌트 : " + talent);
 		  talentService.update(talent);
 		  
 		  return "redirect:/user/talent/list";

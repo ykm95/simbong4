@@ -23,7 +23,15 @@ public class Talent {
 	private String talent_content;
 	private String talent_start;
 	private String talent_end;
-	
+	private String[] t_cycle;
+	public String[] getT_cycle() {
+		return t_cycle;
+	}
+
+	public void setT_cycle(String[] t_cycle) {
+		this.t_cycle = t_cycle;
+	}
+
 	private String test;
 
 	@Override
@@ -33,7 +41,8 @@ public class Talent {
 				+ ", departname=" + departname + ", uname=" + uname + ", uemail=" + uemail + ", aname=" + aname
 				+ ", areano=" + areano + ", talent_cycle=" + talent_cycle + ", write_date=" + write_date
 				+ ", talent_title=" + talent_title + ", talent_content=" + talent_content + ", talent_start="
-				+ talent_start + ", talent_end=" + talent_end + ", test=" + test + "]";
+				+ talent_start + ", talent_end=" + talent_end + ", t_cycle=" + Arrays.toString(t_cycle) + ", test="
+				+ test + "]";
 	}
 
 	public int getTalentno() {

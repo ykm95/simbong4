@@ -23,9 +23,9 @@
 						});
 
 						// 전체선택 버튼
-						$("#talent_cycleAll").click(
+						$("#t_cycleAll").click(
 								function() {
-									if ($("#talent_cycleAll").prop("checked")) {
+									if ($("#t_cycleAll").prop("checked")) {
 										$("input[type=checkbox]").prop(
 												"checked", true);
 									} else {
@@ -210,114 +210,114 @@
 	CKEDITOR.replace( 'editor1' );
 					});
 </script>
-
+<style>
+    .title {font-weight:bold;display:block;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+</style>
 </head>
 
 <body>
 
-	<form action="/user/talent/write" method="post" id="searchForm">
+
+<div class="container">
+
+	<form action="/user/talent/write" method="post" id="searchForm" style="padding: 30px 50px;">
+		
+		제목
 		<div>
-			<table
-				style="width: 100%; padding: 0px; border-spacing: 0px; border: 0px;">
+			<input name="talent_title" title="활동 명" id="talent_title"
+					type="text" value="" required="required" class="form-control">
+		</div><br>
 	
-				<colgroup>
-					<col style="width: 10%;">
-					<col style="width: 40%;">
-					<col style="width: 10%;">
-					<col style="width: 40%;">
-				</colgroup>
-				<tbody>
-					<tr>
-						<th scope="row">활동영역</th>
-						<td><select id="srcDepart" name="srcDepart" title="활동영역"
-							style="width: 180px; height: 28px;">
-								<option value="">선택</option>
-
-								<option value="1">교육(지도)봉사</option>
-
-								<option value="2">재능봉사</option>
-
-								<option value="3">문화봉사</option>
-
-						</select> <select name="departmentno" id="departmentno" title="활동영역 세부"
-							style="width: 180px; height: 28px;" disabled="disabled">
-								<option value="">선택</option>
-
-						</select></td>
-
-					</tr>
-					<tr>
-						<th scope="row">활동지역</th>
-						<td><select title="시도" name="srcArea" id="srcArea"
-							style="width: 180px; height: 28px;">
-								<option value="0">전체</option>
-								<option value="1">서울특별시</option>
-								<option value="2">부산광역시</option>
-								<option value="3">대구광역시</option>
-								<option value="4">인천광역시</option>
-								<option value="5">광주광역시</option>
-								<option value="6">대전광역시</option>
-								<option value="7">울산광역시</option>
-								<option value="8">세종특별자치시</option>
-								<option value="9">경기도</option>
-								<option value="10">강원도</option>
-								<option value="11">충청북도</option>
-								<option value="12">충청남도</option>
-								<option value="13">전라북도</option>
-								<option value="14">전라남도</option>
-								<option value="15">경상북도</option>
-								<option value="16">경상남도</option>
-								<option value="17">제주특별자치도</option>
-						</select> <select name="areano" id="areano" title="시군구"
-							style="width: 180px; height: 28px;" disabled="disabled">
-								<option value="0">선택</option>
-						</select></td>
-
-						<th scope="row">봉사유형</th>
-						<td style="line-height: 200%"><input name="talent_type"
-							title="전체" id="talent_typeA" type="radio" value="0" checked="checked">&nbsp;<label
-							for="talent_typeA">전체</label> &nbsp; <input name="talent_type"
-							title="개인" id="talent_typeI" type="radio" value="1">&nbsp;<label
-							for="talent_typeI">개인</label> &nbsp; <input name="talent_type"
-							title="단체" id="talent_typeG" type="radio" value="2">&nbsp;<label
-							for="talent_typeG">단체</label> &nbsp;</td>
-
-					</tr>
-					<tr>
-						<th scope="row">활동일자</th>
-						<td><input name="talent_start" title="시작일" id="talent_start"
-							style="width: 22.2%;" type="date" value=""> ~ <input
-							name="talent_end" title="종료일" id="talent_end"
-							style="width: 22.2%;" type="date" value=""></td>
-
-						<th scope="row">봉사주기</th>
-						<td><label><input name="t_cycle"
-								id="t_cycleAll" type="checkbox" value="all" title="전체">&nbsp;전체</label>&nbsp;&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="월" title="월">&nbsp;월</label>&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="화" title="화">&nbsp;화</label>&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="수" title="수">&nbsp;수</label>&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="목" title="목">&nbsp;목</label>&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="금" title="금">&nbsp;금</label>&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="토" title="토">&nbsp;토</label>&nbsp;&nbsp;<label><input
-								name="t_cycle" type="checkbox" value="일" title="일">&nbsp;일</label>&nbsp;&nbsp;</td>
-					</tr>
-
-					<tr>
-						<th scope="row">제목</th>
-						<td><input name="talent_title" title="활동 명" id="talent_title"
-							style="width: 47.6%; height: 20px;" type="text" value=""></td>
-					<tr>
-						<th>내용</th>
-						<td><textarea rows="500px" cols="400px" name="talent_content"
-								id="editor1"></textarea></td>
-					</tr>
-				</tbody>
-			</table>
-			<div>
-				<button type="submit" style="width: 100px;">작성</button>
-				<button id="cancelForm" type="button">취소</button>
+		활동기간
+		<div class="row">
+			<div class="col">
+		<input name="talent_start" title="시작일" id="talent_start"
+		type="date" value="" required="required" class="form-control"></div>
+		~ 
+		<div class="col">
+		<input
+		name="talent_end" title="종료일" id="talent_end"
+		type="date" value="" required="required" class="form-control">
+		</div></div><br>
+					
+		활동분야
+		<div class="row">
+			<div class="col">
+		<select id="srcDepart" name="srcDepart" title="활동영역" class="form-control" required="required">
+			<option value="">선택</option>
+			<option value="1">교육(지도)봉사</option>
+			<option value="2">재능봉사</option>
+			<option value="3">문화봉사</option>
+		</select> </div>
+			<div class="col">
+		<select class="form-control" name="departmentno" id="departmentno" title="활동영역 세부" required="required" class="form-control"disabled="disabled">
+		<option value="">선택</option>
+		</select>
 			</div>
+		</div><br>
+
+		봉사지역
+		<div class="row">
+			<div class="col">
+
+		<select class="form-control" title="시도" name="srcArea" id="srcArea" required="required">
+			<option value="0">전체</option>
+			<option value="1">서울특별시</option>
+			<option value="2">부산광역시</option>
+			<option value="3">대구광역시</option>
+			<option value="4">인천광역시</option>
+			<option value="5">광주광역시</option>
+			<option value="6">대전광역시</option>
+			<option value="7">울산광역시</option>
+			<option value="8">세종특별자치시</option>
+			<option value="9">경기도</option>
+			<option value="10">강원도</option>
+			<option value="11">충청북도</option>
+			<option value="12">충청남도</option>
+			<option value="13">전라북도</option>
+			<option value="14">전라남도</option>
+			<option value="15">경상북도</option>
+			<option value="16">경상남도</option>
+			<option value="17">제주특별자치도</option>
+		</select> </div>
+			<div class="col">
+		<select class="form-control" name="areano" id="areano" title="시군구" disabled="disabled" required="required">
+			<option value="">선택</option>
+		</select>
+			</div>
+		</div><br>
+						
+		봉사유형
+		<div class="form-group">
+		<input name="talent_type" title="개인" id="talent_typeI" type="radio" value="1">&nbsp;
+		<label for="talent_typeI">개인</label> &nbsp; 
+		<input name="talent_type" title="단체" id="talent_typeG" type="radio" value="2">&nbsp;
+		<label for="talent_typeG">단체</label> &nbsp;
+		</div><br>
+				
+		봉사주기
+		<div class="form-group">
+		<label><input name="t_cycle" id="t_cycleAll" type="checkbox" value="all" title="전체">&nbsp;전체</label>&nbsp;&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="월" title="월">&nbsp;월</label>&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="화" title="화">&nbsp;화</label>&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="수" title="수">&nbsp;수</label>&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="목" title="목">&nbsp;목</label>&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="금" title="금">&nbsp;금</label>&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="토" title="토">&nbsp;토</label>&nbsp;&nbsp;
+		<label><input name="t_cycle" type="checkbox" value="일" title="일">&nbsp;일</label>&nbsp;&nbsp;
+		</div><br>
+
+		<div>
+		<textarea rows="500px" cols="400px" name="talent_content" id="editor1"></textarea>
+		</div><br><br>
+		
+		<div>
+			<button class="btn btn-danger" id="cancelForm" type="button" style="float:right;">취소</button>
+			<button class="btn btn-secondary" type="submit" style="float:right;">작성</button>
 		</div>
+	
 	</form>
+</div>
 
 	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
