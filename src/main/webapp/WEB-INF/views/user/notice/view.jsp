@@ -9,28 +9,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+
+$(document).on('click','#pdfopen', function(){
+
+
+      var popupX = (window.screen.width / 2) - (600 / 2);
+      // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+      var popupY= (window.screen.height /2) - (500 / 2);
+      // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+      window.open('http://localhost:8088/user/notice/pdf?noticeno=${view.noticeNo }', 'window', 'status=no, height=500, width=600, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+   });
+	
+</script>
 
 <style type="text/css">
-dt {
-	float: left;
-	width: 7%;
-}
-
-dd {
-	float: left;
-	width: 43%;
-}
-dl {
-	border-top: 1px solid #cacaca;
-	border-bottom: 1px solid #cacaca;
-	padding:30px;
-}
-
-#content {
-	padding: 300px;
-	border-bottom: 1px solid #cacaca;
-	
-}
 </style>
 
 </head>
@@ -39,34 +35,40 @@ dl {
 		<div class="col-2"></div>
 		<div class="col-8">
 			<br>
-			<h1>공지사항</h1><br>
+			<h1>공지사항</h1>
+			<br>
 			<hr>
-			<h3>${view.noticeTitle }</h3><br>
-<!-- 			<table> -->
-<!-- 				<tr> -->
-<!-- 					<th>작성일</th> -->
-<%-- 					<th><fmt:formatDate value="${view.writeDate }" --%>
-<%-- 							pattern="yyyy.MM.dd" /></th> --%>
-<!-- 					<th>조회수</th> -->
-<%-- 					<th>${view.hit }</th> --%>
-<!-- 				</tr> -->
-<!-- 			</table> -->
+			<h3>${view.noticeTitle }</h3>
+			<br>
+
 			<div class="data">
-				<dl>
-					<dt>작성일</dt>
-					<dd><fmt:formatDate value="${view.writeDate }" pattern="yyyy.MM.dd" />
-					</dd>
-					<dt>조회수</dt>
-					<dd>${view.hit }</dd>
-				</dl>
+				<div class="row"
+					style="border-top: 1px solid #CCC; border-bottom: 1px solid #CCC; padding:4px;">
+					<div class="col-6">
+						<span>작성일</span> <span><fmt:formatDate
+								value="${view.writeDate }" pattern="yyyy.MM.dd" /></span>
+					</div>
+					<div class="col-6">
+						<span>조회수</span> <span>${view.hit }</span>
+					</div>
+				</div>
+
+
 			</div>
-			<div id="content">${view.noticeContent }</div>
+			<div class="row">
+				<div class="content col-12"
+					style="min-height: 300px; border-bottom: 1px solid #CCC;">${view.noticeContent }</div>
+			</div>
+			<br>
+			<div align="center">
 			<button class="btn btn-secondary"
 				onclick="location.href='/user/notice/list'">목록</button>
+			</div>
+			<a href="javascript:void(window.open('/user/notice/pdf?noticeno=${view.noticeNo }','봉사인증서','width:300,height=1000'))">pdf2</a>
+			<button id="pdfopen" class="btn">pdf</button>
 			<div>
 				<a href="/user/notice/view?noticeno=${view.noticeNo -1 }">이전글</a><br>
-				<a href="/user/notice/view?noticeno=${view.noticeNo +1 }">다음글</a> <a
-					href="/pdf/web/viewer.html?file=test.pdf">pdf</a>
+				<a href="/user/notice/view?noticeno=${view.noticeNo +1 }">다음글</a> 
 			</div>
 		</div>
 		<div class="col-2"></div>

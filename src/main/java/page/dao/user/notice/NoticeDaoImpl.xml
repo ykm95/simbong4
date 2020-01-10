@@ -67,4 +67,15 @@
     
     </update>
     
+	<select id="selectMainNotice" resultMap="Notice">
+		SELECT noticeno, notice_title
+		  FROM (
+		        SELECT *
+		          FROM Notice
+		         ORDER BY write_date DESC
+		        ) 
+		 WHERE ROWNUM  &lt;= 5
+
+	</select>
+    
   </mapper>

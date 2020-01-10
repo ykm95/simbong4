@@ -63,11 +63,7 @@ public class UserLoginController {
 		
 		return "main";
 	}
-	
-	@RequestMapping(value = "/main")
-	public void main() {
-		
-	}
+
 	
 	@RequestMapping(value = "/user/login/login", method = RequestMethod.GET)
 	public void userLogin(Model model, HttpSession session) {

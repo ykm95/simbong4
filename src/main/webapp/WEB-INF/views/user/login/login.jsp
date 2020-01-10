@@ -4,7 +4,11 @@
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 <script>
@@ -65,29 +69,89 @@
 		return unescape(cookieValue);
 	}
 </script>
+
+<style type="text/css">
+	.login-form {
+		width: 340px;
+    	margin: 30px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .login-form .hint-text {
+		color: #777;
+		padding-bottom: 15px;
+		text-align: center;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .login-btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .social-btn .btn {
+        margin: 10px 0;
+        font-size: 15px;
+        text-align: left; 
+        line-height: 24px;       
+    }
+	.social-btn .btn i {
+		float: left;
+		margin: 4px 15px  0 5px;
+        min-width: 15px;
+	}
+	.input-group-addon .fa{
+		font-size: 18px;
+	}
+</style>
+
+
 </head>
   <body>
  
-<h1>로그인</h1>
-<hr>
+<div class="login-form">
 <form action="/user/login/login" method="post" onsubmit="return onSignIn(googleUser)">
-<label for ="uemail">이메일</label>
-<input type="text" name="uemail" id="uemail" placeholder="email" required="required"/>
-<br><br>
-<label for ="upassword">비밀번호</label>
-<input type="password" name="upassword" id="upassword"/>
-<br><br>
+<h2 class="text-center">심봉사 로그인</h2><br><br>
+<div class="form-group">
+<div class="input-group"> 
+ <span class="input-group-addon"><i class="fa fa-user"></i></span>
+<input class ="form-control" type="text" name="uemail" id="uemail" placeholder="email" required="required"/>
+</div></div>
+
+<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+<input class="form-control" type="password" name="upassword" id="upassword"/>
+</div>
+</div>
 
 <input type="checkbox" id="idSaveCheck"/>이메일 저장하기<br><br>
-<button id="loginbtn">로그인</button>
-<button type="reset">취소</button>
-</form>
-<a href="/user/login/email">회원가입</a>
-<a href="/user/login/find_id">아이디찾기</a>
-<a href="/user/login/find_pass">비밀번호찾기</a>
+<button id="loginbtn"  class="btn btn-success btn-block login-btn">로그인</button><br>
+<button type="reset"  class="btn btn-danger btn-block login-btn">취소</button>
+<Br><br>
+<a class="text-center text-success" href="/user/login/find_id">아이디찾기</a>
+<a class="text-center text-success" href="/user/login/find_pass">비밀번호찾기</a>
 
-<br>
+
+<br><br>
+ <div class="hint-text small" class="text-success">계정이 없으신가요?
+<a href="/user/login/email">회원가입</a></div>
+</div>
+</form>
+
+<div class="text-center cocial-btn">
 <a href="${google_url }"><button id="btnJoinGoogle" class="btn btn-primary btn-round"
 stype="width: 100%"><i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a>
+</div>
+
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
