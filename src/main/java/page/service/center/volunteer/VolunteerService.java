@@ -5,12 +5,13 @@ import java.util.List;
 import page.dto.Area;
 import page.dto.Volunteer;
 import page.util.Paging;
+import page.util.PagingVolunteer;
 
 public interface VolunteerService {
 	
-	public Paging getPaging(Paging paging);
+	public PagingVolunteer getPaging(PagingVolunteer paging);
 
-	public List getVolunteerList(Paging paging);
+	public List getVolunteerList(PagingVolunteer paging);
 
 	public Volunteer getVolunteer(Volunteer vol);
 
