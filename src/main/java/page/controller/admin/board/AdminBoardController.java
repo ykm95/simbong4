@@ -1,7 +1,5 @@
 package page.controller.admin.board;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -68,21 +66,6 @@ public class AdminBoardController {
 	//센터승인 게시판
 	@RequestMapping(value = "/admin/adminBoard/adminCenter", method = RequestMethod.GET)
 	public void adminCenter() {
-
-	}
-	
-	
-	//센터승인 게시판
-	@RequestMapping(value = "/abcd", method = RequestMethod.GET)
-	public void aaaaa() {
-		
-		List<Map<String,String>> dataList = new ArrayList<>();
-//		
-//		for(int i = 1; i <= 1000;i++) {
-//			Map<String,String> data = new HashMap<>
-//		}
-//		
-//		abc.saveData();
 
 	}
 

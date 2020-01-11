@@ -39,7 +39,7 @@ aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigatio
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="/admin/adminQna/qnaMain">QnA</a>
       </li>
     </ul>
     
@@ -49,7 +49,6 @@ aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigatio
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-----
 </nav>
 <!-- -------------------------------------------------------------------------------- -->
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3!! -->
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 공지사항 작성 ..스마트 에디터 쓰기-->	  
+<mapper namespace="page.dao.admin.qna.QnaDao">
+
+	<resultMap type="page.dto.CenterQuestion" id="Question">
+		<result column="QUESTIONNO" property="questionno"/>
+		<result column="QUESTION_TITLE" property="cquestion_title"/>
+		<result column="QUESTION_CONTENT" property="cquestion_content"/>
+		<result column="PIC" property="pic"/>
+		<result column="ANSWER" property="answer"/>
+		<result column="UNAME" property="uname"/>
+	</resultMap>
+	
+	<select id="getQuestionList" resultMap="Question">
+		SELECT
+			Q.QUESTIONNO,
+			U.UNAME,
+			Q.QUESTION_TITLE,
+			Q.QUESTION_CONTENT,
+			NVL2(Q.ANSWER,'완료','미완료') AS "ANSWER"
+		  FROM QUESTION Q JOIN USERTB U
+			ON Q.USERNO = U.USERNO
+	  ORDER BY QUESTIONNO DESC
+	</select>
+
+</mapper>

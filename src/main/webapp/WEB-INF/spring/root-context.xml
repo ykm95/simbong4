@@ -57,17 +57,17 @@
 				<value>classpath:/page/dao/admin/login/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/admin/qna/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/admin/user/**/*DaoImpl.xml</value>
+				
 				<value>classpath:/page/dao/center/volunteer/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/centertalent/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/mypage/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/login/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/center/main/**/*DaoImpl.xml</value>
+				
 				<value>classpath:/page/dao/user/notice/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/best/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/login/**/*DaoImpl.xml</value>
-
 				<value>classpath:/page/dao/user/mypage/**/*DaoImpl.xml</value>
-
 				<value>classpath:/page/dao/user/talent/**/*DaoImpl.xml</value>
 				<value>classpath:/page/dao/user/uservolunteer/**/*DaoImpl.xml</value>
 
@@ -82,6 +82,7 @@
 		<property name="basePackage" value="
 											page.dao.admin.login,
 											page.dao.admin.board,
+											page.dao.admin.qna,
 											page.dao.center.volunteer,
 											page.dao.center.centertalent,
 											page.dao.center.mypage,
