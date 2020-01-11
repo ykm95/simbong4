@@ -103,18 +103,15 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		return centerMypageDao.selectAll();
 	}
 
+	@Override
+	public CenterQuestion viewQST(int questionno) {
+		return centerMypageDao.selectQuestionByQuestionno(questionno);
+	}
 
-//	@Override
-//	public void deleteQST(Question question) {
-//		centerMypageDao.delete(question);
-//		
-//	}
-//
-//	@Override
-//	public List<Question> viewQST(Question question) {
-//		centerMypageDao.view(question);
-//		return null;
-//		
-//	}
+	@Override
+	public void deleteQST(CenterQuestion centerquestion) {
+		centerMypageDao.deleteQuestion(centerquestion);
+	}
+
 
 }

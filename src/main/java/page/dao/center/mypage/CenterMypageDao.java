@@ -23,19 +23,9 @@ public interface CenterMypageDao {
 
 	public List<CenterQuestion> selectAll();
 
-//	/**
-//	 * 센터 1:1 문의삭제
-//	 * 
-//	 * 
-//	 */
-//	public void delete(Question question);
-//	
-//	/**
-//	 * 센터 1:1 문의보기
-//	 * 
-//	 * 
-//	 */
-//	public List<Question> view(Question question);
+	public CenterQuestion selectQuestionByQuestionno(int questionno);
+
+	public void deleteQuestion(CenterQuestion centerquestion);
 
 
 }
