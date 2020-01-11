@@ -26,7 +26,7 @@
 		    }
 		    slides[slideIndex-1].style.display = "block";  
 		    dots[slideIndex-1].className += " active";
-		    setTimeout(showSlides, 2000); // Change image every 2 seconds
+		    setTimeout(showSlides, 4000); // Change image every 2 seconds
 		}
 	});
 </script>
@@ -55,7 +55,7 @@ img {vertical-align: middle;}
   color: white;
   font-weight: bold;
   font-size: 18px;
-  transition: 0.6s ease;
+  transition: 1s ease;
   border-radius: 0 3px 3px 0;
 }
 
@@ -111,7 +111,7 @@ img {vertical-align: middle;}
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 4s;
 }
 
 @-webkit-keyframes fade {
@@ -132,7 +132,7 @@ img {vertical-align: middle;}
 #volunteer {
 	background-color: #ccc;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	font-size: 22px;
+	font-size: 25px;
 	height: 90px;
     padding: 10px;
 }
@@ -140,7 +140,7 @@ img {vertical-align: middle;}
 #adduction {
 	background-color: #ccc;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	font-size: 22px;
+	font-size: 25px;
 	height: 90px;
     padding: 10px;
 }
@@ -148,15 +148,31 @@ img {vertical-align: middle;}
 #talent {
 	background-color: #ccc;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	font-size: 22px;
+	font-size: 25px;
 	height: 90px;
     padding: 10px;
 }
 
+#nbtn {
+	border: 2px solid #ccc;
+	background-color: white;
+}
+#interview{
+	border: 2px solid green;
+	background-color: white;
+	border-radius: 10px;
+	margin:5px;
+	padding: 5px;
+}
+
+
+
 </style>
 
 <body><br>
-<div class="col-12">
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6"  style="background-color: white;">
 	<div class="col-12">
 		<div class="slideshow-container">
 	
@@ -180,18 +196,20 @@ img {vertical-align: middle;}
 	<div style="text-align: center">
 		<span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
 	</div><br>
-	<div id="application" class="row" style="text-align: center">
-		<div class="col-2"></div>
-		<div class="col-8 row">
+	<div id="application" class="row" style="text-align: center;">
+		<div class="col-1"></div>
+		<div class="col-10 row">
 		
 			<div id="talent" class="col-4"style="width: 500px;">
+				<a href="/user/talent/list">
 				<strong style="color:white;">재능기부</strong>
-				<a href="/user/talent/list"><img width="70px;" src="resources/img/재능.png"></a>
+				<img width="70px;" src="resources/img/재능.png"></a>
 			</div>
 			
 			<div id="volunteer"  class="col-4" style="width: 500px;">
-			<strong style="color:white;">봉사자 모집</strong>
-			<a href="/center/volunteer/list"><img width="70px;" src="/resources/img/봉사자.png"></a>
+			<a href="/user/volunteer/list">
+			<strong style="color:white;">봉사신청</strong>
+			<img width="70px;" src="/resources/img/봉사자.png"></a>
 			
 			</div>
 			
@@ -200,35 +218,50 @@ img {vertical-align: middle;}
 				<img width="70px;" src="/resources/img/인증서.png">
 				</div>
 		</div>
-		<div class="col-2">
+		<div class="col-1">
 		</div>
 	</div><br>
 
 	<div class="row" style="margin:10px;">
-		<div class="col-3"></div>
-		<div class="col-6 row">
+		<div class="col-1"></div>
+		<div class="col-10 row">
 			<div class="col-4">
 				<div style="height: 3px; background: black;"></div>
-					<h3 style="font-weight: bolder;">공지사항</h3>
+					<h3 style="font-weight: bolder;">공지사항
+							<button id="nbtn" style="float: right;" onclick="location.href='/user/notice/list'">+</button>
+						</h3><hr>
 						<c:forEach items="${main2}" var="m">
-							<table>
+							<table style="font-size:18px;">
 								<tr>
 									<td><a href="/user/notice/view?noticeno=${m.noticeNo }">${m.noticeTitle}</a></td>
 								</tr>
 							</table>
 						</c:forEach>
+						
 			</div>
 			<div class="col-4">
 				<div style="height: 3px; background: black;"></div>
 					<h3 style="font-weight: bolder;">이달의<br>우수봉사자</h3>
-					
+						<div id="bestpic" style="float:left;">
+							<img width="100px" height="100px" src="${best.pic }"
+								class="img-circle">
+						</div>
+						<div style="text-align: center;">
+							<span style="font-size:17px;">${best.bestTitle }</span><br>
+							
+								<a href="/user/best/bestview?bestno=${best.bestno }">
+								<button id="interview">
+								인터뷰 보러가기</button></a>
+						</div>
 			</div>
 			<div class="col-4">
 				<div style="height: 3px; background: black;"></div>
 				
 			</div>
 		</div>
-		<div class="col-3"></div>
+		<div class="col-1"></div>
 	</div>
+</div>
+<div class="col-3"></div>
 </div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

@@ -43,6 +43,11 @@ public class BestVolunteerServiceImpl implements BestVolunteerService{
 		return bestVolunteerDao.selectBestVolunteerBybestno(bestno);
 	}
 
+	@Override
+	public BestVolunteer mainbest() {
+		return bestVolunteerDao.selectMainBest();
+	}
+
 	
 
 }

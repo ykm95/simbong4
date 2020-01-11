@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!-- 아이디 중복 체크 -->
 <script>
 $(document).ready(function() {

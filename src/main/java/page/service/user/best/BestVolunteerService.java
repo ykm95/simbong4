@@ -31,5 +31,11 @@ public interface BestVolunteerService {
 	 * @return
 	 */
 	public BestVolunteer bestView(int bestno);
+	/**
+	 * 메인 최근 우수봉사자
+	 * @param bestno
+	 * @return
+	 */
+	public BestVolunteer mainbest();
 	
 }

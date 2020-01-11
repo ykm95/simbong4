@@ -4,7 +4,7 @@
 </div>
 
 
-<div style="height: 1px; background: #ccc;"></div>
+<div style="height: 2px; background: #ccc;"></div>
 
 <div id="footer" class="row">
 		<div class="col-2"></div>
