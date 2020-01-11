@@ -9,6 +9,7 @@ import page.dao.center.volunteer.VolunteerDao;
 import page.dto.Area;
 import page.dto.Volunteer;
 import page.util.Paging;
+import page.util.PagingVolunteer;
 
 @Service
 public class VolunteerServiceImpl implements VolunteerService {
@@ -16,19 +17,29 @@ public class VolunteerServiceImpl implements VolunteerService {
 	@Autowired VolunteerDao volunteerDao;
 	
 	@Override
-	public Paging getPaging(Paging paging) {
+	public PagingVolunteer getPaging(PagingVolunteer paging) {
 		
 		int curPage = paging.getCurPage();
 		
 		int totalCount = volunteerDao.selectCntAll();
 		
-		Paging pagingList = new Paging(totalCount, curPage);
+		PagingVolunteer pagingList = new PagingVolunteer(totalCount, curPage);
+		
+		pagingList.setSearch(paging.getSearch());
+		pagingList.setV_area(paging.getV_area());
+		pagingList.setDepartment(paging.getDepartment());
+		pagingList.setV_sterm(paging.getV_sterm());
+		pagingList.setV_eterm(paging.getV_eterm());
+		pagingList.setV_stime(paging.getV_stime());
+		pagingList.setV_etime(paging.getV_etime());
+		pagingList.setV_process(paging.getV_process());
+		pagingList.setV_title(paging.getV_title());
 		
 		return pagingList;
 	}
 
 	@Override
-	public List getVolunteerList(Paging paging) {
+	public List getVolunteerList(PagingVolunteer paging) {
 
 		return volunteerDao.selectAllVolunteer(paging);
 	}

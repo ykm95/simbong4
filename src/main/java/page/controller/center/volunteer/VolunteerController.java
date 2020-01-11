@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import page.dto.Area;
 import page.dto.Volunteer;
 import page.service.center.volunteer.VolunteerService;
-import page.util.Paging;
+import page.util.PagingVolunteer;
 
 @Controller
 public class VolunteerController {
@@ -26,7 +26,7 @@ public class VolunteerController {
 	@Autowired VolunteerService volunteerService;
 	
 	@RequestMapping(value = "/center/volunteer/list", method = RequestMethod.GET)
-	public void list(Paging paging, Model model) {
+	public void list(PagingVolunteer paging, Model model) {
 		
 		paging = volunteerService.getPaging(paging);
 		
