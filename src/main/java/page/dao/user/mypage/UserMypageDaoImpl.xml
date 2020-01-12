@@ -49,4 +49,34 @@
 	 		uaddress3 = #{uaddress3 }
 	 	WHERE uemail = #{uemail } 
 	  </update>
+	  
+	  <select id="selectAll" resultType="page.dto.Question">
+	    SELECT * FROM question	    
+	  </select>
+	  
+	  <select id="selectQuestionnoByDual" resultType="int">
+	    SELECT question_seq.nextval FROM dual
+	  </select>
+	  
+	  <select id="selectUsernoByUemail" parameterType="page.dto.User"
+	   resultType="int">
+	    SELECT userno FROM usertb
+	    WHERE uemail = #{uemail }
+	   </select>
+	   
+	   <insert id="insertQuestion" parameterType="page.dto.Question">
+	   	INSERT INTO question (questionno, userno, question_title, question_content, pic)
+	   	VALUES (#{questionno }, #{userno }, #{question_title }, #{question_content }, #{pic } )
+	   </insert>
+	   
+	   <select id="selectQuestionByQuestionno" parameterType="int"
+	    resultType="page.dto.Question">
+	     SELECT * FROM question
+	     WHERE questionno = #{questionno }
+	    </select>
+	    
+	    <delete id="deleteQuestion" parameterType="page.dto.Question">
+	    DELETE question
+	    WHERE questionno = #{questionno }
+	    </delete>
 </mapper>

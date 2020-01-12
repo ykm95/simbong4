@@ -13,12 +13,12 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	//수정버튼 동작
+	//회원정보수정버튼 동작
 	$("#btnUpdate").click(function() {
 		$(location).attr("href", "/center/mypage/updatepwchk");
 	});
 	
-	//삭제버튼 동작
+	//회원탈퇴버튼 동작
 	$("#btnDelete").click(function() {
 		$(location).attr("href", "/center/mypage/deletepwchk");
 	});
