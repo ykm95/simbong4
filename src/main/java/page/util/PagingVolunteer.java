@@ -7,16 +7,59 @@ public class PagingVolunteer {
 	private String search;
 	private int searchno;
 	private int department;
-	private int v_area;
-	private String v_sterm;
-	private String v_eterm;
-	private int v_process;
-	private String v_stime;
-	private String v_etime;
+	private int vol_area;
+	private String vol_sterm;
+	private String vol_eterm;
+	private int vol_process;
+	private String stime;
+	private String etime;
+	public int getVol_area() {
+		return vol_area;
+	}
+	public void setVol_area(int vol_area) {
+		this.vol_area = vol_area;
+	}
+	public String getVol_sterm() {
+		return vol_sterm;
+	}
+	public void setVol_sterm(String vol_sterm) {
+		this.vol_sterm = vol_sterm;
+	}
+	public String getVol_eterm() {
+		return vol_eterm;
+	}
+	public void setVol_eterm(String vol_eterm) {
+		this.vol_eterm = vol_eterm;
+	}
+	public int getVol_process() {
+		return vol_process;
+	}
+	public void setVol_process(int vol_process) {
+		this.vol_process = vol_process;
+	}
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
+	public String getEtime() {
+		return etime;
+	}
+	public void setEtime(String etime) {
+		this.etime = etime;
+	}
+	public String getVol_title() {
+		return vol_title;
+	}
+	public void setVol_title(String vol_title) {
+		this.vol_title = vol_title;
+	}
+
 	private String aname;
 	private String departname;
 	private int volunteerno;
-	private String v_title;
+	private String vol_title;
 	private Date write_date;
 	
 	public Date getWrite_date() {
@@ -25,12 +68,7 @@ public class PagingVolunteer {
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
 	}
-	public String getV_title() {
-		return v_title;
-	}
-	public void setV_title(String v_title) {
-		this.v_title = v_title;
-	}
+
 	public int getVolunteerno() {
 		return volunteerno;
 	}
@@ -49,47 +87,11 @@ public class PagingVolunteer {
 	public void setDepartname(String departname) {
 		this.departname = departname;
 	}
-	public String getV_stime() {
-		return v_stime;
-	}
-	public void setV_stime(String v_stime) {
-		this.v_stime = v_stime;
-	}
-	public String getV_etime() {
-		return v_etime;
-	}
-	public void setV_etime(String v_etime) {
-		this.v_etime = v_etime;
-	}
 	public int getDepartment() {
 		return department;
 	}
 	public void setDepartment(int department) {
 		this.department = department;
-	}
-	public int getV_area() {
-		return v_area;
-	}
-	public void setV_area(int v_area) {
-		this.v_area = v_area;
-	}
-	public String getV_sterm() {
-		return v_sterm;
-	}
-	public void setV_sterm(String v_sterm) {
-		this.v_sterm = v_sterm;
-	}
-	public String getV_eterm() {
-		return v_eterm;
-	}
-	public void setV_eterm(String v_eterm) {
-		this.v_eterm = v_eterm;
-	}
-	public int getV_process() {
-		return v_process;
-	}
-	public void setV_process(int v_process) {
-		this.v_process = v_process;
 	}
 
 	private int curPage; // 현재 페이지 번호 (브라우저에서 선택한 페이지 번호)
@@ -143,12 +145,12 @@ public class PagingVolunteer {
 	@Override
 	public String toString() {
 		return "PagingVolunteer [search=" + search + ", searchno=" + searchno + ", department=" + department
-				+ ", v_area=" + v_area + ", v_sterm=" + v_sterm + ", v_eterm=" + v_eterm + ", v_process=" + v_process
-				+ ", v_stime=" + v_stime + ", v_etime=" + v_etime + ", aname=" + aname + ", departname=" + departname
-				+ ", volunteerno=" + volunteerno + ", v_title=" + v_title + ", write_date=" + write_date + ", curPage="
-				+ curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage=" + totalPage
-				+ ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage + ", startNo="
-				+ startNo + ", endNo=" + endNo + "]";
+				+ ", vol_area=" + vol_area + ", vol_sterm=" + vol_sterm + ", vol_eterm=" + vol_eterm + ", vol_process="
+				+ vol_process + ", stime=" + stime + ", etime=" + etime + ", aname=" + aname + ", departname="
+				+ departname + ", volunteerno=" + volunteerno + ", vol_title=" + vol_title + ", write_date="
+				+ write_date + ", curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount
+				+ ", totalPage=" + totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", startNo=" + startNo + ", endNo=" + endNo + "]";
 	}
 
 	//페이징 정보 생성
