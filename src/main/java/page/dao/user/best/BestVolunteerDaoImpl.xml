@@ -79,6 +79,16 @@
   	SET hit = hit +1 
   	WHERE bestno=#{bestno }
   </update>
-
+	
+	<select id="selectMainBest" resultMap="Best">
+		SELECT bestno, best_title, pic
+		  FROM (
+		        SELECT *
+		          FROM bestvolunteer
+		         ORDER BY write_date DESC
+		        ) 
+		 WHERE ROWNUM  &lt;= 1
+	
+	</select>
   
   </mapper>
