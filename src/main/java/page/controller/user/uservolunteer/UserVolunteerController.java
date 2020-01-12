@@ -43,10 +43,13 @@ public class UserVolunteerController {
 		 
 		  Volunteer volunteer = userVolunteerService.getVolunteer(volunteerno);
 		  
-//		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
-		  
+		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
+
+		  logger.info(applicantlist.toString());
+		  //		  logger.info(session.getAttribute("loginid").toString());
 		  model.addAttribute("vol", volunteer);
-//		  model.addAttribute("prtlist", applicantlist);
+		  model.addAttribute("apllist", applicantlist);
+		  
 		  if(session.getAttribute("loginid") != null) {
 		  int userno = userVolunteerService.getUserno((String)session.getAttribute("loginid"));
 		  //2. 유저번호랑, 봉사번호를 DTO에 담아준다.
@@ -82,12 +85,14 @@ public class UserVolunteerController {
 			  //2. DB에 추천 여부 검사
 			  boolean b = userVolunteerService.isApplicant(applicant);
 			  
+			  int cnt = userVolunteerService.cntApl(volunteerno);
 			  
 			 // 모델값으로 지정
 			 mav.addObject("select", b);
+			 mav.addObject("cnt", cnt);
 			 // viewName 지정하기
 			 mav.setViewName("jsonView");
-			  
+			 
 			  
 		  }
 		

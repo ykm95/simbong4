@@ -101,10 +101,12 @@
 		AND V.volunteerno = #{volunteerno}
 	</select>
 	
-<!-- 	<select id="selectAplByNo" parameterType="int" resultType="web.user_page.volunteer.dto.Participant"> -->
-<!-- 		SELECT participant.applicantno, participant.name, participant.email, participant.date  -->
-<!-- 		FROM volunteer WHERE volunteerno = #{volunteerno} -->
-<!-- 	</select> -->
+	<select id="selectAplByNo" parameterType="int" resultType="page.dto.Applicant">
+		SELECT A.write_date, U.uphone, U.uname, U.uemail 
+		FROM usertb U, applicant A 
+		WHERE U.userno = A.userno
+		AND A.volunteerno = #{volunteerno}
+	</select>
 
 	<select id="selectUserNo" parameterType="String" resultType="int">
 		SELECT userno FROM usertb 
@@ -124,5 +126,9 @@
 	<delete id="deleteApl" parameterType="page.dto.Applicant">
 		DELETE FROM applicant WHERE volunteerno = #{volunteerno} AND userno= #{userno}
 	</delete>
+	
+	<select id="selectAplno" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM applicant where volunteerno = #{volunteerno}
+	</select>
 	
 </mapper>
