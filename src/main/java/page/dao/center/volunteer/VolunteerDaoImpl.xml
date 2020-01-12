@@ -10,7 +10,7 @@
 		SELECT count(*) FROM volunteer
 	</select>
 
-	<select id="selectAllVolunteer" parameterType="page.util.Paging" resultType="page.dto.Volunteer">
+	<select id="selectAllVolunteer" parameterType="page.util.PagingVolunteer" resultType="page.dto.Volunteer">
 		SELECT * FROM (
 		    SELECT rownum rnum, B.* FROM (		
 				SELECT 
@@ -46,8 +46,41 @@
 				c.CHK CHK,
 				c.ADDRESS1 ADDRESS1,
 				c.ADDRESS2 ADDRESS2,
-				c.ADDRESS3 ADDRESS3 FROM volunteer v, centertb c
+				c.ADDRESS3 ADDRESS3,
+				a.aname ANAME
+				FROM volunteer v, centertb c, area a
 				WHERE v.centerno = c.centerno
+				AND v.vol_area = a.areano
+				
+				<if test="v_process !=null and v_process !='' and v_process != 0 ">
+					AND V.vol_process = #{v_process}
+				</if>
+				<if test="department!=null and department!='' ">
+					AND V.department = #{department}
+				</if>
+				<if test="v_area!=null and v_area!='' ">
+					AND V.vol_area = #{v_area}
+				</if>
+				<if test="v_sterm !=null and v_sterm!='' ">
+					<![CDATA[
+					AND (V.vol_sterm <= #{v_sterm} AND V.vol_sterm <= #{v_eterm} and
+					V.vol_eterm>= #{v_sterm} and V.vol_eterm>= #{v_eterm}
+					OR V.vol_sterm BETWEEN #{v_sterm} AND #{v_eterm}
+					OR V.vol_eterm BETWEEN #{v_sterm} AND #{v_eterm})
+					]]>
+				</if>
+				<if test="v_sterm !=null and v_sterm!='' ">
+					<![CDATA[
+					AND (V.stime <= #{v_stime} AND V.stime <= #{v_etime} and
+					V.etime>= #{v_stime} and V.etime>= #{v_etime}
+					OR V.stime BETWEEN #{v_stime} AND #{v_etime}
+					OR V.etime BETWEEN #{v_stime} AND #{v_etime})
+					]]>
+				</if>
+				<if test="search !=null and search !='' ">
+					AND V.vol_title LIKE '%' || #{search} || '%'
+				</if>
+				
 				ORDER BY v.volunteerno DESC
 		    ) B
 		    ORDER BY rnum

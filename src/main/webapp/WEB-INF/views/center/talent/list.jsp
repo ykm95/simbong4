@@ -5,29 +5,47 @@
 
 <jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$('.tr').mouseover(function(){
+			
+			$(this).css('background-color', '#ddd');
+		});
+		
+		$('.tr').mouseleave(function(){
+			
+			$(this).css('background-color', '#FFF');
+		});
+	
+	});
+	
+</script>
+
 <div class="container" >
 
-	<table class="table table-hover">
 	
-	<c:forEach items="${list }" var="i">
+	<div style="border-top: 1px solid; border-bottom: 1px solid;">
+
+		<c:forEach items="${list }" var="i">
+			<div class="container tr" onclick="location.href='/center/talent/view?talentno=${i.talentno }';"
+			style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc">
+				<div class="row">
+					<div class="col-1">${i.talentno }</div>
+					<div class="col-9"><h3>${i.talent_title }</h3></div>
+					<div class="col-2"><small>${i.aname } 
+						<c:if test="${i.talent_process == 0 }">진행중</c:if>
+						<c:if test="${i.talent_process == 1 }">완료</c:if>
+					</small></div>
+				</div>
+				<div class="row">
+					<div class="col-4"><small style="color: blue;">봉사기간 : </small><small>${i.talent_cycle }</small></div>
+				</div>
+			</div>
+		</c:forEach>
 	
-	<tr class="text-center" onclick="location.href='/center/talent/view?talentno=${i.talentno }';">
-		<c:if test="${i.talent_process == 0 }">
-			<td>진행중</td>
-		</c:if>
-		<c:if test="${i.talent_process == 1 }">
-			<td>완료</td>
-		</c:if>
-		<td>${i.aname }</td>
-		<td>
-			${i.talent_title }
-		</td>
-		<td>봉사기간 : ${i.talent_cycle}</td>
-	</tr>
-	
-	</c:forEach>
-	
-	</table>
+	</div>
 	
 </div>
 
