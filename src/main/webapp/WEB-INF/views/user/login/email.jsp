@@ -137,8 +137,8 @@ function checkEmail(){
 
 
 <div class="login-form">
-		<center>
-			<span style="color: green; font-weight: bold;">이메일 인증 (이메일을 인증 받아야 다음 단계로 넘어갈 수 있습니다.)</span> <br> <br>
+<center>
+<span style="color: green; font-weight: bold;">이메일 인증 (이메일을 인증 받아야 다음 단계로 넘어갈 수 있습니다.)</span> <br> <br>
 <div style="text-align: center;">
 
 <form action="/user/auth" method="post" onsubmit="return checkEmail()">

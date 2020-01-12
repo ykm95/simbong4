@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!-- jQuery 2.2.4 -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -112,6 +111,10 @@
 	.input-group-addon .fa{
 		font-size: 18px;
 	}
+	#googlebtn{
+		height: 60px;
+		width: 300px;
+	}
 </style>
 
 
@@ -148,9 +151,9 @@
 </div>
 </form>
 
-<div class="text-center cocial-btn">
-<a href="${google_url }"><button id="btnJoinGoogle" class="btn btn-primary btn-round"
-stype="width: 100%"><i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a>
+<div class="text-center">
+<a href="${google_url }">
+<img src="/resources/img/btn_google_signin_dark_normal_web@2x.png" id="googlebtn" name="googlebtn"></a>
 </div>
 
 

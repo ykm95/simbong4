@@ -124,9 +124,10 @@ public class GoogleServiceImpl implements GoogleService {
 
 				int socialCnt = getSocialAccountCnt(user);
 
-
+				session.setAttribute("google", true);
+				
 				//소셜로그인 정보가 회원정보에 담겨 있지않은 경우 처음 로그인
-
+				
 				if(socialCnt == 0) {
 
 					session.setAttribute("socialDouble", false);

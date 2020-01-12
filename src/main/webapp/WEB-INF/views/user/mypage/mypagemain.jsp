@@ -13,6 +13,7 @@
 
 <a href="/user/mypage/updatepwchk"><button>회원정보수정</button></a>
 <a href="/user/mypage/deletepwchk"><button>회원탈퇴</button></a>
+<a href="/main"><button>메인으로</button></a>
 
 </body>
 </html>

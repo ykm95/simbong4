@@ -2,6 +2,7 @@ package page.service.center.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -95,6 +96,11 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		
 		centerMypageDao.insertQuestion(centerquestion);
 		
+	}
+
+	@Override
+	public List<CenterQuestion> getList() {
+		return centerMypageDao.selectAll();
 	}
 
 

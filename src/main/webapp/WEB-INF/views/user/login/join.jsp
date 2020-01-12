@@ -322,7 +322,7 @@ label {
 
 					<div class="form-group row">
 						<div class="col-3 col-form-label">
-							<label for="uname" class="float-right">이름</label>
+							<label for="uname" >이름</label>
 						</div>
 						<input class="form-control" type="text" name="uname" id="uname" />
 					</div>

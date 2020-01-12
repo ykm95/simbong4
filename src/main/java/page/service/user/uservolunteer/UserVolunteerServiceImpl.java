@@ -29,21 +29,21 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 		PagingVolunteer pagingRes = new PagingVolunteer(totalCount, curPage);
 		
 		pagingRes.setSearch(paging.getSearch());
-		pagingRes.setSearchno(paging.getSearchno());
 		pagingRes.setV_area(paging.getV_area());
-		pagingRes.setV_department(paging.getV_department());
+		pagingRes.setDepartment(paging.getDepartment());
 		pagingRes.setV_sterm(paging.getV_sterm());
 		pagingRes.setV_eterm(paging.getV_eterm());
 		pagingRes.setV_stime(paging.getV_stime());
 		pagingRes.setV_etime(paging.getV_etime());
 		pagingRes.setV_process(paging.getV_process());
+		pagingRes.setV_title(paging.getV_title());
 		
 		
 		return pagingRes;
 	}
 	
 	@Override
-	public List<Volunteer> getVolunteerList(PagingVolunteer pagingVolunteer) {
+	public List<PagingVolunteer> getVolunteerList(PagingVolunteer pagingVolunteer) {
 		
 		return userVolunteerDao.selectVolunteerAll(pagingVolunteer);
 	}

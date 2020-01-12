@@ -1,5 +1,7 @@
 package page.controller.center.mypage;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -28,35 +30,6 @@ public class CenterMypageController {
 	@Autowired
 	ServletContext context;
 	
-	@RequestMapping(value="/center/login", method=RequestMethod.GET)
-	public void centerLogin() {
-		logger.info("센터회원 로그인폼 접속성공");
-	}
-	
-	@RequestMapping(value="center/login", method=RequestMethod.POST)
-	public String centerLoginProc(Center center, HttpSession session) {
-		
-		boolean isLogin = centerMypageService.login(center);
-		
-		if( isLogin ) {
-			
-			session.setMaxInactiveInterval(0);
-			
-			session.setAttribute("login", isLogin);
-			session.setAttribute("loginId", center.getBusinessno());
-			session.setAttribute("centerno", 1);
-		}
-		
-		return "redirect:/center/main";
-	}
-	
-	@RequestMapping(value="center/logout")
-	public String centerLogout(HttpSession session) { 
-		
-		session.invalidate();
-		
-		return "redirect:/center/main";
-	}
 	
 	@RequestMapping(value="/center/mypage/mypagemain")
 	public void centerMypageMain() { }
@@ -71,7 +44,9 @@ public class CenterMypageController {
 
 		logger.info(center.toString());
 
-		center.setBusinessno(session.getAttribute("loginId").toString());
+
+		center.setBusinessno((String) session.getAttribute("loginid"));
+
 		boolean res = centerMypageService.checkPw(center);
 		
 		if( res ) { // 맞을때
@@ -102,7 +77,8 @@ public class CenterMypageController {
 		
 		logger.info(center.toString());
 		
-		center.setBusinessno(session.getAttribute("loginId").toString());
+
+		center.setBusinessno((String) session.getAttribute("loginid"));
 		
 		logger.info(center.toString());
 		
@@ -121,7 +97,8 @@ public class CenterMypageController {
 	public String deletePwCheckProc(HttpSession session, Center center) {
 		logger.info(center.toString());
 
-		center.setBusinessno(session.getAttribute("loginId").toString());
+
+		center.setBusinessno((String) session.getAttribute("loginid"));
 		
 		boolean res = centerMypageService.checkPw(center);
 		
@@ -160,6 +137,22 @@ public class CenterMypageController {
 		return "/center/main";
 	}
 	
+	@RequestMapping(value="/center/mypage/questionlist", method=RequestMethod.GET)
+	public void quesetionList(Model model) {
+		
+		List<CenterQuestion> list = centerMypageService.getList();
+		
+//		logger.info(list.toString());
+		
+		model.addAttribute("list", list);
+	}
+	
+//	public List<Question> viewQuestion(Question question) {
+//		centerMypageService.viewQST(question);
+//		return null;
+//	}
+	
+	
 	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
 	public String writeQuestion() {
 
@@ -181,7 +174,9 @@ public class CenterMypageController {
 		centerquestion.setQuestionno(questionno);		
 		
 		//센터번호 불러오는 코드
-		center.setBusinessno(session.getAttribute("loginId").toString());//		
+
+		center.setBusinessno((String) session.getAttribute("loginid"));	
+
 		int centerno;		
 		centerno = centerMypageService.getCenterno(center);		
 //		logger.info("centerno : " + centerno);
@@ -206,12 +201,6 @@ public class CenterMypageController {
 //	public void deleteQuestion(Question question) {
 //
 //		centerMypageService.deleteQST(question);
-//	}
-//
-//	public List<Question> viewQuestion(Question question) {
-//
-//		centerMypageService.viewQST(question);
-//		return null;
 //	}
 
 }

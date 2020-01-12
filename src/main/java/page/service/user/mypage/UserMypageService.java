@@ -13,4 +13,8 @@ public interface UserMypageService {
 
 	public void userInformationDelete(User user);
 
+	public int getUlogin(User user);
+
+	public void googleInformationUpdate(User user);
+
 }

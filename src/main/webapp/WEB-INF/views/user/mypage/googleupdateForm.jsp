@@ -329,7 +329,7 @@ $(document).ready(function() {
 <body>
 <h1>유저-회원정보수정</h1>
 <hr>
-<form action="/user/mypage/update" method="post" onsubmit="return checkAll()">
+<form action="/user/mypage/googleupdate" method="post" onsubmit="return checkAll()">
 
 <label for ="uname">이름</label>
 ${user.uname }
@@ -339,16 +339,6 @@ ${user.uname }
 ${user.uemail }
 <div class="check_front" id="id_check"> 
 </div>
-</div>
-<br>
-<label for ="upassword">비밀번호</label>
-<input type="password" name="upassword" id="upassword" />
-<br>
-<div class="check_front" id="pw_form"> 
-</div><br>
-<label for ="upasswordchk">비밀번호 확인</label>
-<input type="password" name="upasswordchk" id="upasswordchk" />
-<div class="check_front" id="pw_check"> 
 </div>
 <br>
 <label for ="uphone">전화번호</label>
