@@ -33,7 +33,6 @@ public class AdminQnaController {
 		}
 		
 		
-		
 	
 	//1:1 문의 답변 작성 
 	
