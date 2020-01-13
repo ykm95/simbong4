@@ -54,10 +54,8 @@
 	}
 	
 </style>    
-</head>
-<body>
 
-
+<br>
 <div class="login-form">
 <center>
 <span style="color: green; font-weight: bold;">입력한 이메일로 받은 인증번호를 입력하세요. (인증번호가 맞아야 다음 단계로 넘어가실 수 있습니다.)</span> <br> <br>

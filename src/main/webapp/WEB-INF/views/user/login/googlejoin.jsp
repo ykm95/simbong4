@@ -196,8 +196,7 @@ $(document).ready(function() {
 });
 </script>
 
-</head>
-<body>
+<br>
 <h1>추가정보 회원가입</h1>
 <hr>
 <form action="/user/login/googlejoin" method="post" onsubmit="return checkAll()">

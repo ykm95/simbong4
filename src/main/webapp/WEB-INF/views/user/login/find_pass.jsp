@@ -132,8 +132,7 @@ function checkEmail(){
 	
 </style>
 
-</head>
-<body>
+<br>
 
 
 <div class="login-form">
