@@ -3,6 +3,7 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 
@@ -32,6 +33,7 @@ $(document).ready(function() {
 
 	});
 	
+
 	if(${isApplicant}) {
 		
 		$("#btnApplicant")
@@ -194,9 +196,9 @@ $(document).ready(function() {
 		<c:forEach items="${apllist }" var="list" varStatus="status">
 			<tr>
 				<td>${status.count }</td>
-				<td>${list.uname }</td>
-				<td>${list.uemail }</td>
-				<td>${list.uphone }</td>
+				<td id="uname">${fn:replace(list.uname, fn:substring(list.uname, 1, 1), '*')}</td>
+				<td id="uemail">${fn:replace(list.uemail, fn:substring(list.uemail, 3, 8), '*****')}</td>
+				<td id="uphone">${fn:replace(list.uphone, fn:substring(list.uphone, 3, 7), '****')}</td>
 				<td><fmt:formatDate value="${list.write_date }"  pattern="yyyy.MM.dd"/></td>
 			</tr>
 			</c:forEach>
