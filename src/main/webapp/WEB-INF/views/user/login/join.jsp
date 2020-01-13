@@ -214,35 +214,7 @@ $(document).ready(function() {
 	    checkPassword($('#upassword').val());
 	    $('#upasswordchk').val("");
 	});
-	
-// 	//비밀번호 확인
-// 	$('#upasswordchk').blur(function(){
-		
-//     	if($('#upasswordchk').val() == ''){
-// 	    	$('#pw_check').text("비밀번호입력!!");
-// 			return false;
-//     	}
-
-// 	   if($('#upassword').val() != $('#upasswordchk').val()){
-// 	    	if($('#upasswordchk').val()!=''){
-	    		
-// 	    		$('#pw_check').text("비밀번호가 일치하지 않습니다.");
-// 	    		$('#pw_check').css('color', 'red');
-// 				$("#reg_submit").attr("disabled", true);
-// // 		    alert("비밀번호가 일치하지 않습니다.");
-// 	    	    $('#upasswordchk').val('');
-// 	          $('#upasswordchk').focus();
-// 	       }
-	    	
-// 	    }else{
-	    	
-	    	
-
-// 	    	$('#pw_check').text("비밀번호가 일치합니다.");
-// 	    	$('#pw_check').css('color', 'blue');
-// 			$("#reg_submit").attr("disabled", true);
-// 	    }
-// 	})  	   
+ 	   
 
 	//비밀번호 확인
 	$('#upasswordchk').blur(function() {
@@ -350,7 +322,7 @@ label {
 
 					<div class="form-group row">
 						<div class="col-3 col-form-label">
-							<label for="uname" class="float-right">이름</label>
+							<label for="uname" >이름</label>
 						</div>
 						<input class="form-control" type="text" name="uname" id="uname" />
 					</div>

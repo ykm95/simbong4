@@ -23,9 +23,9 @@ $(document).ready(function() {
 		$(location).attr("href", "/center/mypage/deletepwchk");
 	});
 	
-	//문의하기버튼 동작
+	//문의버튼 동작
 	$("#btnQuestion").click(function() {
-		$(location).attr("href", "/center/mypage/writequestion");
+		$(location).attr("href", "/center/mypage/questionlist");
 	});
 	
 });

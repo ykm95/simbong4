@@ -16,6 +16,11 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	//목록버튼 동작
+	$("#btnList").click(function() {
+		
+			location.href="/user/volunteer/list"
+	});
 	
 	if(${isApplicant}) {
 		$("#btnApplicant")
@@ -67,16 +72,19 @@ $(document).ready(function() {
 }); 
 
 </script>
-
-	<button id="btnApplicant" class="btn-warning">신청</button>
-	
+  	
   	<div class="container" style="margin: 30px auto">  
 
-  		<div style="padding: 30px 160px;">  
-  			<h2>${vol.vol_title }</h2>  
+  		<div style="width: 70%; margin: 0 auto;">  
+  			<h1>${vol.vol_title }</h1>  
   		</div>  
 
-  		<table class="table" style="width: 70%; margin: 0 auto;">  
+	<div style="width: 70%; margin: 0 auto; text-align:end;">
+	<button id="btnApplicant" class="btn-warning">신청</button>
+	</div>
+
+
+  		<table class="table" style="width: 70%; margin: 0 auto; margin-top:20px;">  
 		
   			<tr>  
   				<td colspan="1" style="background: #CCC">활동기간</td>  
@@ -88,69 +96,49 @@ $(document).ready(function() {
   				<td style="background: #CCC">활동시간</td>  
   				<td style="text-align: center;">${vol.stime } ~ ${vol.etime }</td>  
   				<td style="background: #CCC">활동분야</td>  
-  				<td style="text-align: center;"><c:choose>  
-  					<c:when test="${vol.department eq 1 }">시설봉사</c:when>  
-  					<c:when test="${vol.department eq 2 }">재가봉사</c:when>  
-  					<c:when test="${vol.department eq 3 }">전문봉사</c:when>  
-  					<c:when test="${vol.department eq 4 }">지역사회봉사</c:when>  
-  					<c:when test="${vol.department eq 5 }">금,물품봉사</c:when>  
-  					<c:when test="${vol.department eq 6 }">해외봉사</c:when>  
-  					<c:when test="${vol.department eq 7 }">헌혈</c:when>  
-  					<c:when test="${vol.department eq 8 }">기타봉사</c:when>  
-  				</c:choose></td>  
+  				<td style="text-align: center;">${vol.departname }</td>  
   			</tr>  
-		
-  		</table>  
-		
-  		<br><br><br>  
-		
-  		<table class="table" style="width: 70%; margin: 0 auto;">  
-  			<tr>  
-  				<td colspan="1" style="background: #CCC">봉사지역</td>  
-  				<td colspan="3" style="text-align: center">${vol.aname }</td>  
-  			</tr>  
-  		</table>  
-		
-		
-  		<div id="map" style="width:600px;height:500px;margin:30px auto;"></div>  
-		
-  		<table class="table" style="width: 70%; margin: 0 auto;">  
 		
   			<tr>  
   				<td colspan="1" style="background: #CCC">봉사장소</td>  
-  				<td colspan="3" style="text-align: center">${vol.vol_place }</td>  
+  				<td colspan="3" style="text-align: center">${vol.aname }</td>  
   			</tr>  
 			
-		
   			<tr>  
   				<td colspan="1" style="background: #CCC">봉사대상</td>  
   				<td colspan="3" style="text-align: center">${vol.receiver }</td>  
   			</tr>  
-  		</table>  
 	
-  		<br><br><br>  
-	
-  		<table class="table" style="width: 70%; margin: 0 auto;">  
-		
   			<tr>  
   				<td colspan="1" style="background: #CCC">지원자격</td>  
   				<td colspan="3" style="text-align: center">${vol.qualification }</td>  
   			</tr>  
-		
-		
-  			<tr>  
-  				<td colspan="1" style="background: #CCC">내용</td>  
-  				<td colspan="3" style="text-align: center">${vol.vol_content }</td>  
-  			</tr>  
-		
 		
   			<tr>  
   				<td colspan="1" style="background: #CCC">필요/신청인원</td>  
   				<td colspan="3" style="text-align: center">${vol.npeople }/${vol.apeople }</td>  
   			</tr>  
 	
+  			<tr>  
+  				<td colspan="1" style="background: #CCC">봉사지역</td>  
+  				<td colspan="3" style="text-align: center">${vol.aname }</td>  
+  			</tr>  
+  
   		</table>  
+ 
+
+  		<div id="map" style="width:600px;height:500px;margin:30px auto;"></div>  
+
+  		<br><br><br>  
 		
+		<div  style="width: 70%; margin: 0 auto;">
+		내용
+		<table class="table table-bordered" >
+			<tr>
+				<td >${vol.vol_content }</td>
+			</tr>
+		</table>
+		</div>
   		<br><br><br>  
 		
   		<div style="text-align:center; width:800px;height:50px; background: #CCC; margin:10px auto">  
@@ -169,9 +157,9 @@ $(document).ready(function() {
 		
 		
   		<br>  
-  		<div style="margin: 0 150px;">  
-  			<a href="/user/volunteer/list"><button class="btn btn-secondary" >목록</button></a>   
-  		</div>  
+  		<div class="text-right">
+		<button id="btnList" class="btn btn-primary">목록</button>
+		</div>
 		
   	</div>  
 

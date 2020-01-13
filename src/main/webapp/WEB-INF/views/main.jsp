@@ -191,7 +191,7 @@ img {vertical-align: middle;}
 			
 			<div id="volunteer"  class="col-4" style="width: 500px;">
 			<strong style="color:white;">봉사자 모집</strong>
-			<a href="/center/volunteer/list"><img width="70px;" src="/resources/img/봉사자.png"></a>
+			<a href="/user/volunteer/list"><img width="70px;" src="/resources/img/봉사자.png"></a>
 			
 			</div>
 			

@@ -24,12 +24,12 @@ section {
 <br>
 
 
-
+<!-- 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
+---- Include the above in your HEAD tag --------
+ -->
 
 	<table class="table" cellspacing="0">
 	    <thead>
@@ -45,41 +45,51 @@ section {
 	    </tbody>
 	</table>
 
-
+<jsp:include page="/WEB-INF/views/admin/adminBoard/paging.jsp" />
 	<script>
-	$.ajax({
-		url:'/admin/adminQna/question',
-		type:'get',
-		success:function(data){
-			if(data.status=='1'){
-				let questionList = data.questionList;
-				
-				let str;
-				questionList.forEach(function(obj,index){
-					str+='<tr>';
-					str+='<td>'+index+1+'</td>';
-					str+='<td>'+obj.uname+'</td>';
-					str+='<td><a href="#">'+obj.cquestion_title+'</a></td>';
-					str+='<td>'+obj.answer+'</td>';
-					str+='</tr>';
-				});
-				
-				$('#qna__body').append(str);
-				
-			}
-		},
-		error:function(){
+	
+		function getQuestion(index){
+			$('#qna__body').html('');
+			$('.pagination').html('');
 			
+			$.ajax({
+				url:'/admin/adminQna/question',
+				type:'get',
+				data:{'index':index},
+				success:function(data){
+					if(data.status=='1'){
+						let questionList = data.questionList;
+						let totalCount = data.totalCount;
+						let unitSize = data.unitSize;
+						let blockSize = data.blockSize;
+						
+						let str;
+						questionList.forEach(function(obj,index){
+							str+='<tr>';
+							str+='<td>'+obj.questionno+'</td>';
+							str+='<td>'+obj.uname+'</td>';
+							str+='<td><a href="#">'+obj.cquestion_title+'</a></td>';
+							str+='<td>'+obj.answer+'</td>';
+							str+='</tr>';
+						});
+						
+						$('#qna__body').append(str);
+						
+						//페이지블락만들기
+						makePageBlock(index,totalCount,blockSize, unitSize);
+						
+					}
+				},
+				error:function(){
+					
+				}
+			});
 		}
-	});
+	
+		getQuestion(1);
 		
 	</script>
 
 
-
-
-
-
-<jsp:include page="/WEB-INF/views/admin/adminBoard/paging.jsp" />
 
 <jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />

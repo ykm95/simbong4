@@ -9,7 +9,7 @@ public class Volunteer {
 	private String cname;
 	private String mgr;
 	private String memail;
-	private int mphone;
+	private String mphone;
 	private int vol_process;
 	private String vol_title;
 	private String vol_content;
@@ -18,6 +18,7 @@ public class Volunteer {
 	private String stime;
 	private String etime;
 	private int department;
+	private String area;
 	private String vol_area;
 	private String aname;
 	private String vol_place;
@@ -29,6 +30,7 @@ public class Volunteer {
 	private float vol_lat;
 	private float vol_lng;
 	private String vol_address;
+	private String departname;
 	
 	
 	@Override
@@ -36,12 +38,20 @@ public class Volunteer {
 		return "Volunteer [volunteerno=" + volunteerno + ", centerno=" + centerno + ", cname=" + cname + ", mgr=" + mgr
 				+ ", memail=" + memail + ", mphone=" + mphone + ", vol_process=" + vol_process + ", vol_title="
 				+ vol_title + ", vol_content=" + vol_content + ", vol_sterm=" + vol_sterm + ", vol_eterm=" + vol_eterm
-				+ ", stime=" + stime + ", etime=" + etime + ", department=" + department + ", vol_area=" + vol_area
-				+ ", aname=" + aname + ", vol_place=" + vol_place + ", receiver=" + receiver + ", qualification="
-				+ qualification + ", write_date=" + write_date + ", npeople=" + npeople + ", apeople=" + apeople
-				+ ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address=" + vol_address + "]";
+				+ ", stime=" + stime + ", etime=" + etime + ", department=" + department + ", area=" + area
+				+ ", vol_area=" + vol_area + ", aname=" + aname + ", vol_place=" + vol_place + ", receiver=" + receiver
+				+ ", qualification=" + qualification + ", write_date=" + write_date + ", npeople=" + npeople
+				+ ", apeople=" + apeople + ", vol_lat=" + vol_lat + ", vol_lng=" + vol_lng + ", vol_address="
+				+ vol_address + ", departname=" + departname + "]";
 	}
 	
+	
+	public String getDepartname() {
+		return departname;
+	}
+	public void setDepartname(String departname) {
+		this.departname = departname;
+	}
 	
 	public int getVolunteerno() {
 		return volunteerno;
@@ -73,10 +83,10 @@ public class Volunteer {
 	public void setMemail(String memail) {
 		this.memail = memail;
 	}
-	public int getMphone() {
+	public String getMphone() {
 		return mphone;
 	}
-	public void setMphone(int mphone) {
+	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
 	public int getVol_process() {
@@ -126,6 +136,12 @@ public class Volunteer {
 	}
 	public void setDepartment(int department) {
 		this.department = department;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
 	}
 	public String getVol_area() {
 		return vol_area;
@@ -193,5 +209,5 @@ public class Volunteer {
 	public void setVol_address(String vol_address) {
 		this.vol_address = vol_address;
 	}
-	
+
 }

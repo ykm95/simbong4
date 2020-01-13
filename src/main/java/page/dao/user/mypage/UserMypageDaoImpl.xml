@@ -34,4 +34,19 @@
 	 	DELETE usertb
 	 	WHERE uemail = #{uemail }
 	 </delete>
+	 
+	 <select id="selectUloginByUemail" parameterType="page.dto.User"
+	  resultType="int">
+	  	SELECT ulogin FROM usertb
+	  	WHERE uemail = #{uemail }
+	  </select>
+	  
+	  <update id="googleUpdate" parameterType="page.dto.User">
+	  	UPDATE usertb
+	  	SET uphone = #{uphone },
+	 		uaddress1 = #{uaddress1 },
+	 		uaddress2 = #{uaddress2 },
+	 		uaddress3 = #{uaddress3 }
+	 	WHERE uemail = #{uemail } 
+	  </update>
 </mapper>

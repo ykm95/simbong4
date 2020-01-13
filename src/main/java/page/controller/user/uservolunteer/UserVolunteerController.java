@@ -29,7 +29,7 @@ public class UserVolunteerController {
 		  
 		  paging = userVolunteerService.getPaging(paging);
   		  
-		  List<Volunteer> volunteerlist = userVolunteerService.getVolunteerList(paging);
+		  List<PagingVolunteer> volunteerlist = userVolunteerService.getVolunteerList(paging);
 		  
 		  int count = userVolunteerService.getCntVolunteerAll(paging);
 		  

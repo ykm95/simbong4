@@ -18,15 +18,35 @@
 	</resultMap>
 	
 	<select id="getQuestionList" resultMap="Question">
+	<![CDATA[
 		SELECT
-			Q.QUESTIONNO,
-			U.UNAME,
-			Q.QUESTION_TITLE,
-			Q.QUESTION_CONTENT,
-			NVL2(Q.ANSWER,'완료','미완료') AS "ANSWER"
-		  FROM QUESTION Q JOIN USERTB U
-			ON Q.USERNO = U.USERNO
-	  ORDER BY QUESTIONNO DESC
+			B.QUESTIONNO,
+			B.UNAME,
+			B.QUESTION_TITLE,
+			B.QUESTION_CONTENT,
+			B.ANSWER
+		  FROM 
+		(
+		    SELECT ROWNUM AS "RNUM", A.* FROM
+		    (
+		        SELECT
+					Q.QUESTIONNO,
+					U.UNAME,
+					Q.QUESTION_TITLE,
+					Q.QUESTION_CONTENT,
+					NVL2(Q.ANSWER,'완료','미완료') AS "ANSWER"
+				  FROM QUESTION Q JOIN USERTB U
+					ON Q.USERNO = U.USERNO
+			  ORDER BY QUESTIONNO DESC
+		    )A
+		)B
+		WHERE RNUM >=  #{startIndex} AND RNUM <= #{endIndex}
+	]]>
+	</select>
+	
+	<select id="getTotalBoardCount" resultType="Long">
+		SELECT COUNT(*)
+		  FROM QUESTION
 	</select>
 
 </mapper>

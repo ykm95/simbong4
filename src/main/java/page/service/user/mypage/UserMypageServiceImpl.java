@@ -35,5 +35,15 @@ public class UserMypageServiceImpl implements UserMypageService {
 		userMypageDao.delete(user);
 	}
 
+	@Override
+	public int getUlogin(User user) {
+		return userMypageDao.selectUloginByUemail(user);
+	}
+
+	@Override
+	public void googleInformationUpdate(User user) {
+		userMypageDao.googleUpdate(user);
+	}
+
 
 }

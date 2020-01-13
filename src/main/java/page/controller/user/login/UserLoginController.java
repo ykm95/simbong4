@@ -61,7 +61,7 @@ public class UserLoginController {
 
 		userloginservice.userjoin(user);
 		
-		return "main";
+		return "redirect:/main";
 	}
 
 	
@@ -97,14 +97,14 @@ public class UserLoginController {
 		}else {
 			return "/user/login/login";
 		}
-		return "/main";
+		return "redirect:/main";
 	}
 	@RequestMapping(value = "/userLogout")
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
 		
-		return "/main";
+		return "redirect:/main";
 		
 	}
 	
@@ -124,7 +124,7 @@ public class UserLoginController {
 		
 		googleService.insertGoogleInfo(user);
 		
-		return "/main";
+		return "redirect:/main";
 	}
 	
 	
@@ -154,7 +154,7 @@ public class UserLoginController {
 				return "user/login/googlejoin";
 			}else {
 				
-				return "/main";
+				return "redirect:/main";
 			}
 
 		}
@@ -168,7 +168,7 @@ public class UserLoginController {
             Random r = new Random();
             int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
             
-            String setfrom = "heojiyeon2@gamil.com";
+            String setfrom = "simbong444@gamil.com";
             String tomail = request.getParameter("uemail"); // 받는 사람 이메일
             String title = "회원가입 인증 이메일 입니다."; // 제목
             String content =
@@ -191,7 +191,6 @@ public class UserLoginController {
             
             "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
             
-            
             try {
                 MimeMessage message = mailSender.createMimeMessage();
                 MimeMessageHelper messageHelper = new MimeMessageHelper(message,
@@ -203,8 +202,8 @@ public class UserLoginController {
                 messageHelper.setText(content); // 메일 내용
                 
                 mailSender.send(message);
-            } catch (Exception e) {
-                System.out.println(e);
+            }catch (Exception e) {
+                e.printStackTrace();
             }
             
             ModelAndView mv = new ModelAndView();    //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
@@ -216,8 +215,10 @@ public class UserLoginController {
  
             response_email.setContentType("text/html; charset=UTF-8");
             PrintWriter out_email = response_email.getWriter();
+           
             out_email.println("<script>alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');</script>");
             out_email.flush();
+            
             
             
             return mv;
@@ -249,14 +250,13 @@ public class UserLoginController {
          
         ModelAndView mv = new ModelAndView();
         
-        mv.setViewName("/user/main");
+        mv.setViewName("/main");
         
         mv.addObject("uemail",uemail);
         
         if (email_injeung.equals(dice)) {
             
             //인증번호가 일치할 경우 인증번호가 맞다는 창을 출력하고 회원가입창으로 이동함
-            
             
             
             mv.setViewName("/user/login/join");
@@ -314,7 +314,7 @@ public class UserLoginController {
         Random r = new Random();
         int dice = r.nextInt(157211)+48271;
         
-        String setfrom = "heojiyeon2@gmail.com";
+        String setfrom = "simbong444@gmail.com";
         String tomail = request.getParameter("uemail");    //받는 사람의 이메일
         String title = "비밀번호 찾기 인증 이메일 입니다.";    //제목
         String content =

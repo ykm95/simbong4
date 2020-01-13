@@ -18,36 +18,36 @@
 		AND B.departmentno = D.departmentno
 
 		<if test="talent_process !=null and talent_process !='' and talent_process != 0 ">
-			AND talent_process = #{talent_process}
+			AND B.talent_process = #{talent_process}
 		</if>
 		<if test="talent_type !=null and talent_type !='' and talent_type != 0">
-			AND talent_type = #{talent_type}
+			AND B.talent_type = #{talent_type}
 		</if>
 		<if test="departmentno !=null and departmentno !='' ">
-			AND departmentno = #{departmentno}
+			AND B.departmentno = #{departmentno}
 		</if>
 		<if test="areano !=null and areano !='' ">
-			AND areano = #{areano}
+			AND B.areano = #{areano}
 		</if>
 		<if test="talent_start !=null and talent_start !='' ">
 			<![CDATA[
-			AND (talent_start <= #{talent_start} AND talent_start <= #{talent_end} and
-			talent_end>= #{talent_start} and talent_end>= #{talent_end}
-			OR talent_start BETWEEN #{talent_start} AND #{talent_end}
-			OR talent_end BETWEEN #{talent_start} AND #{talent_end})
+			AND (B.talent_start <= #{talent_start} AND B.talent_start <= #{talent_end} and
+			B.talent_end>= #{talent_start} and B.talent_end>= #{talent_end}
+			OR B.talent_start BETWEEN #{talent_start} AND #{talent_end}
+			OR B.talent_end BETWEEN #{talent_start} AND #{talent_end})
 			]]>
 		</if>
 
-		<if test="t_cycle !=null">
+		<if test="t_cycle != null">
 		AND
 			<foreach collection="t_cycle" item="cycle" open="(" close=")" separator="OR">
-			talent_cycle LIKE '%'||#{cycle}||'%'
+			B.talent_cycle LIKE '%'||#{cycle}||'%'
 			</foreach>
 		</if>
 		<if test="talent_title !=null and talent_title !='' ">
-			AND talent_title LIKE '%' || #{talent_title} || '%'
+			AND B.talent_title LIKE '%' || #{talent_title} || '%'
 		</if>
-		ORDER BY talentno DESC
+		ORDER BY B.talentno DESC
 		) T
 		ORDER BY rnum
 		) TALENT
@@ -57,40 +57,47 @@
 
 	<select id="selectCntTalent"
 		parameterType="page.util.PagingTalent" resultType="int">
-		SELECT COUNT(*) FROM talent
-				
-		WHERE 1=1
+		SELECT COUNT(*) FROM (
+		SELECT rownum rnum, T.* FROM (
+		SELECT B.*, A.aname, D.departname
+		FROM talent B, area A, t_department D
+		WHERE B.areano = A.areano
+		AND B.departmentno = D.departmentno
 
 		<if test="talent_process !=null and talent_process !='' and talent_process != 0 ">
-			AND talent_process = #{talent_process}
+			AND B.talent_process = #{talent_process}
 		</if>
 		<if test="talent_type !=null and talent_type !='' and talent_type != 0">
-			AND talent_type = #{talent_type}
+			AND B.talent_type = #{talent_type}
 		</if>
 		<if test="departmentno !=null and departmentno !='' ">
-			AND departmentno = #{departmentno}
+			AND B.departmentno = #{departmentno}
 		</if>
 		<if test="areano !=null and areano !='' ">
-			AND areano = #{areano}
+			AND B.areano = #{areano}
 		</if>
 		<if test="talent_start !=null and talent_start !='' ">
 			<![CDATA[
-			AND (talent_start <= #{talent_start} AND talent_start <= #{talent_end} and
-			talent_end>= #{talent_start} and talent_end>= #{talent_end}
-			OR talent_start BETWEEN #{talent_start} AND #{talent_end}
-			OR talent_end BETWEEN #{talent_start} AND #{talent_end})
+			AND (B.talent_start <= #{talent_start} AND B.talent_start <= #{talent_end} and
+			B.talent_end>= #{talent_start} and B.talent_end>= #{talent_end}
+			OR B.talent_start BETWEEN #{talent_start} AND #{talent_end}
+			OR B.talent_end BETWEEN #{talent_start} AND #{talent_end})
 			]]>
 		</if>
+
 		<if test="t_cycle !=null">
 		AND
 			<foreach collection="t_cycle" item="cycle" open="(" close=")" separator="OR">
-			talent_cycle LIKE '%'||#{cycle}||'%'
+			B.talent_cycle LIKE '%'||#{cycle}||'%'
 			</foreach>
 		</if>
 		<if test="talent_title !=null and talent_title !='' ">
-			AND talent_title LIKE '%' || #{talent_title} || '%'
+			AND B.talent_title LIKE '%' || #{talent_title} || '%'
 		</if>
-
+		ORDER BY B.talentno DESC
+		) T
+		ORDER BY rnum
+		) TALENT
 	</select>
 
 	<select id="selectTalentByNo" parameterType="int"

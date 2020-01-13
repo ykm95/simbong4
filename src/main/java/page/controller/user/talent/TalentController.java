@@ -24,7 +24,7 @@ public class TalentController {
 	  private static final Logger logger= LoggerFactory.getLogger(TalentController.class);
 	
 	  @RequestMapping(value="/user/talent/list")
-	  public void talentList(Model model, PagingTalent paging, HttpServletRequest req) {
+	  public void talentList(Model model, PagingTalent paging) {
 		  
 		  logger.info(paging.toString());
 		  
@@ -38,7 +38,7 @@ public class TalentController {
 		  model.addAttribute("count", count);
 		  model.addAttribute("paging", paging);
 		  model.addAttribute("list", talentlist);
-			
+		  
 		  // OK!!!! 
 	  }
 	  
@@ -47,9 +47,6 @@ public class TalentController {
 	  public void talentView(int talentno, Model model) {
 		  
 		  Talent talent = talentService.getTalent(talentno);
-		  
-		  logger.info(talent.toString());
-		  logger.info("텔런트 : " + talent.getTalent_cycle());
 		  
 		  talent.setTest(talent.getTalent_cycle());
 		  
@@ -72,13 +69,20 @@ public class TalentController {
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.GET)
-	  public void talentUpdate() {
+	  public void talentUpdate(int talentno, Model model) {
+		  	  
+		  logger.info("탈렌트 남바 : " + talentno);
 		  
+		  Talent talent = talentService.getTalent(talentno);
+		  
+		  talent.setTest(talent.getTalent_cycle());
+		  
+		  model.addAttribute("talent", talent);
 	  }
 	  
 	  @RequestMapping(value="/user/talent/update", method=RequestMethod.POST)
 	  public String talentUpdateProc(Talent talent) {
-		  
+		  logger.info("탈렌트 : " + talent);
 		  talentService.update(talent);
 		  
 		  return "redirect:/user/talent/list";

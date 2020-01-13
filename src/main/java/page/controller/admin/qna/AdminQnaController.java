@@ -28,8 +28,8 @@ public class AdminQnaController {
 		
 		@ResponseBody
 		@RequestMapping(value = "/admin/adminQna/question", method = RequestMethod.GET)
-		public Map<String,Object> question() {
-			return qnaService.getQuestionList();
+		public Map<String,Object> question(Long index) {
+			return qnaService.getQuestionList(index);
 		}
 		
 		

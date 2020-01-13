@@ -1,17 +1,54 @@
 package page.util;
 
+import java.util.Date;
+
 public class PagingVolunteer {
 
 	private String search;
 	private int searchno;
-	private int v_department;
+	private int department;
 	private int v_area;
 	private String v_sterm;
 	private String v_eterm;
 	private int v_process;
 	private String v_stime;
 	private String v_etime;
+	private String aname;
+	private String departname;
+	private int volunteerno;
+	private String v_title;
+	private Date write_date;
 	
+	public Date getWrite_date() {
+		return write_date;
+	}
+	public void setWrite_date(Date write_date) {
+		this.write_date = write_date;
+	}
+	public String getV_title() {
+		return v_title;
+	}
+	public void setV_title(String v_title) {
+		this.v_title = v_title;
+	}
+	public int getVolunteerno() {
+		return volunteerno;
+	}
+	public void setVolunteerno(int volunteerno) {
+		this.volunteerno = volunteerno;
+	}
+	public String getAname() {
+		return aname;
+	}
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+	public String getDepartname() {
+		return departname;
+	}
+	public void setDepartname(String departname) {
+		this.departname = departname;
+	}
 	public String getV_stime() {
 		return v_stime;
 	}
@@ -24,11 +61,11 @@ public class PagingVolunteer {
 	public void setV_etime(String v_etime) {
 		this.v_etime = v_etime;
 	}
-	public int getV_department() {
-		return v_department;
+	public int getDepartment() {
+		return department;
 	}
-	public void setV_department(int v_department) {
-		this.v_department = v_department;
+	public void setDepartment(int department) {
+		this.department = department;
 	}
 	public int getV_area() {
 		return v_area;
@@ -105,12 +142,13 @@ public class PagingVolunteer {
 	
 	@Override
 	public String toString() {
-		return "PagingVolunteer [search=" + search + ", searchno=" + searchno + ", v_department=" + v_department
+		return "PagingVolunteer [search=" + search + ", searchno=" + searchno + ", department=" + department
 				+ ", v_area=" + v_area + ", v_sterm=" + v_sterm + ", v_eterm=" + v_eterm + ", v_process=" + v_process
-				+ ", v_stime=" + v_stime + ", v_etime=" + v_etime + ", curPage=" + curPage + ", totalCount="
-				+ totalCount + ", listCount=" + listCount + ", totalPage=" + totalPage + ", pageCount=" + pageCount
-				+ ", startPage=" + startPage + ", endPage=" + endPage + ", startNo=" + startNo + ", endNo=" + endNo
-				+ "]";
+				+ ", v_stime=" + v_stime + ", v_etime=" + v_etime + ", aname=" + aname + ", departname=" + departname
+				+ ", volunteerno=" + volunteerno + ", v_title=" + v_title + ", write_date=" + write_date + ", curPage="
+				+ curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage=" + totalPage
+				+ ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage + ", startNo="
+				+ startNo + ", endNo=" + endNo + "]";
 	}
 
 	//페이징 정보 생성
