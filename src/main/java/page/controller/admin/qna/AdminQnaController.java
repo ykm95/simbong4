@@ -33,7 +33,6 @@ public class AdminQnaController {
 		}
 		
 		
-	
 	//1:1 문의 답변 작성 
 	
 	//답변완료 처리표시 (대기중, 답변완료 2가지)
