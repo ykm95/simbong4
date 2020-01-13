@@ -59,7 +59,7 @@
 			<div class="card-header">사용자 닉네임</div>
 			<!-- 2. 카드- 본문영역 -->
 			<div class="card-body">
-				<h4 class="card-title">기쁘며, 그들은 듣는다</h4>
+				<h4 class="card-title">답답해서 뒤지겠다 플젝 그냥 폭파시켜버려</h4>
 				<p class="card-text">의 있는가? 없는 그들을 피고, 커다란 시들어 그들은 사막이다.</p>
 			</div>
 			<!-- 3. 카드 - footer영역 -->
