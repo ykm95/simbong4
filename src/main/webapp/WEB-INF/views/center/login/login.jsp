@@ -117,8 +117,6 @@
 
 </style>
 
-</head>
-  <body>
 <div class="login-form">
  
 <h2 class="text-center">심봉사 기관 로그인</h2><br><br>
@@ -144,9 +142,10 @@
 <br><br>
  <div class="hint-text small" class="text-success">계정이 없으신가요?
 <a href="/center/login/join">회원가입</a></div>
-</div>
 
 <br>
 </form>
+</div>
+
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

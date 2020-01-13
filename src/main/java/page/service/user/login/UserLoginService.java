@@ -42,4 +42,12 @@ public interface UserLoginService {
 	 * @return 이메일
 	 */
 	String findId(User user);
+
+
+	/**
+	 * 유저번호 가져오기
+	 * @param user-가져올 유저
+	 * @return-유저번호
+	 */
+	int getunoByemail(User user);
 }
