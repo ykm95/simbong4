@@ -306,7 +306,7 @@
 	
 	<tr>
     	<td style="vertical-align: middle;">${list.volunteerno }</td> 
-    	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/volunteer/view?volunteerno=${list.volunteerno }" style="font-size: 35px;">${list.vol_title }</a></td>
+    	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/volunteer/view?volunteerno=${list.volunteerno }" style="font-size: 30px; color:black;">${list.vol_title }</a></td>
     	
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
 	</tr>
