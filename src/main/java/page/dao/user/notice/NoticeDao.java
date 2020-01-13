@@ -42,6 +42,9 @@ public interface NoticeDao {
 	 * @param noticeno
 	 */
 	public void hit(int noticeno);
-	
+	/**
+	 * 메인 공지 목록
+	 * @return
+	 */
 	public List<Notice> selectMainNotice();
 }

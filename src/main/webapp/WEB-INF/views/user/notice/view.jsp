@@ -27,52 +27,65 @@ $(document).on('click','#pdfopen', function(){
 </script>
 
 <style type="text/css">
-</style>
+#notice{
+	background-color: white;
+}
+#notice h1{
+	font-weight: border;
+	font-size: 40px;
+}
+#data{
+	border-top: 1px solid #CCC; 
+	border-bottom: 1px solid #CCC; 
+	padding: 10px;
+}
 
+#content{
+	min-height: 300px; 
+	border-bottom: 1px solid #CCC;
+	padding: 10px;
+}
+</style>
 </head>
-<body>
-	<div id="notice" class="row">
-		<div class="col-2"></div>
-		<div class="col-8">
-			<br>
+<body><br>
+	<div class="row">
+		<div class="col-3"></div>
+		<div id="notice" class="col-6">
 			<h1>공지사항</h1>
-			<br>
 			<hr>
 			<h3>${view.noticeTitle }</h3>
 			<br>
 
-			<div class="data">
-				<div class="row"
-					style="border-top: 1px solid #CCC; border-bottom: 1px solid #CCC; padding:4px;">
+			<div>
+				<div id="data" class="row">
 					<div class="col-6">
-						<span>작성일</span> <span><fmt:formatDate
+						<span style="font-weight: bold;">작성일</span> <span><fmt:formatDate
 								value="${view.writeDate }" pattern="yyyy.MM.dd" /></span>
 					</div>
 					<div class="col-6">
-						<span>조회수</span> <span>${view.hit }</span>
+						<span style="font-weight: bold;">조회수</span> <span>${view.hit }</span>
 					</div>
 				</div>
 
 
 			</div>
-			<div class="row">
-				<div class="content col-12"
-					style="min-height: 300px; border-bottom: 1px solid #CCC;">${view.noticeContent }</div>
+			<div id="content" class="row">
+				<div class="col-12">${view.noticeContent }</div>
 			</div>
 			<br>
 			<div align="center">
-			<button class="btn btn-secondary"
-				onclick="location.href='/user/notice/list'">목록</button>
+				<button class="btn btn-secondary"
+					onclick="location.href='/user/notice/list'">목록</button>
 			</div>
-			<a href="javascript:void(window.open('/user/notice/pdf?noticeno=${view.noticeNo }','봉사인증서','width:300,height=1000'))">pdf2</a>
+			<a
+				href="javascript:void(window.open('/user/notice/pdf?noticeno=${view.noticeNo }','봉사인증서','width:300,height=1000'))">pdf2</a>
 			<button id="pdfopen" class="btn">pdf</button>
 			<div>
 				<a href="/user/notice/view?noticeno=${view.noticeNo -1 }">이전글</a><br>
-				<a href="/user/notice/view?noticeno=${view.noticeNo +1 }">다음글</a> 
+				<a href="/user/notice/view?noticeno=${view.noticeNo +1 }">다음글</a>
 			</div>
 		</div>
-		<div class="col-2"></div>
+		<div class="col-3"></div>
 	</div>
-</body>
-</html>
-<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
+
+	<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

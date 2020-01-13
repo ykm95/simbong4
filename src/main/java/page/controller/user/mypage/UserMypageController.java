@@ -1,5 +1,7 @@
 package page.controller.user.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,8 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import page.dto.User;
+import page.dto.Center;
+import page.dto.CenterQuestion;
+import page.dto.Question;
 import page.service.user.mypage.UserMypageService;
 
 @Controller
@@ -180,6 +187,87 @@ public class UserMypageController {
 		return "/main";
 	}
 	
+	@RequestMapping(value="/user/mypage/questionlist", method=RequestMethod.GET)
+	public void quesetionList(Model model) {
+		
+		List<Question> list = userMypageService.getList();
+		
+//		logger.info(list.toString());
+		
+		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping(value="/user/mypage/questionview", method=RequestMethod.GET)
+	public void viewQuestion(int questionno, Model model) {		
+		
+		Question question = userMypageService.viewQST(questionno);
+		
+		
+		model.addAttribute("question", question);
+	}
+	
+	@RequestMapping(value="/user/mypage/writequestion", method=RequestMethod.GET)
+	public String writeQuestion() {
+
+		logger.info("접속성공");
+		
+		return "/user/mypage/questionForm";
+	}
+	
+	@RequestMapping(value="/user/mypage/writequestion", method=RequestMethod.POST)
+	public String writeQuestionProc(Question question,
+								  User user,
+								  HttpSession session,
+								  @RequestParam(value="file") MultipartFile file) {
+
+		//문의번호 불러오는 코드
+		int questionno;
+		questionno = userMypageService.getQuestionno();		
+//		logger.info("questionno : " + questionno);
+		question.setQuestionno(questionno);		
+		
+		//유저번호 불러오는 코드
+
+		user.setUemail((String) session.getAttribute("loginid"));
+
+		int userno;		
+		userno = userMypageService.getUserno(user);		
+		
+		question.setUserno(userno);
+
+//		logger.info(centerquestion.toString());
+		
+//		logger.info("파일업로드 처리");
+//		
+//		logger.info("file : " + file);
+//		logger.info("file : " + file.getOriginalFilename());
+//		
+//		logger.info(context.getRealPath("upload"));
+
+		userMypageService.writeQST(question,file);
+		
+		return "/user/mypage/mypagemain";		
+
+	}
+	
+	@RequestMapping(value="/user/mypage/deletequestion", method=RequestMethod.GET)
+	public String deleteQuestion(int questionno, Model model) {
+
+		logger.info(questionno+"");
+		Question question = userMypageService.viewQST(questionno);		
+		
+		model.addAttribute("question", question);
+		
+		return "/user/mypage/deletequestionForm";
+	}
+	
+	@RequestMapping(value="/user/mypage/deletequestion", method=RequestMethod.POST)
+	public String deleteQeustionProc(Question question) {
+		
+		userMypageService.deleteQST(question);
+		
+		return "redirect:/user/mypage/mypagemain";
+	}
 //	public void performanceList(Model model) {
 //
 ////		List<VolunteerRecord> list = userMypageService.getperformanceList();

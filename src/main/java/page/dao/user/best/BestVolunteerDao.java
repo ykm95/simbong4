@@ -35,4 +35,6 @@ public interface BestVolunteerDao {
 	 */
 	public void hit(int bestno);
 	
+	public BestVolunteer selectMainBest();
+	
 }

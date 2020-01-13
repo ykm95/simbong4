@@ -11,12 +11,30 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+#list{
+ 	margin:40px; 
+	background-color: white;
+}
+#list h1{
+	font-weight: border;
+	font-size: 40px;
+}
+#search{
+	float:right;
+}
+#searchcategory{
+	margin: 2px;
+}
+#keyword{
+	margin: 2px;
+}
 
 </style>
 </head>
 <body>
-	<div class="container">
-		<div id="list" class="col-md-12" style="text-align: center;">
+	<div class="row">
+		<div class="col-3"></div>
+		<div id="list" class="col-6">
 			<h1>우수봉사자</h1>
 			
 			<form action="/user/best/bestlist" method="GET">
@@ -32,11 +50,12 @@
 				</div>
 			</form>
 
-			<table class="table table-hover table-condensed">
+			<table class="table table-hover table-condensed" style="line-height:100px; font-size:18px;">
 				<c:forEach items="${blist }" var="l">
 					<tr>
 						<td>${l.bestno }</td>
-						<td>${l.pic }</td>
+						<td><img width="100px" height="100px" src="${l.pic }"
+							class="img-circle"></td>
 						<td><a href="/user/best/bestview?bestno=${l.bestno}">${l.bestTitle}</a></td>
 						<td>조회수${l.hit }</td>
 					</tr>
@@ -44,6 +63,7 @@
 			</table>
 			<jsp:include page="/WEB-INF/views/user/best/bestPaging.jsp" />
 		</div>
+		<div class="col-3"></div>
 	</div>
 </body>
 </html>

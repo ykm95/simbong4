@@ -52,29 +52,29 @@
 				WHERE v.centerno = c.centerno
 				AND v.vol_area = a.areano
 				
-				<if test="v_process !=null and v_process !='' and v_process != 0 ">
-					AND V.vol_process = #{v_process}
+				<if test="vol_process !=null and vol_process !='' and vol_process != 0 ">
+					AND V.vol_process = #{vol_process}
 				</if>
 				<if test="department!=null and department!='' ">
 					AND V.department = #{department}
 				</if>
-				<if test="v_area!=null and v_area!='' ">
-					AND V.vol_area = #{v_area}
+				<if test="vol_area!=null and vol_area!='' ">
+					AND V.vol_area = #{vol_area}
 				</if>
-				<if test="v_sterm !=null and v_sterm!='' ">
+				<if test="vol_sterm !=null and vol_sterm!='' ">
 					<![CDATA[
-					AND (V.vol_sterm <= #{v_sterm} AND V.vol_sterm <= #{v_eterm} and
-					V.vol_eterm>= #{v_sterm} and V.vol_eterm>= #{v_eterm}
-					OR V.vol_sterm BETWEEN #{v_sterm} AND #{v_eterm}
-					OR V.vol_eterm BETWEEN #{v_sterm} AND #{v_eterm})
+					AND (V.vol_sterm <= #{vol_sterm} AND V.vol_sterm <= #{vol_eterm} and
+					V.vol_eterm>= #{vol_sterm} and V.vol_eterm>= #{vol_eterm}
+					OR V.vol_sterm BETWEEN #{vol_sterm} AND #{vol_eterm}
+					OR V.vol_eterm BETWEEN #{vol_sterm} AND #{vol_eterm})
 					]]>
 				</if>
-				<if test="v_sterm !=null and v_sterm!='' ">
+				<if test="stime !=null and stime!='' ">
 					<![CDATA[
-					AND (V.stime <= #{v_stime} AND V.stime <= #{v_etime} and
-					V.etime>= #{v_stime} and V.etime>= #{v_etime}
-					OR V.stime BETWEEN #{v_stime} AND #{v_etime}
-					OR V.etime BETWEEN #{v_stime} AND #{v_etime})
+					AND (V.stime <= #{stime} AND V.stime <= #{etime} and
+					V.etime>= #{stime} and V.etime>= #{etime}
+					OR V.stime BETWEEN #{stime} AND #{etime}
+					OR V.etime BETWEEN #{stime} AND #{etime})
 					]]>
 				</if>
 				<if test="search !=null and search !='' ">
