@@ -123,5 +123,29 @@
 		SELECT * FROM area
 		WHERE areano = #{areano}
 	</select>
+	
+	<update id="process" parameterType="int">
+		UPDATE applicant
+		SET aprocess = 1
+		WHERE applicantno = #{applicantno}
+	</update>
+	
+	<update id="numProcess" parameterType="int">
+		UPDATE volunteer
+		SET apeople = apeople + 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<update id="cancle" parameterType="int">
+		UPDATE applicant
+		SET aprocess = 0
+		WHERE applicantno = #{applicantno}
+	</update>
+	
+	<update id="numCancle" parameterType="int">
+		UPDATE volunteer
+		SET apeople = apeople - 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
 
 </mapper>

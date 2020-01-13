@@ -6,7 +6,7 @@
   
 <mapper namespace="page.dao.center.record.RecordDao">
 
-	<select id="selectCntAll" resultType="int" parameterType="int">
+	<select id="selectCntRecord" resultType="int" parameterType="int">
 		SELECT count(*) FROM volunteer
 		WHERE centerno = #{centerno}
 	</select>
@@ -54,6 +54,7 @@
 				FROM volunteer v, centertb c, area a
 				WHERE v.centerno = c.centerno
 				AND v.vol_area = a.areano
+				AND v.centerno = #{centerno}
 
 				<if test="search !=null and search !='' ">
 					AND V.vol_title LIKE '%' || #{search} || '%'

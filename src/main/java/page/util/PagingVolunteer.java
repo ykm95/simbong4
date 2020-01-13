@@ -13,6 +13,7 @@ public class PagingVolunteer {
 	private int vol_process;
 	private String stime;
 	private String etime;
+	
 	public int getVol_area() {
 		return vol_area;
 	}

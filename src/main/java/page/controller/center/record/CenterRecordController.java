@@ -31,6 +31,8 @@ public class CenterRecordController {
 		
 		model.addAttribute("paging", paging);
 		
+		paging.setCenterno(centerno);
+		
 		List list = recordService.getRecordList(paging);
 		
 		model.addAttribute("list", list);

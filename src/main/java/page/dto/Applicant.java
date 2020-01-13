@@ -6,11 +6,18 @@ public class Applicant {
 	private int applicantno;
 	private int userno;
 	private int volunteerno;
+	private int aprocess;
 	private Date write_date;
 	private String uname;
 	private String uemail;
 	private String uphone;
 	
+	public int getAprocess() {
+		return aprocess;
+	}
+	public void setAprocess(int aprocess) {
+		this.aprocess = aprocess;
+	}
 	public String getUname() {
 		return uname;
 	}
@@ -32,7 +39,8 @@ public class Applicant {
 	@Override
 	public String toString() {
 		return "Applicant [applicantno=" + applicantno + ", userno=" + userno + ", volunteerno=" + volunteerno
-				+ ", write_date=" + write_date + ", uname=" + uname + ", uemail=" + uemail + ", uphone=" + uphone + "]";
+				+ ", aprocess=" + aprocess + ", write_date=" + write_date + ", uname=" + uname + ", uemail=" + uemail
+				+ ", uphone=" + uphone + "]";
 	}
 	public int getApplicantno() {
 		return applicantno;

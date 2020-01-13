@@ -48,6 +48,6 @@
 
 </div>
 
-<jsp:include page="/WEB-INF/views/center/volunteer/paging.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/center/record/paging.jsp"></jsp:include>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

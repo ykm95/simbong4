@@ -13,9 +13,25 @@
 	<select id="selectAllTalent" parameterType="page.util.Paging" resultType="page.dto.Talent">
 		SELECT * FROM (
 			SELECT rownum rnum, B.* FROM (
-				SELECT * FROM talent t, area a
-				WHERE t.talent_area = a.areano
-				ORDER BY talentno DESC
+				SELECT t.TALENTNO TALENTNO,
+				t.USERNO USERNO,
+				t.TALENT_START TALENT_START,
+				t.TALENT_END TALENT_END,
+				t.TALENT_CYCLE TALENT_CYCLE,
+				t.WRITE_DATE WRITE_DATE,
+				t.DEPARTMENTNO DEPARTMENTNO,
+				t.TALENT_TITLE TALENT_TITLE,
+				t.TALENT_CONTENT TALENT_CONTENT,
+				t.TALENT_PROCESS TALENT_PROCESS,
+				t.AREANO AREANO,
+				t.TALENT_TYPE TALENT_TYPE,
+				a.AREANO AREANO_0,
+				a.ANAME ANAME,
+				a.LAT LAT,
+				a.LNG LNG 
+			FROM talent t, area a
+			WHERE t.areano = a.areano
+			ORDER BY talentno DESC
 			) B
 			ORDER BY rnum
 		) BOARD
@@ -23,8 +39,35 @@
 	</select>
 	
 	<select id="selectTalentByTalentno" parameterType="page.dto.Talent" resultType="page.dto.Talent">
-		SELECT * FROM talent t, area a, usertb u
-		WHERE t.talent_area = a.areano
+		SELECT
+			t.TALENTNO TALENTNO,
+			t.USERNO USERNO,
+			t.TALENT_START TALENT_START,
+			t.TALENT_END TALENT_END,
+			t.TALENT_CYCLE TALENT_CYCLE,
+			t.WRITE_DATE WRITE_DATE,
+			t.DEPARTMENTNO DEPARTMENTNO,
+			t.TALENT_TITLE TALENT_TITLE,
+			t.TALENT_CONTENT TALENT_CONTENT,
+			t.TALENT_PROCESS TALENT_PROCESS,
+			t.AREANO AREANO,
+			t.TALENT_TYPE TALENT_TYPE,
+			a.AREANO AREANO_0,
+			a.ANAME ANAME,
+			a.LAT LAT,
+			a.LNG LNG,
+			u.USERNO USERNO_1,
+			u.UNAME UNAME,
+			u.UEMAIL UEMAIL,
+			u.UPASSWORD UPASSWORD,
+			u.UPHONE UPHONE,
+			u.GENDER GENDER,
+			u.UADDRESS1 UADDRESS1,
+			u.UADDRESS2 UADDRESS2,
+			u.UADDRESS3 UADDRESS3,
+			u.ULOGIN ULOGIN
+		FROM talent t, area a, usertb u
+		WHERE t.areano = a.areano
 		AND t.userno = u.userno
 		AND t.talentno = #{talentno}
 	</select>

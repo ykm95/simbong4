@@ -102,10 +102,11 @@
 	</select>
 	
 	<select id="selectAplByNo" parameterType="int" resultType="page.dto.Applicant">
-		SELECT A.write_date, U.uphone, U.uname, U.uemail 
+		SELECT A.write_date, A.aprocess, A.applicantno, U.uphone, U.uname, U.uemail
 		FROM usertb U, applicant A 
-		WHERE U.userno = A.userno
-		AND A.volunteerno = #{volunteerno}
+		WHERE U.userno = A.userno 
+		AND A.volunteerno = #{volunteerno} 
+		ORDER BY A.applicantno
 	</select>
 
 	<select id="selectUserNo" parameterType="String" resultType="int">

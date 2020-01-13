@@ -69,6 +69,11 @@ ul{
 	background-color: #ccc;
 }
 
+.container{
+
+	background-color: #FFF;
+}
+
 </style>
 </head>
 <body>					
@@ -99,4 +104,4 @@ ul{
 <!-- <div style="height: 3px; background: #ccc;"></div> -->
 
 
-<div id="wrapper">
+<div id="wrapper" style="background: linear-gradient(to top, #FFFFFF, #FFEFBA)">
