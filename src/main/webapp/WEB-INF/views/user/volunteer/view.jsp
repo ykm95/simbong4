@@ -35,11 +35,13 @@ $(document).ready(function() {
 	if(${isApplicant}) {
 		
 		$("#btnApplicant")
+			.removeClass("btn-warning")
 			.addClass("btn-primary")
 			.html('신청 취소');
 		} 
 	else {
 		$("#btnApplicant")
+			.removeClass("btn-primary")
 			.addClass("btn-warning")
 			.html('신청');
 		}
