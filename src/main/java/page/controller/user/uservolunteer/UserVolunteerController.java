@@ -51,6 +51,7 @@ public class UserVolunteerController {
 		  model.addAttribute("apllist", applicantlist);
 		  
 		  if(session.getAttribute("loginid") != null) {
+			  
 		  int userno = userVolunteerService.getUserno((String)session.getAttribute("loginid"));
 		  //2. 유저번호랑, 봉사번호를 DTO에 담아준다.
 		  Applicant applicant = new Applicant();
@@ -63,6 +64,8 @@ public class UserVolunteerController {
 		  boolean b = userVolunteerService.isApplicant2(applicant);
 		  
 		  model.addAttribute("isApplicant", b);
+		  } else {
+			  model.addAttribute("isApplicant", false);
 		  }
 	  }
 	  
@@ -94,9 +97,9 @@ public class UserVolunteerController {
 			 mav.setViewName("jsonView");
 			 
 			  
-		  }
+		  } 
 		
-		return mav;
+		  return mav;
 	  }
 	  
 }
