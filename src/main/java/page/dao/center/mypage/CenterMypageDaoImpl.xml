@@ -27,7 +27,8 @@
 	  		address3 = #{address3 },
 	  		mphone = #{mphone },
 	  		mgr = #{mgr },
-	  		memail = #{memail }
+	  		memail = #{memail },
+	  		cpassword = #{cpassword }
 	  	WHERE businessno = #{businessno }
 	  </update>
 	  
@@ -51,8 +52,19 @@
 	   	SELECT centerquestion_seq.nextval FROM dual 
 	   </select>
 	   
-	   <select id="selectAll" resultType="page.dto.CenterQuestion">
-	   	SELECT * FROM centerquestion
+	   <select id="selectAll" parameterType="page.util.Paging"
+	    resultType="page.dto.CenterQuestion">
+	   	SELECT * FROM (
+	   	SELECT rownum rnum, CT.* FROM (
+	   	SELECT centerquestion.*
+	   	FROM centerquestion
+	   	WHERE 1=1
+	   	ORDER BY questionno DESC
+	   	) CT
+	   	ORDER BY rnum
+	   	) CENTERQUESTION
+	   	WHERE rnum BETWEEN #{startNo} AND #{endNo}
+	   	
 	   </select>
 	 
 	   <select id="selectQuestionByQuestionno" parameterType="int"
@@ -65,4 +77,8 @@
 	     DELETE centerquestion
 	     WHERE questionno = #{questionno }
 	    </delete>
+	    
+	    <select id="selectCntAll" resultType="int">
+	     SELECT count(*) FROM centerquestion
+	    </select>
 </mapper>

@@ -30,6 +30,16 @@ $(document).ready(function() {
 	$("#btnMain").click(function() {
 		$(location).attr("href", "/main");
 	});
+	
+	//봉사활동신청결과버튼 동작
+	$("#btnResult").click(function() {
+		$(location).attr("href", "/user/mypage/applicationresult");
+	})
+	
+	//봉사활동실적조회버튼 동작
+	$("#btnPerformance").click(function() {
+		$(location).attr("href", "/user/mypage/performancelist")
+	});
 });
 </script>
 
@@ -43,6 +53,8 @@ $(document).ready(function() {
 <button id="btnDelete">회원탈퇴</button>
 <button id="btnQuestion">1:1문의</button>
 <button id="btnMain">메인으로</button>
+<button id="btnResult">봉사활동신청결과</button>
+<button id="btnPerformance">봉사활동실적조회</button>
 
 </body>
 </html>

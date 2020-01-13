@@ -7,38 +7,52 @@ public class Applicant {
 	private int userno;
 	private int volunteerno;
 	private Date write_date;
+	private int aprocess;
+
 	@Override
 	public String toString() {
 		return "Applicant [applicantno=" + applicantno + ", userno=" + userno + ", volunteerno=" + volunteerno
-				+ ", write_date=" + write_date + "]";
+				+ ", write_date=" + write_date + ", aprocess=" + aprocess + "]";
 	}
+
 	public int getApplicantno() {
 		return applicantno;
 	}
+
 	public void setApplicantno(int applicantno) {
 		this.applicantno = applicantno;
 	}
+
 	public int getUserno() {
 		return userno;
 	}
+
 	public void setUserno(int userno) {
 		this.userno = userno;
 	}
+
 	public int getVolunteerno() {
 		return volunteerno;
 	}
+
 	public void setVolunteerno(int volunteerno) {
 		this.volunteerno = volunteerno;
 	}
+
 	public Date getWrite_date() {
 		return write_date;
 	}
+
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
 	}
 
-	
-	
-	
+	public int getAprocess() {
+		return aprocess;
+	}
+
+	public void setAprocess(int aprocess) {
+		this.aprocess = aprocess;
+	}
 
 }

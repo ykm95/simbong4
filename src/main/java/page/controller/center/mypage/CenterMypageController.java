@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import page.dto.Center;
 import page.dto.CenterQuestion;
 import page.service.center.mypage.CenterMypageService;
+import page.util.Paging;
 
 @Controller
 public class CenterMypageController {
@@ -84,6 +85,7 @@ public class CenterMypageController {
 		
 
 		centerMypageService.centerInformationUpdate(center);
+		
 
 		return "redirect:/center/mypage/mypagemain";
 	}
@@ -138,12 +140,15 @@ public class CenterMypageController {
 	}
 	
 	@RequestMapping(value="/center/mypage/questionlist", method=RequestMethod.GET)
-	public void quesetionList(Model model) {
+	public void quesetionList(Model model, Paging paging) {
 		
-		List<CenterQuestion> list = centerMypageService.getList();
+		paging = centerMypageService.getPaging(paging);
+		
+		List<CenterQuestion> list = centerMypageService.getList(paging);
 		
 //		logger.info(list.toString());
 		
+		model.addAttribute("paging", paging);
 		model.addAttribute("list", list);
 	}
 	

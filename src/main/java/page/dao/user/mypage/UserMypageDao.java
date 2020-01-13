@@ -3,6 +3,9 @@ package page.dao.user.mypage;
 import java.util.List;
 
 import page.dto.User;
+import page.dto.Volrecord;
+import page.util.Paging;
+import page.dto.Applicant;
 import page.dto.Question;
 
 public interface UserMypageDao {
@@ -19,7 +22,7 @@ public interface UserMypageDao {
 
 	public void googleUpdate(User user);
 
-	public List<Question> selectAll();
+	public List<Question> selectAll(Paging paging);
 
 	public int selectQuestionnoByDual();
 
@@ -30,5 +33,13 @@ public interface UserMypageDao {
 	public Question selectQuestionByQuestionno(int questionno);
 
 	public void deleteQuestion(Question question);
+
+	public int selectApplicantnoByUserno(User user);
+
+	public Volrecord selectVolrecord(Applicant applicant);
+
+	public String selectUnameByUemail(User user);
+
+	public int selectCntAll();
 
 }

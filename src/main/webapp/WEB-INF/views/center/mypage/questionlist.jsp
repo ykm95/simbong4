@@ -43,7 +43,7 @@ $(document).ready(function() {
 <br><br>
 <button id="questionWrite">글쓰기</button>
 
-
+<jsp:include page="/WEB-INF/views/layout/cq_paging.jsp" />
 
 </body>
 </html>
