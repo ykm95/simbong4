@@ -27,20 +27,8 @@ public interface CenterMypageService {
 	
 	public void writeQST(CenterQuestion centerquestion, MultipartFile file);
 
+	public CenterQuestion viewQST(int questionno);
 
-
-//	/**
-//	 * 센터 1:1 문의글 삭제
-//	 * 
-//	 * @param question
-//	 */
-//	public void deleteQST(Question question);
-//
-//	/**
-//	 * 센터 1:1 문의글 보기
-//	 * 
-//	 * @param question
-//	 */
-//	public List<Question> viewQST(Question question);
+	public void deleteQST(CenterQuestion centerquestion);
 
 }

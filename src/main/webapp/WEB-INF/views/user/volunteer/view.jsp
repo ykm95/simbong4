@@ -61,6 +61,7 @@ $(document).ready(function() {
 			
 			}
 	
+			$("#aplno").html(res.cnt);
 		}
 		, error: function() {
 			console.log("실패")
@@ -116,7 +117,7 @@ $(document).ready(function() {
 		
   			<tr>  
   				<td colspan="1" style="background: #CCC">필요/신청인원</td>  
-  				<td colspan="3" style="text-align: center">${vol.npeople }/${vol.apeople }</td>  
+  				<td colspan="3" style="text-align: center">${vol.npeople }/<span id="aplno">${vol.apeople }</span></td>  
   			</tr>  
 	
   			<tr>  
@@ -155,6 +156,28 @@ $(document).ready(function() {
   			</div>		  
   		</div>  
 		
+		<br><br><br>
+		<h6 style="color: red;">* 신청자의 전화번호와 이메일은 본 게시물을 작성한 담당자만 조회가 가능합니다.</h6>
+		<table class="table">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>전화번호</th>
+			<th>등록일</th>
+		</tr>
+		
+		<c:set var="no" value="0"/>
+		<c:forEach items="${apllist }" var="list" >
+			<tr>
+				<td>${no+1 }</td>
+				<td>${list.uname }</td>
+				<td>${list.uemail }</td>
+				<td>${list.uphone }</td>
+				<td>${list.write_date }</td>
+			</tr>
+			</c:forEach>
+		</table>
 		
   		<br>  
   		<div class="text-right">

@@ -116,24 +116,20 @@
 		width: 300px;
 	}
 </style>
-
-
-</head>
-  <body>
- 
+<Br>
 <div class="login-form">
 <form action="/user/login/login" method="post" onsubmit="return onSignIn(googleUser)">
 <h2 class="text-center">심봉사 로그인</h2><br><br>
 <div class="form-group">
 <div class="input-group"> 
  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-<input class ="form-control" type="text" name="uemail" id="uemail" placeholder="email" required="required"/>
+<input class ="form-control" type="text" name="uemail" id="uemail" placeholder="abc@def.com" required="required"/>
 </div></div>
 
 <div class="form-group">
 <div class="input-group">
 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-<input class="form-control" type="password" name="upassword" id="upassword"/>
+<input class="form-control" type="password" name="upassword" id="upassword"  placeholder="password"/>
 </div>
 </div>
 
@@ -148,8 +144,8 @@
 <br><br>
  <div class="hint-text small" class="text-success">계정이 없으신가요?
 <a href="/user/login/email">회원가입</a></div>
-</div>
 </form>
+</div>
 
 <div class="text-center">
 <a href="${google_url }">

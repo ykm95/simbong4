@@ -147,10 +147,15 @@ public class CenterMypageController {
 		model.addAttribute("list", list);
 	}
 	
-//	public List<Question> viewQuestion(Question question) {
-//		centerMypageService.viewQST(question);
-//		return null;
-//	}
+	@RequestMapping(value="/center/mypage/questionview", method=RequestMethod.GET)
+	public void viewQuestion(int questionno, Model model) {		
+		
+		CenterQuestion centerquestion = centerMypageService.viewQST(questionno);
+		
+		logger.info(centerquestion.toString());
+		
+		model.addAttribute("centerquestion", centerquestion);
+	}
 	
 	
 	@RequestMapping(value="/center/mypage/writequestion", method=RequestMethod.GET)
@@ -198,9 +203,26 @@ public class CenterMypageController {
 
 	}
 
-//	public void deleteQuestion(Question question) {
-//
-//		centerMypageService.deleteQST(question);
-//	}
+	@RequestMapping(value="/center/mypage/deletequestion", method=RequestMethod.GET)
+	public String deleteQuestion(int questionno, Model model) {
+
+		logger.info(questionno+"");
+		CenterQuestion centerquestion = centerMypageService.viewQST(questionno);
+		
+		logger.info(centerquestion.toString());
+		
+		model.addAttribute("centerquestion", centerquestion);
+		
+		return "/center/mypage/deletequestionForm";
+	}
+	
+	@RequestMapping(value="/center/mypage/deletequestion", method=RequestMethod.POST)
+	public String deleteQeustionProc(CenterQuestion centerquestion) {
+		
+		centerMypageService.deleteQST(centerquestion);
+		
+		return "redirect:/center/mypage/mypagemain";
+	}
+	
 
 }

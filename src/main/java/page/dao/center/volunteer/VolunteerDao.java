@@ -4,13 +4,13 @@ import java.util.List;
 
 import page.dto.Area;
 import page.dto.Volunteer;
-import page.util.Paging;
+import page.util.PagingVolunteer;
 
 public interface VolunteerDao {
 	
 	public int selectCntAll();
 
-	public List selectAllVolunteer(Paging paging);
+	public List selectAllVolunteer(PagingVolunteer paging);
 
 	public Volunteer selectVolunteerByVolunteerno(Volunteer vol);
 

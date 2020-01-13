@@ -55,4 +55,14 @@
 	   	SELECT * FROM centerquestion
 	   </select>
 	 
+	   <select id="selectQuestionByQuestionno" parameterType="int"
+	    resultType="page.dto.CenterQuestion">
+	     SELECT * FROM centerquestion
+	     WHERE questionno = #{questionno }
+	    </select>
+	    
+	    <delete id="deleteQuestion" parameterType="page.dto.CenterQuestion">
+	     DELETE centerquestion
+	     WHERE questionno = #{questionno }
+	    </delete>
 </mapper>

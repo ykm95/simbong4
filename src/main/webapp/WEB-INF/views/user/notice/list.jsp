@@ -22,32 +22,47 @@
 <!-- // 	}); -->
 
 <style type="text/css">
+#list{
+ 	margin:40px; 
+	background-color: white;
+}
+#list h1{
+	font-weight: border;
+	font-size: 40px;
+}
 
-
+#search{
+	float:right;
+}
+#searchcategory{
+	margin: 2px;
+}
+#keyword{
+	margin: 2px;
+}
 </style>
-
 
 </head>
 <body>
-	<div class="col-1"></div>
 	<div class="row">
 	<br>
-	<div class="col-2"></div>
-	<div id="list" class="col-8">
+	<div class="col-3"></div>
+	<div id="list" class="col-6">
 	<h1>공지사항</h1>
 	<form action="/user/notice/list" method="GET">
-		<div id="search" class="form-inline" style="float:right">
-			<select id="searchcategory" name="searchcategory"  class="form-control">
+		<div id="search" class="form-inline">
+			<select id="searchcategory" name="searchcategory" class="form-control">
 				<option value="title">제목</option>
 				<option value="content">내용</option>
-			</select> <input type="text" id="keyword" class="form-control" name="keyword"
+			</select>
+				 <input type="text" id="keyword" class="form-control" name="keyword"
 				placeholder="검색어를 입력하세요">
 
 			<button class="btn btn-secondary" id="btnsearch">검색</button>
 
 		</div>
 	</form>
-	<table class="table table-hover table-condensed" style="text-align:center;">
+	<table class="table table-hover table-condensed" style="text-align:center; font-size:18px;">
 		<c:forEach items="${nlist }" var="l">
 			<tr>
 				<td>${l.noticeNo }</td>
@@ -62,8 +77,8 @@
 	<jsp:include page="/WEB-INF/views/user/notice/noticePaging.jsp" />
 	</div>
 	</div>
-		<div class="col-2"></div>
+		<div class="col-3"></div>
 	</div>
 
-</html>
+
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

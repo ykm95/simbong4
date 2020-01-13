@@ -309,8 +309,7 @@ label {
 }
 
 </style>
-</head>
-<body>
+<br>
 	<div class="container">
 		<div class="col-xs-12 text-center">
 
@@ -390,5 +389,5 @@ label {
 					<button id="reg_submit" class="btn btn-success">회원가입</button>
 					<button type="reset" id="cancelbtn" class="btn btn-warning">취소</button>
 				</form>
-
+</div></div></div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
