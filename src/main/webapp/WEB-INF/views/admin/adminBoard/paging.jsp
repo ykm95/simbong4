@@ -1,80 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+	pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<div class="paging">
-	<ul class="pagination justify-content-center">
-		<!-- 처음으로 가기 -->
-		<c:if test="${paging.curPage ne 1 }">
-		<li class="page-item"><a class="page-link" href="/admin/adminBoard/list?&search=${paging.search}">&larr;처음으로</a></li>
-		</c:if>
-		<c:if test="${paging.curPage eq 1 }">
-		<li class="page-item disabled"><a class="page-link">&larr;처음으로</a></li>
-		</c:if>
-		
-		<!-- 이전 페이징 리스트로 가기 -->
-		<c:if test="${paging.startPage gt paging.pageCount }">
-		<li class="page-item"><a class="page-link" href="/admin/adminBoard/list?curPage=${paging.startPage - paging.pageCount }&search=${paging.search}">&laquo;</a></li>
-		
-		</c:if>
-		<c:if test="${paging.startPage le paging.pageCount }">
-		<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
-		</c:if>
-		
-		<!-- 이전 페이지로 가기 -->
-		<c:if test="${paging.curPage ne 1 }">
-		<li class="page-item"><a class="page-link" href="/admin/adminBoard/list?curPage=${paging.curPage - 1 }&search=${paging.search}">&lt;</a></li>
-		</c:if>
-		<c:if test="${paging.curPage eq 1 }">
-		<li class="page-item disabled"><a class="page-link">&lt;</a></li>
-		</c:if>
-		
-		<!-- 페이징 리스트 -->
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="i">
-			<c:choose>
-				<c:when test="${paging.curPage eq i }">
-					<li class="page-item active"><a class="page-link" href="/admin/adminBoard/list?curPage=${i }&search=${paging.search}">${i }</a>
-				</c:when>
-				<c:otherwise>
-					<li><a class="page-link" href="/admin/adminBoard/list?curPage=${i }&search=${paging.search}">${i }</a></li>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		
-		<!-- 다음 페이지로 가기 -->
-		<c:if test="${paging.curPage ne paging.totalPage }">
-		<li class="page-item"><a class="page-link" href="/admin/adminBoard/list?curPage=${paging.curPage + 1 }&search=${paging.search}">&gt;</a></li>
-		</c:if>
-		<c:if test="${paging.curPage eq paging.totalPage }">
-		<li class="page-item disabled"><a class="page-link">&gt;</a></li>
-		</c:if>
-		
-		<!-- 다음 페이징 리스트로 가기 -->
-		<c:if test="${paging.endPage ne paging.totalPage }">
-		<li class="page-item"><a class="page-link" href="/admin/adminBoard/list?curPage=${paging.startPage + paging.pageCount }&search=${paging.search}">&raquo;</a></li>
-		</c:if>
-		<c:if test="${paging.endPage eq paging.totalPage }">
-		<li class="page-item disabled"><a class="page-link">&raquo;</a></li>
-		</c:if>
-		
-		<!-- 끝 페이지로 가기 -->
-		<c:if test="${paging.curPage ne paging.totalPage }">
-		<li class="page-item"><a class="page-link" href="/center/talent/list?curPage=${paging.totalPage }&search=${paging.search}">&rarr;끝</a></li>
-		</c:if>
-		<c:if test="${paging.curPage eq paging.totalPage }">
-		<li class="page-item disabled"><a class="page-link">&rarr;끝</a></li>
-		</c:if>
-		
+<div class="container">
+	<ul class="pagination">
+		<!-- class="active" -->
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">»</a></li>
 	</ul>
 </div>
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
+<script>
+	function makePageBlock(index, totalCount, blockSize, unitSize){
+		
+		//마지막 페이지
+		let maxPage = Math.ceil(totalCount/unitSize);
+		//페이지블락 시작 번호
+		let startBlock = Math.floor( ( index - 1 ) / blockSize ) * blockSize +1
+		//페이지블락 끝 번호
+		let endBlock = startBlock + blockSize -1;
+		
+		//endBlock보정
+		if(endBlock > maxPage){
+			endBlock = maxPage;
+		}
+		
+		let beforeBtnSwitch = startBlock!=1;
+		let nextBtnSwitch = endBlock < maxPage;
+		
+		let str='';
+		//이전
+		if(beforeBtnSwitch){
+			str+='<li id="before__btn"><a href="#">«</a></li>'
+		}
+		
+		//중간페이지
+		for(var i = startBlock;i <= endBlock;i++){
+			str+='<li class="index__btn';
+			if(i==index){
+				str+=' active';
+			}
+			str+='">';
+			str+='<a href="#" data-index="'+i+'">'+i+'</a>';
+			str+='</li>';
+		}
+		
+		//이후
+		if(nextBtnSwitch){
+			str+='<li id="next__btn"><a href="#">»</a></li>'
+		}
+		
+		$('.pagination').append(str);
+		
+		if(beforeBtnSwitch){
+			$('#before__btn > a').on('click',function(){
+				getQuestion(index-1);
+			});
+		}
+		
+		$('.index__btn > a').on('click',function(){
+			getQuestion($(this).data('index'));
+		});
+		
+		if(nextBtnSwitch){
+			$('#next__btn > a').on('click',function(){
+				console.log('hi')
+				getQuestion(index+1);
+			});
+		}
+		
+	}
+</script>
 
 
-
-
-
+<!-- >>>>>>> refs/remotes/origin/develop   -->

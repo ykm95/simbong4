@@ -117,8 +117,6 @@
 
 </style>
 
-</head>
-  <body>
 <div class="login-form">
  
 <h2 class="text-center">심봉사 기관 로그인</h2><br><br>
@@ -136,7 +134,7 @@
 <input class="form-control" type="password" name="cpassword" id="cpassword"/>
 </div></div>
 
-<input type="checkbox" id="idSaveCheck"/>이메일 저장하기<br><br>
+<input type="checkbox" id="idSaveCheck"/>사업자번호 저장하기<br><br>
 <button id="loginbtn" class="btn btn-success btn-block login-btn">로그인</button>
 <button type="reset" class="btn btn-danger btn-block login-btn">취소</button>
 <a class="text-center text-success" href="/center/login/find_id">아이디찾기</a>
@@ -144,9 +142,10 @@
 <br><br>
  <div class="hint-text small" class="text-success">계정이 없으신가요?
 <a href="/center/login/join">회원가입</a></div>
-</div>
 
 <br>
 </form>
+</div>
+
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

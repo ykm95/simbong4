@@ -19,19 +19,38 @@ $(document).ready(function() {
 	//목록버튼 동작
 	$("#btnList").click(function() {
 		
-			location.href="/user/volunteer/list"
+		location.href="/user/volunteer/list";
+	});
+	
+	$("#btnApplicant2").click(function() {
+		
+		var result = confirm("로그인 후 이용가능합니다.");
+		
+		if(result==true){
+			$(location).attr("href", "/user/login/login");
+		}
+
 	});
 	
 	if(${isApplicant}) {
+		
 		$("#btnApplicant")
+			.removeClass("btn-warning")
 			.addClass("btn-primary")
 			.html('신청 취소');
-		} else {
+		} 
+	else {
 		$("#btnApplicant")
+			.removeClass("btn-primary")
 			.addClass("btn-warning")
 			.html('신청');
 		}
-	
+
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
 	$("#btnApplicant").click(function() {
 	$.ajax({
 		type: "get"
@@ -61,13 +80,16 @@ $(document).ready(function() {
 			
 			}
 	
+			$("#aplno").html(res.cnt);
+		
+	
 		}
 		, error: function() {
 			console.log("실패")
 			alert("로그인 후 사용 가능합니다.");
 		}
 	
-	});
+		});
 	});
 }); 
 
@@ -80,7 +102,10 @@ $(document).ready(function() {
   		</div>  
 
 	<div style="width: 70%; margin: 0 auto; text-align:end;">
-	<button id="btnApplicant" class="btn-warning">신청</button>
+    	<c:choose>
+			<c:when test="${!empty loginid }" ><button id="btnApplicant" class="btn-warning">신청</button></c:when>
+			<c:when test="${empty loginid }" ><button id="btnApplicant2" class="btn-warning">신청</button></c:when>
+		</c:choose>
 	</div>
 
 
@@ -116,7 +141,7 @@ $(document).ready(function() {
 		
   			<tr>  
   				<td colspan="1" style="background: #CCC">필요/신청인원</td>  
-  				<td colspan="3" style="text-align: center">${vol.npeople }/${vol.apeople }</td>  
+  				<td colspan="3" style="text-align: center">${vol.npeople }/<span id="aplno">${vol.apeople }</span></td>  
   			</tr>  
 	
   			<tr>  
@@ -155,6 +180,28 @@ $(document).ready(function() {
   			</div>		  
   		</div>  
 		
+		<br><br><br>
+		<h6 style="color: red;">* 신청자의 전화번호와 이메일은 본 게시물을 작성한 담당자만 조회가 가능합니다.</h6>
+		<table class="table">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>전화번호</th>
+			<th>등록일</th>
+		</tr>
+		
+		<c:set var="no" value="0"/>
+		<c:forEach items="${apllist }" var="list" >
+			<tr>
+				<td>${no+1 }</td>
+				<td>${list.uname }</td>
+				<td>${list.uemail }</td>
+				<td>${list.uphone }</td>
+				<td><fmt:formatDate value="${list.write_date }"  pattern="yyyy.MM.dd"/></td>
+			</tr>
+			</c:forEach>
+		</table>
 		
   		<br>  
   		<div class="text-right">

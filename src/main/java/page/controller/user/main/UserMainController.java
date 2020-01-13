@@ -34,8 +34,7 @@ public class UserMainController {
 		
 		model.addAttribute("main2", m);
 		model.addAttribute("best", best);
-		logger.info(m.toString());
-		logger.info(best.toString());
+
 		
 		
 	}

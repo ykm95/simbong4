@@ -85,7 +85,7 @@ $(document).ready(function(){
   				<c:choose>
 					<c:when test="${talent.talent_process eq 1}">모집중</c:when>
 					<c:when test="${talent.talent_process eq 2 }">모집완료</c:when>
-					</c:choose></td>  
+				</c:choose></td>  
   			</tr>  
 			
 			

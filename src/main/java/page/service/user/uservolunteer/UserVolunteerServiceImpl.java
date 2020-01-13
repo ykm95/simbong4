@@ -29,14 +29,14 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 		PagingVolunteer pagingRes = new PagingVolunteer(totalCount, curPage);
 		
 		pagingRes.setSearch(paging.getSearch());
-		pagingRes.setV_area(paging.getV_area());
+		pagingRes.setVol_area(paging.getVol_area());
 		pagingRes.setDepartment(paging.getDepartment());
-		pagingRes.setV_sterm(paging.getV_sterm());
-		pagingRes.setV_eterm(paging.getV_eterm());
-		pagingRes.setV_stime(paging.getV_stime());
-		pagingRes.setV_etime(paging.getV_etime());
-		pagingRes.setV_process(paging.getV_process());
-		pagingRes.setV_title(paging.getV_title());
+		pagingRes.setVol_sterm(paging.getVol_sterm());
+		pagingRes.setVol_eterm(paging.getVol_eterm());
+		pagingRes.setStime(paging.getStime());
+		pagingRes.setEtime(paging.getEtime());
+		pagingRes.setVol_process(paging.getVol_process());
+		pagingRes.setVol_title(paging.getVol_title());
 		
 		
 		return pagingRes;
@@ -60,11 +60,11 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 		return userVolunteerDao.selectCntVolunteer(pagingVolunteer);
 	}
 
-//	@Override
-//	public List<Applicant> getAplByNo(int volunteerno) {
-//		
-//		return userVolunteerDao.selectAplByNo(volunteerno);
-//	}
+	@Override
+	public List<Applicant> getAplByNo(int volunteerno) {
+		
+		return userVolunteerDao.selectAplByNo(volunteerno);
+	}
 
 	@Override
 	public int getUserno(String attribute) {
@@ -98,6 +98,13 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 			  return false;
 		  }
 	}
+
+	@Override
+	public int cntApl(int volunteerno) {
+		return userVolunteerDao.selectAplno(volunteerno);
+	}
+
+
 
 
 }
