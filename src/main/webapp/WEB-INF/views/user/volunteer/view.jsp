@@ -63,6 +63,10 @@ $(document).ready(function() {
 			console.log("성공")
 			console.log( res.select )
 			
+			if(res.cnt > res.npeople) {
+				alert("인원초과입니다.")
+			} else {
+			
 			//true인 경우 -> 이미 추천한 적이 있는 경우
 			if(res.select){
 				$("#btnApplicant")
@@ -84,7 +88,7 @@ $(document).ready(function() {
 	
 			$("#aplno").html(res.cnt);
 		
-	
+			}
 		}
 		, error: function() {
 			console.log("실패")

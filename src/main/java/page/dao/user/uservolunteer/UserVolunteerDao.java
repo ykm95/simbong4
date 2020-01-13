@@ -26,5 +26,11 @@ public interface UserVolunteerDao {
 
 	public int selectAplno(int volunteerno);
 
+	public int selectNpeople(int volunteerno);
+
+	public void subApeople(int volunteerno);
+
+	public void plusApeople(int volunteerno);
+
 
 }
