@@ -9,7 +9,6 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-
 <script>
 	$(document)
 			.ready(
@@ -195,7 +194,7 @@
 </script>
 
 <div class="container">
-
+<div id="chart_div" style="width:900px; height: 500px;"></div>
 	<form action="/user/volunteer/list" method="get" id="searchForm" style="margin-top:40px;">
 		
 	
