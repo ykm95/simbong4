@@ -4,6 +4,7 @@ import java.util.List;
 
 import page.dto.Center;
 import page.dto.CenterQuestion;
+import page.util.Paging;
 
 public interface CenterMypageDao {
 
@@ -21,11 +22,13 @@ public interface CenterMypageDao {
 
 	public int selectQuestionnoByDual();
 
-	public List<CenterQuestion> selectAll();
+	public List<CenterQuestion> selectAll(Paging paging);
 
 	public CenterQuestion selectQuestionByQuestionno(int questionno);
 
 	public void deleteQuestion(CenterQuestion centerquestion);
+
+	public int selectCntAll();
 
 
 }

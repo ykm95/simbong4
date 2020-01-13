@@ -2,7 +2,7 @@ package page.controller.user.talent;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +61,9 @@ public class TalentController {
 	  }
 	  
 	  @RequestMapping(value="/user/talent/write", method=RequestMethod.POST)
-	  public String talentWriteProc(PagingTalent paging) {
+	  public String talentWriteProc(PagingTalent paging, HttpSession session) {
+		  
+		  paging.setUserno((int) session.getAttribute("userno"));
 		  
 		  talentService.write(paging);
 		  

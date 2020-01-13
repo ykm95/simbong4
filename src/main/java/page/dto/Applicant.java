@@ -12,63 +12,75 @@ public class Applicant {
 	private String uemail;
 	private String uphone;
 	
-	public int getAprocess() {
-		return aprocess;
-	}
-	public void setAprocess(int aprocess) {
-		this.aprocess = aprocess;
-	}
-	public String getUname() {
-		return uname;
-	}
-	public void setUname(String uname) {
-		this.uname = uname;
-	}
-	public String getUemail() {
-		return uemail;
-	}
-	public void setUemail(String uemail) {
-		this.uemail = uemail;
-	}
-	public String getUphone() {
-		return uphone;
-	}
-	public void setUphone(String uphone) {
-		this.uphone = uphone;
-	}
 	@Override
 	public String toString() {
 		return "Applicant [applicantno=" + applicantno + ", userno=" + userno + ", volunteerno=" + volunteerno
 				+ ", aprocess=" + aprocess + ", write_date=" + write_date + ", uname=" + uname + ", uemail=" + uemail
 				+ ", uphone=" + uphone + "]";
 	}
+
 	public int getApplicantno() {
 		return applicantno;
 	}
+
 	public void setApplicantno(int applicantno) {
 		this.applicantno = applicantno;
 	}
+
 	public int getUserno() {
 		return userno;
 	}
+
 	public void setUserno(int userno) {
 		this.userno = userno;
 	}
+
 	public int getVolunteerno() {
 		return volunteerno;
 	}
+
 	public void setVolunteerno(int volunteerno) {
 		this.volunteerno = volunteerno;
 	}
+
+	public int getAprocess() {
+		return aprocess;
+	}
+
+	public void setAprocess(int aprocess) {
+		this.aprocess = aprocess;
+	}
+
 	public Date getWrite_date() {
 		return write_date;
 	}
+
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
 	}
 
-	
-	
-	
+	public String getUname() {
+		return uname;
+	}
 
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+	public String getUemail() {
+		return uemail;
+	}
+
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
+	}
+
+	public String getUphone() {
+		return uphone;
+	}
+
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
+	}
+	
 }

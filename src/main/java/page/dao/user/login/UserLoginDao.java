@@ -56,6 +56,13 @@ public interface UserLoginDao {
 	 * @return- 이메일
 	 */
 	String find_id(User user);
+
+	/**
+	 * 유저번호 가져오기
+	 * @param user-유저객체
+	 * @return-유저번호
+	 */
+	int find_uno(User user);
 	
 
 }

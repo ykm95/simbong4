@@ -11,7 +11,7 @@
 		SELECT * FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT V.*, A.aname, D.departname
-		FROM volunteer V, area A, v_department D
+		FROM volunteer V, area A, v_department D, centertb C
 		WHERE V.vol_area = A.areano
 		AND V.department = D.departmentno
 
@@ -95,9 +95,10 @@
 	</select>
 	
 	<select id="selectVolunteerByNo" parameterType="int" resultType="page.dto.Volunteer">
-		SELECT * FROM volunteer V, area A, v_department D
+		SELECT * FROM volunteer V, area A, v_department D, centertb C
 		WHERE V.vol_area = A.areano
 		AND V.department = D.departmentno
+		AND V.centerno = C.centerno
 		AND V.volunteerno = #{volunteerno}
 	</select>
 	

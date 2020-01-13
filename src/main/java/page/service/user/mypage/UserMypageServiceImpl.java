@@ -14,7 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import page.dao.user.mypage.UserMypageDao;
 import page.dto.User;
+import page.dto.Volrecord;
 import page.service.center.mypage.CenterMypageServiceImpl;
+import page.util.Paging;
+import page.dto.Applicant;
 import page.dto.Question;
 
 @Service
@@ -61,8 +64,8 @@ public class UserMypageServiceImpl implements UserMypageService {
 	}
 
 	@Override
-	public List<Question> getList() {
-		return userMypageDao.selectAll();
+	public List<Question> getList(Paging paging) {
+		return userMypageDao.selectAll(paging);
 	}
 
 	@Override
@@ -80,7 +83,7 @@ public class UserMypageServiceImpl implements UserMypageService {
 		logger.info(context.getRealPath("TEST"));
 		
 		//파일이 저장될 경로
-		String storedPath = context.getRealPath("upload");
+		String storedPath = context.getRealPath("/resources/upload");
 		
 		//저장될 파일의 이름 (원본명 + UUID)
 		String filename = question.getQuestionno()+"";
@@ -96,7 +99,7 @@ public class UserMypageServiceImpl implements UserMypageService {
 			e.printStackTrace();
 		}
 		
-		question.setPic("/upload/" + filename);
+		question.setPic("/resources/upload/" + filename);
 		
 		userMypageDao.insertQuestion(question);
 		
@@ -110,6 +113,32 @@ public class UserMypageServiceImpl implements UserMypageService {
 	@Override
 	public void deleteQST(Question question) {
 		userMypageDao.deleteQuestion(question);
+	}
+
+	@Override
+	public int getApplicantno(User user) {
+		return userMypageDao.selectApplicantnoByUserno(user);
+	}
+
+	@Override
+	public Volrecord getVolrecord(Applicant applicant) {
+		return userMypageDao.selectVolrecord(applicant);
+	}
+
+	@Override
+	public String getUname(User user) {
+		return userMypageDao.selectUnameByUemail(user);
+	}
+
+	@Override
+	public Paging getPaging(Paging paging) {
+		int curPage = paging.getCurPage();
+
+		int totalCount = userMypageDao.selectCntAll();
+
+		paging = new Paging(totalCount, curPage);
+
+		return paging;
 	}
 
 

@@ -2,6 +2,7 @@ package page.controller.user.mypage;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,15 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import page.dto.User;
-import page.dto.Center;
-import page.dto.CenterQuestion;
+import page.dto.Applicant;
 import page.dto.Question;
+import page.dto.User;
+import page.dto.Volrecord;
 import page.service.user.mypage.UserMypageService;
+import page.util.Paging;
 
 @Controller
 public class UserMypageController {
 
+	@Autowired ServletContext context;
+	
 	@Autowired
 	UserMypageService userMypageService;
 
@@ -188,12 +192,14 @@ public class UserMypageController {
 	}
 	
 	@RequestMapping(value="/user/mypage/questionlist", method=RequestMethod.GET)
-	public void quesetionList(Model model) {
+	public void quesetionList(Model model,Paging paging) {
 		
-		List<Question> list = userMypageService.getList();
+		paging = userMypageService.getPaging(paging);
+		
+		List<Question> list = userMypageService.getList(paging);
 		
 //		logger.info(list.toString());
-		
+		model.addAttribute("paging", paging);
 		model.addAttribute("list", list);
 	}
 	
@@ -239,10 +245,10 @@ public class UserMypageController {
 		
 //		logger.info("파일업로드 처리");
 //		
-//		logger.info("file : " + file);
-//		logger.info("file : " + file.getOriginalFilename());
-//		
-//		logger.info(context.getRealPath("upload"));
+		logger.info("file : " + file);
+		logger.info("file : " + file.getOriginalFilename());
+		
+		logger.info(context.getRealPath("upload"));
 
 		userMypageService.writeQST(question,file);
 		
@@ -268,13 +274,53 @@ public class UserMypageController {
 		
 		return "redirect:/user/mypage/mypagemain";
 	}
-//	public void performanceList(Model model) {
-//
-////		List<VolunteerRecord> list = userMypageService.getperformanceList();
+	
+//	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)
+//	public void applicationResult(HttpSession session,
+//								  User user,
+//								  Applicant applicant) {
+//		user.setUemail((String)session.getAttribute("loginid"));
+//		logger.info(user.toString());
+//		
+//		//유저번호 불러오는코드
+//		int userno;		
+//		userno = userMypageService.getUserno(user);		
+//		user.setUserno(userno);
+//		
 //	}
-//
-//	public void perfomanceList(Model model, String term) {
-//
-////		List<VolunteerRecord> list = userMypageService.getperformanceList(term);
-//	}
+
+	@RequestMapping(value="/user/mypage/performancelist", method=RequestMethod.GET)
+	public void performanceList(Model model,
+								HttpSession session,
+								User user,
+								Applicant applicant) {
+		user.setUemail((String)session.getAttribute("loginid"));
+		logger.info(user.toString());
+		
+		//유저번호 불러오기
+		int userno;		
+		userno = userMypageService.getUserno(user);		
+		user.setUserno(userno);
+		
+		//유저이름 불러오기
+		String uname;
+		uname = userMypageService.getUname(user);
+		user.setUname(uname);
+		logger.info(user.toString());
+		
+		//지원자등록번호 불러오기
+		int applicantno;
+		applicantno = userMypageService.getApplicantno(user);
+		logger.info(applicantno+"");		
+		applicant.setApplicantno(applicantno);
+		
+		Volrecord volrecord = userMypageService.getVolrecord(applicant);
+		
+		logger.info(volrecord.toString());
+		
+		model.addAttribute("volrecord", volrecord);
+		model.addAttribute("user", user);
+	}
+
+
 }

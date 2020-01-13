@@ -50,8 +50,18 @@
 	 	WHERE uemail = #{uemail } 
 	  </update>
 	  
-	  <select id="selectAll" resultType="page.dto.Question">
-	    SELECT * FROM question	    
+	  <select id="selectAll" parameterType="page.util.Paging"
+	   resultType="page.dto.Question">
+	    SELECT * FROM (
+	    SELECT rownum rnum, Q.* FROM (
+	    SELECT question.*
+	    FROM question
+	    WHERE 1=1
+	    ORDER BY questionno DESC
+	    ) Q
+	    ORDER BY rnum
+	    ) QUESTION
+	    WHERE rnum BETWEEN #{startNo} AND #{endNo}	    
 	  </select>
 	  
 	  <select id="selectQuestionnoByDual" resultType="int">
@@ -79,4 +89,28 @@
 	    DELETE question
 	    WHERE questionno = #{questionno }
 	    </delete>
+	    
+	    <select id="selectApplicantnoByUserno" parameterType="page.dto.User"
+	     resultType="int">
+	      SELECT A.applicantno FROM applicant A, usertb U
+	      WHERE U.userno = A.userno
+	      AND U.userno = #{userno }
+	     </select>
+	     
+	     <select id="selectVolrecord" parameterType="page.dto.Applicant"
+	      resultType="page.dto.Volrecord">
+	      SELECT * FROM volrecord V, applicant A
+	      WHERE A.applicantno = V.applicantno
+	      AND A.applicantno = #{applicantno }
+	      </select>
+	      
+	      <select id="selectUnameByUemail" parameterType="page.dto.User"
+	       resultType="String">
+	       	SELECT uname FROM usertb
+	       	WHERE uemail = #{uemail }
+	       </select>
+	       
+	       <select id="selectCntAll" resultType="int">
+	       	SELECT count(*) FROM question
+	       </select>
 </mapper>

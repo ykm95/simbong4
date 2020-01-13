@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import page.dao.center.mypage.CenterMypageDao;
 import page.dto.Center;
 import page.dto.CenterQuestion;
+import page.util.Paging;
 
 @Service
 public class CenterMypageServiceImpl implements CenterMypageService {
@@ -76,7 +77,7 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		logger.info(context.getRealPath("TEST"));
 		
 		//파일이 저장될 경로
-		String storedPath = context.getRealPath("upload");
+		String storedPath = context.getRealPath("/resources/upload");
 		
 		//저장될 파일의 이름 (원본명 + UUID)
 		String filename = centerquestion.getQuestionno()+"";
@@ -92,15 +93,15 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 			e.printStackTrace();
 		}
 		
-		centerquestion.setPic("/upload/" + filename);
+		centerquestion.setPic("/resources/upload/" + filename);
 		
 		centerMypageDao.insertQuestion(centerquestion);
 		
 	}
 
 	@Override
-	public List<CenterQuestion> getList() {
-		return centerMypageDao.selectAll();
+	public List<CenterQuestion> getList(Paging paging) {
+		return centerMypageDao.selectAll(paging);
 	}
 
 	@Override
@@ -111,6 +112,17 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 	@Override
 	public void deleteQST(CenterQuestion centerquestion) {
 		centerMypageDao.deleteQuestion(centerquestion);
+	}
+
+	@Override
+	public Paging getPaging(Paging paging) {
+		int curPage = paging.getCurPage();
+
+		int totalCount = centerMypageDao.selectCntAll();
+
+		paging = new Paging(totalCount, curPage);
+
+		return paging;
 	}
 
 

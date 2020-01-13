@@ -19,9 +19,19 @@
 
 						// 글작성 버튼
 						$("#btnWrite").click(function() {
-						      
-							$(location).attr("href", "/user/talent/write");
-					   })
+						  	
+							$(location).attr("href", "/user/talent/write");		    
+					   });
+						
+						$("#btnWrite2").click(function() {
+						  	
+							var result = confirm("로그인 후 이용가능합니다.");
+							
+							if(result==true){
+								$(location).attr("href", "/user/login/login");
+							}
+					   });
+						
 						
 						// 초기화 버튼
 						$("#resetForm").click(function() {
@@ -262,9 +272,7 @@ $(document).ready(function() {
 
 });
 </script>
-<style type="text/css">
 
-</style>
 <div class="container">
 
 	<form action="/user/talent/list" method="get" id="searchForm" style="margin-top:40px;">
@@ -389,21 +397,28 @@ $(document).ready(function() {
 	
 	<tr>
     	<td style="vertical-align: middle;">${list.talentno }</td> 
-    	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/talent/view?talentno=${list.talentno }" style="font-size: 35px;">${list.talent_title }</a></td>
+    	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/talent/view?talentno=${list.talentno }" style="font-size: 30px; color:black;">${list.talent_title }</a></td>
     	
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
+    	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;"> 		
+    	<c:choose>
+			<c:when test="${list.talent_process eq 1}" ><span style="color:red;">[모집중]</span></c:when>
+			<c:when test="${list.talent_process eq 2 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
+		</c:choose></td>
 	</tr>
 	
 	<tr>    
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동지역:</span> ${list.aname }</td>
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동기간:</span> ${list.talent_start } ~ ${list.talent_end }</td>
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">봉사주기:</span> ${list.talent_cycle }</td>
-    	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>
+    	<td colspan="2" style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>
 	</tr>
 	</c:forEach>
 	</table>
-
-	<button id="btnWrite" style="float:right;">작성하기</button>
+    	<c:choose>
+			<c:when test="${!empty loginid }" ><button id="btnWrite" style="float:right;">작성하기</button></c:when>
+			<c:when test="${empty loginid }" ><button id="btnWrite2" style="float:right;">작성하기</button></c:when>
+		</c:choose>
 	
 	<br><br>	
 
