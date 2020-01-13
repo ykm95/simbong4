@@ -8,5 +8,4 @@
 
 
 
-</body>
-</html>
+ <jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />

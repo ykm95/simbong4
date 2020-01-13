@@ -128,31 +128,4 @@
 	<br>
 
 
-
-	<footer class="py-5 bg-white">
-		<div class="container">
-			<hr>
-			<p class="m-0 text-center text-info">
-				Copyright &copy; simbongsa 2020<br>
-				<br> 대표전화 02 - 0000 - 0000<br>
-				<br> 이메일 simbong4@naver.com
-			</p>
-		</div>
-
-		<div class="mark1">
-			<!-- 같은 줄에 두개 놓고싶지만 나주에 하자. -->
-			<p>
-				<a href="http://kncsw.bokji.net/kncc/m00/m00.jsp" target="_blank"
-					rel="noopener noreferrer" title="새창열림"> <img
-					src="/resources/img/SSN_ci_png.png" alt="SSN한국사회복지협의"
-					style="margin-left: 50%; margin-right: auto; display: block; width: 200px; height: auto;">
-				</a> <a href="http://www.mohw.go.kr" target="_blank"
-					rel="noopener noreferrer" title="새창열림"> <img
-					src="/resources/img/보건복지부_국_좌우.jpg" alt="보건복지부"
-					style="margin-left: auto; margin-right: 50%; display: block; width: 200px; height: auto;">
-				</a>
-			</p>
-		</div>
-	</footer>
-</body>
-</html>
+ <jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />
