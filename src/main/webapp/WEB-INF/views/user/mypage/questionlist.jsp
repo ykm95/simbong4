@@ -41,5 +41,7 @@ $(document).ready(function() {
 </table>
 <br><br>
 <button id="questionWrite">글쓰기</button>
+
+<jsp:include page="/WEB-INF/views/layout/q_paging.jsp" />
 </body>
 </html>

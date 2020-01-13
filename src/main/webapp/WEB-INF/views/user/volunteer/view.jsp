@@ -19,19 +19,38 @@ $(document).ready(function() {
 	//목록버튼 동작
 	$("#btnList").click(function() {
 		
-			location.href="/user/volunteer/list"
+		location.href="/user/volunteer/list";
+	});
+	
+	$("#btnApplicant2").click(function() {
+		
+		var result = confirm("로그인 후 이용가능합니다.");
+		
+		if(result==true){
+			$(location).attr("href", "/user/login/login");
+		}
+
 	});
 	
 	if(${isApplicant}) {
+		
 		$("#btnApplicant")
+			.removeClass("btn-warning")
 			.addClass("btn-primary")
 			.html('신청 취소');
-		} else {
+		} 
+	else {
 		$("#btnApplicant")
+			.removeClass("btn-primary")
 			.addClass("btn-warning")
 			.html('신청');
 		}
-	
+
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
 	$("#btnApplicant").click(function() {
 	$.ajax({
 		type: "get"
@@ -62,13 +81,15 @@ $(document).ready(function() {
 			}
 	
 			$("#aplno").html(res.cnt);
+		
+	
 		}
 		, error: function() {
 			console.log("실패")
 			alert("로그인 후 사용 가능합니다.");
 		}
 	
-	});
+		});
 	});
 }); 
 
@@ -81,7 +102,10 @@ $(document).ready(function() {
   		</div>  
 
 	<div style="width: 70%; margin: 0 auto; text-align:end;">
-	<button id="btnApplicant" class="btn-warning">신청</button>
+    	<c:choose>
+			<c:when test="${!empty loginid }" ><button id="btnApplicant" class="btn-warning">신청</button></c:when>
+			<c:when test="${empty loginid }" ><button id="btnApplicant2" class="btn-warning">신청</button></c:when>
+		</c:choose>
 	</div>
 
 
@@ -167,14 +191,13 @@ $(document).ready(function() {
 			<th>등록일</th>
 		</tr>
 		
-		<c:set var="no" value="0"/>
-		<c:forEach items="${apllist }" var="list" >
+		<c:forEach items="${apllist }" var="list" varStatus="status">
 			<tr>
-				<td>${no+1 }</td>
+				<td>${status.count }</td>
 				<td>${list.uname }</td>
 				<td>${list.uemail }</td>
 				<td>${list.uphone }</td>
-				<td>${list.write_date }</td>
+				<td><fmt:formatDate value="${list.write_date }"  pattern="yyyy.MM.dd"/></td>
 			</tr>
 			</c:forEach>
 		</table>

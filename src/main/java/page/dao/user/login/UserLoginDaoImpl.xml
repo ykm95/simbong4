@@ -45,4 +45,8 @@ SELECT count(*) FROM usertb WHERE uemail=#{uemail} </select>
 <select id="find_id" parameterType="page.dto.User" resultType="String">
 	SELECT uemail from usertb WHERE uname=#{uname} and uphone=#{uphone}
 </select>
+
+<select id="find_uno" parameterType="page.dto.User" resultType="int">
+	SELECT userno FROM usertb WHERE uemail=#{uemail}
+</select>
 </mapper>

@@ -115,13 +115,13 @@
 			talent_content, 
 			talent_process, areano,
 			talent_type)
-		VALUES( talent_seq.nextval, usertb_seq.nextval, #{paging.talent_start}, #{paging.talent_end}, 
+		VALUES( talent_seq.nextval, #{paging.userno}, #{paging.talent_start}, #{paging.talent_end}, 
 		<foreach collection="paging.t_cycle" item="tc" separator="||','||">
 			#{tc}
 		</foreach>
 		,#{paging.departmentno}, #{paging.talent_title},
 		 #{paging.talent_content},
-		 #{paging.talent_process},
+		 1,
 		 #{paging.areano}, #{paging.talent_type})
 	</insert>
 

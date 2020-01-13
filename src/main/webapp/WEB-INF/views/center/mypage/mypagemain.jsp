@@ -28,6 +28,11 @@ $(document).ready(function() {
 		$(location).attr("href", "/center/mypage/questionlist");
 	});
 	
+	//메인버튼 동작
+	$("#btnMain").click(function() {
+		$(location).attr("href", "/center/main");
+	});
+	
 });
 </script>
 </head>
@@ -38,5 +43,6 @@ $(document).ready(function() {
 <button id="btnUpdate">회원정보수정</button>
 <button id="btnDelete">회원탈퇴</button>
 <button id="btnQuestion">1:1문의</button>
+<button id="btnMain">메인으로</button>
 </body>
 </html>
