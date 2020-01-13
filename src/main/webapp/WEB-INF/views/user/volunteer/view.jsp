@@ -191,10 +191,9 @@ $(document).ready(function() {
 			<th>등록일</th>
 		</tr>
 		
-		<c:set var="no" value="0"/>
-		<c:forEach items="${apllist }" var="list" >
+		<c:forEach items="${apllist }" var="list" varStatus="status">
 			<tr>
-				<td>${no+1 }</td>
+				<td>${status.count }</td>
 				<td>${list.uname }</td>
 				<td>${list.uemail }</td>
 				<td>${list.uphone }</td>

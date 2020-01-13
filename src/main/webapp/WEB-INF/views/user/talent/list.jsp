@@ -272,9 +272,7 @@ $(document).ready(function() {
 
 });
 </script>
-<style type="text/css">
 
-</style>
 <div class="container">
 
 	<form action="/user/talent/list" method="get" id="searchForm" style="margin-top:40px;">
@@ -399,7 +397,7 @@ $(document).ready(function() {
 	
 	<tr>
     	<td style="vertical-align: middle;">${list.talentno }</td> 
-    	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/talent/view?talentno=${list.talentno }" style="font-size: 35px;">${list.talent_title }</a></td>
+    	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/talent/view?talentno=${list.talentno }" style="font-size: 30px; color:black;">${list.talent_title }</a></td>
     	
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;"> 		
