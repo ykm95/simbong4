@@ -24,7 +24,7 @@
 		
 </script>
 
-<div class="container" >
+<div class="container" style="background-color: #FFF" >
 	
 	<div style="border-top: 1px solid; border-bottom: 1px solid;">
 
