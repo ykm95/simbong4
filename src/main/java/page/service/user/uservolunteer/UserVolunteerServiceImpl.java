@@ -72,20 +72,38 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 	}
 
 	@Override
-	public boolean isApplicant(Applicant applicant, int volunteerno) {
+	public int isApplicant(Applicant applicant, int volunteerno) {
 
+		Volunteer volunteer = userVolunteerDao.selectVolunteerByNo(volunteerno);
 		int cnt = userVolunteerDao.selectCntApl(applicant);
+		int npeople = volunteer.getNpeople();
+		int apeople = volunteer.getApeople();
 		
-		  if(cnt == 1) {
+		// 신청상태일 때
+		  if(cnt == 1) 
+		  {
 			  userVolunteerDao.deleteApl(applicant);
 			  userVolunteerDao.subApeople(volunteerno);
-			  return true;
+			  return 1;
 		  }
+		  // 신청상태가 아닐 때
 		  else {
+			  
+			  // 필요인원보다 신청인원이 적을 때
+			  if(apeople < npeople) 
+			  {
 			  userVolunteerDao.insertApl(applicant);
 			  userVolunteerDao.plusApeople(volunteerno);
-			  return false;
-		  }
+			  return 2;
+			  } 
+			  // 필요인원보다 신청인원이 크거나 같을 때
+			  else 
+			  {
+				  return 3;
+			  }
+			  
+			
+		  } 
 	}
 
 	@Override

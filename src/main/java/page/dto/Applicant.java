@@ -11,12 +11,29 @@ public class Applicant {
 	private String uname;
 	private String uemail;
 	private String uphone;
-	
+	private int apeople;
+	private int npeople;
+	public int getApeople() {
+		return apeople;
+	}
+
+	public void setApeople(int apeople) {
+		this.apeople = apeople;
+	}
+
+	public int getNpeople() {
+		return npeople;
+	}
+
+	public void setNpeople(int npeople) {
+		this.npeople = npeople;
+	}
+
 	@Override
 	public String toString() {
 		return "Applicant [applicantno=" + applicantno + ", userno=" + userno + ", volunteerno=" + volunteerno
 				+ ", aprocess=" + aprocess + ", write_date=" + write_date + ", uname=" + uname + ", uemail=" + uemail
-				+ ", uphone=" + uphone + "]";
+				+ ", uphone=" + uphone + ", apeople=" + apeople + ", npeople=" + npeople + "]";
 	}
 
 	public int getApplicantno() {

@@ -57,47 +57,90 @@ $(document).ready(function() {
 	$.ajax({
 		type: "get"
 		, url: "/user/volunteer/view_ok"
-		, data: { "volunteerno": '${vol.volunteerno }' }
+		, data: { "volunteerno": '${vol.volunteerno }'
+// 			,	  "npeople": '${vol.npeople}',	
+// 				  "apeople": '${vol.apeople}'
+				  }
 		, dataType: "json"
 		, success: function( res ) {
-			console.log("성공")
-			console.log( res.select )
+			userList(res.userList);
 			
-			if(res.cnt > res.npeople) {
-				alert("인원초과입니다.")
-			} else {
-			
+
 			//true인 경우 -> 이미 추천한 적이 있는 경우
-			if(res.select){
+			if(res.select == 1){
 				$("#btnApplicant")
 				.removeClass("btn-primary")
 				.addClass("btn-warning")
 				.html('신청');
+				
+				alert("신청이 취소되었습니다.");
 			}
 			
 			//false -> 추천한적 없는 경우
-			else{
+			else if(res.select == 2){
 				$("#btnApplicant")
 				.removeClass("btn-warning")
 				.addClass("btn-primary")
 				.html('신청 취소');
 			
-				alert("신청완료되었습니다.")
+				alert("신청완료되었습니다.");
 			
+			} else {
+				alert("인원초과입니다.");
 			}
 	
 			$("#aplno").html(res.cnt);
 		
-			}
+	
 		}
 		, error: function() {
-			console.log("실패")
-			alert("로그인 후 사용 가능합니다.");
+
+			
 		}
 	
 		});
 	});
 }); 
+
+function userList(list) {
+	$("#userList").html("");
+	
+	var th = $("<tr><td>번호</td><td>이름</td><td>이메일</td><td>전화번호</td><td>등록일</td></tr>");
+	
+	$("#userList").append(th);
+	
+	for (var i = 0; i < list.length; i++) {
+		var tr = $("<tr></tr>");
+		
+		var unamesub = list[i].uname.substr( 1, 1);
+		var uname = list[i].uname.replace(unamesub,'*');
+
+		var uemailsub = list[i].uemail.substr( 2, 5);
+		var uemail = list[i].uemail.replace(uemailsub,'*****');
+		
+		var uphonesub = list[i].uphone.substr( 3, 4);
+		var uphone = list[i].uphone.replace(uphonesub,'****');
+		
+		var dateFormat = getFormatDate(new Date(list[i].write_date));
+		
+		tr.append($("<td>" + (i + 1) + "</td>"));
+		tr.append($("<td>" + uname + "</td>"));
+		tr.append($("<td>" + uemail + "</td>"));
+		tr.append($("<td>" + uphone + "</td>"));
+		tr.append($("<td>" + dateFormat + "</td>"));
+		
+		$("#userList").append(tr);
+	}
+}
+
+function getFormatDate(date){
+    var year = date.getFullYear();              //yyyy
+    var month = (1 + date.getMonth());          //M
+    month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+    var day = date.getDate();                   //d
+    day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+    return  year + '.' + month + '.' + day;
+}
 
 </script>
   	
@@ -188,7 +231,7 @@ $(document).ready(function() {
 		
 		<br><br><br>
 		<h6 style="color: red;">* 신청자의 전화번호와 이메일은 본 게시물을 작성한 담당자만 조회가 가능합니다.</h6>
-		<table class="table">
+		<table class="table" id="userList">
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -200,9 +243,9 @@ $(document).ready(function() {
 		<c:forEach items="${apllist }" var="list" varStatus="status">
 			<tr>
 				<td>${status.count }</td>
-				<td id="uname">${fn:replace(list.uname, fn:substring(list.uname, 1, 1), '*')}</td>
-				<td id="uemail">${fn:replace(list.uemail, fn:substring(list.uemail, 3, 8), '*****')}</td>
-				<td id="uphone">${fn:replace(list.uphone, fn:substring(list.uphone, 3, 7), '****')}</td>
+				<td>${fn:replace(list.uname, fn:substring(list.uname, 1, 2), '*')}</td>
+				<td>${fn:replace(list.uemail, fn:substring(list.uemail, 2, 7), '*****')}</td>
+				<td>${fn:replace(list.uphone, fn:substring(list.uphone, 3, 7), '****')}</td>
 				<td><fmt:formatDate value="${list.write_date }"  pattern="yyyy.MM.dd"/></td>
 			</tr>
 			</c:forEach>
