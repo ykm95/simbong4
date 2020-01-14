@@ -20,6 +20,7 @@ import page.dto.Question;
 import page.dto.User;
 import page.dto.Volunteer;
 import page.util.Paging;
+import page.util.PagingApplicant;
 
 @Service
 public class UserMypageServiceImpl implements UserMypageService {
@@ -149,5 +150,30 @@ public class UserMypageServiceImpl implements UserMypageService {
 		return userMypageDao.selectUserByuserno(userno);
 	}
 
+	@Override
+	public PagingApplicant getPerformancePaging(PagingApplicant paging) {
+		int curPage = paging.getCurPage();
+
+		int totalCount = userMypageDao.selectCntPerformanceAll(paging.getUserno());
+
+		PagingApplicant pagingRes = new PagingApplicant(totalCount, curPage);
+		
+		pagingRes.setVol_sterm(paging.getVol_sterm());
+		pagingRes.setVol_eterm(paging.getVol_eterm());
+		pagingRes.setStime(paging.getStime());
+		pagingRes.setEtime(paging.getEtime());
+		pagingRes.setVol_process(paging.getVol_process());
+		pagingRes.setVol_title(paging.getVol_title());
+		pagingRes.setDepartname(paging.getDepartname());
+		pagingRes.setCname(paging.getCname());
+		pagingRes.setApplicantno(paging.getApplicantno());
+		
+		return pagingRes;
+	}
+
+	@Override
+	public List<PagingApplicant> getPerformance(PagingApplicant paging) {
+		return userMypageDao.selectPerformance(paging);
+	}
 	
 }

@@ -17,7 +17,7 @@
 		WHERE B.areano = A.areano
 		AND B.departmentno = D.departmentno
 
-		<if test="talent_process !=null and talent_process !='' and talent_process != 0 ">
+		<if test="talent_process !=null and talent_process !='' and talent_process != 5 ">
 			AND B.talent_process = #{talent_process}
 		</if>
 		<if test="talent_type !=null and talent_type !='' and talent_type != 0">
@@ -64,7 +64,7 @@
 		WHERE B.areano = A.areano
 		AND B.departmentno = D.departmentno
 
-		<if test="talent_process !=null and talent_process !='' and talent_process != 0 ">
+		<if test="talent_process !=null and talent_process !='' and talent_process != 5 ">
 			AND B.talent_process = #{talent_process}
 		</if>
 		<if test="talent_type !=null and talent_type !='' and talent_type != 0">

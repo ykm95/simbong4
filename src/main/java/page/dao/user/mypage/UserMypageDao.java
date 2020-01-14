@@ -6,6 +6,7 @@ import page.dto.User;
 import page.dto.Volunteer;
 import page.dto.Volrecord;
 import page.util.Paging;
+import page.util.PagingApplicant;
 import page.dto.Applicant;
 import page.dto.Question;
 
@@ -43,5 +44,9 @@ public interface UserMypageDao {
 	public int selectCntAppAll(int userno);
 	
 	public User selectUserByuserno(int userno);
+
+	public int selectCntPerformanceAll(int userno);
+
+	public List<PagingApplicant> selectPerformance(PagingApplicant paging);
 
 }

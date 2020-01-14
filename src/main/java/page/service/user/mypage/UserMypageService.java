@@ -11,6 +11,7 @@ import page.dto.User;
 import page.dto.Volunteer;
 import page.dto.Volrecord;
 import page.util.Paging;
+import page.util.PagingApplicant;
 import page.dto.Question;
 
 public interface UserMypageService {
@@ -47,5 +48,9 @@ public interface UserMypageService {
 	public Paging getAppPaging(Paging paging);
 	
 	public User Userview(int userno);
+
+	public PagingApplicant getPerformancePaging(PagingApplicant paging);
+
+	public List<PagingApplicant> getPerformance(PagingApplicant paging);
 
 }
