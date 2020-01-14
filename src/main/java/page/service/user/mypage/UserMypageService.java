@@ -9,6 +9,7 @@ import page.dto.Center;
 import page.dto.User;
 import page.dto.Volrecord;
 import page.util.Paging;
+import page.util.PagingApplicant;
 import page.dto.Question;
 
 public interface UserMypageService {
@@ -41,5 +42,9 @@ public interface UserMypageService {
 	public List<Applicant> getApplicant(Paging paging);
 
 	public Paging getAppPaging(Paging paging);
+
+	public PagingApplicant getPerformancePaging(PagingApplicant paging);
+
+	public List<PagingApplicant> getPerformance(PagingApplicant paging);
 
 }

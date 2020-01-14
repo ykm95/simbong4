@@ -5,6 +5,7 @@ import java.util.List;
 import page.dto.User;
 import page.dto.Volrecord;
 import page.util.Paging;
+import page.util.PagingApplicant;
 import page.dto.Applicant;
 import page.dto.Question;
 
@@ -38,5 +39,9 @@ public interface UserMypageDao {
 	public List<Applicant> selectApplicant(Paging paging);
 
 	public int selectCntAppAll(int userno);
+
+	public int selectCntPerformanceAll(int userno);
+
+	public List<PagingApplicant> selectPerformance(PagingApplicant paging);
 
 }

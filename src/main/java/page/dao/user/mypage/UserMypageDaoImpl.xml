@@ -115,5 +115,35 @@
 		  AND C.centerno = V.centerno
 		  AND U.userno = #{value } )
 	    </select>
+	    
+	    <select id="selectCntPerformanceAll" parameterType="int"
+	     resultType="int">
+	     SELECT count(*) FROM ( SELECT V.vol_sterm, V.vol_eterm, V.stime, V.etime, V.vol_process, V.vol_title, D.departname, C.cname, A.applicantno, A.aprocess FROM applicant A, usertb U, volunteer V, v_department D, centertb C 
+		 WHERE U.userno = A.userno
+		 AND V.volunteerno = A.volunteerno
+	 	 AND D.departmentno = V.department
+		 AND C.centerno = V.centerno
+		 AND U.userno = #{value }
+		 AND A.aprocess = 1 )
+	     </select>
+	     
+	     <select id="selectPerformance" parameterType="page.util.PagingApplicant"
+	      resultType="page.util.PagingApplicant">
+	      SELECT * FROM (
+		      SELECT rownum rnum, Z.* FROM (
+			      SELECT V.vol_sterm, V.vol_eterm, V.stime, V.etime, V.vol_process, V.vol_title, D.departname, C.cname, A.applicantno, A.aprocess FROM applicant A, usertb U, volunteer V, v_department D, centertb C
+				  WHERE U.userno = A.userno
+				  AND V.volunteerno = A.volunteerno
+				  AND D.departmentno = V.department
+				  AND C.centerno = V.centerno
+				  AND U.userno = #{userno }
+				  AND A.aprocess = 1
+				  ORDER BY A.applicantno DESC
+			  ) Z
+			  ORDER BY rnum
+		  ) applicant
+		  WHERE rnum BETWEEN
+		  #{startNo } AND #{endNo }
+	      </select>
 	      
 </mapper>

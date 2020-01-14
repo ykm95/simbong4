@@ -18,9 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import page.dto.Applicant;
 import page.dto.Question;
 import page.dto.User;
-import page.dto.Volrecord;
 import page.service.user.mypage.UserMypageService;
 import page.util.Paging;
+import page.util.PagingApplicant;
 
 @Controller
 public class UserMypageController {
@@ -294,6 +294,7 @@ public class UserMypageController {
 		
 		logger.info(list+"");
 		
+		model.addAttribute("paging", paging);
 		model.addAttribute("list", list);
 		
 		
@@ -303,12 +304,23 @@ public class UserMypageController {
 	public void performanceList(Model model,
 								HttpSession session,
 								User user,
-								Applicant applicant) {
+								PagingApplicant paging) {
 		
-		user.setUemail((String)session.getAttribute("loginid"));
-		logger.info(user.toString());
+		user.setUemail((String)session.getAttribute("loginid"));		
+		user.setUserno((int)session.getAttribute("userno"));
 		
+		paging.setUserno(user.getUserno());
 
+		paging = userMypageService.getPerformancePaging(paging);
+		
+		paging.setUserno(user.getUserno());
+		
+		List<PagingApplicant> list = userMypageService.getPerformance(paging);
+		
+		logger.info(list+"");
+		
+		model.addAttribute("paging", paging);
+		model.addAttribute("list", list);
 
 	}
 
