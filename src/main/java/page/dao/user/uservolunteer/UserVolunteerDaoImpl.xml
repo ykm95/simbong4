@@ -8,7 +8,7 @@
 <mapper namespace="page.dao.user.uservolunteer.UserVolunteerDao">
 
 	<select id="selectVolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.util.PagingVolunteer">
-		SELECT * FROM (
+		SELECT DISTINCT * FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT V.*, A.aname, D.departname
 		FROM volunteer V, area A, v_department D, centertb C
@@ -52,7 +52,7 @@
 	</select>
 	
 	<select id="selectCntVolunteer" parameterType="page.util.PagingVolunteer" resultType="int">
-		SELECT COUNT(*) FROM (
+		SELECT DISTINCT COUNT(*) FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT V.*, A.aname, D.departname
 		FROM volunteer V, area A, v_department D
@@ -103,10 +103,11 @@
 	</select>
 	
 	<select id="selectAplByNo" parameterType="int" resultType="page.dto.Applicant">
-		SELECT A.write_date, U.uphone, U.uname, U.uemail 
+		SELECT A.write_date, A.aprocess, A.applicantno, U.uphone, U.uname, U.uemail
 		FROM usertb U, applicant A 
-		WHERE U.userno = A.userno
-		AND A.volunteerno = #{volunteerno}
+		WHERE U.userno = A.userno 
+		AND A.volunteerno = #{volunteerno} 
+		ORDER BY A.applicantno
 	</select>
 
 	<select id="selectUserNo" parameterType="String" resultType="int">
@@ -131,5 +132,20 @@
 	<select id="selectAplno" parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM applicant where volunteerno = #{volunteerno}
 	</select>
+	
+	<select id="selectNpeople" parameterType="int" resultType="int">
+		SELECT npeople FROM volunteer where volunteerno = #{volunteerno}
+	</select>
+	
+	<update id="subApeople" parameterType="int">
+		UPDATE volunteer SET apeople = apeople - 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<update id="plusApeople" parameterType="int">
+		UPDATE volunteer SET apeople = apeople + 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
 	
 </mapper>

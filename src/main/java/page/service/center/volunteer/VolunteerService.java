@@ -23,4 +23,8 @@ public interface VolunteerService {
 
 	public Area getArea(Area area);
 
+	public void approval(int volunteerno, int applicantno);
+
+	public void cancle(int volunteerno, int applicantno);
+
 }

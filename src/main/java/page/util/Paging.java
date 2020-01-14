@@ -6,11 +6,20 @@ public class Paging {
 	private int totalCount;
 	private int listCount;
 	private int totalPage;
+	public int getCenterno() {
+		return centerno;
+	}
+
+	public void setCenterno(int centerno) {
+		this.centerno = centerno;
+	}
+
 	private int pageCount;
 	private int startPage;
 	private int endPage;
 	private int startNo;
 	private int endNo;
+	private int centerno;
 	private String searchcategory;
 	private String keyword;
 

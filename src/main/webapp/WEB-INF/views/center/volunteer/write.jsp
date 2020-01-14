@@ -184,7 +184,7 @@ $(document).ready(function(){
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 </style>
 
-<div class="container">
+<div class="container" style="background-color: #FFF">
 
 	<form action="/center/volunteer/write" method="post" id="form" style="padding: 30px 50px;">
 		<div class="form-group">

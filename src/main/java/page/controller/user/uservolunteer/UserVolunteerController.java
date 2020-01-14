@@ -86,13 +86,14 @@ public class UserVolunteerController {
 			 			  
 			  
 			  //2. DB에 추천 여부 검사
-			  boolean b = userVolunteerService.isApplicant(applicant);
+			  boolean b = userVolunteerService.isApplicant(applicant, volunteerno);
 			  
 			  int cnt = userVolunteerService.cntApl(volunteerno);
-			  
+			  int npeople = userVolunteerService.cntNpeople(volunteerno);
 			 // 모델값으로 지정
 			 mav.addObject("select", b);
 			 mav.addObject("cnt", cnt);
+			 mav.addObject("npeople", npeople);
 			 // viewName 지정하기
 			 mav.setViewName("jsonView");
 			 

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import page.dto.Applicant;
 import page.dto.Area;
 import page.dto.Volunteer;
 import page.service.center.volunteer.VolunteerService;
+import page.service.user.uservolunteer.UserVolunteerService;
 import page.util.PagingVolunteer;
 
 @Controller
@@ -24,6 +26,7 @@ public class VolunteerController {
 	private static final Logger logger = LoggerFactory.getLogger(VolunteerController.class);
 	
 	@Autowired VolunteerService volunteerService;
+	@Autowired UserVolunteerService userVolunteerService;
 	
 	@RequestMapping(value = "/center/volunteer/list", method = RequestMethod.GET)
 	public void list(PagingVolunteer paging, Model model) {
@@ -42,6 +45,9 @@ public class VolunteerController {
 		
 		vol = volunteerService.getVolunteer(vol);
 		
+		List<Applicant> applicantlist = userVolunteerService.getAplByNo(vol.getVolunteerno());
+		
+		model.addAttribute("list", applicantlist);
 		model.addAttribute("vol", vol);
 	}
 	
@@ -92,6 +98,22 @@ public class VolunteerController {
 		volunteerService.delete(vol);
 		
 		return "redirect:/center/volunteer/list";
+	}
+	
+	@RequestMapping(value = "/center/approval", method = RequestMethod.GET)
+	public String approval(int volunteerno, int applicantno) {
+		
+		volunteerService.approval(volunteerno, applicantno);
+		
+		return "redirect:/center/volunteer/view?volunteerno="+volunteerno;
+	}
+	
+	@RequestMapping(value = "/center/cancle", method = RequestMethod.GET)
+	public String cancle(int volunteerno, int applicantno) {
+		
+		volunteerService.cancle(volunteerno, applicantno);
+		
+		return "redirect:/center/volunteer/view?volunteerno="+volunteerno;
 	}
 	
 	@RequestMapping(value = "/center/volunteer/test", method = RequestMethod.GET)

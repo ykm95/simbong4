@@ -22,4 +22,12 @@ public interface VolunteerDao {
 
 	public Area selectAreaByAreano(Area area);
 
+	public void process(int applicantno);
+
+	public void cancle(int applicantno);
+
+	public void numProcess(int volunteerno);
+
+	public void numCancle(int applicantno);
+
 }

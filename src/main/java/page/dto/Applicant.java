@@ -6,10 +6,8 @@ public class Applicant {
 	private int applicantno;
 	private int userno;
 	private int volunteerno;
-	private Date write_date;
-
 	private int aprocess;
-
+	private Date write_date;
 	private String uname;
 	private String uemail;
 	private String uphone;
@@ -72,20 +70,20 @@ public class Applicant {
 		this.volunteerno = volunteerno;
 	}
 
-	public Date getWrite_date() {
-		return write_date;
-	}
-
-	public void setWrite_date(Date write_date) {
-		this.write_date = write_date;
-	}
-
 	public int getAprocess() {
 		return aprocess;
 	}
 
 	public void setAprocess(int aprocess) {
 		this.aprocess = aprocess;
+	}
+
+	public Date getWrite_date() {
+		return write_date;
+	}
+
+	public void setWrite_date(Date write_date) {
+		this.write_date = write_date;
 	}
 
 	public String getUname() {

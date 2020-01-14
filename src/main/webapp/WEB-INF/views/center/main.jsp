@@ -152,103 +152,110 @@ img {vertical-align: middle;}
 
 </style>
 
-<div class="row" style="text-align: center; padding: 50px 0;">
+<div class="row" style="text-align: center; padding: 50px 0; background: linear-gradient(to top, #FFFFFF, #FFEFBA)">
 
-	<c:if test="${empty login }">
-		<div class="col">
-			<h1>로그인 후 이용해주세요</h1>
-		</div>
-	</c:if>
+	<div class="container" style="background: #FFF">
 
-	<c:if test="${login }">
-		<div class="container">
-			<div class="col-12" style="background: #CCC">
-				<h1>${center.cname }, 환영합니다.</h1>
-			</div>
-		</div>
+			<c:if test="${empty login }">
+				<div class="col-10">
+					<h1>로그인 후 이용해주세요</h1>
+				</div>
+			</c:if>
 		
-		<div class="col-12">
-			<div class="col-12">
-				<div class="slideshow-container">
-
-					<div class="mySlides fade">
-						<div class="numbertext">1 / 3</div>
-						<img src="/resources/img/배너1.png" style="width: 100%;">
-					</div>
-
-					<div class="mySlides fade">
-						<div class="numbertext">2 / 3</div>
-						<img src="/resources/img/배너2.jpg" style="width: 100%;">
-					</div>
-
-					<div class="mySlides fade">
-						<div class="numbertext">3 / 3</div>
-						<img src="/resources/img/배너3.png" style="width: 100%;">
+			<c:if test="${login }">
+				<div class="container" >
+					<div class="col-10" style="background: #CCC; margin: 0 auto;">
+						<h1>${center.cname }, 환영합니다.</h1>
 					</div>
 				</div>
-			</div>
-			<br>
-			<div style="text-align: center">
-				<span class="dot"></span> <span class="dot"></span> <span
-					class="dot"></span>
-			</div>
-			<br>
-			<div id="application" class="row" style="text-align: center">
-				<div class="col-2"></div>
-				<div class="col-8 row">
-
-					<div id="talent" class="col-4" style="width: 500px;">
-						<a href="/center/talent/list"><strong style="color: white;">재능기부</strong></a> <a
-							href="/center/talent/list"><img width="70px;"
-							src="/resources/img/재능.png"></a>
+				
+				<div class="col-12">
+					<div class="col-12">
+						<div class="slideshow-container">
+		
+							<div class="mySlides fade">
+								<div class="numbertext">1 / 3</div>
+								<img src="/resources/img/배너1.png" style="width: 100%;">
+							</div>
+		
+							<div class="mySlides fade">
+								<div class="numbertext">2 / 3</div>
+								<img src="/resources/img/배너2.jpg" style="width: 100%;">
+							</div>
+		
+							<div class="mySlides fade">
+								<div class="numbertext">3 / 3</div>
+								<img src="/resources/img/배너3.png" style="width: 100%;">
+							</div>
+						</div>
 					</div>
-
-					<div id="volunteer" class="col-4" style="width: 500px;">
-						<a href="/center/volunteer/list"><strong style="color: white;">봉사자 모집</strong></a> <a
-							href="/center/volunteer/list"><img width="70px;"
-							src="/resources/img/봉사자.png"></a>
-
+					<br>
+					<div style="text-align: center">
+						<span class="dot"></span> <span class="dot"></span> <span
+							class="dot"></span>
 					</div>
-
-					<div id="adduction" class="col-4" style="width: 500px;">
-						<strong style="color: white;">봉사실적 인증</strong> <img width="70px;"
-							src="/resources/img/인증서.png">
+					<br>
+					<div id="application" class="row" style="text-align: center">
+						<div class="col-1"></div>
+						<div class="col-10 row">
+		
+							<div id="talent" class="col-4" style="width: 500px;">
+								<a href="/center/talent/list">
+								<strong style="color: white;">재능기부</strong>
+								<img width="70px;"src="/resources/img/재능.png"></a>
+							</div>
+		
+							<div id="volunteer" class="col-4" style="width: 500px;">
+								<a href="/center/volunteer/list">
+								<strong style="color: white;">봉사자 모집</strong>
+								<img width="70px;"src="/resources/img/봉사자.png"></a>
+		
+							</div>
+		
+							<div id="adduction" class="col-4" style="width: 500px;">
+								<a href="/center/record/list">
+								<strong style="color: white;">봉사실적 인증</strong>
+								<img width="70px;"src="/resources/img/인증서.png"></a>
+							</div>
+						</div>
+						<div class="col-1"></div>
+					</div>
+					<br>
+		
+					<div class="row" style="margin: 10px;">
+						<div class="col-1"></div>
+						<div class="col-10 row">
+							<div class="col-4">
+								<div style="height: 3px; background: black;"></div>
+								<h3 style="font-weight: bolder;">공지사항</h3>
+								<c:forEach items="${main2}" var="m">
+									<table>
+										<tr>
+											<td><a href="/user/notice/view?noticeno=${m.noticeNo }">${m.noticeTitle}</a></td>
+										</tr>
+									</table>
+								</c:forEach>
+							</div>
+							<div class="col-4">
+								<div style="height: 3px; background: black;"></div>
+								<h3 style="font-weight: bolder;">
+									이달의<br>우수봉사자
+								</h3>
+		
+							</div>
+							<div class="col-4">
+								<div style="height: 3px; background: black;"></div>
+		
+							</div>
+						</div>
+						<div class="col-1"></div>
 					</div>
 				</div>
-				<div class="col-2"></div>
-			</div>
-			<br>
+			</c:if>
 
-			<div class="row" style="margin: 10px;">
-				<div class="col-3"></div>
-				<div class="col-6 row">
-					<div class="col-4">
-						<div style="height: 3px; background: black;"></div>
-						<h3 style="font-weight: bolder;">공지사항</h3>
-						<c:forEach items="${main2}" var="m">
-							<table>
-								<tr>
-									<td><a href="/user/notice/view?noticeno=${m.noticeNo }">${m.noticeTitle}</a></td>
-								</tr>
-							</table>
-						</c:forEach>
-					</div>
-					<div class="col-4">
-						<div style="height: 3px; background: black;"></div>
-						<h3 style="font-weight: bolder;">
-							이달의<br>우수봉사자
-						</h3>
-
-					</div>
-					<div class="col-4">
-						<div style="height: 3px; background: black;"></div>
-
-					</div>
-				</div>
-				<div class="col-3"></div>
-			</div>
 		</div>
-	</c:if>
+	
 </div>
+
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 

@@ -24,6 +24,12 @@
 	<dependencies>
 
 <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.4</version>
+        </dependency>
+
 <dependency>
     <groupId>org.mindrot</groupId>
     <artifactId>jbcrypt</artifactId>

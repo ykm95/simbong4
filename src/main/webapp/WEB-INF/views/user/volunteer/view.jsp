@@ -3,6 +3,7 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 
@@ -32,6 +33,7 @@ $(document).ready(function() {
 
 	});
 	
+
 	if(${isApplicant}) {
 		
 		$("#btnApplicant")
@@ -61,6 +63,10 @@ $(document).ready(function() {
 			console.log("성공")
 			console.log( res.select )
 			
+			if(res.cnt > res.npeople) {
+				alert("인원초과입니다.")
+			} else {
+			
 			//true인 경우 -> 이미 추천한 적이 있는 경우
 			if(res.select){
 				$("#btnApplicant")
@@ -82,7 +88,7 @@ $(document).ready(function() {
 	
 			$("#aplno").html(res.cnt);
 		
-	
+			}
 		}
 		, error: function() {
 			console.log("실패")
@@ -191,13 +197,12 @@ $(document).ready(function() {
 			<th>등록일</th>
 		</tr>
 		
-		<c:set var="no" value="0"/>
-		<c:forEach items="${apllist }" var="list" >
+		<c:forEach items="${apllist }" var="list" varStatus="status">
 			<tr>
-				<td>${no+1 }</td>
-				<td>${list.uname }</td>
-				<td>${list.uemail }</td>
-				<td>${list.uphone }</td>
+				<td>${status.count }</td>
+				<td id="uname">${fn:replace(list.uname, fn:substring(list.uname, 1, 1), '*')}</td>
+				<td id="uemail">${fn:replace(list.uemail, fn:substring(list.uemail, 3, 8), '*****')}</td>
+				<td id="uphone">${fn:replace(list.uphone, fn:substring(list.uphone, 3, 7), '****')}</td>
 				<td><fmt:formatDate value="${list.write_date }"  pattern="yyyy.MM.dd"/></td>
 			</tr>
 			</c:forEach>

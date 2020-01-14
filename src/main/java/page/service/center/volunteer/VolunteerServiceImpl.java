@@ -74,4 +74,18 @@ public class VolunteerServiceImpl implements VolunteerService {
 		return volunteerDao.selectAreaByAreano(area);
 	}
 
+	@Override
+	public void approval(int volunteerno, int applicantno) {
+		
+		volunteerDao.numProcess(volunteerno);
+		volunteerDao.process(applicantno);
+	}
+
+	@Override
+	public void cancle(int volunteerno, int applicantno) {
+		
+		volunteerDao.numCancle(volunteerno);
+		volunteerDao.cancle(applicantno);
+	}
+
 }
