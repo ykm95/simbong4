@@ -3,6 +3,7 @@ package page.dao.user.mypage;
 import java.util.List;
 
 import page.dto.User;
+import page.dto.Volunteer;
 import page.dto.Volrecord;
 import page.util.Paging;
 import page.util.PagingApplicant;
@@ -22,6 +23,8 @@ public interface UserMypageDao {
 	public int selectUloginByUemail(User user);
 
 	public void googleUpdate(User user);
+	
+	public Volunteer pdfView(int applicantno);
 
 	public List<Question> selectAll(Paging paging);
 

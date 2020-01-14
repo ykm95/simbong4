@@ -18,6 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import page.dto.Applicant;
 import page.dto.Question;
 import page.dto.User;
+
+import page.dto.Volunteer;
+
+import page.dto.Volrecord;
 import page.service.user.mypage.UserMypageService;
 import page.util.Paging;
 import page.util.PagingApplicant;
@@ -191,6 +195,25 @@ public class UserMypageController {
 		return "/main";
 	}
 	
+
+//	public void performanceList(Model model) {
+//
+////		List<VolunteerRecord> list = userMypageService.getperformanceList();
+//	}
+//
+//	public void perfomanceList(Model model, String term) {
+//
+////		List<VolunteerRecord> list = userMypageService.getperformanceList(term);
+//	}
+	@RequestMapping(value = "/user/mypage/pdf", method = RequestMethod.GET)
+	public void pdfView(Model model, int applicantno) {
+		Volunteer pdf = new Volunteer();
+		pdf= userMypageService.getPdfData(applicantno);
+		
+		model.addAttribute("pdf", pdf);
+		logger.info(pdf.toString());
+	}
+
 	@RequestMapping(value="/user/mypage/questionlist", method=RequestMethod.GET)
 	public void quesetionList(Model model,Paging paging) {
 		

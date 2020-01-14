@@ -2,11 +2,13 @@ package page.service.user.mypage;
 
 import java.util.List;
 
+
 import org.springframework.web.multipart.MultipartFile;
 
 import page.dto.Applicant;
 import page.dto.Center;
 import page.dto.User;
+import page.dto.Volunteer;
 import page.dto.Volrecord;
 import page.util.Paging;
 import page.util.PagingApplicant;
@@ -25,6 +27,8 @@ public interface UserMypageService {
 	public int getUlogin(User user);
 
 	public void googleInformationUpdate(User user);
+	
+	public Volunteer getPdfData(int applicantno);
 
 	public List<Question> getList(Paging paging);
 

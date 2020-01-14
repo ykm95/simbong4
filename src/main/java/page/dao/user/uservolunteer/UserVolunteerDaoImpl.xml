@@ -8,14 +8,14 @@
 <mapper namespace="page.dao.user.uservolunteer.UserVolunteerDao">
 
 	<select id="selectVolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.util.PagingVolunteer">
-		SELECT DISTINCT * FROM (
+		SELECT * FROM (
 		SELECT rownum rnum, B.* FROM (
-		SELECT V.*, A.aname, D.departname
+		SELECT DISTINCT V.*, A.aname, D.departname
 		FROM volunteer V, area A, v_department D, centertb C
 		WHERE V.vol_area = A.areano
 		AND V.department = D.departmentno
 
-		<if test="vol_process !=null and vol_process !='' and vol_process != 0 ">
+		<if test="vol_process !=null and vol_process !='' and vol_process != 5 ">
 			AND V.vol_process = #{vol_process}
 		</if>
 		<if test="department!=null and department!='' ">
@@ -52,14 +52,14 @@
 	</select>
 	
 	<select id="selectCntVolunteer" parameterType="page.util.PagingVolunteer" resultType="int">
-		SELECT DISTINCT COUNT(*) FROM (
+		SELECT COUNT(*) FROM (
 		SELECT rownum rnum, B.* FROM (
-		SELECT V.*, A.aname, D.departname
+		SELECT DISTINCT V.*, A.aname, D.departname
 		FROM volunteer V, area A, v_department D
 		WHERE V.vol_area = A.areano
 		AND V.department = D.departmentno
 
-		<if test="vol_process !=null and vol_process !='' and vol_process != 0 ">
+		<if test="vol_process !=null and vol_process !='' and vol_process != 5 ">
 			AND V.vol_process = #{vol_process}
 		</if>
 		<if test="department!=null and department!='' ">

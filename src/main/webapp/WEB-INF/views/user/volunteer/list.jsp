@@ -273,13 +273,13 @@
 
 		<div>
 		상태 &nbsp; &nbsp; &nbsp; &nbsp;
-		<input name="vol_process" title="전체" id="processAll" type="radio" value="0" checked="checked">&nbsp;
+		<input name="vol_process" title="전체" id="processAll" type="radio" value="5" checked="checked">&nbsp;
 		<label for="processAll">전체</label> &nbsp; 
 		
-		<input name="vol_process" title="모집중" id="process1" type="radio" value="1">&nbsp;
+		<input name="vol_process" title="모집중" id="process1" type="radio" value="0">&nbsp;
 		<label for="process1">모집중</label>&nbsp; 
 		
-		<input name="vol_process" title="모집완료" id="process2" type="radio" value="2">&nbsp;
+		<input name="vol_process" title="모집완료" id="process2" type="radio" value="1">&nbsp;
 		<label for="process2">모집완료</label>&nbsp;<br>
 		</div><br>
 				

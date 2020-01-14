@@ -1,6 +1,7 @@
 package page.service.user.mypage;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import page.dao.user.mypage.UserMypageDao;
 import page.dto.Applicant;
 import page.dto.Question;
 import page.dto.User;
+import page.dto.Volunteer;
 import page.util.Paging;
 import page.util.PagingApplicant;
 
@@ -64,6 +66,9 @@ public class UserMypageServiceImpl implements UserMypageService {
 	}
 
 	@Override
+	public Volunteer getPdfData(int applicantno) {
+		return userMypageDao.pdfView(applicantno);
+}
 	public List<Question> getList(Paging paging) {
 		return userMypageDao.selectAll(paging);
 	}
