@@ -86,8 +86,7 @@ public class UserVolunteerController {
 			  
 			  applicant.setUserno(userno);
 			  applicant.setVolunteerno(volunteerno);
-//			  applicant.setNpeople(npeople);
-//			  applicant.setApeople(apeople);
+
 			  
 			  //2. DB에 추천 여부 검사
 			  int b = userVolunteerService.isApplicant(applicant, volunteerno);
