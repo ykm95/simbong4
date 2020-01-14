@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import page.dao.user.mypage.UserMypageDao;
-import page.dto.User;
-import page.dto.Volrecord;
-import page.service.center.mypage.CenterMypageServiceImpl;
-import page.util.Paging;
 import page.dto.Applicant;
 import page.dto.Question;
+import page.dto.User;
+import page.util.Paging;
 
 @Service
 public class UserMypageServiceImpl implements UserMypageService {
@@ -73,10 +72,6 @@ public class UserMypageServiceImpl implements UserMypageService {
 		return userMypageDao.selectQuestionnoByDual();
 	}
 
-	@Override
-	public int getUserno(User user) {
-		return userMypageDao.selectUsernoByUemail(user);
-	}
 
 	@Override
 	public void writeQST(Question question, MultipartFile file) {
@@ -116,21 +111,6 @@ public class UserMypageServiceImpl implements UserMypageService {
 	}
 
 	@Override
-	public int getApplicantno(User user) {
-		return userMypageDao.selectApplicantnoByUserno(user);
-	}
-
-	@Override
-	public Volrecord getVolrecord(Applicant applicant) {
-		return userMypageDao.selectVolrecord(applicant);
-	}
-
-	@Override
-	public String getUname(User user) {
-		return userMypageDao.selectUnameByUemail(user);
-	}
-
-	@Override
 	public Paging getPaging(Paging paging) {
 		int curPage = paging.getCurPage();
 
@@ -139,6 +119,24 @@ public class UserMypageServiceImpl implements UserMypageService {
 		paging = new Paging(totalCount, curPage);
 
 		return paging;
+	}
+
+	@Override
+	public List<Applicant> getApplicant(Paging paging) {
+		return userMypageDao.selectApplicant(paging);
+	}
+
+	@Override
+	public Paging getAppPaging(Paging paging) {
+		
+		
+		int curPage = paging.getCurPage();
+
+		int totalCount = userMypageDao.selectCntAppAll(paging.getUserno());
+
+		Paging pagingRes = new Paging(totalCount, curPage);
+		
+		return pagingRes;
 	}
 
 

@@ -232,14 +232,11 @@ public class UserMypageController {
 //		logger.info("questionno : " + questionno);
 		question.setQuestionno(questionno);		
 		
-		//유저번호 불러오는 코드
 
 		user.setUemail((String) session.getAttribute("loginid"));
-
-		int userno;		
-		userno = userMypageService.getUserno(user);		
+		user.setUserno((int)session.getAttribute("userno"));	
 		
-		question.setUserno(userno);
+		question.setUserno(user.getUserno());
 
 //		logger.info(centerquestion.toString());
 		
@@ -275,51 +272,44 @@ public class UserMypageController {
 		return "redirect:/user/mypage/mypagemain";
 	}
 	
-//	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)
-//	public void applicationResult(HttpSession session,
-//								  User user,
-//								  Applicant applicant) {
-//		user.setUemail((String)session.getAttribute("loginid"));
-//		logger.info(user.toString());
-//		
-//		//유저번호 불러오는코드
-//		int userno;		
-//		userno = userMypageService.getUserno(user);		
-//		user.setUserno(userno);
-//		
-//	}
+	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)
+	public void applicationResult(HttpSession session,
+								  User user,
+								  Applicant applicant,
+								  Model model,
+								  Paging paging) {
+		
+		user.setUemail((String)session.getAttribute("loginid"));		
+		user.setUserno((int)session.getAttribute("userno"));
+		
+		paging.setUserno(user.getUserno());
+		
+		paging = userMypageService.getAppPaging(paging);
+		
+		paging.setUserno(user.getUserno());
+		
+		logger.info(paging.toString());
+		
+		List<Applicant> list = userMypageService.getApplicant(paging);
+		
+		logger.info(list+"");
+		
+		model.addAttribute("list", list);
+		
+		
+	}
 
 	@RequestMapping(value="/user/mypage/performancelist", method=RequestMethod.GET)
 	public void performanceList(Model model,
 								HttpSession session,
 								User user,
 								Applicant applicant) {
+		
 		user.setUemail((String)session.getAttribute("loginid"));
 		logger.info(user.toString());
 		
-		//유저번호 불러오기
-		int userno;		
-		userno = userMypageService.getUserno(user);		
-		user.setUserno(userno);
-		
-		//유저이름 불러오기
-		String uname;
-		uname = userMypageService.getUname(user);
-		user.setUname(uname);
-		logger.info(user.toString());
-		
-		//지원자등록번호 불러오기
-		int applicantno;
-		applicantno = userMypageService.getApplicantno(user);
-		logger.info(applicantno+"");		
-		applicant.setApplicantno(applicantno);
-		
-		Volrecord volrecord = userMypageService.getVolrecord(applicant);
-		
-		logger.info(volrecord.toString());
-		
-		model.addAttribute("volrecord", volrecord);
-		model.addAttribute("user", user);
+
+
 	}
 
 

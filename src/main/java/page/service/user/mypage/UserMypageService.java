@@ -29,7 +29,6 @@ public interface UserMypageService {
 
 	public int getQuestionno();
 
-	public int getUserno(User user);
 
 	public void writeQST(Question question, MultipartFile file);
 
@@ -37,12 +36,10 @@ public interface UserMypageService {
 
 	public void deleteQST(Question question);
 
-	public int getApplicantno(User user);
-
-	public Volrecord getVolrecord(Applicant applicant);
-
-	public String getUname(User user);
-
 	public Paging getPaging(Paging paging);
+
+	public List<Applicant> getApplicant(Paging paging);
+
+	public Paging getAppPaging(Paging paging);
 
 }

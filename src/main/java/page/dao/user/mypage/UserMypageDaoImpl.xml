@@ -67,12 +67,6 @@
 	  <select id="selectQuestionnoByDual" resultType="int">
 	    SELECT question_seq.nextval FROM dual
 	  </select>
-	  
-	  <select id="selectUsernoByUemail" parameterType="page.dto.User"
-	   resultType="int">
-	    SELECT userno FROM usertb
-	    WHERE uemail = #{uemail }
-	   </select>
 	   
 	   <insert id="insertQuestion" parameterType="page.dto.Question">
 	   	INSERT INTO question (questionno, userno, question_title, question_content, pic)
@@ -86,31 +80,40 @@
 	    </select>
 	    
 	    <delete id="deleteQuestion" parameterType="page.dto.Question">
-	    DELETE question
-	    WHERE questionno = #{questionno }
-	    </delete>
-	    
-	    <select id="selectApplicantnoByUserno" parameterType="page.dto.User"
-	     resultType="int">
-	      SELECT A.applicantno FROM applicant A, usertb U
-	      WHERE U.userno = A.userno
-	      AND U.userno = #{userno }
-	     </select>
-	     
-	     <select id="selectVolrecord" parameterType="page.dto.Applicant"
-	      resultType="page.dto.Volrecord">
-	      SELECT * FROM volrecord V, applicant A
-	      WHERE A.applicantno = V.applicantno
-	      AND A.applicantno = #{applicantno }
-	      </select>
-	      
-	      <select id="selectUnameByUemail" parameterType="page.dto.User"
-	       resultType="String">
-	       	SELECT uname FROM usertb
-	       	WHERE uemail = #{uemail }
-	       </select>
+	      DELETE question
+	      WHERE questionno = #{questionno }
+	    </delete>    
 	       
-	       <select id="selectCntAll" resultType="int">
-	       	SELECT count(*) FROM question
-	       </select>
+	    <select id="selectCntAll" resultType="int">
+	      SELECT count(*) FROM question
+	    </select>
+	       
+	    <select id="selectApplicant" parameterType="page.util.Paging"
+	     resultType="page.dto.Applicant">
+	      SELECT * FROM (
+		      SELECT rownum rnum, Z.* FROM (
+			      SELECT V.vol_sterm, V.vol_eterm, V.stime, V.etime, V.vol_process, V.vol_title, D.departname, C.cname FROM applicant A, usertb U, volunteer V, v_department D, centertb C
+				  WHERE U.userno = A.userno
+				  AND V.volunteerno = A.volunteerno
+				  AND D.departmentno = V.department
+				  AND C.centerno = V.centerno
+				  AND U.userno = #{userno }
+				  ORDER BY A.applicantno DESC
+			  ) Z
+			  ORDER BY rnum
+		  ) applicant
+		  WHERE rnum BETWEEN
+		  #{startNo } AND #{endNo }
+	    </select>
+	    
+	    <select id="selectCntAppAll" parameterType="int"
+	    resultType="int">
+	      SELECT count(*) FROM ( SELECT V.vol_sterm, V.vol_eterm, V.stime, V.etime, V.vol_process, V.vol_title, D.departname, C.cname FROM applicant A, usertb U, volunteer V, v_department D, centertb C 
+		  WHERE U.userno = A.userno
+		  AND V.volunteerno = A.volunteerno
+		  AND D.departmentno = V.department
+		  AND C.centerno = V.centerno
+		  AND U.userno = #{value } )
+	    </select>
+	      
 </mapper>

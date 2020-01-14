@@ -26,7 +26,6 @@ public interface UserMypageDao {
 
 	public int selectQuestionnoByDual();
 
-	public int selectUsernoByUemail(User user);
 
 	public void insertQuestion(Question question);
 
@@ -34,12 +33,10 @@ public interface UserMypageDao {
 
 	public void deleteQuestion(Question question);
 
-	public int selectApplicantnoByUserno(User user);
-
-	public Volrecord selectVolrecord(Applicant applicant);
-
-	public String selectUnameByUemail(User user);
-
 	public int selectCntAll();
+
+	public List<Applicant> selectApplicant(Paging paging);
+
+	public int selectCntAppAll(int userno);
 
 }
