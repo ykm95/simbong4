@@ -147,5 +147,22 @@
 		SET apeople = apeople - 1
 		WHERE volunteerno = #{volunteerno}
 	</update>
+	
+	<select id="chkProcess" parameterType="int" resultType="int">
+		SELECT npeople - apeople FROM volunteer
+		WHERE volunteerno = #{volunteerno}
+	</select>
+	
+	<update id="volProcess" parameterType="int">
+		UPDATE volunteer
+		SET vol_process = 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<update id="volCancleProcess" parameterType="int">
+		UPDATE volunteer
+		SET vol_process = 0
+		WHERE volunteerno = #{volunteerno}
+	</update>
 
 </mapper>

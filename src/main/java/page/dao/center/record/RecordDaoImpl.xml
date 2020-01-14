@@ -9,6 +9,7 @@
 	<select id="selectCntRecord" resultType="int" parameterType="int">
 		SELECT count(*) FROM volunteer
 		WHERE centerno = #{centerno}
+		AND vol_process >= 1
 	</select>
 	
 <!-- 	parameterType="page.util.Paging; int" -->
@@ -55,6 +56,7 @@
 				WHERE v.centerno = c.centerno
 				AND v.vol_area = a.areano
 				AND v.centerno = #{centerno}
+				AND v.vol_process >= 1
 
 				<if test="search !=null and search !='' ">
 					AND V.vol_title LIKE '%' || #{search} || '%'
@@ -66,5 +68,43 @@
 		 ) BOARD
 		 WHERE rnum BETWEEN #{startNo} AND #{endNo}				
 	</select>
+	
+	<select id="selectAplByNo" parameterType="int" resultType="page.dto.Applicant">
+		SELECT A.write_date, A.aprocess, A.applicantno, U.uphone, U.uname, U.uemail
+		FROM usertb U, applicant A 
+		WHERE U.userno = A.userno 
+		AND A.volunteerno = #{volunteerno}
+		AND A.aprocess >= 1
+		ORDER BY A.applicantno
+	</select>
+	
+	<update id="updateAprocess" parameterType="int">
+		UPDATE applicant
+		SET aprocess = 2
+		WHERE applicantno = #{applicantno}
+	</update>
+	
+	<select id="aprocessChk" parameterType="int" resultType="int">
+		SELECT count(*) FROM applicant
+		WHERE aprocess = 2
+		AND volunteerno = #{volunteerno}
+	</select>
+	
+	<select id="apeopleChk" parameterType="int" resultType="int">
+		SELECT apeople FROM volunteer
+		WHERE volunteerno = #{volunteerno}
+	</select>
+	
+	<update id="updateVprocess1" parameterType="int">
+		UPDATE volunteer
+		SET vol_process = 2
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<update id="updateVprocess2" parameterType="int">
+		UPDATE volunteer
+		SET vol_process = 3
+		WHERE volunteerno = #{volunteerno}
+	</update>
 
 </mapper>
