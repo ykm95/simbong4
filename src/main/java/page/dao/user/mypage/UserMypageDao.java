@@ -41,5 +41,7 @@ public interface UserMypageDao {
 	public List<Applicant> selectApplicant(Paging paging);
 
 	public int selectCntAppAll(int userno);
+	
+	public User selectUserByuserno(int userno);
 
 }

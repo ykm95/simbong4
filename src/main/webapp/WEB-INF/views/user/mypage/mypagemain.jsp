@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,12 +44,33 @@ $(document).ready(function() {
 	});
 });
 </script>
-
+<style type="text/css">
+#data{
+	background-color: white;
+	height: 500px;
+	line-height: 50px;
+	
+}
+</style>
 </head>
-<body>
+<body><br><br><br>
 
-<h1>유저마이페이지-메인</h1>
-<hr>
+<div class="row">
+	<div class="col-4"></div>
+	<div class="col-4" id="data">
+	<h3 style="text-align: center;">${mypageView.uname }님의 정보</h3>
+	<ul>
+		<li>이메일 : ${mypageView.uemail }</li>
+		<li>휴대전화 : ${mypageView.uphone }</li>
+		<li>우편번호 : ${mypageView.uaddress1 } </li>
+		<li>상세주소 : ${mypageView.uaddress2 } ${mypageView.uaddress3 }</li>
+	</ul>
+
+	
+	</div>
+	<div class="col-4"></div>
+</div>
+
 
 <button id="btnUpdate">회원정보수정</button>
 <button id="btnDelete">회원탈퇴</button>
@@ -56,5 +79,4 @@ $(document).ready(function() {
 <button id="btnResult">봉사활동신청결과</button>
 <button id="btnPerformance">봉사활동실적조회</button>
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

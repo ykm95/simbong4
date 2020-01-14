@@ -124,7 +124,7 @@ a:hover {
 			<a href="/userLogout" >로그아웃</a>		
 		</c:otherwise>
 		</c:choose>
-			<a href="/user/mypage/mypagemain">마이페이지</a>
+			<a href="/user/mypage/mypagemain?userno=${userno }">마이페이지</a>
 		</c:if>
 		
 			

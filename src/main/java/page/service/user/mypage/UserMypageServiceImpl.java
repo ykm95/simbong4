@@ -144,5 +144,10 @@ public class UserMypageServiceImpl implements UserMypageService {
 		return pagingRes;
 	}
 
+	@Override
+	public User Userview(int userno) {
+		return userMypageDao.selectUserByuserno(userno);
+	}
 
+	
 }

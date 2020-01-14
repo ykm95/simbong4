@@ -131,4 +131,11 @@
 		  AND C.centerno = V.centerno
 		  AND U.userno = #{value } )
 	    </select>
+	    
+	    <select id="selectUserByuserno" resultType="page.dto.User" parameterType="int">
+	    	SELECT * FROM usertb 
+	    	WHERE 1=1
+	    	AND userno =#{userno }	
+	    		
+	    </select>
 </mapper>
