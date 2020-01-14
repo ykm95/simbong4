@@ -72,16 +72,18 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 	}
 
 	@Override
-	public boolean isApplicant(Applicant applicant) {
+	public boolean isApplicant(Applicant applicant, int volunteerno) {
 
 		int cnt = userVolunteerDao.selectCntApl(applicant);
 		
 		  if(cnt == 1) {
 			  userVolunteerDao.deleteApl(applicant);
+			  userVolunteerDao.subApeople(volunteerno);
 			  return true;
 		  }
 		  else {
 			  userVolunteerDao.insertApl(applicant);
+			  userVolunteerDao.plusApeople(volunteerno);
 			  return false;
 		  }
 	}
@@ -102,6 +104,11 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 	@Override
 	public int cntApl(int volunteerno) {
 		return userVolunteerDao.selectAplno(volunteerno);
+	}
+
+	@Override
+	public int cntNpeople(int volunteerno) {
+		return userVolunteerDao.selectNpeople(volunteerno);
 	}
 
 

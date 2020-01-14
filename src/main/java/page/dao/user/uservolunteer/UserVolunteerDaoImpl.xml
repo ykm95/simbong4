@@ -133,4 +133,19 @@
 		SELECT COUNT(*) FROM applicant where volunteerno = #{volunteerno}
 	</select>
 	
+	<select id="selectNpeople" parameterType="int" resultType="int">
+		SELECT npeople FROM volunteer where volunteerno = #{volunteerno}
+	</select>
+	
+	<update id="subApeople" parameterType="int">
+		UPDATE volunteer SET apeople = apeople - 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<update id="plusApeople" parameterType="int">
+		UPDATE volunteer SET apeople = apeople + 1
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	
 </mapper>
