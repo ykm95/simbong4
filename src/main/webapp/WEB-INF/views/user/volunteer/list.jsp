@@ -194,7 +194,7 @@
 </script>
 
 <div class="container">
-<div id="chart_div" style="width:900px; height: 500px;"></div>
+
 	<form action="/user/volunteer/list" method="get" id="searchForm" style="margin-top:40px;">
 		
 	
@@ -309,8 +309,8 @@
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;">
     	<c:choose>
-			<c:when test="${list.vol_process eq 1}" ><span style="color:red;">[모집중]</span></c:when>
-			<c:when test="${list.vol_process eq 2 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
+			<c:when test="${list.vol_process eq 0}" ><span style="color:red;">[모집중]</span></c:when>
+			<c:when test="${list.vol_process eq 1 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
 		</c:choose>
 		</td>
 	</tr>
