@@ -6,13 +6,17 @@
 
 <jsp:include page="/WEB-INF/views/layout/c_header.jsp"></jsp:include>
 
+<script type="text/javascript">
+
+
+</script>
 
 <style>
     .title {font-weight:bold;display:block;}
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 </style>
 
-	<div class="container" style="margin: 30px auto">
+	<div class="container" style="margin: 30px auto; background-color: #FFF">
 
 		<div style="padding: 30px 160px;">
 			<h2>${vol.vol_title }</h2>
@@ -109,6 +113,50 @@
 			</div>		
 		</div>
 		
+		<br><br><br>
+		<table class="table" style="width: 70%; margin: 0 auto;">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>전화번호</th>
+			<th>등록일</th>
+			<th>승인여부</th>
+		</tr>
+		
+		<c:forEach items="${list }" var="list" varStatus="v">
+			<tr>
+				<td>${v.count }</td>
+				<td>${list.uname }</td>
+				<td>${list.uemail }</td>
+				<td>${list.uphone }</td>
+				<td>
+					<fmt:formatDate value="${list.write_date }" pattern="MM월 dd일"/>
+				</td>
+				<c:if test="${list.aprocess eq 0 }">
+					<td>
+						<a href="/center/approval?volunteerno=${vol.volunteerno }&applicantno=${list.applicantno }">
+						<button id="approval" class="btn btn-primary">승인</button>
+						</a>
+					</td>
+				</c:if>
+				<c:if test="${list.aprocess eq 1 }">
+					<td>
+						<a href="/center/cancle?volunteerno=${vol.volunteerno }&applicantno=${list.applicantno }">
+						<button id="cancle" class="btn btn-secondary">승인됨</button>
+						</a>
+					</td>
+				</c:if>
+				<c:if test="${list.aprocess eq 2 }">
+					<td>
+						<button id="cancle" class="btn btn-success">인증 완료</button>
+					</td>
+				</c:if>
+			</tr>
+			
+			</c:forEach>
+		</table>
+		
 		
 		<br>
 		<div style="margin: 0 150px;">
@@ -157,25 +205,7 @@
 	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 	var zoomControl = new kakao.maps.ZoomControl();
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-// 	// 지도에 클릭 이벤트를 등록합니다
-// 	// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-// 	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-	    
-// 	// 클릭한 위도, 경도 정보를 가져옵니다 
-// 	var latlng = mouseEvent.latLng; 
-	    
-// 	// 마커 위치를 클릭한 위치로 옮깁니다
-// 	marker.setPosition(latlng);
-	    
-// 	var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-// 	message += '경도는 ' + latlng.getLng() + ' 입니다';
-	    
-// 	var resultDiv = document.getElementById('clickLatlng'); 
-// 	resultDiv.innerHTML = message;
-	    
-// 	});
-
+	
 </script>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

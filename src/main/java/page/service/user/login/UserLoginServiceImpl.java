@@ -52,4 +52,9 @@ public class UserLoginServiceImpl implements UserLoginService {
 		return userLoginDao.find_id(user);
 	}
 
+	@Override
+	public int getunoByemail(User user) {
+		return userLoginDao.find_uno(user);
+	}
+
 }

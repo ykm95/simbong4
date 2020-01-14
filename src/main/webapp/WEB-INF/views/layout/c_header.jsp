@@ -17,7 +17,7 @@
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
@@ -69,6 +69,33 @@ ul{
 	background-color: #ccc;
 }
 
+#menu ul{
+	width:1243px;
+	font-size:18px;
+	margin: 5px;
+	padding: 0;
+	
+}
+
+#menu li{
+	width:20%;
+	height:50px;
+	line-height:50px;
+	text-align: center;
+	float: left;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	cursor:pointer;
+	font-size: 18px;
+}
+#menu li:hover{
+	background-color: #ccc;
+
+.container{
+
+	background-color: #FFF;
+}
+
 </style>
 </head>
 <body>					
@@ -95,8 +122,22 @@ ul{
 	</div>
 </div>
 
+<div class="row" style="border-bottom: 1px solid #ccc; border-top: 1px solid #ccc">
+	<div class="col-1" ></div>
+	<div class="col-10" >
+		<ul id="menu">
+			<li id="notice" onclick="location.href='/center/notice/list'">공지사항</li>
+			<li id="best" onclick="location.href='/center/best/bestlist'">우수봉사자</li>
+			<li id="statistic">통계</li>
+			<li onclick="location.href='/center/volunteer/list'">봉사요청</li>
+			<li onclick="location.href='/center/talent/list'">재능기부</li>
+		</ul>
+	</div>
+	<div class="col-1"></div>		
+</div>
+
 		
 <!-- <div style="height: 3px; background: #ccc;"></div> -->
 
 
-<div id="wrapper">
+<div id="wrapper" style="background: linear-gradient(to top, #FFFFFF, #FFEFBA)">

@@ -89,11 +89,15 @@ public class UserLoginController {
 		//아이디, 패스워드 DB 조회
 		boolean isLogin=userloginservice.userlogin(user);//true면 인증 성공
 		
+		int uno=userloginservice.getunoByemail(user);
+		user.setUserno(uno);
+		
 		//결과에 따른 세션처리
 		if(isLogin) {
 			//세션에 정보 저장하기
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginid", user.getUemail());
+			session.setAttribute("userno", user.getUserno());
 		}else {
 			return "/user/login/login";
 		}

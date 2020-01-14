@@ -22,39 +22,15 @@
 
 <body>
 
-  <!-- navbar 타페이지와 통일시키던가  -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 <!-- --------------------------------------------------------------------------------- -->
   <!-- Header - set the background image for the header in the line below -->
  
  <br>
  <br>
  <br>
+ 
+ <h2><p><strong>${adminId }님 환영합니다.</strong></p></h2><!-- admin01, admin02나와야 정상. -->
 
  <header class="py-5 bg-image-full" style="background-image: url('/resources/img/adminMain.png');">
      <div style="height: 200px;"></div> <!-- 이거 없으면 위에 잘립니다-->
@@ -85,20 +61,4 @@
   </section>
 
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript 이거 안바꿔도 잘되는데???-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <%-- <script src="<c:url value="/resources/js/raphael.min.js" />"/>
-  <script src="<c:url value="/resources/js/raphael.min.js" />"/>
- --%>
-</body>
-
-</html>
+ <jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />

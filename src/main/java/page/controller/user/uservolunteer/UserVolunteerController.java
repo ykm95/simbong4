@@ -43,12 +43,15 @@ public class UserVolunteerController {
 		 
 		  Volunteer volunteer = userVolunteerService.getVolunteer(volunteerno);
 		  
-//		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
-		  
+		  List<Applicant> applicantlist = userVolunteerService.getAplByNo(volunteerno);
+
+		  logger.info(applicantlist.toString());
+		  //		  logger.info(session.getAttribute("loginid").toString());
 		  model.addAttribute("vol", volunteer);
-//		  model.addAttribute("prtlist", applicantlist);
-		 
-		  session.setAttribute("loginid", "shtmdwo94@naver.com");
+		  model.addAttribute("apllist", applicantlist);
+		  
+		  if(session.getAttribute("loginid") != null) {
+			  
 		  int userno = userVolunteerService.getUserno((String)session.getAttribute("loginid"));
 		  //2. 유저번호랑, 봉사번호를 DTO에 담아준다.
 		  Applicant applicant = new Applicant();
@@ -61,7 +64,9 @@ public class UserVolunteerController {
 		  boolean b = userVolunteerService.isApplicant2(applicant);
 		  
 		  model.addAttribute("isApplicant", b);
-		  
+		  } else {
+			  model.addAttribute("isApplicant", false);
+		  }
 	  }
 	  
 	  @RequestMapping(value="/user/volunteer/view_ok")
@@ -69,7 +74,6 @@ public class UserVolunteerController {
 
 		// 추천테이블이 만약에 추천번호(기본키), 유저번호(외래키), 게시판번호(외래키)
 		// 유저번호로 select를 판단할거다 -> 있으면 추천취소 뜨게 할거고, 없으면 추천 뜨게할거다.
-		session.setAttribute("loginid", "shtmdwo94@naver.com");
 		//로그인 상태만 처리
 		  if(session.getAttribute("loginid") != null) {
 			  //1. 로그인했을때 세션에 저장된 이메일을 통해 유전번호를 가져와여
@@ -82,18 +86,21 @@ public class UserVolunteerController {
 			 			  
 			  
 			  //2. DB에 추천 여부 검사
-			  boolean b = userVolunteerService.isApplicant(applicant);
+			  boolean b = userVolunteerService.isApplicant(applicant, volunteerno);
 			  
-			  
+			  int cnt = userVolunteerService.cntApl(volunteerno);
+			  int npeople = userVolunteerService.cntNpeople(volunteerno);
 			 // 모델값으로 지정
 			 mav.addObject("select", b);
+			 mav.addObject("cnt", cnt);
+			 mav.addObject("npeople", npeople);
 			 // viewName 지정하기
 			 mav.setViewName("jsonView");
+			 
 			  
-			  
-		  }
+		  } 
 		
-		return mav;
+		  return mav;
 	  }
 	  
 }

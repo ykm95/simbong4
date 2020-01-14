@@ -13,12 +13,12 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	//수정버튼 동작
+	//회원정보수정버튼 동작
 	$("#btnUpdate").click(function() {
 		$(location).attr("href", "/center/mypage/updatepwchk");
 	});
 	
-	//삭제버튼 동작
+	//회원탈퇴버튼 동작
 	$("#btnDelete").click(function() {
 		$(location).attr("href", "/center/mypage/deletepwchk");
 	});
@@ -26,6 +26,11 @@ $(document).ready(function() {
 	//문의버튼 동작
 	$("#btnQuestion").click(function() {
 		$(location).attr("href", "/center/mypage/questionlist");
+	});
+	
+	//메인버튼 동작
+	$("#btnMain").click(function() {
+		$(location).attr("href", "/center/main");
 	});
 	
 });
@@ -38,5 +43,6 @@ $(document).ready(function() {
 <button id="btnUpdate">회원정보수정</button>
 <button id="btnDelete">회원탈퇴</button>
 <button id="btnQuestion">1:1문의</button>
+<button id="btnMain">메인으로</button>
 </body>
 </html>

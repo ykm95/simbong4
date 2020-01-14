@@ -112,10 +112,7 @@ $(document).ready(function() {
 		font-size: 18px;
 	}
 </style>
-
-
-</head>
-<body>
+<br>
 <div class="login-form">
 <form action="/user/login/find_id" method="post" onsubmit="return checkAll()">
 <h2 class="text-center">아이디찾기</h2><br><br>
@@ -129,7 +126,7 @@ $(document).ready(function() {
 <div class="form-group">
 <div class="input-group"> 
 <label for ="uphone">전화번호</label>
-<input class ="form-control" type="text" name="uphone" id="uphone" />
+<input class ="form-control" type="text" name="uphone" id="uphone" placeholder="-없이 숫자만 입력해주세요."/>
 </div></div>
 <div class="check_front" id="phone_check"> 
 </div><br>

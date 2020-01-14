@@ -1,5 +1,8 @@
 package page.controller.user.mypage;
 
+import java.util.List;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,14 +12,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import page.dto.Applicant;
+import page.dto.Question;
 import page.dto.User;
+
 import page.dto.Volunteer;
+
+import page.dto.Volrecord;
 import page.service.user.mypage.UserMypageService;
+import page.util.Paging;
 
 @Controller
 public class UserMypageController {
 
+	@Autowired ServletContext context;
+	
 	@Autowired
 	UserMypageService userMypageService;
 
@@ -181,6 +194,7 @@ public class UserMypageController {
 		return "/main";
 	}
 	
+
 //	public void performanceList(Model model) {
 //
 ////		List<VolunteerRecord> list = userMypageService.getperformanceList();
@@ -198,4 +212,127 @@ public class UserMypageController {
 		model.addAttribute("pdf", pdf);
 		logger.info(pdf.toString());
 	}
+
+	@RequestMapping(value="/user/mypage/questionlist", method=RequestMethod.GET)
+	public void quesetionList(Model model,Paging paging) {
+		
+		paging = userMypageService.getPaging(paging);
+		
+		List<Question> list = userMypageService.getList(paging);
+		
+//		logger.info(list.toString());
+		model.addAttribute("paging", paging);
+		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping(value="/user/mypage/questionview", method=RequestMethod.GET)
+	public void viewQuestion(int questionno, Model model) {		
+		
+		Question question = userMypageService.viewQST(questionno);
+		
+		
+		model.addAttribute("question", question);
+	}
+	
+	@RequestMapping(value="/user/mypage/writequestion", method=RequestMethod.GET)
+	public String writeQuestion() {
+
+		logger.info("접속성공");
+		
+		return "/user/mypage/questionForm";
+	}
+	
+	@RequestMapping(value="/user/mypage/writequestion", method=RequestMethod.POST)
+	public String writeQuestionProc(Question question,
+								  User user,
+								  HttpSession session,
+								  @RequestParam(value="file") MultipartFile file) {
+
+		//문의번호 불러오는 코드
+		int questionno;
+		questionno = userMypageService.getQuestionno();		
+//		logger.info("questionno : " + questionno);
+		question.setQuestionno(questionno);		
+		
+
+		user.setUemail((String) session.getAttribute("loginid"));
+		user.setUserno((int)session.getAttribute("userno"));	
+		
+		question.setUserno(user.getUserno());
+
+//		logger.info(centerquestion.toString());
+		
+//		logger.info("파일업로드 처리");
+//		
+		logger.info("file : " + file);
+		logger.info("file : " + file.getOriginalFilename());
+		
+		logger.info(context.getRealPath("upload"));
+
+		userMypageService.writeQST(question,file);
+		
+		return "/user/mypage/mypagemain";		
+
+	}
+	
+	@RequestMapping(value="/user/mypage/deletequestion", method=RequestMethod.GET)
+	public String deleteQuestion(int questionno, Model model) {
+
+		logger.info(questionno+"");
+		Question question = userMypageService.viewQST(questionno);		
+		
+		model.addAttribute("question", question);
+		
+		return "/user/mypage/deletequestionForm";
+	}
+	
+	@RequestMapping(value="/user/mypage/deletequestion", method=RequestMethod.POST)
+	public String deleteQeustionProc(Question question) {
+		
+		userMypageService.deleteQST(question);
+		
+		return "redirect:/user/mypage/mypagemain";
+	}
+	
+	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)
+	public void applicationResult(HttpSession session,
+								  User user,
+								  Applicant applicant,
+								  Model model,
+								  Paging paging) {
+		
+		user.setUemail((String)session.getAttribute("loginid"));		
+		user.setUserno((int)session.getAttribute("userno"));
+		
+		paging.setUserno(user.getUserno());
+		
+		paging = userMypageService.getAppPaging(paging);
+		
+		paging.setUserno(user.getUserno());
+		
+		logger.info(paging.toString());
+		
+		List<Applicant> list = userMypageService.getApplicant(paging);
+		
+		logger.info(list+"");
+		
+		model.addAttribute("list", list);
+		
+		
+	}
+
+	@RequestMapping(value="/user/mypage/performancelist", method=RequestMethod.GET)
+	public void performanceList(Model model,
+								HttpSession session,
+								User user,
+								Applicant applicant) {
+		
+		user.setUemail((String)session.getAttribute("loginid"));
+		logger.info(user.toString());
+		
+
+
+	}
+
+
 }

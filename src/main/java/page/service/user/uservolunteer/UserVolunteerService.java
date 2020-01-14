@@ -14,15 +14,20 @@ public interface UserVolunteerService {
 
 	public int getCntVolunteerAll(PagingVolunteer pagingVolunteer);
 
-//	public List<Applicant> getAplByNo(int volunteerno);
+	public List<Applicant> getAplByNo(int volunteerno);
 
 	public PagingVolunteer getPaging(PagingVolunteer pagingVolunteer);
 
 	public int getUserno(String attribute);
 
-	public boolean isApplicant(Applicant applicant);
+	public boolean isApplicant(Applicant applicant, int volunteerno);
 
 	public boolean isApplicant2(Applicant applicant);
+
+	public int cntApl(int volunteerno);
+
+	public int cntNpeople(int volunteerno);
+
 
 
 

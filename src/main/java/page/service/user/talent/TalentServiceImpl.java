@@ -31,6 +31,7 @@ public class TalentServiceImpl implements TalentService{
 		
 		//Paging 객체 생성
 		PagingTalent pagingRes = new PagingTalent(totalCount, curPage);
+		
 		pagingRes.setTalent_process( paging.getTalent_process() );
 		pagingRes.setTalent_type( paging.getTalent_type() );
 		pagingRes.setDepartmentno( paging.getDepartmentno() );

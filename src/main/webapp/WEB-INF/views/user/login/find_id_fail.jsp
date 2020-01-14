@@ -7,7 +7,7 @@ div{
 text-align: center;
 } 
 </style>
-
+<br>
 <div>
 <h1>아이디찾기</h1>
 <hr>

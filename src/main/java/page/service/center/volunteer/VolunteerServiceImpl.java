@@ -26,14 +26,14 @@ public class VolunteerServiceImpl implements VolunteerService {
 		PagingVolunteer pagingList = new PagingVolunteer(totalCount, curPage);
 		
 		pagingList.setSearch(paging.getSearch());
-		pagingList.setV_area(paging.getV_area());
+		pagingList.setVol_area(paging.getVol_area());
 		pagingList.setDepartment(paging.getDepartment());
-		pagingList.setV_sterm(paging.getV_sterm());
-		pagingList.setV_eterm(paging.getV_eterm());
-		pagingList.setV_stime(paging.getV_stime());
-		pagingList.setV_etime(paging.getV_etime());
-		pagingList.setV_process(paging.getV_process());
-		pagingList.setV_title(paging.getV_title());
+		pagingList.setVol_sterm(paging.getVol_sterm());
+		pagingList.setVol_eterm(paging.getVol_eterm());
+		pagingList.setStime(paging.getStime());
+		pagingList.setEtime(paging.getEtime());
+		pagingList.setVol_process(paging.getVol_process());
+		pagingList.setVol_title(paging.getVol_title());
 		
 		return pagingList;
 	}
@@ -72,6 +72,20 @@ public class VolunteerServiceImpl implements VolunteerService {
 	public Area getArea(Area area) {
 
 		return volunteerDao.selectAreaByAreano(area);
+	}
+
+	@Override
+	public void approval(int volunteerno, int applicantno) {
+		
+		volunteerDao.numProcess(volunteerno);
+		volunteerDao.process(applicantno);
+	}
+
+	@Override
+	public void cancle(int volunteerno, int applicantno) {
+		
+		volunteerDao.numCancle(volunteerno);
+		volunteerDao.cancle(applicantno);
 	}
 
 }

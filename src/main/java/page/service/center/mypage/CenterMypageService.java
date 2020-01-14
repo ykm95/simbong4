@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import page.dto.Center;
 import page.dto.CenterQuestion;
+import page.util.Paging;
 
 public interface CenterMypageService {
 
@@ -23,12 +24,14 @@ public interface CenterMypageService {
 
 	public int getQuestionno();
 	
-	public List<CenterQuestion> getList();
+	public List<CenterQuestion> getList(Paging paging);
 	
 	public void writeQST(CenterQuestion centerquestion, MultipartFile file);
 
 	public CenterQuestion viewQST(int questionno);
 
 	public void deleteQST(CenterQuestion centerquestion);
+
+	public Paging getPaging(Paging paging);
 
 }

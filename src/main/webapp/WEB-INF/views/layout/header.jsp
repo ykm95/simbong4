@@ -137,8 +137,8 @@ a:hover {
 			<li id="notice" onclick="location.href='/user/notice/list'">공지사항</li>
 			<li id="best" onclick="location.href='/user/best/bestlist'">우수봉사자</li>
 			<li id="statistic">통계</li>
-			<li>봉사신청</li>
-			<li>재능기부</li>
+			<li onclick="location.href='/user/volunteer/list'">봉사신청</li>
+			<li onclick="location.href='/user/talent/list'">재능기부</li>
 		</ul>
 	</div>
 	<div class="col-3"></div>		
