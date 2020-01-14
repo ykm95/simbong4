@@ -8,7 +8,7 @@
 <mapper namespace="page.dao.user.uservolunteer.UserVolunteerDao">
 
 	<select id="selectVolunteerAll" parameterType="page.util.PagingVolunteer" resultType="page.util.PagingVolunteer">
-		SELECT * FROM (
+		SELECT DISTINCT * FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT V.*, A.aname, D.departname
 		FROM volunteer V, area A, v_department D, centertb C
@@ -52,7 +52,7 @@
 	</select>
 	
 	<select id="selectCntVolunteer" parameterType="page.util.PagingVolunteer" resultType="int">
-		SELECT COUNT(*) FROM (
+		SELECT DISTINCT COUNT(*) FROM (
 		SELECT rownum rnum, B.* FROM (
 		SELECT V.*, A.aname, D.departname
 		FROM volunteer V, area A, v_department D
