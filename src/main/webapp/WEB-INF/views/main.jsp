@@ -214,8 +214,9 @@ img {vertical-align: middle;}
 			</div>
 			
 			<div id="adduction" class="col-4" style="width: 500px;">
+			<a href="/user/mypage/performancelist">
 				<strong style="color:white;">실적인증서 발급</strong>
-				<img width="70px;" src="/resources/img/인증서.png">
+				<img width="70px;" src="/resources/img/인증서.png"></a>
 				</div>
 		</div>
 		<div class="col-1">
