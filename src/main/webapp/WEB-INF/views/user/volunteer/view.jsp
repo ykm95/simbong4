@@ -143,8 +143,9 @@ function getFormatDate(date){
 }
 
 </script>
-  	
-  	<div class="container" style="margin: 30px auto">  
+
+<br><br>
+  	<div class="container" >  
 
   		<div style="width: 70%; margin: 0 auto;">  
   			<h1>${vol.vol_title }</h1>  
