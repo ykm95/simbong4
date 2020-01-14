@@ -38,8 +38,8 @@ $(document).ready(function(){
 <style>
 
 </style>
-
-  	<div class="container" style="margin: 30px auto">  
+<br><br>
+  	<div class="container" >  
 
   		<div style="width: 70%; margin: 0 auto;">  
   			<h1>${talent.talent_title }</h1>  

@@ -37,23 +37,6 @@ public class ChartController {
 	@RequestMapping(value = "/user/chart/chart10",method = RequestMethod.GET)
 	public void chart10() {}
 	
-	@RequestMapping(value = "/user/chart/chart11",method = RequestMethod.GET)
-	public void chart11() {}
-	
-	@RequestMapping(value = "/user/chart/chart12",method = RequestMethod.GET)
-	public void chart12() {}
-	
-	@RequestMapping(value = "/user/chart/chart13",method = RequestMethod.GET)
-	public void chart13() {}
-	
-	@RequestMapping(value = "/user/chart/chart14",method = RequestMethod.GET)
-	public void chart14() {}
-	
-	@RequestMapping(value = "/user/chart/chart15",method = RequestMethod.GET)
-	public void chart15() {}
-	
-	@RequestMapping(value = "/user/chart/chart16",method = RequestMethod.GET)
-	public void chart16() {}
-	
+
 	
 }

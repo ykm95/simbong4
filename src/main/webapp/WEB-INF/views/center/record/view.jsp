@@ -49,6 +49,43 @@
 		</table>
 		
 		<br><br><br>
+		<table class="table" style="width: 70%; margin: 0 auto;">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>전화번호</th>
+			<th>등록일</th>
+			<th>승인여부</th>
+		</tr>
+		
+		<c:forEach items="${list }" var="list" varStatus="v">
+			<tr>
+				<td>${v.count }</td>
+				<td>${list.uname }</td>
+				<td>${list.uemail }</td>
+				<td>${list.uphone }</td>
+				<td>
+					<fmt:formatDate value="${list.write_date }" pattern="MM월 dd일"/>
+				</td>
+				<c:if test="${list.aprocess eq 1 }">
+					<td>
+						<a href="/center/record?volunteerno=${vol.volunteerno }&applicantno=${list.applicantno }">
+						<button id="cancle" class="btn btn-secondary">인증</button>
+						</a>
+					</td>
+				</c:if>
+				<c:if test="${list.aprocess eq 2 }">
+					<td>
+						<button class="btn btn-success">인증 완료</button>
+					</td>
+				</c:if>
+			</tr>
+			
+			</c:forEach>
+		</table>
+		
+		<br><br><br>
 		
 		<table class="table" style="width: 70%; margin: 0 auto;">
 			<tr>
@@ -113,56 +150,10 @@
 			</div>		
 		</div>
 		
-		<br><br><br>
-		<table class="table" style="width: 70%; margin: 0 auto;">
-		<tr>
-			<th>번호</th>
-			<th>이름</th>
-			<th>이메일</th>
-			<th>전화번호</th>
-			<th>등록일</th>
-			<th>승인여부</th>
-		</tr>
-		
-		<c:forEach items="${list }" var="list" varStatus="v">
-			<tr>
-				<td>${v.count }</td>
-				<td>${list.uname }</td>
-				<td>${list.uemail }</td>
-				<td>${list.uphone }</td>
-				<td>
-					<fmt:formatDate value="${list.write_date }" pattern="MM월 dd일"/>
-				</td>
-				<c:if test="${list.aprocess eq 0 }">
-					<td>
-						<a href="/center/approval?volunteerno=${vol.volunteerno }&applicantno=${list.applicantno }">
-						<button id="approval" class="btn btn-primary">승인</button>
-						</a>
-					</td>
-				</c:if>
-				<c:if test="${list.aprocess eq 1 }">
-					<td>
-						<a href="/center/cancle?volunteerno=${vol.volunteerno }&applicantno=${list.applicantno }">
-						<button id="cancle" class="btn btn-secondary">승인됨</button>
-						</a>
-					</td>
-				</c:if>
-				<c:if test="${list.aprocess eq 2 }">
-					<td>
-						<button class="btn btn-success">인증 완료</button>
-					</td>
-				</c:if>
-			</tr>
-			
-			</c:forEach>
-		</table>
-		
 		
 		<br>
 		<div style="margin: 0 150px;">
 			<a href="/center/volunteer/list"><button class="btn btn-secondary" >목록</button></a> 
-			<a href="/center/volunteer/update?volunteerno=${vol.volunteerno }"><button class="btn btn-secondary">수정</button></a> 
-			<a href="/center/volunteer/delete?volunteerno=${vol.volunteerno }"><button class="btn btn-danger">삭제</button></a>
 		</div>
 		
 	</div>
