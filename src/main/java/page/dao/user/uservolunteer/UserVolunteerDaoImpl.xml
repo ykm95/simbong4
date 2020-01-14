@@ -15,7 +15,7 @@
 		WHERE V.vol_area = A.areano
 		AND V.department = D.departmentno
 
-		<if test="vol_process !=null and vol_process !='' and vol_process != 0 ">
+		<if test="vol_process !=null and vol_process !='' and vol_process != 5 ">
 			AND V.vol_process = #{vol_process}
 		</if>
 		<if test="department!=null and department!='' ">
@@ -59,7 +59,7 @@
 		WHERE V.vol_area = A.areano
 		AND V.department = D.departmentno
 
-		<if test="vol_process !=null and vol_process !='' and vol_process != 0 ">
+		<if test="vol_process !=null and vol_process !='' and vol_process != 5 ">
 			AND V.vol_process = #{vol_process}
 		</if>
 		<if test="department!=null and department!='' ">
