@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import page.dto.User;
+import page.dto.Volunteer;
 import page.service.user.mypage.UserMypageService;
 
 @Controller
@@ -189,4 +190,12 @@ public class UserMypageController {
 //
 ////		List<VolunteerRecord> list = userMypageService.getperformanceList(term);
 //	}
+	@RequestMapping(value = "/user/mypage/pdf", method = RequestMethod.GET)
+	public void pdfView(Model model, int applicantno) {
+		Volunteer pdf = new Volunteer();
+		pdf= userMypageService.getPdfData(applicantno);
+		
+		model.addAttribute("pdf", pdf);
+		logger.info(pdf.toString());
+	}
 }

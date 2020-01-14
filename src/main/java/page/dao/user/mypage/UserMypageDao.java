@@ -1,6 +1,7 @@
 package page.dao.user.mypage;
 
 import page.dto.User;
+import page.dto.Volunteer;
 
 public interface UserMypageDao {
 
@@ -15,5 +16,7 @@ public interface UserMypageDao {
 	public int selectUloginByUemail(User user);
 
 	public void googleUpdate(User user);
+	
+	public Volunteer pdfView(int applicantno);
 
 }

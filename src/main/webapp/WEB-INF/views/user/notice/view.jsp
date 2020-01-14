@@ -15,13 +15,12 @@
 $(document).on('click','#pdfopen', function(){
 
 
-      var popupX = (window.screen.width / 2) - (600 / 2);
+      var popupX = (window.screen.width / 2) - (500 / 2);
       // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
       var popupY= (window.screen.height /2) - (500 / 2);
       // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-      window.open('http://localhost:8088/user/notice/pdf?noticeno=${view.noticeNo }', 'window', 'status=no, height=500, width=600, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+      window.open('http://localhost:8088/user/mypage/pdf?applicantno=${view.noticeNo }', 'window', 'status=no, height=500, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
    });
 	
 </script>
@@ -77,8 +76,6 @@ $(document).on('click','#pdfopen', function(){
 				<button class="btn btn-secondary"
 					onclick="location.href='/user/notice/list'">목록</button>
 			</div>
-			<a
-				href="javascript:void(window.open('/user/notice/pdf?noticeno=${view.noticeNo }','봉사인증서','width:300,height=1000'))">pdf2</a>
 			<button id="pdfopen" class="btn">pdf</button>
 			<div>
 				<a href="/user/notice/view?noticeno=${view.noticeNo -1 }">이전글</a><br>

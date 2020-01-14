@@ -2,6 +2,7 @@ package page.service.user.mypage;
 
 import page.dto.Center;
 import page.dto.User;
+import page.dto.Volunteer;
 
 public interface UserMypageService {
 
@@ -16,5 +17,7 @@ public interface UserMypageService {
 	public int getUlogin(User user);
 
 	public void googleInformationUpdate(User user);
+	
+	public Volunteer getPdfData(int applicantno);
 
 }

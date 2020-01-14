@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import page.dao.user.mypage.UserMypageDao;
 import page.dto.User;
+import page.dto.Volunteer;
 
 @Service
 public class UserMypageServiceImpl implements UserMypageService {
@@ -43,6 +44,11 @@ public class UserMypageServiceImpl implements UserMypageService {
 	@Override
 	public void googleInformationUpdate(User user) {
 		userMypageDao.googleUpdate(user);
+	}
+
+	@Override
+	public Volunteer getPdfData(int applicantno) {
+		return userMypageDao.pdfView(applicantno);
 	}
 
 

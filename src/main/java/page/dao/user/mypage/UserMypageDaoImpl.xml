@@ -49,4 +49,21 @@
 	 		uaddress3 = #{uaddress3 }
 	 	WHERE uemail = #{uemail } 
 	  </update>
+	  
+	  <select id="pdfView" resultType="page.dto.Volunteer" parameterType="int">
+	  	SELECT
+			    U.uname,
+			    U.uaddress2,
+			    A.applicantno,
+			    V.vol_sterm,
+			    V.vol_eterm,
+			    V.stime,
+			    V.etime,
+			    V.vol_place
+		FROM volunteer V
+		left join applicant A on (V.volunteerno=A.volunteerno)
+		left join usertb U on (A.userno=U.userno)
+		WHERE applicantno=${applicantno}
+	  
+	  </select>
 </mapper>
