@@ -76,6 +76,7 @@
 <!-- 아이디 중복 체크 -->
 <script>
 $(document).ready(function() {
+	
 	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
 	$("#uemail").blur(function() {
 		var uemail = $('#uemail').val();
@@ -123,6 +124,12 @@ $(document).ready(function() {
 					console.log("실패");
 			}
 		});
+	});
+	
+	
+	//회원가입 성공 alert
+	$("#submitForm").submit(function() {
+		alert("회원가입이 완료되었습니다.");
 	});
 	
 });
@@ -316,7 +323,8 @@ label {
 			<div class="col-xs-8" style="margin: 0 auto; float: none;">
 				<h2>심봉사 회원가입</h2>
 
-				<form action="/user/login/join" method="post"
+
+				<form action="/user/login/join" method="post" id="submitForm"
 					class="form-horizontal" onsubmit="return checkAll()">
 
 					<div class="form-group row">
