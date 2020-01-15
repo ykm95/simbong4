@@ -142,7 +142,7 @@
 	
 	<update id="updateProcess"
 		parameterType="int">
-		UPDATE talent SET talent_process = 1
+		UPDATE talent SET talent_process = 2
 		WHERE talentno = #{talentno}
 	</update>
 </mapper>

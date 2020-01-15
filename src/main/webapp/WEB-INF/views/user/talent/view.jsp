@@ -43,6 +43,7 @@ $(document).ready(function(){
 			$(location).attr("href", "/user/talent/done?talentno=${talent.talentno }");
 		}
 });
+});
 </script>
 
 
