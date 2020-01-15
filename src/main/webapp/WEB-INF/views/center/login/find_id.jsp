@@ -112,8 +112,7 @@ $(document).ready(function() {
 	}
 </style>
 
-</head>
-<body>
+<br>
 <div class="login-form">
 <form action="/center/login/find_id" method="post" onsubmit="return checkAll()">
 <h2 class="text-center">아이디찾기</h2><br><br>
