@@ -194,17 +194,7 @@ public class UserMypageController {
 		
 		return "/main";
 	}
-	
 
-//	public void performanceList(Model model) {
-//
-////		List<VolunteerRecord> list = userMypageService.getperformanceList();
-//	}
-//
-//	public void perfomanceList(Model model, String term) {
-//
-////		List<VolunteerRecord> list = userMypageService.getperformanceList(term);
-//	}
 	@RequestMapping(value = "/user/mypage/pdf", method = RequestMethod.GET)
 	public void pdfView(Model model, int applicantno) {
 		Volunteer pdf = new Volunteer();
