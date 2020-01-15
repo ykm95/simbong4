@@ -7,13 +7,13 @@
 	<!-- 처음으로 가기 -->
 	<c:if test="${paging.curPage ne 1 }">
 	<li class="page-item"><a class="page-link" href="/center/best/bestlist">&larr;처음</a></li>
-	</c:if>
+s	</c:if>
 	<!-- 이전 페이징 리스트로 가기 -->
 	<c:if test="${paging.startPage gt paging.pageCount }">
 	<li>
 	<li class="page-item">
 
-<%-- 	<a class="page-link" href="/center/best/bestlist?curPage=${paging.startPage - Paging.pageCount }">&laquo; --%>
+<%-- 	<a class="page-link" href="/user/best/bestlist?curPage=${paging.startPage - Paging.pageCount }">&laquo; --%>
 <!-- 	</a> -->
 	</li>
 	</c:if>
