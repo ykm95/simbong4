@@ -402,8 +402,8 @@ $(document).ready(function() {
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;"> 		
     	<c:choose>
-			<c:when test="${list.talent_process eq 0}" ><button class="btn btn-sm btn-primary" style="margin-bottom: 10px">모집중</button></c:when>
-			<c:when test="${list.talent_process eq 1}" ><button class="btn btn-sm btn-secondary" style="margin-bottom: 10px">모집완료</button></c:when>
+			<c:when test="${list.talent_process eq 1}" ><button class="btn btn-sm btn-primary" style="margin-bottom: 10px">모집중</button></c:when>
+			<c:when test="${list.talent_process eq 2}" ><button class="btn btn-sm btn-secondary" style="margin-bottom: 10px">모집완료</button></c:when>
 		</c:choose></td>
 	</tr>
 	
