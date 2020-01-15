@@ -131,7 +131,7 @@ $(document).ready(function(){
 		<button id="btnDelete" class="btn btn-danger">삭제</button>
 		</c:if>
 	</div>
-
+<br><br>
   	</div>  
 
 	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
