@@ -81,7 +81,7 @@ public class UserLoginController {
 	
 
 	@RequestMapping(value = "/user/login/login", method = RequestMethod.POST)
-	public String loginProc(User user, HttpSession session, Model model) {
+	public String loginProc(User user, HttpSession session, Model model ) {
 		
 		logger.info("user" +user);
 		
@@ -98,7 +98,9 @@ public class UserLoginController {
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginid", user.getUemail());
 			session.setAttribute("userno", user.getUserno());
+			
 		}else {
+			model.addAttribute("fail",isLogin);
 			return "/user/login/login";
 		}
 		return "redirect:/main";
