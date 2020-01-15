@@ -108,7 +108,7 @@
 	</script>
 	
 	
-<div class="container">
+<div class="container" style="background-color: #FFF">
 <br>
 <button id="btn1" class="btn btn-lg btn-warning">활동현황</button>
 <button id="btn2" class="btn btn-lg">관리센터현황</button>
