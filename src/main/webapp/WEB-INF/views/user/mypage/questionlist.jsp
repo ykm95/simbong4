@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -21,27 +15,45 @@ $(document).ready(function() {
 });
 </script>
 
-</head>
-<body>
 
-<h1>유저 1:1문의</h1>
-<hr>
-
-<table>
-<tr>
-	<th>문의제목</th>
-</tr>
-<tr>
-<c:forEach items="${list }" var="list">
-<tr>
-	<td><a href="/user/mypage/questionview?questionno=${list.questionno }">${list.question_title }</a></td>
-</tr>
-</c:forEach>
-</tr>
-</table>
+<div class="container" style="background-color: #fff;">
 <br><br>
-<button id="questionWrite">글쓰기</button>
+
+<h1>1:1문의</h1><br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">문의번호</th>
+      <th scope="col">문의제목</th>
+	  <th scope="col">답변여부</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     <c:forEach items="${list }" var="list">
+    <tr>
+      <td>${list.questionno }</td>
+      <td><a href="/user/mypage/questionview?questionno=${list.questionno }">${list.question_title }</a></td>
+      <td>
+      <c:choose>
+     	<c:when test="${list.answer eq 1 }"><span style="color:blue;">[답변대기]</span></c:when>
+     	<c:when test="${list.answer eq 2 }"><span style="color:red;">[답변완료]</span></c:when>
+      </c:choose>
+      </td>
+    </tr>
+    </c:forEach>
+    </tr>
+
+  </tbody>
+</table>
+
+<br><br>
+
+<div style="text-align: right;">
+   <button type="button" class="btn btn-secondary" id="questionWrite">글쓰기</button>
+</div>
 
 <jsp:include page="/WEB-INF/views/layout/q_paging.jsp" />
-</body>
-</html>
+</div>
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp" />

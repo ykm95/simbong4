@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <script type="text/javascript">
 $(document).on('click','#pdfopen', function(){
 
@@ -23,8 +19,9 @@ $(document).on('click','#pdfopen', function(){
  });
 	
 </script>
-</head>
-<body>
+
+<div class="container" style="background-color : #fff;">
+<br>
 <h1>봉사활동실적조회</h1>
 <hr>
 
@@ -40,9 +37,9 @@ $(document).on('click','#pdfopen', function(){
 		name="vol_eterm" title="종료일" id="vol_eterm"
 		type="date" value=""  class="form-control">
 		</div></div><br>
-		
-<button>검색</button>
-
+<div style="text-align : end;">		
+<button class="btn btn-secondary">검색</button><br><br>
+</div>
 </form>
 
 
@@ -51,24 +48,27 @@ $(document).on('click','#pdfopen', function(){
 	
 	<tr>
     	<td style="vertical-align: middle;"><span style="color:#0371c1">제목:</span>${list.vol_title }</td> 
-    	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;"><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>	
-    	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;"> 		
+    	<td style="border-bottom:0; vertical-align: middle; "><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>	
+    	<td colspan="2" style="border-bottom:0; vertical-align: middle; ">	
     	<c:choose>
 			<c:when test="${list.aprocess eq 0 }" ><span style="color:red;">[승인대기]</span></c:when>
 			<c:when test="${list.aprocess eq 1}" ><span style="color:red;">[승인완료]</span></c:when>
 		</c:choose></td>
+		<td></td>
 	</tr>
 	
 	<tr>    
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">봉사의뢰기관:</span> ${list.cname }</td>
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동기간:</span> ${list.vol_sterm } ~ ${list.vol_eterm }</td>
-    	<td colspan="2" style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>
-		<td><button id="pdfopen" class="btn btn-secondary">PDF 다운로드</button></td>
+    	<td colspan="2" style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동시간:</span> ${list.stime } ~ ${list.etime }</td>
+		<td style="border-bottom:1px solid #ccc;border-top:0;"><button id="pdfopen" class="btn btn-secondary">PDF 다운로드</button></td>
 	</tr>
 	</c:forEach>
 	</table>
-	
-	<jsp:include page="/WEB-INF/views/layout/performance_paging.jsp" />
+		
+		
 
-</body>
-</html>
+	<jsp:include page="/WEB-INF/views/layout/performance_paging.jsp" />
+</div>
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp" />

@@ -102,7 +102,8 @@ public class UserMypageController {
 
 		userMypageService.userInformationUpdate(user);
 
-		return "redirect:/user/mypage/mypagemain";
+		user.setUserno((int)session.getAttribute("userno"));
+		return "redirect:/user/mypage/mypagemain?userno="+user.getUserno();
 	}
 	
 	@RequestMapping(value="/user/mypage/googleupdate", method = RequestMethod.GET)
@@ -262,7 +263,8 @@ public class UserMypageController {
 
 		userMypageService.writeQST(question,file);
 		
-		return "/user/mypage/mypagemain";		
+		
+		return "redirect:/user/mypage/mypagemain?userno="+user.getUserno();		
 
 	}
 	
@@ -278,11 +280,12 @@ public class UserMypageController {
 	}
 	
 	@RequestMapping(value="/user/mypage/deletequestion", method=RequestMethod.POST)
-	public String deleteQeustionProc(Question question) {
+	public String deleteQeustionProc(Question question,HttpSession session, User user) {
 		
 		userMypageService.deleteQST(question);
 		
-		return "redirect:/user/mypage/mypagemain";
+		user.setUserno((int)session.getAttribute("userno"));
+		return "redirect:/user/mypage/mypagemain?userno="+user.getUserno();
 	}
 	
 	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)

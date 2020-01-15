@@ -1,22 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	
 <script type="text/javascript">
 $(document).ready(function() {
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/user/mypage/mypagemain");
+		history.back();
 	});
 });
 </script>
@@ -325,49 +315,95 @@ $(document).ready(function() {
 });
 </script>
 
-</head>
-<body>
-<h1>유저-회원정보수정</h1>
-<hr>
+<style type="text/css">
+td{
+   height: 30px;
+    font-size: 15px;
+    padding: 5px;
+}
+
+</style>
+
+
+<div class="container" style="background-color: #fff;">
+<br>
+
+<div  style="text-align: -webkit-center;">
+  <div class="container">
+
+
 <form action="/user/mypage/update" method="post" onsubmit="return checkAll()">
+<br>
+<table >
+   <tr>
+      <td>
+         <label for ="uname" style="font-weight: bolder;">유저이름</label>
+      </td>
+      <td>
+         ${user.uname }
+      </td>
+   </tr>
+   
+   <tr>
+   		<td>
+   			<label for = uemail style="font-weight: bolder;">유저이메일</label>
+   		</td>
+   		<td>
+   			${user.uemail }
+   		</td>
+   </tr>
+   
+   <tr>
+      <td><label for ="upassword" style="font-weight: bolder;">비밀번호</label></td>
+      <td><div class="form-group">
+      <input type="password" name="upassword" id="upassword" class="form-control"/></div></td>
+   </tr>
+   
+   <tr>
+      <td colspan="2"><p class="check_front" id="pw_form"></p></td>
+   </tr>
 
-<label for ="uname">이름</label>
-${user.uname }
-<br><br>
-<div class="form-group">
-<label for ="uemail">이메일</label>
-${user.uemail }
-<div class="check_front" id="id_check"> 
-</div>
-</div>
-<br>
-<label for ="upassword">비밀번호</label>
-<input type="password" name="upassword" id="upassword" />
-<br>
-<div class="check_front" id="pw_form"> 
-</div><br>
-<label for ="upasswordchk">비밀번호 확인</label>
-<input type="password" name="upasswordchk" id="upasswordchk" />
-<div class="check_front" id="pw_check"> 
-</div>
-<br>
-<label for ="uphone">전화번호</label>
-<input type="tel" name="uphone" id="uphone" value="${user.uphone }"/>
-<br>
-<div class="check_front" id="phone_check"> 
-</div><br>
+   <tr>
+      <td><label for ="upasswordchk" style="font-weight: bolder;">비밀번호 확인</label></td>
+      <td><div class="form-group">
+      <input type="password" name="upasswordchk" id="upasswordchk" class="form-control"/></div></td>
+   </tr>
+   <tr>
+      <td colspan="2"><p class="check_front" id="pw_check"></p></td>
+   </tr>
 
-<label>주소</label>
-<br>
-<input type="text" id="uaddress1" name="uaddress1" value="${user.uaddress1 }"/>
+   <tr>
+      <td><label for ="uphone" style="font-weight: bolder;">전화번호</label></td>
+      <td><div class="form-group">
+      <input type="tel" name="uphone" id="uphone" value="${user.uphone }" class="form-control"/></div></td>
+   </tr>
+   <tr>
+      <td colspan="2"><p class="check_front" id="phone_check"> </p></td>
+   </tr>
 
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"/>
+   <tr>
+      <td colspan="2"><label style="font-weight: bolder;">주소</label></td>
+   </tr>
+   <tr>
+      <td><div class="form-group"><input type="text" id="uaddress1" name="uaddress1" value="${user.uaddress1 }" class="form-control"/></div></td>
+      
+      <td><input style="margin-bottom: 13px;" type="button" class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"/></td>
+   </tr>
+<tr>
+<td><div class="form-group"><input type="text" id="uaddress2" name="uaddress2" value="${user.uaddress2 }" class="form-control"/></div></td>
+<td><div class="form-group"><input type="text" id="uaddress3" name="uaddress3" value="${user.uaddress3 }" class="form-control"/></div></td>
+</tr>
+</table>
+
 <br>
-<input type="text" id="uaddress2" name="uaddress2" value="${user.uaddress2 }" />
-<input type="text" id="uaddress3" name="uaddress3" value="${user.uaddress3 }" />
-<br><br>
-<button id="reg_submit">수정</button>
-<button type="button" id="btnCancel">취소</button>
+<div>
+<button  class="btn btn-primary" id="reg_submit">수정</button>
+<button  type="button" class="btn btn-danger" id="btnCancel">취소</button>
+</div><br><br>
 </form>
-</body>
-</html>
+  </div>
+</div>
+</div>
+
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp" />

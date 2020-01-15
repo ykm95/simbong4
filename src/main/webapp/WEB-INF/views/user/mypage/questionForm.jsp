@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />    
 
-<!-- 부트스트랩 3.3.2 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- CK Editor -->
 <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
@@ -27,19 +18,16 @@ $(document).ready(function() {
 	
 	//취소버튼 동작
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/user/mypage/mypagemain");
+		history.back();
 	});
 });
 </script>
 
-</head>
-<body>
 
-<div class="container">
 
-<h3>유저회원문의</h3>
-<hr>
-
+<div class="container" style="background-color : #fff;">
+<br>
+<h1>1:1문의</h1><br>
 <div><!-- 1 -->
 
 <form action="/user/mypage/writequestion" method="post" enctype="multipart/form-data">
@@ -69,8 +57,7 @@ $(document).ready(function() {
 	<button type="button" id="btnWrite" class="btn btn-info">작성</button>
 	<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
 </div>
-
+<br><br>
 </div> <!-- container -->
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp" />

@@ -14,17 +14,16 @@ $(document).ready(function() {
 });
 </script>
 
-<br>
-<div class="container">
-<h1>1:1문의</h1>
+<div class="container" style="background-color: #fff;">
+<br><br>
 
-
+<h1>1:1문의</h1><br>
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">문의번호</th>
       <th scope="col">문의제목</th>
-
+	  <th scope="col">답변여부</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +32,12 @@ $(document).ready(function() {
     <tr>
       <td>${list.questionno }</td>
       <td><a href="/center/mypage/questionview?questionno=${list.questionno }">${list.cquestion_title }</a></td>
+      <td>
+      <c:choose>
+     	<c:when test="${list.answer eq 1 }"><span style="color:blue;">[답변대기]</span></c:when>
+     	<c:when test="${list.answer eq 2 }"><span style="color:red;">[답변완료]</span></c:when>
+      </c:choose>
+      </td>
     </tr>
     </c:forEach>
     </tr>
