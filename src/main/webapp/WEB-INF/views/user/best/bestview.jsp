@@ -59,9 +59,14 @@
 				
 				</div>
 				<div class="row">
-					<div class="content col-12" style="min-height: 300px; border-bottom: 1px solid #CCC;">
+					<div class="row content col-12" style="min-height: 300px; border-bottom: 1px solid #CCC; padding: 30px;">
 						
-						<img width="200px" height="200px" src="${view.pic }"> ${view.bestContent }  
+						<div class="col-6">
+						<img width="200px" height="200px" src="${view.pic }"> 
+						</div>
+						<div class="col-6">
+						${view.bestContent }  
+						</div>
 					</div>
 				</div>
 			</div>

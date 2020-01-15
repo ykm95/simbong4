@@ -25,7 +25,6 @@
  <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 <br><br><br>
   <!-- Page Content -->
-  --
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-3">

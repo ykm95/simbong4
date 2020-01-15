@@ -46,7 +46,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a class="nav-link"
-				href="/admin/adminBoard/adminNotice">공지사항 </a> <!--얘만 파란색--></li>
+				href="/admin/adminBoard/adminNotice">공지사항 </a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/admin/adminBoard/bestVolunteer">우수봉사자</a></li>
 			<li class="nav-item"><a class="nav-link"

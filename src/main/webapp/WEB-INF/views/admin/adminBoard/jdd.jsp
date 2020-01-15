@@ -150,3 +150,5 @@ background: #80cf8e;
 <li><a href="/admin/adminBoard/bestVolunteer"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></li><!-- 우수봉사자 -->
 <li><a href="/admin/adminQna/qnaMain"><i class="fa fa-quora" aria-hidden="true"></i></a></li><!-- QnA -->
 </ul>
+
+<jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />

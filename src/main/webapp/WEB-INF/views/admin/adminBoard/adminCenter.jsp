@@ -9,5 +9,4 @@
 <!-- 게시판>센터신청페이지 -->
 
 
-</body>
-</html>
+ <jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />

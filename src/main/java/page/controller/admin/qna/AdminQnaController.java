@@ -14,6 +14,7 @@ import page.service.admin.qna.QnaService;
 public class AdminQnaController {
 	
 	
+	
 		@Autowired
 		QnaService qnaService;
 	
