@@ -125,5 +125,10 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		return paging;
 	}
 
+	@Override
+	public Center centerView(int centerno) {
+		return centerMypageDao.selectCenterByCenterno(centerno);
+	}
+
 
 }

@@ -8,8 +8,15 @@ public class Talent {
 	private int talentno;
 	private int userno;
 	private int talent_process;
-	private int phone;
-	private int gender;
+	private String uphone;
+	public String getUphone() {
+		return uphone;
+	}
+
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
+	}
+
 	private int talent_type;	
 	private int departmentno;
 	private String departname;
@@ -36,8 +43,8 @@ public class Talent {
 
 	@Override
 	public String toString() {
-		return "Talent [talentno=" + talentno + ", userno=" + userno + ", talent_process=" + talent_process + ", phone="
-				+ phone + ", gender=" + gender + ", talent_type=" + talent_type + ", departmentno=" + departmentno
+		return "Talent [talentno=" + talentno + ", userno=" + userno + ", talent_process=" + talent_process
+				+ ", uphone=" + uphone + ", talent_type=" + talent_type + ", departmentno=" + departmentno
 				+ ", departname=" + departname + ", uname=" + uname + ", uemail=" + uemail + ", aname=" + aname
 				+ ", areano=" + areano + ", talent_cycle=" + talent_cycle + ", write_date=" + write_date
 				+ ", talent_title=" + talent_title + ", talent_content=" + talent_content + ", talent_start="
@@ -67,22 +74,6 @@ public class Talent {
 
 	public void setTalent_process(int talent_process) {
 		this.talent_process = talent_process;
-	}
-
-	public int getPhone() {
-		return phone;
-	}
-
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-
-	public int getGender() {
-		return gender;
-	}
-
-	public void setGender(int gender) {
-		this.gender = gender;
 	}
 
 	public int getTalent_type() {

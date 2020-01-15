@@ -161,6 +161,14 @@
 				  AND C.centerno = V.centerno
 				  AND U.userno = #{userno }
 				  AND A.aprocess = 1
+				  <if test="vol_sterm !=null and vol_sterm !='' ">
+				  <![CDATA[
+				  AND (V.vol_sterm <= #{vol_sterm} AND V.vol_sterm <= #{vol_eterm} and
+				  V.vol_eterm>= #{vol_sterm} and V.vol_eterm>= #{vol_eterm}
+				  OR V.vol_sterm BETWEEN #{vol_sterm} AND #{vol_eterm}
+				  OR V.vol_eterm BETWEEN #{vol_sterm} AND #{vol_eterm})
+				  ]]>
+			   	  </if>
 				  ORDER BY A.applicantno DESC
 			  ) Z
 			  ORDER BY rnum

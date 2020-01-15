@@ -226,7 +226,7 @@ img {vertical-align: middle;}
 	<div class="row" style="margin:10px;">
 		<div class="col-1"></div>
 		<div class="col-10 row">
-			<div class="col-4">
+			<div class="col-6">
 				<div style="height: 3px; background: black;"></div>
 					<h3 style="font-weight: bolder;">공지사항
 							<button id="nbtn" style="float: right;" onclick="location.href='/user/notice/list'">+</button>
@@ -240,7 +240,7 @@ img {vertical-align: middle;}
 						</c:forEach>
 						
 			</div>
-			<div class="col-4">
+			<div class="col-6">
 				<div style="height: 3px; background: black;"></div>
 					<h3 style="font-weight: bolder;">이달의<br>우수봉사자</h3>
 						<div id="bestpic" style="float:left;">
@@ -255,10 +255,7 @@ img {vertical-align: middle;}
 								인터뷰 보러가기</button></a>
 						</div>
 			</div>
-			<div class="col-4">
-				<div style="height: 3px; background: black;"></div>
-				
-			</div>
+		
 		</div>
 		<div class="col-1"></div>
 	</div>

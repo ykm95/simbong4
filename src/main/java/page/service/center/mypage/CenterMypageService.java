@@ -33,5 +33,11 @@ public interface CenterMypageService {
 	public void deleteQST(CenterQuestion centerquestion);
 
 	public Paging getPaging(Paging paging);
+	/**
+	 * 센터마이페이지 메인
+	 * @param centerno
+	 * @return
+	 */
+	public Center centerView(int centerno);
 
 }
