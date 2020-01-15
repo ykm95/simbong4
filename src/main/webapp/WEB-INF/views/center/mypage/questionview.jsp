@@ -13,53 +13,40 @@ $(document).ready(function() {
 </script>
 
 
-<style type="text/css">
-
-#content {
-   width: 95%;
-}
-
-#h3title {
-   text-align: center;
-   padding: 20px;
-}
-
-
-#btnList{
-   background-color:#343a40;
-}
-
-</style>
-
-
-
-
-<div class="container" style=" padding-left: 200px; padding-right: 200px;">
+<div class="container" style=" padding-left: 200px; padding-right: 200px; background-color: #fff; ">
 
 <div class="container list-container">
 
 <br>
-<div class="h2"><h2> 1:1문의 상세보기 </h2></div>
-<hr>
+<div class="h2"></div>
+
    <div class="container">
+   
+	<h1>${centerquestion.cquestion_title }</h1><br>
       <table class="table table-bordered">
-         <tr>
-            <td style="background-color: #343a40; color: #fff;" colspan="4">${centerquestion.cquestion_title }</td>
-         </tr> 
-      
-         <tr><td colspan="4">${centerquestion.cquestion_content }</td></tr>
-         <tr><td><img src="${centerquestion.pic }"></td></tr>
          
+      
+         <tr><td colspan="4"><span style="font-weight:bold;">문의내용</span> ${centerquestion.cquestion_content }</td></tr>
+         <tr><td><span style="font-weight:bold;">첨부파일</span><br><img src="${centerquestion.pic }"></td></tr>
+         
+      </table>
+      <br>
+      <table class="table">
+      <tr>
+      	<td style="border-bottom:0px; font-weight:bold;">답변내용</td>
+      	
+      </tr>
+      <tr>
+      	<td style="border-top:0px;"> -> ${centerquestion.answercontent }</td>
+      </tr>
       </table>
       <div style="text-align: right;">
          <button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
       </div>
+      <br><br>
    </div>
 </div>
 
 </div>
-
-
-
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />

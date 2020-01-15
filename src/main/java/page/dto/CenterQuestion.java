@@ -9,12 +9,21 @@ public class CenterQuestion { // 센터회원문의
 	private String pic; // 문의사진
 	private String answer; // 답변내용
 	private String uname;
+	private String answercontent;
+
+	public String getAnswercontent() {
+		return answercontent;
+	}
+
+	public void setAnswercontent(String answercontent) {
+		this.answercontent = answercontent;
+	}
 
 	@Override
 	public String toString() {
 		return "CenterQuestion [questionno=" + questionno + ", centerno=" + centerno + ", cquestion_title="
 				+ cquestion_title + ", cquestion_content=" + cquestion_content + ", pic=" + pic + ", answer=" + answer
-				+ ", uname=" + uname + "]";
+				+ ", uname=" + uname + ", answercontent=" + answercontent + "]";
 	}
 
 	public String getUname() {

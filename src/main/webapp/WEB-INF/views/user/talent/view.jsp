@@ -28,14 +28,21 @@ $(document).ready(function(){
 
 	//삭제버튼 동작
 	$("#btnDelete").click(function() {
-		$(location).attr("href", "/user/talent/delete?talentno=${talent.talentno }");
+		var result = confirm("삭제하시겠습니까?");
+		
+		if(result==true){
+			$(location).attr("href", "/user/talent/delete?talentno=${talent.talentno }");
+		}
+
 	});
 
 	$("#btnDone").click(function() {
-		alert('모집완료되었습니다.');
-		$(location).attr("href", "/user/talent/done?talentno=${talent.talentno }");
-	});
-
+		var result = confirm("모집완료처리를 하시겠습니까?");
+		
+		if(result==true){
+			$(location).attr("href", "/user/talent/done?talentno=${talent.talentno }");
+		}
+});
 });
 </script>
 
@@ -91,8 +98,8 @@ $(document).ready(function(){
   				<td colspan="1" style="background: #CCC">모집현황</td>  
   				<td colspan="3" style="text-align: center;">
   				<c:choose>
-					<c:when test="${talent.talent_process eq 1}">모집중</c:when>
-					<c:when test="${talent.talent_process eq 2 }">모집완료</c:when>
+					<c:when test="${talent.talent_process eq 0}">모집중</c:when>
+					<c:when test="${talent.talent_process eq 1 }">모집완료</c:when>
 				</c:choose></td>  
   			</tr>  
 			
@@ -131,10 +138,10 @@ $(document).ready(function(){
 		<button id="btnDelete" class="btn btn-danger">삭제</button>
 		</c:if>
 	</div>
-
+<br><br>
   	</div>  
 
-
+	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 
 
 

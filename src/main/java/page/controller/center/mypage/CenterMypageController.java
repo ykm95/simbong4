@@ -87,7 +87,7 @@ public class CenterMypageController {
 		centerMypageService.centerInformationUpdate(center);
 		
 
-		return "redirect:/center/mypage/mypagemain";
+		return "redirect:/center/mypage/mypagemain?centerno="+center.getCenterno();
 	}
 	
 	@RequestMapping(value="/center/mypage/deletepwchk", method=RequestMethod.GET)
@@ -185,13 +185,10 @@ public class CenterMypageController {
 		
 		//센터번호 불러오는 코드
 
-		center.setBusinessno((String) session.getAttribute("loginid"));	
-
-		int centerno;		
-		centerno = centerMypageService.getCenterno(center);		
-//		logger.info("centerno : " + centerno);
+		center.setBusinessno((String) session.getAttribute("loginid"));
+		center.setCenterno((int) session.getAttribute("centerno"));
 		
-		centerquestion.setCenterno(centerno);
+		centerquestion.setCenterno(center.getCenterno());
 
 //		logger.info(centerquestion.toString());
 		
@@ -204,7 +201,7 @@ public class CenterMypageController {
 
 		centerMypageService.writeQST(centerquestion,file);
 		
-		return "/center/mypage/mypagemain";		
+		return "redirect:/center/mypage/mypagemain?centerno="+center.getCenterno();	
 
 	}
 
@@ -222,11 +219,12 @@ public class CenterMypageController {
 	}
 	
 	@RequestMapping(value="/center/mypage/deletequestion", method=RequestMethod.POST)
-	public String deleteQeustionProc(CenterQuestion centerquestion) {
+	public String deleteQeustionProc(CenterQuestion centerquestion, Center center, HttpSession session) {
 		
 		centerMypageService.deleteQST(centerquestion);
 		
-		return "redirect:/center/mypage/mypagemain";
+		center.setCenterno((int)session.getAttribute("centerno"));
+		return "redirect:/center/mypage/mypagemain?centerno="+center.getCenterno();
 	}
 	@RequestMapping(value = "/center/mypage/mypagemain", method = RequestMethod.GET)
 	public void centerMypage(int centerno, Model model){

@@ -24,6 +24,12 @@ public class AdminBoardController {
 	@Autowired BoardService boardService;
 	
 	@Autowired BoardDao abc;
+	
+	// 글쓰기페이지
+		@RequestMapping(value = "/admin/adminBoard/jdd", method = RequestMethod.GET)
+		public void jodd() {
+
+		}
 
 	// 공지사항 게시판
 	@RequestMapping(value = "/admin/adminBoard/adminNotice", method = RequestMethod.GET)

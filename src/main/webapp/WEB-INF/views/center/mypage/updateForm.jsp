@@ -5,10 +5,10 @@
    
 <script type="text/javascript">
 $(document).ready(function() {
-   //취소버튼 동작
-   $("#btnCancel").click(function() {
-      $(location).attr("href", "/center/mypage/mypagemain");
-   });
+	//취소버튼 동작
+	$("#btnCancel").click(function() {
+	history.back();
+	});
 });
 </script>
 
@@ -363,10 +363,11 @@ td{
   <div class="container">
 
 <form action="/center/mypage/update" method="post" onsubmit="return checkAll()">
+<input type="hidden" value="${center.centerno }" name="centerno"/>
 <table >
    <tr>
       <td>
-         <label for ="cname">센터이름</label>
+         <label for ="cname" style="font-weight: bolder;">센터이름</label>
       </td>
       <td>
          ${center.cname }
@@ -374,7 +375,7 @@ td{
    </tr>
    
    <tr>
-      <td><label for ="cpassword">비밀번호</label></td>
+      <td><label for ="cpassword" style="font-weight: bolder;">비밀번호</label></td>
       <td><div class="form-group">
       <input type="password" name="cpassword" id="cpassword" class="form-control"/></div></td>
    </tr>
@@ -384,7 +385,7 @@ td{
    </tr>
 
    <tr>
-      <td><label for ="cpasswordchk">비밀번호 확인</label></td>
+      <td><label for ="cpasswordchk" style="font-weight: bolder;">비밀번호 확인</label></td>
       <td><div class="form-group">
       <input type="password" name="cpasswordchk" id="cpasswordchk" class="form-control"/></div></td>
    </tr>
@@ -393,7 +394,7 @@ td{
    </tr>
 
    <tr>
-      <td><label for ="mphone">담당자번호</label></td>
+      <td><label for ="mphone" style="font-weight: bolder;">담당자번호</label></td>
       <td><div class="form-group">
       <input type="tel" name="mphone" id="mphone" value="${center.mphone }" class="form-control"/></div></td>
    </tr>
@@ -401,17 +402,17 @@ td{
       <td colspan="2"><p class="check_front" id="phone_check"> </p></td>
    </tr>
    <tr>
-      <td><label for="memail">담당자이메일</label></td>
+      <td><label for="memail" style="font-weight: bolder;">담당자이메일</label></td>
       <td><div class="form-group"><input type="text" name="memail" value="${center.memail }" class="form-control" /></div></td>
    </tr>
 
    <tr>
-      <td><label>담당자명</label></td>
+      <td><label style="font-weight: bolder;">담당자명</label></td>
       <td><div class="form-group"><input type="text" name="mgr" value="${center.mgr }" class="form-control"></div></td>
    </tr>
 
    <tr>
-      <td colspan="2"><label>주소</label></td>
+      <td colspan="2"><label style="font-weight: bolder;">주소</label></td>
    </tr>
    <tr>
       <td><div class="form-group"><input type="text" id="address1" name="address1" value="${center.address1 }" class="form-control"/></div></td>
@@ -426,12 +427,14 @@ td{
 
 <br>
 <div>
-<button  class="btn btn-secondary" id="reg_submit">수정</button>
-<button  type="button" class="btn btn-secondary" id="btnCancel">취소</button>
+<button  class="btn btn-primary" id="reg_submit">수정</button>
+<button  type="button" class="btn btn-danger" id="btnCancel">취소</button>
+<br><br>
 </div>
 </form>
   </div>
 </div>
 </div>
+
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />

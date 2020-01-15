@@ -72,7 +72,7 @@
 		  FROM (
 		        SELECT *
 		          FROM Notice
-		         ORDER BY write_date DESC
+		         ORDER BY noticeno DESC
 		        ) 
 		 WHERE ROWNUM  &lt;= 5
 

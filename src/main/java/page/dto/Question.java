@@ -7,11 +7,21 @@ public class Question {
 	private String question_content;
 	private String pic;
 	private String answer;
+	private String answercontent;
+
+	public String getAnswercontent() {
+		return answercontent;
+	}
+
+	public void setAnswercontent(String answercontent) {
+		this.answercontent = answercontent;
+	}
 
 	@Override
 	public String toString() {
 		return "Question [questionno=" + questionno + ", userno=" + userno + ", question_title=" + question_title
-				+ ", question_content=" + question_content + ", pic=" + pic + ", answer=" + answer + "]";
+				+ ", question_content=" + question_content + ", pic=" + pic + ", answer=" + answer + ", answercontent="
+				+ answercontent + "]";
 	}
 
 	public int getQuestionno() {

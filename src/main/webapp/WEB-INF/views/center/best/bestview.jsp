@@ -16,8 +16,8 @@
 	padding:8px;
 }
 </style>
-</head>
-<body><br>
+
+<br>
 	<div id="best" class="row">
 		<div class="col-1"></div>
 		<div class="col-10" id="best" style="background-color: white;">
@@ -26,6 +26,7 @@
 			<br>
 			<hr>
 			<h3 style="font-weight: bold;">${view.bestTitle }</h3><br>
+			
 
 
 			<div class="data">
@@ -51,9 +52,14 @@
 				
 				</div>
 				<div class="row">
-					<div class="content col-12" style="min-height: 300px; border-bottom: 1px solid #CCC;">
+					<div class="row content col-12" style="min-height: 300px; border-bottom: 1px solid #CCC; padding: 30px;">
+						<div class="col-6" style="text-align: center;">
+						<img width="200px" height="200px" src="${view.pic }"> 
+						</div>
 						
-						<img width="200px" height="200px" src="${view.pic }"> ${view.bestContent }  
+						<div class="col-6" style="text-align: center;">
+						${view.bestContent }
+						</div>
 					</div>
 				</div>
 			</div>
@@ -62,10 +68,10 @@
 			<button class="btn btn-secondary"
 				onclick="location.href='/center/best/bestlist'">목록</button>
 			</div>
-			<div>
-				<a href="/center/best/bestview?bestno=${view.bestno - 1 }">이전글</a><br>
-				<a href="/center/best/bestview?bestno=${view.bestno + 1 }">다음글</a>
-			</div>
+<!-- 			<div> -->
+<%-- 				<a href="/center/best/bestview?bestno=${view.bestno - 1 }">이전글</a><br> --%>
+<%-- 				<a href="/center/best/bestview?bestno=${view.bestno + 1 }">다음글</a> --%>
+<!-- 			</div> -->
 		</div>
 		<div class="col-1"></div>
 	</div>
