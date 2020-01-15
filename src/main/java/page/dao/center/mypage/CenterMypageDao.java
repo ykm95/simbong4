@@ -29,6 +29,8 @@ public interface CenterMypageDao {
 	public void deleteQuestion(CenterQuestion centerquestion);
 
 	public int selectCntAll();
+	
+	public Center selectCenterByCenterno(int centerno);
 
 
 }

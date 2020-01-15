@@ -70,10 +70,10 @@
 			<button class="btn btn-secondary"
 				onclick="location.href='/user/best/bestlist'">목록</button>
 			</div>
-			<div>
-				<a href="/user/best/bestview?bestno=${view.bestno - 1 }">이전글</a><br>
-				<a href="/user/best/bestview?bestno=${view.bestno + 1 }">다음글</a>
-			</div>
+<!-- 			<div> -->
+<%-- 				<a href="/user/best/bestview?bestno=${view.bestno - 1 }">이전글</a><br> --%>
+<%-- 				<a href="/user/best/bestview?bestno=${view.bestno + 1 }">다음글</a> --%>
+<!-- 			</div> -->
 		</div>
 		<div class="col-3"></div>
 	</div>
