@@ -7,15 +7,19 @@
 div{
 text-align: center;
 }
-div.i{
+
+#successbtn {
+	width: 200px;
+	margin-top: 110px;
 }
 </style>
 
 <Br>
 <div>
-<h1>아이디찾기</h1>
-<hr>
-
+<img src="/resources/img/success.png" id="successbtn" name="successbtn">
+</div>
+<br>
+<div style="font-size: x-large;">
 회원님의 아이디는<b> ${uemail}</b> 입니다.
 </div>
 
