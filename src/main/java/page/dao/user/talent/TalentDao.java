@@ -19,4 +19,7 @@ public interface TalentDao {
 	public void deleteTalent(int talentno);
 
 	public int selectCntTalent(PagingTalent paging);
+
+	public void updateProcess(int talentno);
+
 }

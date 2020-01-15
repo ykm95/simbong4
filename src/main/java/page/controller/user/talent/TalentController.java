@@ -97,4 +97,12 @@ public class TalentController {
 		  
 		  return "redirect:/user/talent/list";
 	  }
+	  
+	  @RequestMapping(value="/user/talent/done")
+	  public String talentDone(int talentno) {
+		  
+		  talentService.done(talentno);
+		  
+		  return "redirect:/user/talent/list";
+	  }
 }
