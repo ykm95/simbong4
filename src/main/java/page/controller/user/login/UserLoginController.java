@@ -29,12 +29,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import page.dao.user.login.UserLoginDao;
 import page.dto.User;
 import page.service.user.login.GoogleService;
 import page.service.user.login.UserLoginService;
 
 @Controller
 public class UserLoginController {
+	@Autowired private UserLoginDao userDao;
+
 
 	private static final Logger logger= LoggerFactory.getLogger(UserLoginController.class);
 
@@ -127,9 +130,15 @@ public class UserLoginController {
 	public void usergoogleJoinForm() {}
 	
 	@RequestMapping(value = "/user/login/googlejoin",method = RequestMethod.POST)
-	public String usergoogleJoinProc(User user) {
+	public String usergoogleJoinProc(User user,HttpSession session) {
+		
 		
 		googleService.insertGoogleInfo(user);
+		
+		int uno=userDao.find_uno(user);
+		user.setUserno(uno);
+		
+		session.setAttribute("userno", user.getUserno());
 		
 		return "redirect:/main";
 	}

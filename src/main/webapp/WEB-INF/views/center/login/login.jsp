@@ -14,6 +14,14 @@
 
 <script>
 	$(document).ready(function() {
+		
+		var fail=${fail};
+	
+		if(fail==false){
+			alert("사업자번호,비밀번호를 확인해주세요.");
+
+		}
+		
 		var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
 		$("input[name='memail']").val(userInputId);
 
@@ -38,6 +46,8 @@
 				setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
 			}
 		});
+		
+		
 	});
 
 	function setCookie(cookieName, value, exdays) {

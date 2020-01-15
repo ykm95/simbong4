@@ -117,8 +117,7 @@ public class GoogleServiceImpl implements GoogleService {
 				User user= new User();
 				user.setUemail(map.get("email"));
 				user.setUname(map.get("name"));
-				int uno=userDao.find_uno(user);
-				user.setUserno(uno);
+				
 				
 				logger.info(user.toString());
 
@@ -127,11 +126,9 @@ public class GoogleServiceImpl implements GoogleService {
 				int socialCnt = getSocialAccountCnt(user);
 
 				session.setAttribute("google", true);
-				session.setAttribute("userno", user.getUserno());
 				session.setAttribute("login", true); 		// 로그인 상태 true
 				session.setAttribute("loginid",user.getUemail());
 				
-				System.out.println(uno);
 				//소셜로그인 정보가 회원정보에 담겨 있지않은 경우 처음 로그인
 				
 				if(socialCnt == 0) {
@@ -147,7 +144,10 @@ public class GoogleServiceImpl implements GoogleService {
 				//두번 이상 로그인
 
 				else {
-
+					int uno=userDao.find_uno(user);
+					user.setUserno(uno);
+					
+					session.setAttribute("userno", user.getUserno());
 					
 					session.setAttribute("socialDouble", true);
 					

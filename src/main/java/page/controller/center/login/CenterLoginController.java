@@ -104,8 +104,9 @@ public class CenterLoginController {
 			center.setCname(cname);
 			logger.info("center" +center);
 			model.addAttribute("center",center);
-			return "/center/main";
+			return "redirect:/center/main";
 		}else {
+			model.addAttribute("fail",isLogin);
 			return "/center/login/login";
 		}
 		
