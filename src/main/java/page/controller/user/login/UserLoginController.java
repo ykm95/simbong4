@@ -55,12 +55,13 @@ public class UserLoginController {
 	public void userJoinForm() {}
 	
 	@RequestMapping(value = "/user/login/join",method = RequestMethod.POST)
-	public String userJoinProc(User user) {
+	public String userJoinProc(User user, ModelAndView mv) {
 		
 		user.setUphone(user.getUphone());
 
 		userloginservice.userjoin(user);
-		
+		mv.addObject("success",true);
+		mv.setViewName("/user/login/join");
 		return "redirect:/main";
 	}
 

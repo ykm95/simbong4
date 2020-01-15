@@ -90,4 +90,10 @@ public class TalentServiceImpl implements TalentService{
 	}
 
 
+	@Override
+	public void done(int talentno) {
+		talentDao.updateProcess(talentno);
+	}
+
+
 }

@@ -83,7 +83,6 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 		  if(cnt == 1) 
 		  {
 			  userVolunteerDao.deleteApl(applicant);
-			  userVolunteerDao.subApeople(volunteerno);
 			  return 1;
 		  }
 		  // 신청상태가 아닐 때
@@ -93,7 +92,6 @@ public class UserVolunteerServiceImpl implements UserVolunteerService{
 			  if(apeople < npeople) 
 			  {
 			  userVolunteerDao.insertApl(applicant);
-			  userVolunteerDao.plusApeople(volunteerno);
 			  return 2;
 			  } 
 			  // 필요인원보다 신청인원이 크거나 같을 때

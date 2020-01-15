@@ -102,9 +102,10 @@
 
 	<select id="selectTalentByNo" parameterType="int"
 		resultType="page.dto.Talent">
-		SELECT * FROM talent T, area A, t_department D
+		SELECT * FROM talent T, area A, t_department D, usertb U
 		WHERE T.areano = A.areano
 		AND T.departmentno = D.departmentno
+		AND T.userno = U.userno
 		AND T.talentno = #{talentno}
 	</select>
 
@@ -138,4 +139,10 @@
 		DELETE FROM talent WHERE
 		talentno = #{talentno}
 	</delete>
+	
+	<update id="updateProcess"
+		parameterType="int">
+		UPDATE talent SET talent_process = 1
+		WHERE talentno = #{talentno}
+	</update>
 </mapper>

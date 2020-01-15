@@ -193,7 +193,7 @@
 			});
 </script>
 
-<div class="container">
+<div class="container" style="background-color: #FFF">
 
 	<form action="/user/volunteer/list" method="get" id="searchForm" style="margin-top:40px;">
 		
@@ -308,10 +308,20 @@
     	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/volunteer/view?volunteerno=${list.volunteerno }" style="font-size: 30px; color:black;">${list.vol_title }</a></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;">
-    	<c:choose>
-			<c:when test="${list.vol_process eq 0}" ><span style="color:red;">[모집중]</span></c:when>
-			<c:when test="${list.vol_process eq 1 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
-		</c:choose>
+						<c:choose>
+							<c:when test="${list.vol_process eq 0 }">
+								<button class="btn btn-sm btn-primary" style="margin-bottom: 10px">모집중</button>
+							</c:when>
+							<c:when test="${list.vol_process eq 1 }">
+								<button class="btn btn-sm btn-secondary" style="margin-bottom: 10px">모집완료</button>
+							</c:when>
+							<c:when test="${list.vol_process eq 2 }">
+								<button class="btn btn-sm btn-secondary" style="margin-bottom: 10px">모집완료</button>
+							</c:when>
+							<c:when test="${list.vol_process eq 3 }">
+								<button class="btn btn-sm btn-success" style="margin-bottom: 10px">봉사완료</button>
+							</c:when>
+						</c:choose>
 		</td>
 	</tr>
 	
