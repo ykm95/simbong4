@@ -336,6 +336,13 @@ public class UserMypageController {
 		model.addAttribute("list", list);
 
 	}
-
-
+	@RequestMapping(value="/user/mypage/mypagemain", method = RequestMethod.GET)
+	public void MypageView(int userno, Model model) {
+		
+		User mypageView = new User();
+		mypageView = userMypageService.Userview(userno);
+		
+		logger.info(mypageView.toString());
+		model.addAttribute("mypageView", mypageView);
+	}
 }

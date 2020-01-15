@@ -46,6 +46,8 @@ public interface UserMypageService {
 	public List<Applicant> getApplicant(Paging paging);
 
 	public Paging getAppPaging(Paging paging);
+	
+	public User Userview(int userno);
 
 	public PagingApplicant getPerformancePaging(PagingApplicant paging);
 

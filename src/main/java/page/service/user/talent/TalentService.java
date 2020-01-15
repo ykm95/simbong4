@@ -21,4 +21,6 @@ public interface TalentService {
 	
 	public PagingTalent getPaging(PagingTalent paging);
 
+	public void done(int talentno);
+
 }

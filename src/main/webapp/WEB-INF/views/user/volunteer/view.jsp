@@ -89,8 +89,6 @@ $(document).ready(function() {
 				alert("인원초과입니다.");
 			}
 	
-			$("#aplno").html(res.cnt);
-		
 	
 		}
 		, error: function() {
@@ -143,11 +141,12 @@ function getFormatDate(date){
 }
 
 </script>
-  	
-  	<div class="container" style="margin: 30px auto">  
 
-  		<div style="width: 70%; margin: 0 auto;">  
-  			<h1>${vol.vol_title }</h1>  
+
+  	<div class="container" style="background-color: #FFF">  
+<br><br>
+  		<div style="width: 70%;  margin: 0 auto;">  
+  			<h1 style="margin-top: 0px;">${vol.vol_title }</h1>  
   		</div>  
 
 	<div style="width: 70%; margin: 0 auto; text-align:end;">
@@ -189,7 +188,7 @@ function getFormatDate(date){
   			</tr>  
 		
   			<tr>  
-  				<td colspan="1" style="background: #CCC">필요/신청인원</td>  
+  				<td colspan="1" style="background: #CCC">필요/확정인원</td>  
   				<td colspan="3" style="text-align: center">${vol.npeople }/<span id="aplno">${vol.apeople }</span></td>  
   			</tr>  
 	

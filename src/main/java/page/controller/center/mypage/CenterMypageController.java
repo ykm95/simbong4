@@ -228,6 +228,13 @@ public class CenterMypageController {
 		
 		return "redirect:/center/mypage/mypagemain";
 	}
-	
+	@RequestMapping(value = "/center/mypage/mypagemain", method = RequestMethod.GET)
+	public void centerMypage(int centerno, Model model){
+		
+		Center Cmypage = new Center();
+		Cmypage = centerMypageService.centerView(centerno);
+		
+		model.addAttribute("Cmypage", Cmypage);
+	}
 
 }

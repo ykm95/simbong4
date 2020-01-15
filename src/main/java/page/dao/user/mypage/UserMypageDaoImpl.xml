@@ -132,7 +132,14 @@
 		  AND U.userno = #{value } )
 	    </select>
 	    
-	    <select id="selectCntPerformanceAll" parameterType="int"
+	    <select id="selectUserByuserno" resultType="page.dto.User" parameterType="int">
+	    	SELECT * FROM usertb 
+	    	WHERE 1=1
+	    	AND userno =#{userno }	
+	    		
+	    </select>
+	    
+	     <select id="selectCntPerformanceAll" parameterType="int"
 	     resultType="int">
 	     SELECT count(*) FROM ( SELECT V.vol_sterm, V.vol_eterm, V.stime, V.etime, V.vol_process, V.vol_title, D.departname, C.cname, A.applicantno, A.aprocess FROM applicant A, usertb U, volunteer V, v_department D, centertb C 
 		 WHERE U.userno = A.userno
@@ -169,5 +176,4 @@
 		  WHERE rnum BETWEEN
 		  #{startNo } AND #{endNo }
 	      </select>
-	      
 </mapper>

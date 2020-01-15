@@ -55,12 +55,13 @@ public class UserLoginController {
 	public void userJoinForm() {}
 	
 	@RequestMapping(value = "/user/login/join",method = RequestMethod.POST)
-	public String userJoinProc(User user) {
+	public String userJoinProc(User user, ModelAndView mv) {
 		
 		user.setUphone(user.getUphone());
 
 		userloginservice.userjoin(user);
-		
+		mv.addObject("success",true);
+		mv.setViewName("/user/login/join");
 		return "redirect:/main";
 	}
 
@@ -81,7 +82,7 @@ public class UserLoginController {
 	
 
 	@RequestMapping(value = "/user/login/login", method = RequestMethod.POST)
-	public String loginProc(User user, HttpSession session, Model model) {
+	public String loginProc(User user, HttpSession session, Model model ) {
 		
 		logger.info("user" +user);
 		
@@ -98,7 +99,9 @@ public class UserLoginController {
 			session.setAttribute("login", isLogin);
 			session.setAttribute("loginid", user.getUemail());
 			session.setAttribute("userno", user.getUserno());
+			
 		}else {
+			model.addAttribute("fail",isLogin);
 			return "/user/login/login";
 		}
 		return "redirect:/main";

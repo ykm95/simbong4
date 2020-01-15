@@ -30,4 +30,10 @@ public interface VolunteerDao {
 
 	public void numCancle(int applicantno);
 
+	public int chkProcess(int volunteerno);
+
+	public void volProcess(int volunteerno);
+
+	public void volCancleProcess(int volunteerno);
+
 }

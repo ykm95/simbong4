@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<div class="container" style="margin: 30px auto">  
+<div class="container" style="margin: 30px auto; background-color: #FFF">  
 
 		<div style="width: 70%; margin: 0 auto;">  
 			<h1>${tal.talent_title }</h1>  

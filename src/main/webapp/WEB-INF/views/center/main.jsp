@@ -152,7 +152,7 @@ img {vertical-align: middle;}
 
 </style>
 
-<div class="row" style="text-align: center; padding: 50px 0; background: linear-gradient(to top, #FFFFFF, #FFEFBA)">
+<div class="row" style="text-align: center; padding: 50px 0;">
 
 	<div class="container" style="background: #FFF">
 
@@ -225,7 +225,7 @@ img {vertical-align: middle;}
 					<div class="row" style="margin: 10px;">
 						<div class="col-1"></div>
 						<div class="col-10 row">
-							<div class="col-4">
+							<div class="col-6">
 								<div style="height: 3px; background: black;"></div>
 								<h3 style="font-weight: bolder;">공지사항</h3>
 								<c:forEach items="${main2}" var="m">
@@ -236,17 +236,14 @@ img {vertical-align: middle;}
 									</table>
 								</c:forEach>
 							</div>
-							<div class="col-4">
+							<div class="col-6">
 								<div style="height: 3px; background: black;"></div>
 								<h3 style="font-weight: bolder;">
 									이달의<br>우수봉사자
 								</h3>
 		
 							</div>
-							<div class="col-4">
-								<div style="height: 3px; background: black;"></div>
-		
-							</div>
+						
 						</div>
 						<div class="col-1"></div>
 					</div>

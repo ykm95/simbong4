@@ -9,21 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
 
-
-$(document).on('click','#pdfopen', function(){
-
-
-      var popupX = (window.screen.width / 2) - (500 / 2);
-      // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-
-      var popupY= (window.screen.height /2) - (500 / 2);
-      // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-      window.open('http://localhost:8088/user/mypage/pdf?applicantno=${view.noticeNo }', 'window', 'status=no, height=500, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-   });
-	
-</script>
 
 <style type="text/css">
 #notice{
@@ -76,11 +62,10 @@ $(document).on('click','#pdfopen', function(){
 				<button class="btn btn-secondary"
 					onclick="location.href='/user/notice/list'">목록</button>
 			</div>
-			<button id="pdfopen" class="btn">pdf</button>
-			<div>
-				<a href="/user/notice/view?noticeno=${view.noticeNo -1 }">이전글</a><br>
-				<a href="/user/notice/view?noticeno=${view.noticeNo +1 }">다음글</a>
-			</div>
+<!-- 			<div> -->
+<%-- 				<a href="/user/notice/view?noticeno=${view.noticeNo -1 }">이전글</a><br> --%>
+<%-- 				<a href="/user/notice/view?noticeno=${view.noticeNo +1 }">다음글</a> --%>
+<!-- 			</div> -->
 		</div>
 		<div class="col-3"></div>
 	</div>

@@ -12,6 +12,14 @@
 
 <script>
 	$(document).ready(function() {
+		
+		var fail= ${fail};
+		
+		if(fail==false){
+			alert("이메일,비밀번호를 확인해주세요.");
+		}
+		
+		
 		var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
 		$("input[name='uemail']").val(userInputId);
 
@@ -67,8 +75,8 @@
 		}
 		return unescape(cookieValue);
 	}
+	
 </script>
-
 <style type="text/css">
 	.login-form {
 		width: 340px;
@@ -116,6 +124,7 @@
 		width: 300px;
 	}
 </style>
+
 <Br>
 <div class="login-form">
 <form action="/user/login/login" method="post" onsubmit="return onSignIn(googleUser)">

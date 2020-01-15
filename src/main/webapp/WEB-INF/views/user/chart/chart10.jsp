@@ -13,24 +13,24 @@
 	
 		function drawVisualization() { 
 			var data = google.visualization.arrayToDataTable([
-					['구분', '단위(명)', {role: "style"} ],
-					['서울',  224076,      "#b87333"],
-					['부산',  67287,      "#b87333"],
-					['대구',  53758,      "#b87333"],
-					['인천',  52853,      "#b87333"],
-					['광주',  57611,      "#b87333"],
-					['대전',  45777,      "#b87333"],
-					['울산',  44869,      "#b87333"],
-					['세종',  3588,      "#b87333"],
-					['경기',  171138,      "#b87333"],
-					['강원',  33781,      "#b87333"],
-					['충북',  24756,      "#b87333"],
-					['충남',  62418,      "#b87333"],
-					['전북',  36147,      "#b87333"],
-					['전남',  68805,      "#b87333"],
-					['경북',  62500,      "#b87333"],
-					['경남',  91890,      "#b87333"],
-					['제주',  26105,      "#b87333"],
+				['구분', '수', {role: "style"} ],
+				['서울',  320,      "#b87333"],
+				['부산',  330,      "#b87333"],
+				['대구',  231,      "#b87333"],
+				['인천',  184,      "#b87333"],
+				['광주',  172,      "#b87333"],
+				['대전',  52,      "#b87333"],
+				['울산',  236,      "#b87333"],
+				['세종',  40,      "#b87333"],
+				['경기',  248,      "#b87333"],
+				['강원',  278,      "#b87333"],
+				['충북',  181,      "#b87333"],
+				['충남',  227,      "#b87333"],
+				['전북',  170,      "#b87333"],
+				['전남',  205,      "#b87333"],
+				['경북',  258,      "#b87333"],
+				['경남',  192,      "#b87333"],
+				['제주',  122,      "#b87333"],
 				]);
 		      var view = new google.visualization.DataView(data);
 		      view.setColumns([0, 1,
@@ -41,7 +41,7 @@
 		                       2]);
 
 		      var options = {
-		        title: "2019년도 활동현황(지역별)",
+		        title: "2019년도 지역사회봉사단 현황(지역별)",
 		        width: 1110,
 		        height: 400,
 		        bar: {groupWidth: "7%"},
@@ -75,34 +75,6 @@
 
 		});
 		
-		$("#btn11").click(function() {
-			$(location).attr("href", "/user/chart/chart1");
-
-		});
-		$("#btn12").click(function() {
-			$(location).attr("href", "/user/chart/chart2");
-
-		});
-		$("#btn13").click(function() {
-			$(location).attr("href", "/user/chart/chart3");
-
-		});
-		$("#btn14").click(function() {
-			$(location).attr("href", "/user/chart/chart4");
-
-		});
-		$("#btn15").click(function() {
-			$(location).attr("href", "/user/chart/chart5");
-
-		});
-		$("#btn16").click(function() {
-			$(location).attr("href", "/user/chart/chart6");
-
-		});
-		$("#btn17").click(function() {
-			$(location).attr("href", "/user/chart/chart7");
-
-		});
 	});
 	
 	</script>
@@ -110,19 +82,13 @@
 	
 <div class="container" style="background-color: #FFF">
 <br>
-<button id="btn1" class="btn btn-lg btn-warning">활동현황</button>
+<button id="btn1" class="btn btn-lg">활동현황</button>
 <button id="btn2" class="btn btn-lg">관리센터현황</button>
 <button id="btn3" class="btn btn-lg">인증요원현황</button>
-<button id="btn4" class="btn btn-lg">지역사회봉사단현황</button><br><br>
-<button id="btn11" class="btn btn-sm btn-warning">지역별</button>
-<button id="btn12" class="btn btn-sm">직업별</button>
-<button id="btn13" class="btn btn-sm">시설종별</button>
-<button id="btn14" class="btn btn-sm">평균시간</button>
-<button id="btn15" class="btn btn-sm">평균횟수</button>
-<button id="btn16" class="btn btn-sm">총시간</button>
-<button id="btn17" class="btn btn-sm">총횟수</button>
+<button id="btn4" class="btn btn-lg btn-warning">지역사회봉사단현황</button>
+
 <br><br>
-<h1>활동현황(지역별)</h1>
+<h1>지역사회봉사단 현황(지역별)</h1>
 <br><br>
 <ol>
 <li>자원봉사자 관련 통계를 보실 수 있습니다.</li>
@@ -134,75 +100,75 @@
 
 <div id="chart_div" style="width:1000px; height: 500px;"></div>
 
-총계:47,278 <span style="float:right;">단위:명</span>
+총계:3,446 <span style="float:right;">단위:개</span>
 <table class="table table-bordered" >
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">서울</td>
-		<td>224,076</td>
+		<td>320</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">부산</td>
-		<td>67,287</td>
+		<td>330</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">대구</td>
-		<td>53,758</td>
+		<td>231</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">인천</td>
-		<td>52,853</td>
+		<td>184</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">광주</td>
-		<td>57,611</td>
+		<td>172</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">대전</td>
-		<td>45,777</td>
+		<td>52</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">울산</td>
-		<td>44,869</td>
+		<td>236</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">세종</td>
-		<td>3,588</td>
+		<td>40</td>
 	</tr>
 	<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">경기</td>
-		<td>171,138</td>
+		<td>248</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">강원</td>
-		<td>33,781</td>
+		<td>278</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">충북</td>
-		<td>24,756</td>
+		<td>181</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">충남</td>
-		<td>62,418</td>
+		<td>227</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">전북</td>
-		<td>36,147</td>
+		<td>170</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">전남</td>
-		<td>68,805</td>
+		<td>205</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">경북</td>
-		<td>62,500</td>
+		<td>258</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">경남</td>
-		<td>91,890</td>
+		<td>192</td>
 	</tr>
 		<tr>
 		<td style="text-align:center; background-color:#9ec0c9; ">제주</td>
-		<td>26,105</td>
+		<td>122</td>
 	</tr>
 	
 

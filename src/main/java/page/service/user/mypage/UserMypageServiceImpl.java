@@ -146,6 +146,11 @@ public class UserMypageServiceImpl implements UserMypageService {
 	}
 
 	@Override
+	public User Userview(int userno) {
+		return userMypageDao.selectUserByuserno(userno);
+	}
+
+	@Override
 	public PagingApplicant getPerformancePaging(PagingApplicant paging) {
 		int curPage = paging.getCurPage();
 
@@ -170,6 +175,5 @@ public class UserMypageServiceImpl implements UserMypageService {
 	public List<PagingApplicant> getPerformance(PagingApplicant paging) {
 		return userMypageDao.selectPerformance(paging);
 	}
-
-
+	
 }
