@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
   </div>
 <br><br><br><br>
-  <nav class="fixed-bottom">
+
 <hr>
 <div id="footer" class="row">
 		<div class="col-2"></div>
@@ -32,6 +32,6 @@
 		</div>
 		<div class="col-1"></div>
 </div>
-</nav>
+
 </body>
 </html>

@@ -6,7 +6,6 @@
 
 <jsp:include page="/WEB-INF/views/layout/adminHeader.jsp" />
 
-<H1>list</H1>
-Test Test
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+
+<jsp:include page="/WEB-INF/views/layout/adminFooter.jsp" />
