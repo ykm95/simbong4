@@ -117,7 +117,7 @@ ul{
 
 		<c:if test="${login }">
 			<a href="/centerLogout"><button class="btn btn-sm btn-secondary">로그아웃</button></a>
-			<a href="/center/mypage/mypagemain"><button class="btn btn-sm btn-secondary">마이페이지</button></a>
+			<a href="/center/mypage/mypagemain?centerno=${centerno }"><button class="btn btn-sm btn-secondary">마이페이지</button></a>
 		</c:if>
 	</div>
 </div>

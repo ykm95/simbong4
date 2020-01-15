@@ -29,7 +29,19 @@ $(document).on('click','#pdfopen', function(){
 <hr>
 
 <form action="/user/mypage/performancelist" method="get">
-
+		활동기간
+		<div class="row">
+			<div class="col">
+		<input name="vol_sterm" title="시작일" id="vol_sterm"
+		type="date" value="" class="form-control"></div>
+		~ 
+		<div class="col">
+		<input
+		name="vol_eterm" title="종료일" id="vol_eterm"
+		type="date" value=""  class="form-control">
+		</div></div><br>
+		
+<button>검색</button>
 
 </form>
 

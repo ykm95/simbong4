@@ -116,11 +116,10 @@
 	}
 
 </style>
-
+<Br>
 <div class="login-form">
  
 <h2 class="text-center">심봉사 기관 로그인</h2><br><br>
-<hr>
 <form action="/center/login/login" method="post">
 <div class="form-group">
 <div class="input-group"> 

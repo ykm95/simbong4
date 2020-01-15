@@ -45,7 +45,13 @@ $(document).ready(function(){
 
   		<div style="width: 70%; margin: 0 auto;">  
   			<h1 style="margin-top:0;">${talent.talent_title }</h1>  
-  		</div>  
+  		</div>
+		
+		<div style="width: 70%; margin: 0 auto; text-align:end;">
+		  	<c:if test="${talent.uemail eq loginid }">		
+			<button id="btnDone" class="btn btn-secondary">모집완료</button>
+			</c:if>
+		</div>
 		
 		<div style="width: 70%; margin: 0 auto; text-align:end;">
 			<fmt:formatDate value="${talent.write_date }"  pattern="yyyy.MM.dd"/>
@@ -116,13 +122,11 @@ $(document).ready(function(){
   					연락처 : ${fn:replace(talent.uphone, fn:substring(talent.uphone, 3, 7), '****')} 
   				</div>  
   			</div>		  
-  		</div> 
+  		</div><br><br>
 		
-	<div class="text-right">
+	<div style="width: 70%; margin: 0 auto; text-align:end;">
 		<button id="btnList" class="btn btn-primary">목록</button>
 		<c:if test="${talent.uemail eq loginid }">
-		
-		<button id="btnDone" class="btn btn-secondary">모집완료</button>
 		<button id="btnUpdate" class="btn btn-info">수정</button>
 		<button id="btnDelete" class="btn btn-danger">삭제</button>
 		</c:if>

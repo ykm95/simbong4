@@ -125,6 +125,8 @@ $(document).ready(function() {
 		width: 300px;
 	}
 </style>
+
+<br>
 <div class="login-form">
 <div style="text-align:center;">
 <span style="color: green; font-weight: bold;">변경할 비밀번호를 입력해주세요.</span> <br> <br>             

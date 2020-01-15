@@ -370,8 +370,7 @@ label {
 
 </style>
 
-</head>
-<body>
+<br>
 <div class="container">
 <div class="col-xs-12 text-center">
 <div class="col-xs-8" style="margin: 0 auto; float: none;">

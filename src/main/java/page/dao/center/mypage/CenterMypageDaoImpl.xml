@@ -81,4 +81,11 @@
 	    <select id="selectCntAll" resultType="int">
 	     SELECT count(*) FROM centerquestion
 	    </select>
+	    
+	      <select id="selectCenterByCenterno" resultType="page.dto.Center" parameterType="int">
+	    	SELECT * FROM centertb 
+	    	WHERE 1=1
+	    	AND centerno =#{centerno }	
+	    		
+	    </select>
 </mapper>
