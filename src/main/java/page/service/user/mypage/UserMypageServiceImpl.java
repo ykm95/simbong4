@@ -1,10 +1,12 @@
 package page.service.user.mypage;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import page.dao.user.mypage.UserMypageDao;
-import page.dto.User;
-import page.dto.Volrecord;
-import page.service.center.mypage.CenterMypageServiceImpl;
-import page.util.Paging;
 import page.dto.Applicant;
 import page.dto.Question;
+import page.dto.User;
+import page.dto.Volunteer;
+import page.util.Paging;
+import page.util.PagingApplicant;
 
 @Service
 public class UserMypageServiceImpl implements UserMypageService {
@@ -64,6 +66,9 @@ public class UserMypageServiceImpl implements UserMypageService {
 	}
 
 	@Override
+	public Volunteer getPdfData(int applicantno) {
+		return userMypageDao.pdfView(applicantno);
+}
 	public List<Question> getList(Paging paging) {
 		return userMypageDao.selectAll(paging);
 	}
@@ -73,10 +78,6 @@ public class UserMypageServiceImpl implements UserMypageService {
 		return userMypageDao.selectQuestionnoByDual();
 	}
 
-	@Override
-	public int getUserno(User user) {
-		return userMypageDao.selectUsernoByUemail(user);
-	}
 
 	@Override
 	public void writeQST(Question question, MultipartFile file) {
@@ -116,21 +117,6 @@ public class UserMypageServiceImpl implements UserMypageService {
 	}
 
 	@Override
-	public int getApplicantno(User user) {
-		return userMypageDao.selectApplicantnoByUserno(user);
-	}
-
-	@Override
-	public Volrecord getVolrecord(Applicant applicant) {
-		return userMypageDao.selectVolrecord(applicant);
-	}
-
-	@Override
-	public String getUname(User user) {
-		return userMypageDao.selectUnameByUemail(user);
-	}
-
-	@Override
 	public Paging getPaging(Paging paging) {
 		int curPage = paging.getCurPage();
 
@@ -141,5 +127,53 @@ public class UserMypageServiceImpl implements UserMypageService {
 		return paging;
 	}
 
+	@Override
+	public List<Applicant> getApplicant(Paging paging) {
+		return userMypageDao.selectApplicant(paging);
+	}
 
+	@Override
+	public Paging getAppPaging(Paging paging) {
+		
+		
+		int curPage = paging.getCurPage();
+
+		int totalCount = userMypageDao.selectCntAppAll(paging.getUserno());
+
+		Paging pagingRes = new Paging(totalCount, curPage);
+		
+		return pagingRes;
+	}
+
+	@Override
+	public User Userview(int userno) {
+		return userMypageDao.selectUserByuserno(userno);
+	}
+
+	@Override
+	public PagingApplicant getPerformancePaging(PagingApplicant paging) {
+		int curPage = paging.getCurPage();
+
+		int totalCount = userMypageDao.selectCntPerformanceAll(paging.getUserno());
+
+		PagingApplicant pagingRes = new PagingApplicant(totalCount, curPage);
+		
+		pagingRes.setVol_sterm(paging.getVol_sterm());
+		pagingRes.setVol_eterm(paging.getVol_eterm());
+		pagingRes.setStime(paging.getStime());
+		pagingRes.setEtime(paging.getEtime());
+		pagingRes.setVol_process(paging.getVol_process());
+		pagingRes.setVol_title(paging.getVol_title());
+		pagingRes.setDepartname(paging.getDepartname());
+		pagingRes.setCname(paging.getCname());
+		pagingRes.setApplicantno(paging.getApplicantno());
+		
+		return pagingRes;
+	}
+
+	@Override
+	public List<PagingApplicant> getPerformance(PagingApplicant paging) {
+		return userMypageDao.selectPerformance(paging);
+	}
+	
 }

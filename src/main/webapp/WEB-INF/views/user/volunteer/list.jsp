@@ -9,7 +9,6 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-
 <script>
 	$(document)
 			.ready(
@@ -274,13 +273,13 @@
 
 		<div>
 		상태 &nbsp; &nbsp; &nbsp; &nbsp;
-		<input name="vol_process" title="전체" id="processAll" type="radio" value="0" checked="checked">&nbsp;
+		<input name="vol_process" title="전체" id="processAll" type="radio" value="5" checked="checked">&nbsp;
 		<label for="processAll">전체</label> &nbsp; 
 		
-		<input name="vol_process" title="모집중" id="process1" type="radio" value="1">&nbsp;
+		<input name="vol_process" title="모집중" id="process1" type="radio" value="0">&nbsp;
 		<label for="process1">모집중</label>&nbsp; 
 		
-		<input name="vol_process" title="모집완료" id="process2" type="radio" value="2">&nbsp;
+		<input name="vol_process" title="모집완료" id="process2" type="radio" value="1">&nbsp;
 		<label for="process2">모집완료</label>&nbsp;<br>
 		</div><br>
 				
@@ -307,15 +306,20 @@
 	<tr>
     	<td style="vertical-align: middle;">${list.volunteerno }</td> 
     	<td colspan="2" style="border-bottom:0;border-top:0;"><a href="/user/volunteer/view?volunteerno=${list.volunteerno }" style="font-size: 30px; color:black;">${list.vol_title }</a></td>
-    	
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
+    	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;">
+    	<c:choose>
+			<c:when test="${list.vol_process eq 0}" ><span style="color:red;">[모집중]</span></c:when>
+			<c:when test="${list.vol_process eq 1 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
+		</c:choose>
+		</td>
 	</tr>
 	
 	<tr>    
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동지역:</span> ${list.aname }</td>
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동기간:</span> ${list.vol_sterm } ~ ${list.vol_eterm }</td>
     	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동시간:</span> ${list.stime } ~ ${list.etime }</td>
-    	<td style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>
+    	<td colspan="2" style="border-bottom:1px solid #ccc;border-top:0;"><span style="color:#0371c1">활동영역:</span> ${list.departname }</td>
 	</tr>
 	</c:forEach>
 	</table>

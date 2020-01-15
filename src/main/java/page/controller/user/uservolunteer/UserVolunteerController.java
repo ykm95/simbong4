@@ -72,9 +72,12 @@ public class UserVolunteerController {
 	  @RequestMapping(value="/user/volunteer/view_ok")
 	  public ModelAndView volunteerView(ModelAndView mav, HttpSession session, int volunteerno) {
 
+//		  logger.info("apeople : " + apeople + "npeople : " + npeople);
 		// 추천테이블이 만약에 추천번호(기본키), 유저번호(외래키), 게시판번호(외래키)
 		// 유저번호로 select를 판단할거다 -> 있으면 추천취소 뜨게 할거고, 없으면 추천 뜨게할거다.
 		//로그인 상태만 처리
+
+		  
 		  if(session.getAttribute("loginid") != null) {
 			  //1. 로그인했을때 세션에 저장된 이메일을 통해 유전번호를 가져와여
 			  int userno = userVolunteerService.getUserno((String)session.getAttribute("loginid"));
@@ -83,22 +86,24 @@ public class UserVolunteerController {
 			  
 			  applicant.setUserno(userno);
 			  applicant.setVolunteerno(volunteerno);
-			 			  
+
 			  
 			  //2. DB에 추천 여부 검사
-			  boolean b = userVolunteerService.isApplicant(applicant);
+			  int b = userVolunteerService.isApplicant(applicant, volunteerno);
 			  
 			  int cnt = userVolunteerService.cntApl(volunteerno);
-			  
 			 // 모델값으로 지정
 			 mav.addObject("select", b);
 			 mav.addObject("cnt", cnt);
+			 mav.addObject("userList", userVolunteerService.getAplByNo(volunteerno));
+			 
 			 // viewName 지정하기
 			 mav.setViewName("jsonView");
-			 
-			  
+			   
+		  	
+	
 		  } 
-		
+		  
 		  return mav;
 	  }
 	  

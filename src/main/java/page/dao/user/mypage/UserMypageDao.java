@@ -3,8 +3,10 @@ package page.dao.user.mypage;
 import java.util.List;
 
 import page.dto.User;
+import page.dto.Volunteer;
 import page.dto.Volrecord;
 import page.util.Paging;
+import page.util.PagingApplicant;
 import page.dto.Applicant;
 import page.dto.Question;
 
@@ -21,12 +23,13 @@ public interface UserMypageDao {
 	public int selectUloginByUemail(User user);
 
 	public void googleUpdate(User user);
+	
+	public Volunteer pdfView(int applicantno);
 
 	public List<Question> selectAll(Paging paging);
 
 	public int selectQuestionnoByDual();
 
-	public int selectUsernoByUemail(User user);
 
 	public void insertQuestion(Question question);
 
@@ -34,12 +37,16 @@ public interface UserMypageDao {
 
 	public void deleteQuestion(Question question);
 
-	public int selectApplicantnoByUserno(User user);
-
-	public Volrecord selectVolrecord(Applicant applicant);
-
-	public String selectUnameByUemail(User user);
-
 	public int selectCntAll();
+
+	public List<Applicant> selectApplicant(Paging paging);
+
+	public int selectCntAppAll(int userno);
+	
+	public User selectUserByuserno(int userno);
+
+	public int selectCntPerformanceAll(int userno);
+
+	public List<PagingApplicant> selectPerformance(PagingApplicant paging);
 
 }

@@ -20,11 +20,13 @@ public interface UserVolunteerService {
 
 	public int getUserno(String attribute);
 
-	public boolean isApplicant(Applicant applicant);
+	public int isApplicant(Applicant applicant, int volunteerno);
 
 	public boolean isApplicant2(Applicant applicant);
 
 	public int cntApl(int volunteerno);
+
+	public int cntNpeople(int volunteerno);
 
 
 

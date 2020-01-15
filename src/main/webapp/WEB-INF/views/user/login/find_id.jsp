@@ -126,7 +126,7 @@ $(document).ready(function() {
 <div class="form-group">
 <div class="input-group"> 
 <label for ="uphone">전화번호</label>
-<input class ="form-control" type="text" name="uphone" id="uphone" />
+<input class ="form-control" type="text" name="uphone" id="uphone" placeholder="-없이 숫자만 입력해주세요."/>
 </div></div>
 <div class="check_front" id="phone_check"> 
 </div><br>

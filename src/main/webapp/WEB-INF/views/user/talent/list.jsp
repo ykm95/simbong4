@@ -340,7 +340,7 @@ $(document).ready(function() {
 		<div class="row">
 		<div class="col">
 		봉사유형 &nbsp; &nbsp; &nbsp; &nbsp; 
-		<input name="talent_type" title="전체" id="talent_typeA" type="radio" value="">&nbsp;
+		<input name="talent_type" title="전체" id="talent_typeA" type="radio" value="0">&nbsp;
 		<label for="talent_typeA">전체</label> &nbsp; 
 		<input name="talent_type" title="개인" id="talent_typeI" type="radio" value="1">&nbsp;
 		<label for="talent_typeI">개인</label> &nbsp; 
@@ -353,13 +353,13 @@ $(document).ready(function() {
 	
 		<div class="col">
 		상태 &nbsp; &nbsp; &nbsp; &nbsp;
-		<input name="talent_process" title="전체" id="processAll" type="radio" value="0" checked="checked">&nbsp;
+		<input name="talent_process" title="전체" id="processAll" type="radio" value="5" checked="checked">&nbsp;
 		<label for="processAll">전체</label> &nbsp; 
 		
-		<input name="talent_process" title="신청가능" id="process1" type="radio" value="1">&nbsp;
+		<input name="talent_process" title="신청가능" id="process1" type="radio" value="0">&nbsp;
 		<label for="process1">신청가능</label>&nbsp; 
 		
-		<input name="talent_process" title="마감" id="process2" type="radio" value="2">&nbsp;
+		<input name="talent_process" title="마감" id="process2" type="radio" value="1">&nbsp;
 		<label for="process2">마감</label>&nbsp;<br>
 		</div></div><br>
 				
@@ -402,8 +402,8 @@ $(document).ready(function() {
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;"> 		
     	<c:choose>
-			<c:when test="${list.talent_process eq 1}" ><span style="color:red;">[모집중]</span></c:when>
-			<c:when test="${list.talent_process eq 2 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
+			<c:when test="${list.talent_process eq 0}" ><span style="color:red;">[모집중]</span></c:when>
+			<c:when test="${list.talent_process eq 1 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
 		</c:choose></td>
 	</tr>
 	

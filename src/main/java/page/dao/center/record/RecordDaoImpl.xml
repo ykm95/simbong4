@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="page.dao.center.record.RecordDao">
+
+	<select id="selectCntRecord" resultType="int" parameterType="int">
+		SELECT count(*) FROM volunteer
+		WHERE centerno = #{centerno}
+		AND vol_process >= 1
+	</select>
+	
+<!-- 	parameterType="page.util.Paging; int" -->
+	
+	<select id="selectAllRecord" parameterType="page.util.Paging" resultType="page.dto.Volunteer">
+		SELECT * FROM (
+		    SELECT rownum rnum, B.* FROM (		
+				SELECT 
+				v.VOLUNTEERNO VOLUNTEERNO,
+				v.CENTERNO CENTERNO,
+				v.VOL_PROCESS VOL_PROCESS,
+				v.VOL_STERM VOL_STERM,
+				v.STIME STIME,
+				v.ETIME ETIME,
+				v.DEPARTMENT DEPARTMENT,
+				v.AREA AREA,
+				v.VOL_AREA VOL_AREA,
+				v.VOL_PLACE VOL_PLACE,
+				v.RECEIVER RECEIVER,
+				v.QUALIFICATION QUALIFICATION,
+				v.WRITE_DATE WRITE_DATE,
+				v.NPEOPLE NPEOPLE,
+				v.APEOPLE APEOPLE,
+				v.VOL_TITLE VOL_TITLE,
+				v.VOL_CONTENT VOL_CONTENT,
+				v.VOL_ETERM VOL_ETERM,
+				v.VOL_LAT VOL_LAT,
+				v.VOL_LNG VOL_LNG,
+				v.VOL_ADDRESS VOL_ADDRESS,
+				c.CENTERNO CENTERNO_0,
+				c.CNAME CNAME,
+				c.BUSINESSNO BUSINESSNO,
+				c.CPASSWORD CPASSWORD,
+				c.MGR MGR,
+				c.MEMAIL MEMAIL,
+				c.MPHONE MPHONE,
+				c.FOUNDED FOUNDED,
+				c.CHK CHK,
+				c.ADDRESS1 ADDRESS1,
+				c.ADDRESS2 ADDRESS2,
+				c.ADDRESS3 ADDRESS3,
+				a.aname ANAME
+				FROM volunteer v, centertb c, area a
+				WHERE v.centerno = c.centerno
+				AND v.vol_area = a.areano
+				AND v.centerno = #{centerno}
+				AND v.vol_process >= 1
+
+				<if test="search !=null and search !='' ">
+					AND V.vol_title LIKE '%' || #{search} || '%'
+				</if>
+				
+				ORDER BY v.volunteerno DESC
+		    ) B
+		    ORDER BY rnum
+		 ) BOARD
+		 WHERE rnum BETWEEN #{startNo} AND #{endNo}				
+	</select>
+	
+	<select id="selectAplByNo" parameterType="int" resultType="page.dto.Applicant">
+		SELECT A.write_date, A.aprocess, A.applicantno, U.uphone, U.uname, U.uemail
+		FROM usertb U, applicant A 
+		WHERE U.userno = A.userno 
+		AND A.volunteerno = #{volunteerno}
+		AND A.aprocess >= 1
+		ORDER BY A.applicantno
+	</select>
+	
+	<update id="updateAprocess" parameterType="int">
+		UPDATE applicant
+		SET aprocess = 2
+		WHERE applicantno = #{applicantno}
+	</update>
+	
+	<select id="aprocessChk" parameterType="int" resultType="int">
+		SELECT count(*) FROM applicant
+		WHERE aprocess = 2
+		AND volunteerno = #{volunteerno}
+	</select>
+	
+	<select id="apeopleChk" parameterType="int" resultType="int">
+		SELECT apeople FROM volunteer
+		WHERE volunteerno = #{volunteerno}
+	</select>
+	
+	<update id="updateVprocess1" parameterType="int">
+		UPDATE volunteer
+		SET vol_process = 2
+		WHERE volunteerno = #{volunteerno}
+	</update>
+	
+	<update id="updateVprocess2" parameterType="int">
+		UPDATE volunteer
+		SET vol_process = 3
+		WHERE volunteerno = #{volunteerno}
+	</update>
+
+</mapper>
