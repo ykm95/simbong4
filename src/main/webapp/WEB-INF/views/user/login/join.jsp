@@ -126,11 +126,16 @@ $(document).ready(function() {
 		});
 	});
 	
-	
+
+		
 	//회원가입 성공 alert
 	$("#submitForm").submit(function() {
+		
+		
 		alert("회원가입이 완료되었습니다.");
+		
 	});
+	
 	
 });
 
@@ -385,7 +390,7 @@ label {
 							<label>주소</label> <br>
 						</div>
 						<input type="text" class="form-control col-2" id="uaddress1" name="uaddress1" placeholder="우편번호" style="width: 20%"/>
-						<button id="postcodeBtn" onclick="sample6_execDaumPostcode()" class="form-control btn btn-secondary">우편번호 찾기</button>
+						<button type="button" id="postcodeBtn" onclick="sample6_execDaumPostcode()" class="form-control btn btn-secondary">우편번호 찾기</button>
 					</div>
 						
 					<div class="form-group row">

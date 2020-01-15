@@ -7,7 +7,9 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 주소검색 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -195,39 +197,81 @@ $(document).ready(function() {
 
 });
 </script>
+<style type="text/css">
+#selCnt {
+	width: 180px;
+}
+.form-group :not (:first-child ) * {
+	font-weight: normal;
+	
+}
 
+.form-control {
+	width: 50%;
+	display: inline;
+}
+
+label {
+    display: flex;
+    margin-bottom: .5rem;
+    
+    float: right;
+}
+
+#postcodeBtn {
+	margin-left: 10px;
+	width: 120px;
+}
+
+</style>
 <br>
-<h1>추가정보 회원가입</h1>
-<hr>
-<form action="/user/login/googlejoin" method="post" onsubmit="return checkAll()">
+	<div class="container">
+		<div class="col-xs-12 text-center">
 
-<div class="form-group">
+			<div class="col-xs-8" style="margin: 0 auto; float: none;">
+<h2>추가정보 회원가입</h2>
+
+<form action="/user/login/googlejoin" id="submitForm"  method="post" onsubmit="return checkAll()" class="form-horizontal" onsubmit="return checkAll()">
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label for ="uemail">이메일</label>
+</div>
 <input type="text" class="form-control" name="uemail" id="uemail"
- value="${user.uemail }"/>
+ value="${user.uemail }"/></div>
 <div class="check_front" id="id_check"> 
 </div>
+
+<div class="form-group row">
+<div class="col-3 col-form-label">
 <label for ="uname">이름</label>
+</div>
 <input type="text" class="form-control" name="uname" id="uname"
  value="${user.uname }"/>
 </div>
-<br>
-<label for ="uphone">전화번호</label>
-<input type="tel" name="uphone" id="uphone" />
-<br>
-<div class="check_front" id="phone_check"> 
-</div><br>
-<label>주소</label>
-<br>
-<input type="text" id="uaddress1" name="uaddress1" placeholder="우편번호"/>
 
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"/>
-<br>
-<input type="text" id="uaddress2" name="uaddress2" placeholder="주소" />
-<input type="text" id="uaddress3" name="uaddress3" placeholder="상세주소"/>
-<br><br>
-<button id="reg_submit">회원가입</button>
-<button type="reset" id="cancelbtn">취소</button>
+<div class="form-group row">
+<div class="col-3 col-form-label">
+<label for ="uphone">전화번호</label>
+</div>
+<input type="tel" name="uphone" id="uphone" class="form-control" />
+</div>
+<div class="check_front" id="phone_check"> 
+</div>
+<div class="form-group row">
+<div class="col-3 col-form-label">
+<label>주소</label><br>
+</div>
+<input type="text" id="uaddress1" name="uaddress1" class="form-control col-2" placeholder="우편번호" style="width: 20%"/>
+<input type="button" class="form-control btn btn-secondary" onclick="sample6_execDaumPostcode()" id="postcodeBtn"  value="우편번호 찾기"/>
+</div>
+
+<div class="form-group row">
+<input type="text" id="uaddress2" name="uaddress2" class="form-control offset-3 col-3" placeholder="주소" />
+<input type="text" id="uaddress3" name="uaddress3" class="form-control col-3" placeholder="상세주소"/>
+</div><br>
+<button id="reg_submit" class="btn btn-success">회원가입</button>
+<button type="reset" id="cancelbtn" class="btn btn-warning">취소</button>
 
 </form>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
