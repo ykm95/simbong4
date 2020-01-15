@@ -28,14 +28,20 @@ $(document).ready(function(){
 
 	//삭제버튼 동작
 	$("#btnDelete").click(function() {
-		$(location).attr("href", "/user/talent/delete?talentno=${talent.talentno }");
+		var result = confirm("삭제하시겠습니까?");
+		
+		if(result==true){
+			$(location).attr("href", "/user/talent/delete?talentno=${talent.talentno }");
+		}
+
 	});
 
 	$("#btnDone").click(function() {
-		alert('모집완료되었습니다.');
-		$(location).attr("href", "/user/talent/done?talentno=${talent.talentno }");
-	});
-
+		var result = confirm("모집완료처리를 하시겠습니까?");
+		
+		if(result==true){
+			$(location).attr("href", "/user/talent/done?talentno=${talent.talentno }");
+		}
 });
 </script>
 
