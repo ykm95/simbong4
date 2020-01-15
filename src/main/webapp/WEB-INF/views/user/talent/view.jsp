@@ -98,8 +98,8 @@ $(document).ready(function(){
   				<td colspan="1" style="background: #CCC">모집현황</td>  
   				<td colspan="3" style="text-align: center;">
   				<c:choose>
-					<c:when test="${talent.talent_process eq 1}">모집중</c:when>
-					<c:when test="${talent.talent_process eq 2 }">모집완료</c:when>
+					<c:when test="${talent.talent_process eq 0}">모집중</c:when>
+					<c:when test="${talent.talent_process eq 1 }">모집완료</c:when>
 				</c:choose></td>  
   			</tr>  
 			
