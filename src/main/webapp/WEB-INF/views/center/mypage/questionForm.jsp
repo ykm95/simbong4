@@ -19,16 +19,16 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	//작성버튼 동작
-	$("#btnWrite").click(function() {
-		$("form").submit();
-	});
-	
-	//취소버튼 동작
-	$("#btnCancel").click(function() {
-		$(location).attr("href", "/center/mypage/mypagemain");
-	});
+   
+   //작성버튼 동작
+   $("#btnWrite").click(function() {
+      $("form").submit();
+   });
+   
+   //취소버튼 동작
+   $("#btnCancel").click(function() {
+      $(location).attr("href", "/center/mypage/mypagemain");
+   });
 });
 </script>
 
@@ -52,7 +52,7 @@ $(document).ready(function() {
 
 <tr><td colspan="2" ><textarea id="cquestion_content" name="cquestion_content"></textarea></td></tr>
 <script>
-	CKEDITOR.replace( 'cquestion_content' );
+   CKEDITOR.replace( 'cquestion_content' );
 </script>
 
 <!-- CK Editor 적용영역 -->
@@ -65,9 +65,9 @@ $(document).ready(function() {
 
 </div><!-- 1 -->
 
-<div class="text-center">	
-	<button type="button" id="btnWrite" class="btn btn-info">작성</button>
-	<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
+<div class="text-center">   
+   <button type="button" id="btnWrite" class="btn btn-info">작성</button>
+   <button type="button" id="btnCancel" class="btn btn-danger">취소</button>
 </div>
 
 </div> <!-- container -->

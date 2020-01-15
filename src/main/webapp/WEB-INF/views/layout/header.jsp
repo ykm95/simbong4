@@ -124,7 +124,7 @@ a:hover {
 			<a href="/userLogout" >로그아웃</a>		
 		</c:otherwise>
 		</c:choose>
-			<a href="/user/mypage/mypagemain">마이페이지</a>
+			<a href="/user/mypage/mypagemain?userno=${userno }">마이페이지</a>
 		</c:if>
 		
 			
@@ -136,7 +136,7 @@ a:hover {
 		<ul id="menu">
 			<li id="notice" onclick="location.href='/user/notice/list'">공지사항</li>
 			<li id="best" onclick="location.href='/user/best/bestlist'">우수봉사자</li>
-			<li id="statistic">통계</li>
+			<li id="statistic" onclick="location.href='/user/chart/chart1'">통계</li>
 			<li onclick="location.href='/user/volunteer/list'">봉사신청</li>
 			<li onclick="location.href='/user/talent/list'">재능기부</li>
 		</ul>

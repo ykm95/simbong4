@@ -194,7 +194,7 @@
 </script>
 
 <div class="container">
-<div id="chart_div" style="width:900px; height: 500px;"></div>
+
 	<form action="/user/volunteer/list" method="get" id="searchForm" style="margin-top:40px;">
 		
 	
@@ -273,13 +273,13 @@
 
 		<div>
 		상태 &nbsp; &nbsp; &nbsp; &nbsp;
-		<input name="vol_process" title="전체" id="processAll" type="radio" value="0" checked="checked">&nbsp;
+		<input name="vol_process" title="전체" id="processAll" type="radio" value="5" checked="checked">&nbsp;
 		<label for="processAll">전체</label> &nbsp; 
 		
-		<input name="vol_process" title="모집중" id="process1" type="radio" value="1">&nbsp;
+		<input name="vol_process" title="모집중" id="process1" type="radio" value="0">&nbsp;
 		<label for="process1">모집중</label>&nbsp; 
 		
-		<input name="vol_process" title="모집완료" id="process2" type="radio" value="2">&nbsp;
+		<input name="vol_process" title="모집완료" id="process2" type="radio" value="1">&nbsp;
 		<label for="process2">모집완료</label>&nbsp;<br>
 		</div><br>
 				
@@ -309,8 +309,8 @@
     	<td style="border-bottom:0;border-top:0; vertical-align: middle;"><fmt:formatDate value="${list.write_date }" pattern="yyyy.MM.dd"/></td>
     	<td style="border-bottom:0;border-top:0; vertical-align: middle; text-align:center;">
     	<c:choose>
-			<c:when test="${list.vol_process eq 1}" ><span style="color:red;">[모집중]</span></c:when>
-			<c:when test="${list.vol_process eq 2 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
+			<c:when test="${list.vol_process eq 0}" ><span style="color:red;">[모집중]</span></c:when>
+			<c:when test="${list.vol_process eq 1 }" ><span style="color:#ccc;">[모집완료]</span></c:when>
 		</c:choose>
 		</td>
 	</tr>

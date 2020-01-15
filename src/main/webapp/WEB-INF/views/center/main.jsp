@@ -152,7 +152,7 @@ img {vertical-align: middle;}
 
 </style>
 
-<div class="row" style="text-align: center; padding: 50px 0; background: linear-gradient(to top, #FFFFFF, #FFEFBA)">
+<div class="row" style="text-align: center; padding: 50px 0;">
 
 	<div class="container" style="background: #FFF">
 

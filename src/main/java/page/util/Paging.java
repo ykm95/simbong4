@@ -24,9 +24,19 @@ public class Paging {
 	private String keyword;
 
 	private String search;
-	
-	public Paging() { }
-	
+	private int userno;
+
+	public int getUserno() {
+		return userno;
+	}
+
+	public void setUserno(int userno) {
+		this.userno = userno;
+	}
+
+	public Paging() {
+	}
+
 	public Paging(int totalCount) {
 		this.setTotalCount(totalCount);
 
@@ -41,7 +51,7 @@ public class Paging {
 		this.makePaging();
 	}
 
-	// �� �Խñ� ���� ���� ������, ������ �Խñ� ����  �Է��ϴ� ������
+	// �� �Խñ� ���� ���� ������, ������ �Խñ� ���� �Է��ϴ� ������
 	public Paging(int totalCount, int curPage, int listCount) {
 		this.setTotalCount(totalCount);
 		this.setCurPage(curPage);
@@ -49,7 +59,7 @@ public class Paging {
 		this.makePaging();
 	}
 
-	// �� �Խñ� ���� ���� ������, ������ �Խñ� ��, ������ ������ ����  �Է��ϴ� ������
+	// �� �Խñ� ���� ���� ������, ������ �Խñ� ��, ������ ������ ���� �Է��ϴ� ������
 	public Paging(int totalCount, int curPage, int listCount, int pageCount) {
 		this.setTotalCount(totalCount);
 		this.setCurPage(curPage);
@@ -58,48 +68,51 @@ public class Paging {
 
 		this.makePaging();
 
-		
 	}
-
 
 	// ����¡ ���� ����
 	private void makePaging() {
-		if(totalCount==0) return;	//�Խñ��� ���� ���
+		if (totalCount == 0)
+			return; // �Խñ��� ���� ���
 
-		//�⺻�� ����
-		if(curPage==0) setCurPage(1); //ù ������ �⺻�� ����
-		if(pageCount==0) setPageCount(5); // ȭ�鿡 ������ �������� �⺻�� ����
-		if(listCount==0) setListCount(10); // ȭ�鿡 ������ �Խñۼ� �⺻�� ����
+		// �⺻�� ����
+		if (curPage == 0)
+			setCurPage(1); // ù ������ �⺻�� ����
+		if (pageCount == 0)
+			setPageCount(5); // ȭ�鿡 ������ �������� �⺻�� ����
+		if (listCount == 0)
+			setListCount(10); // ȭ�鿡 ������ �Խñۼ� �⺻�� ����
 
 		// �� �������� ���
 		totalPage = totalCount / listCount;
-		if(totalCount % listCount > 0 ) totalPage++;
+		if (totalCount % listCount > 0)
+			totalPage++;
 
-		
-		// ���������� ����, �� ��������ȣ���� ���� ��������ȣ�� ���� �� �� ������ ��ȣ�� ����
-		if(totalPage<curPage) curPage = totalPage;
+		// ���������� ����, �� ��������ȣ���� ���� ��������ȣ�� ���� �� �� ������ ��ȣ��
+		// ����
+		if (totalPage < curPage)
+			curPage = totalPage;
 
 		// ȭ�鿡 ������ ����¡ ���۹�ȣ�� �� ��ȣ
-		startPage = ( (curPage-1)/pageCount) * pageCount+1;
-		endPage = startPage + pageCount -1;
+		startPage = ((curPage - 1) / pageCount) * pageCount + 1;
+		endPage = startPage + pageCount - 1;
 
 		// ���� ����������ȣ�� �� ������������ Ŭ �� ����
-		if(endPage>totalPage) endPage = totalPage;
-		
-		// ȭ�鿡 ������ �Խñ��� ���۹�ȣ�� �� ��ȣ
-		startNo = (curPage-1) * listCount+1;
-		endNo =curPage * listCount;
+		if (endPage > totalPage)
+			endPage = totalPage;
 
-	
+		// ȭ�鿡 ������ �Խñ��� ���۹�ȣ�� �� ��ȣ
+		startNo = (curPage - 1) * listCount + 1;
+		endNo = curPage * listCount;
+
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Paging [curPage=" + curPage + ", totalCount=" + totalCount + ", listCount=" + listCount + ", totalPage="
 				+ totalPage + ", pageCount=" + pageCount + ", startPage=" + startPage + ", endPage=" + endPage
-				+ ", startNo=" + startNo + ", endNo=" + endNo + ", centerno=" + centerno + ", searchcategory="
-				+ searchcategory + ", keyword=" + keyword + ", search=" + search + "]";
+				+ ", startNo=" + startNo + ", endNo=" + endNo + ", searchcategory=" + searchcategory + ", keyword="
+				+ keyword + ", search=" + search + ", userno=" + userno + "]";
 	}
 
 	public int getCurPage() {
@@ -181,7 +194,7 @@ public class Paging {
 	public void setSearch(String search) {
 		this.search = search;
 	}
-	
+
 	public String getSearchcategory() {
 		return searchcategory;
 	}

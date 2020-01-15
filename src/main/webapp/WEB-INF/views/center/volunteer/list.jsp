@@ -287,7 +287,7 @@
 					<div class="col-2"><small>${i.aname }</small></div>
 				</div>
 				<div class="row">
-					<div class="col-2"><small style="color: blue;">필요/신청인원 : </small><small>${i.npeople } / ${i.apeople }</small></div>
+					<div class="col-2"><small style="color: blue;">필요/확정인원 : </small><small>${i.npeople } / ${i.apeople }</small></div>
 					<div class="col-4"><small style="color: blue;">봉사기간 : </small><small>${i.vol_sterm } ~ ${i.vol_eterm }</small></div>
 					<div class="col-3"><small style="color: blue;">모집센터 : </small><small>${i.cname }</small></div>
 				</div>

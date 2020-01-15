@@ -18,9 +18,13 @@ import org.springframework.web.multipart.MultipartFile;
 import page.dto.Applicant;
 import page.dto.Question;
 import page.dto.User;
+
+import page.dto.Volunteer;
+
 import page.dto.Volrecord;
 import page.service.user.mypage.UserMypageService;
 import page.util.Paging;
+import page.util.PagingApplicant;
 
 @Controller
 public class UserMypageController {
@@ -191,6 +195,25 @@ public class UserMypageController {
 		return "/main";
 	}
 	
+
+//	public void performanceList(Model model) {
+//
+////		List<VolunteerRecord> list = userMypageService.getperformanceList();
+//	}
+//
+//	public void perfomanceList(Model model, String term) {
+//
+////		List<VolunteerRecord> list = userMypageService.getperformanceList(term);
+//	}
+	@RequestMapping(value = "/user/mypage/pdf", method = RequestMethod.GET)
+	public void pdfView(Model model, int applicantno) {
+		Volunteer pdf = new Volunteer();
+		pdf= userMypageService.getPdfData(applicantno);
+		
+		model.addAttribute("pdf", pdf);
+		logger.info(pdf.toString());
+	}
+
 	@RequestMapping(value="/user/mypage/questionlist", method=RequestMethod.GET)
 	public void quesetionList(Model model,Paging paging) {
 		
@@ -232,14 +255,11 @@ public class UserMypageController {
 //		logger.info("questionno : " + questionno);
 		question.setQuestionno(questionno);		
 		
-		//유저번호 불러오는 코드
 
 		user.setUemail((String) session.getAttribute("loginid"));
-
-		int userno;		
-		userno = userMypageService.getUserno(user);		
+		user.setUserno((int)session.getAttribute("userno"));	
 		
-		question.setUserno(userno);
+		question.setUserno(user.getUserno());
 
 //		logger.info(centerquestion.toString());
 		
@@ -275,52 +295,64 @@ public class UserMypageController {
 		return "redirect:/user/mypage/mypagemain";
 	}
 	
-//	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)
-//	public void applicationResult(HttpSession session,
-//								  User user,
-//								  Applicant applicant) {
-//		user.setUemail((String)session.getAttribute("loginid"));
-//		logger.info(user.toString());
-//		
-//		//유저번호 불러오는코드
-//		int userno;		
-//		userno = userMypageService.getUserno(user);		
-//		user.setUserno(userno);
-//		
-//	}
+	@RequestMapping(value="/user/mypage/applicationresult", method=RequestMethod.GET)
+	public void applicationResult(HttpSession session,
+								  User user,
+								  Applicant applicant,
+								  Model model,
+								  Paging paging) {
+		
+		user.setUemail((String)session.getAttribute("loginid"));		
+		user.setUserno((int)session.getAttribute("userno"));
+		
+		paging.setUserno(user.getUserno());
+		
+		paging = userMypageService.getAppPaging(paging);
+		
+		paging.setUserno(user.getUserno());
+		
+		logger.info(paging.toString());
+		
+		List<Applicant> list = userMypageService.getApplicant(paging);
+		
+		logger.info(list+"");
+		
+		model.addAttribute("paging", paging);
+		model.addAttribute("list", list);
+		
+		
+	}
 
 	@RequestMapping(value="/user/mypage/performancelist", method=RequestMethod.GET)
 	public void performanceList(Model model,
 								HttpSession session,
 								User user,
-								Applicant applicant) {
-		user.setUemail((String)session.getAttribute("loginid"));
-		logger.info(user.toString());
+								PagingApplicant paging) {
 		
-		//유저번호 불러오기
-		int userno;		
-		userno = userMypageService.getUserno(user);		
-		user.setUserno(userno);
+		user.setUemail((String)session.getAttribute("loginid"));		
+		user.setUserno((int)session.getAttribute("userno"));
 		
-		//유저이름 불러오기
-		String uname;
-		uname = userMypageService.getUname(user);
-		user.setUname(uname);
-		logger.info(user.toString());
+		paging.setUserno(user.getUserno());
+
+		paging = userMypageService.getPerformancePaging(paging);
 		
-		//지원자등록번호 불러오기
-		int applicantno;
-		applicantno = userMypageService.getApplicantno(user);
-		logger.info(applicantno+"");		
-		applicant.setApplicantno(applicantno);
+		paging.setUserno(user.getUserno());
 		
-		Volrecord volrecord = userMypageService.getVolrecord(applicant);
+		List<PagingApplicant> list = userMypageService.getPerformance(paging);
 		
-		logger.info(volrecord.toString());
+		logger.info(list+"");
 		
-		model.addAttribute("volrecord", volrecord);
-		model.addAttribute("user", user);
+		model.addAttribute("paging", paging);
+		model.addAttribute("list", list);
+
 	}
-
-
+	@RequestMapping(value="/user/mypage/mypagemain", method = RequestMethod.GET)
+	public void MypageView(int userno, Model model) {
+		
+		User mypageView = new User();
+		mypageView = userMypageService.Userview(userno);
+		
+		logger.info(mypageView.toString());
+		model.addAttribute("mypageView", mypageView);
+	}
 }
